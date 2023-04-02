@@ -20,7 +20,37 @@ class SettingController extends Controller
                 ['fabicon', 0],
             ]
         ],
+        'feature' => [
+            "Feature Section",
+            [
+                ["logo1", 1],
+                ["text1", 1],
+                ["desc1", 2],
+            ],
+            'views/front/home/feature.blade.php'
 
+        ],
+        'about' => [
+            "About Section",
+            [
+                ["img", 0],
+                ["txt1", 1],
+                ["des1", 2],
+                ["des2", 2],
+            ],
+            'views/front/home/about.blade.php'
+        ],
+        'contact' => [
+            "Contact Section",[
+                ["text1",1],
+                ["des1",2],
+                ["text2",1],
+                ["des2",2],
+                ["text3",1],
+                ["des3",2],
+            ],
+            'views/front/home/contact.blade.php'
+        ],
         'homeabout' => [
             "Home About", [
                 ['desc', 2],
@@ -34,25 +64,25 @@ class SettingController extends Controller
             ],
             'views/front/home/homeabout.blade.php'
         ],
-        'feature' => [
-            "Home Features", [
-                ['count1', 1],
-                ['subtitle1', 1],
-                ['count2', 1],
-                ['subtitle2', 1],
-                ['count3', 1],
-                ['subtitle3', 1],
-                ['count4', 1],
-                ['subtitle4', 1],
+        // 'feature' => [
+        //     "Home Features", [
+        //         ['count1', 1],
+        //         ['subtitle1', 1],
+        //         ['count2', 1],
+        //         ['subtitle2', 1],
+        //         ['count3', 1],
+        //         ['subtitle3', 1],
+        //         ['count4', 1],
+        //         ['subtitle4', 1],
 
-                ['reason1', 1],
-                ['reason2', 1],
-                ['reason3', 1],
-                ['desc', 2],
+        //         ['reason1', 1],
+        //         ['reason2', 1],
+        //         ['reason3', 1],
+        //         ['desc', 2],
 
-            ],
-            'views/front/home/feature.blade.php'
-        ],
+        //     ],
+        //     'views/front/home/feature.blade.php'
+        // ],
         'social' => [
             "Social Links", [
                 ['Facebook', 1],
@@ -100,26 +130,27 @@ class SettingController extends Controller
         }
     }
 
-    public function meta(Request $request){
+    public function meta(Request $request)
+    {
         if ($request->getMethod() == "GET") {
             $data = getSetting('meta') ?? ((object)([
-                'desc'=>'',
-                'image'=>'',
-                'keyword'=>'',
+                'desc' => '',
+                'image' => '',
+                'keyword' => '',
             ]));
             // dd($data);
 
             return view('admin.setting.meta', compact('data'));
         } else {
             $olddata = getSetting('meta') ?? ((object)([
-                'desc'=>'',
-                'image'=>'',
-                'keyword'=>'',
+                'desc' => '',
+                'image' => '',
+                'keyword' => '',
             ]));
             $data = [
-                'desc'=>$request->desc,
-                'keyword'=>$request->keyword,
-                'image'=>$request->hasFile('image')?$request->image->store('uploads/settings'):$olddata->image
+                'desc' => $request->desc,
+                'keyword' => $request->keyword,
+                'image' => $request->hasFile('image') ? $request->image->store('uploads/settings') : $olddata->image
             ];
             setSetting('meta', $data);
             file_put_contents(resource_path('views/front/layout/meta.blade.php'), view('admin.setting.template.meta')->render());
@@ -185,25 +216,25 @@ class SettingController extends Controller
             $others = [];
             if ($request->filled('others')) {
                 foreach ($request->others as $key => $other) {
-                    array_push($others,[
-                        'name'=>$request->input('name_'.$other)??'',
-                        'phone'=>$request->input('phone_'.$other)??'',
-                        'designation'=>$request->input('designation_'.$other)??'',
-                        'email'=>$request->input('email_'.$other)??'',
+                    array_push($others, [
+                        'name' => $request->input('name_' . $other) ?? '',
+                        'phone' => $request->input('phone_' . $other) ?? '',
+                        'designation' => $request->input('designation_' . $other) ?? '',
+                        'email' => $request->input('email_' . $other) ?? '',
                     ]);
                 }
             }
             $data = [
-                'map' => $request->map??'',
-                'email' => $request->email??'',
-                'phone' => $request->phone??'',
-                'addr' => $request->addr??'',
+                'map' => $request->map ?? '',
+                'email' => $request->email ?? '',
+                'phone' => $request->phone ?? '',
+                'addr' => $request->addr ?? '',
                 'others' => $others
             ];
             setSetting('contact', $data);
             // dd($data
 
-            file_put_contents(resource_path('views/front/layout/footercontact.blade.php'), view('admin.setting.template.footercontact',compact('data'))->render());
+            file_put_contents(resource_path('views/front/layout/footercontact.blade.php'), view('admin.setting.template.footercontact', compact('data'))->render());
 
             return redirect()->back()->with('message', "Setting Saved Sucessfully");
         }

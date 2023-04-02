@@ -2,46 +2,45 @@
 <!-- Features Start -->
 <div class="container-xxl py-5">
     <div class="container">
-        <div class="row g-5 align-items-center">
-            <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
-                <p class="section-title bg-white text-start text-primary pe-3">Why Us!</p>
-                <h1 class="mb-4">Few Reasons Why People Choosing Us!</h1>
-                <p class="mb-4">{{$curdata['desc']}}</p>
-                <p><i class="fa fa-check text-primary me-3"></i>{{$curdata['reason1']}}</p>
-                <p><i class="fa fa-check text-primary me-3"></i>{{$curdata['reason2']}}</p>
-                <p><i class="fa fa-check text-primary me-3"></i>{{$curdata['reason3']}}</p>
+        <div class="row g-4">
+            <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.1s">
+                <div class="service-item text-center pt-3">
+                    <div class="p-4">
+                        <i class="fa fa-3x {{$curdata['logo1']}} text-primary mb-4"></i>
+                        <h5 class="mb-3"> {{$curdata['text1']}}</h5>
+                        <p> {{$curdata['desc1']}}</p>
+                    </div>
+                </div>
             </div>
-            <div class="col-lg-6">
-                <div class="rounded overflow-hidden">
-                    <div class="row g-0">
-                        <div class="col-sm-6 wow fadeIn" data-wow-delay="0.1s">
-                            <div class="text-center bg-primary py-5 px-4">
-                                <h1 class="display-6 text-white" data-toggle="counter-up">{{$curdata['count1']}}</h1>
-                                <span class="fs-5 fw-semi-bold text-secondary">{{$curdata['subtitle1']}}</span>
-                            </div>
-                        </div>
-                        <div class="col-sm-6 wow fadeIn" data-wow-delay="0.3s">
-                            <div class="text-center bg-secondary py-5 px-4">
-                                <h1 class="display-6" data-toggle="counter-up">{{$curdata['count2']}}</h1>
-                                <span class="fs-5 fw-semi-bold text-primary">{{$curdata['subtitle2']}}</span>
-                            </div>
-                        </div>
-                        <div class="col-sm-6 wow fadeIn" data-wow-delay="0.5s">
-                            <div class="text-center bg-secondary py-5 px-4">
-                                <h1 class="display-6" data-toggle="counter-up">{{$curdata['count3']}}</h1>
-                                <span class="fs-5 fw-semi-bold text-primary">{{$curdata['subtitle3']}} </span>
-                            </div>
-                        </div>
-                        <div class="col-sm-6 wow fadeIn" data-wow-delay="0.7s">
-                            <div class="text-center bg-primary py-5 px-4">
-                                <h1 class="display-6 text-white" data-toggle="counter-up">{{$curdata['count4']}}</h1>
-                                <span class="fs-5 fw-semi-bold text-secondary">{{$curdata['subtitle4']}}</span>
-                            </div>
-                        </div>
+            <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.3s">
+                <div class="service-item text-center pt-3">
+                    <div class="p-4">
+                        <i class="fa fa-3x fa-globe text-primary mb-4"></i>
+                        <h5 class="mb-3">Online Classes</h5>
+                        <p>Diam elitr kasd sed at elitr sed ipsum justo dolor sed clita amet diam</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.5s">
+                <div class="service-item text-center pt-3">
+                    <div class="p-4">
+                        <i class="fa fa-3x fa-home text-primary mb-4"></i>
+                        <h5 class="mb-3">Home Projects</h5>
+                        <p>Diam elitr kasd sed at elitr sed ipsum justo dolor sed clita amet diam</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.7s">
+                <div class="service-item text-center pt-3">
+                    <div class="p-4">
+                        <i class="fa fa-3x fa-book-open text-primary mb-4"></i>
+                        <h5 class="mb-3">Book Library</h5>
+                        <p>Diam elitr kasd sed at elitr sed ipsum justo dolor sed clita amet diam</p>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
+<!-- Service End -->
 <!-- Features End -->

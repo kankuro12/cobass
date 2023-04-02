@@ -35,6 +35,12 @@
                     <li class="sub-item">
                         <a  href="{{route('admin.setting.index',['type'=>'top'])}}" >Header</a>
                     </li>
+                    <li class="sub-item">
+                        <a  href="{{route('admin.setting.index',['type'=>'about'])}}" >About</a>
+                    </li>
+                    <li class="sub-item">
+                        <a  href="{{route('admin.setting.index',['type'=>'contact'])}}" >Contact</a>
+                    </li>
                     {{-- <li class="sub-item">
                         <a  href="{{route('admin.menu.index')}}" >Menus</a>
                     </li> --}}
