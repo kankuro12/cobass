@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\GalleryController;
 use App\Http\Controllers\Admin\PopupController;
 use App\Http\Controllers\courseController;
 use App\Http\Controllers\coursesController;
+// use App\Http\Controllers\teacherController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\SettingController;
 use App\Http\Controllers\FrontController;
@@ -13,6 +14,7 @@ use App\Http\Controllers\SliderController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\cobassController;
+use App\Http\Controllers\teacherController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -68,7 +70,13 @@ Route::prefix("admin")->name("admin.")->group(function () {
         Route::post('save', [courseController::class, 'save'])->name('save');
         Route::get('list', [courseController::class, 'list'])->name('list');
     });
+    Route::prefix('teacher')->name('teacher.')->group(function(){
+        Route::get('/', [teacherController::class, 'index'])->name('index');
 
+        Route::match(['get','post'],'add',[teacherController::class,'add'])->name('add');
+        Route::post('save', [teacherController::class, 'save'])->name('save');
+        Route::get('list', [teacherController::class, 'list'])->name('list');
+    });
 
     Route::prefix('event')->name('event.')->group(function () {
         Route::get('', [EventController::class, 'index'])->name('index');
