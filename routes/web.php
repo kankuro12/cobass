@@ -63,7 +63,7 @@ Route::prefix("admin")->name("admin.")->group(function () {
 
 
     Route::prefix('course')->name('course.')->group(function () {
-        Route::get('index', [courseController::class, 'index'])->name('index');
+        Route::get('/', [courseController::class, 'index'])->name('index');
         Route::match(['get', 'post'], 'add', [courseController::class, 'add'])->name('add');
         Route::post('save', [courseController::class, 'save'])->name('save');
         Route::get('list', [courseController::class, 'list'])->name('list');
