@@ -10,39 +10,35 @@
 @endsection
 @section('page-option')
     <div class="text-right">
-       <a href="{{ route('admin.course.add') }}" class="btn btn-primary">Course Add </a>
+       <a href="{{ route('admin.testimonial.add') }}" class="btn btn-primary">Testimonial Add </a>
     </div>
 @endsection
 
 @section('content')
     <div class="bg-white">
         <div class="row">
-            @foreach ($courses as $course)
+            @foreach ($testimonials as $testimonial)
             <div class="col-md-4">
-                <img src="{{ asset($course->image) }}" alt="" class="w-100">
+                <img src="{{ asset($testimonial->image) }}" alt="" class="w-100">
 
 
             </div>
             <div class="col-md-4">
-                {{ $course->name }}
+                {{ $testimonial->name }}
 
 
             </div>
             <div class="col-md-4">
-                {{ $course->faculty }}
+                {{ $testimonial->profission }}
 
 
             </div>
             <div class="col-md-4">
-                {{ $course->long_des }}
+                {{ $testimonial->long_des }}
 
 
             </div>
-            <div class="col-md-4">
-                {{ $course->short_des }}
 
-
-           </div>
            {{-- <a href="{{ route('admin.course.edit',['course' => $course->name])}}"
             class="btn btn-primary">Edit</a>
         <a href="{{ route('admin.course.del',['course'=> $course->name])}}"

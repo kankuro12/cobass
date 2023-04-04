@@ -14,6 +14,7 @@ use App\Http\Controllers\SliderController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\cobassController;
+use App\Http\Controllers\testimonialController;
 use App\Http\Controllers\teacherController;
 use Illuminate\Support\Facades\Route;
 
@@ -70,12 +71,18 @@ Route::prefix("admin")->name("admin.")->group(function () {
         Route::post('save', [courseController::class, 'save'])->name('save');
         Route::get('list', [courseController::class, 'list'])->name('list');
     });
-    Route::prefix('teacher')->name('teacher.')->group(function(){
+    Route::prefix('teacher')->name('teacher.')->group(function () {
         Route::get('/', [teacherController::class, 'index'])->name('index');
-
-        Route::match(['get','post'],'add',[teacherController::class,'add'])->name('add');
+        Route::match(['get', 'post'], 'add', [teacherController::class, 'add'])->name('add');
         Route::post('save', [teacherController::class, 'save'])->name('save');
         Route::get('list', [teacherController::class, 'list'])->name('list');
+    });
+    Route::prefix('testimonial')->name('testimonial.')->group(function(){
+        Route::get('/', [testimonialController::class, 'index'])->name('index');
+
+        Route::match(['get', 'post'],'add',[testimonialController::class,'add'])->name('add');
+        Route::post('save', [testimonialController::class, 'save'])->name('save');
+        Route::get('list', [testimonialController::class, 'list'])->name('list');
     });
 
     Route::prefix('event')->name('event.')->group(function () {
