@@ -5,7 +5,7 @@
     <link rel="stylesheet" href="{{ asset('admin/plugins/drophify/css/dropify.min.css') }}">
 @endsection
 @section('s-title')
-    /<a href="{{ route('admin.teacher.add') }}">Teacher</a>/Add
+    / <a href="{{ route('admin.teacher.index') }}"> Teacher</a> / Add
 @endsection
 @section('content')
     <div class="bg-white p-5 shadow">
@@ -13,16 +13,17 @@
             @csrf
 
             <div class="row">
-                <div class="col-md-9">
-
-                    <div class="row">
-                        <div class="col-md-9">
+                <div class="col-md-3">
                             <label for="image">
                                 Image
                             </label>
                             <input type="file" name="image" id="image" class="photo">
                         </div>
-                        <div class="col-md-5">
+                <div class="col-md-9">
+
+                    <div class="row">
+
+                        <div class="col-md-6">
                             <div class="mb-2">
 
                                 <label for="name">
@@ -31,7 +32,7 @@
                                 <input type="text" name="name" id="name" class="form-control" required>
                             </div>
                         </div>
-                        <div class="col-md-5">
+                        <div class="col-md-6">
                             <label for="faculty">
                                 Designation
                             </label>
@@ -46,7 +47,8 @@
                         </label>
                         <textarea name="short_des" id="short_des" class="form-control" required></textarea>
 
-                    <div class="text-right">
+                    <div class="text-right py-2">
+                        <a href="{{route('admin.teacher.index')}}" class="btn btn-danger my-2">Cancel</a>
                         <button class="btn btn-primary">
                             save
                         </button>

@@ -3,12 +3,18 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class cobassController extends Controller
 {
     public function index()
     {
-        return view('front.index');
+
+        $courses = DB::table('courses')->get();
+        $teachers = DB::table('teachers')->get();
+        $testimonials = DB::table('testimonials')->get();
+        return view('front.index',compact('teachers','courses','testimonials'));
+
     }
     public function about()
     {

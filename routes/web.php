@@ -69,20 +69,25 @@ Route::prefix("admin")->name("admin.")->group(function () {
         Route::get('/', [courseController::class, 'index'])->name('index');
         Route::match(['get', 'post'], 'add', [courseController::class, 'add'])->name('add');
         Route::post('save', [courseController::class, 'save'])->name('save');
-        Route::get('list', [courseController::class, 'list'])->name('list');
+        Route::match(['GET','POST'],'edit/{course}', [courseController::class, 'edit'])->name('edit');
+        Route::match(['GET','POST'],'del/{course}', [courseController::class, 'del'])->name('del');
+        // Route::get('list', [courseController::class, 'list'])->name('list');
     });
     Route::prefix('teacher')->name('teacher.')->group(function () {
         Route::get('/', [teacherController::class, 'index'])->name('index');
         Route::match(['get', 'post'], 'add', [teacherController::class, 'add'])->name('add');
         Route::post('save', [teacherController::class, 'save'])->name('save');
-        Route::get('list', [teacherController::class, 'list'])->name('list');
+        // Route::get('list', [teacherController::class, 'list'])->name('list');
+        Route::match(['GET','POST'],'edit/{teacher}', [teacherController::class, 'edit'])->name('edit');
+        Route::match(['GET','POST'],'del/{teacher}', [teacherController::class, 'del'])->name('del');
     });
     Route::prefix('testimonial')->name('testimonial.')->group(function(){
         Route::get('/', [testimonialController::class, 'index'])->name('index');
-
         Route::match(['get', 'post'],'add',[testimonialController::class,'add'])->name('add');
         Route::post('save', [testimonialController::class, 'save'])->name('save');
-        Route::get('list', [testimonialController::class, 'list'])->name('list');
+        Route::match(['GET','POST'],'edit/{testimonial}', [testimonialController::class, 'edit'])->name('edit');
+        Route::match(['GET','POST'],'del/{testimonial}', [testimonialController::class, 'del'])->name('del');
+        // Route::get('list', [testimonialController::class, 'list'])->name('list');
     });
 
     Route::prefix('event')->name('event.')->group(function () {

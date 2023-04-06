@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\teacher;
+use Illuminate\Support\Facades\DB;
 
 class teacherController extends Controller
 {
@@ -25,13 +26,34 @@ class teacherController extends Controller
         $teacher->deg = $request->deg;
         $teacher->short_des = $request->short_des;
         $teacher->save();
-        return redirect()->route("admin.teacher.list");
+        return redirect()->back()->with('message', 'Successfully Added');
+        // return redirect()->route("admin.teacher.index");
     }
     public function list(Request $request)
     {
 
-        $teachers = Teacher::all();
+        $teachers = DB::table('teachers')->get();
         // dd($teachers);
         return view("admin.teacher.index" ,compact('teachers'));
+    }
+    public function del(Request $request, teacher $teacher)
+    {
+        $teacher->delete();
+        return redirect()->back()->with('message', 'Sucessfully Deleted');
+    }
+    public function edit(Request $request, teacher $teacher)
+    {
+        if ($request->getMethod() == "POST") {
+            $teacher->name = $request->name;
+            $teacher->deg = $request->deg;
+        $teacher->short_des = $request->short_des;
+            if ($request->hasfile('image')) {
+                $teacher->image = $request->image->store('upload/teacher');
+            }
+            $teacher->save();
+            return redirect()->back()->with('message', 'Successfully Added');
+        } else {
+            return view("admin.teacher.edit",compact('teacher'));
+        }
     }
 }

@@ -25,7 +25,7 @@ class testimonialController extends Controller
         $testimonial->profission = $request->profission;
         $testimonial->long_des = $request->long_des;
         $testimonial->save();
-        return redirect()->route("admin.testimonial.list");
+        return redirect()->back()->with('message', 'Successfully Added');
     }
     public function list(Request $request)
     {
@@ -33,5 +33,25 @@ class testimonialController extends Controller
         $testimonials = Testimonial::all();
         // dd($testimonials);
         return view("admin.testimonial.index" ,compact('testimonials'));
+    }
+    public function del(Request $request, testimonial $testimonial)
+    {
+        $testimonial->delete();
+        return redirect()->back()->with('message', 'Sucessfully Deleted');
+    }
+    public function edit(Request $request, testimonial $testimonial)
+    {
+        if ($request->getMethod() == "POST") {
+            $testimonial->name = $request->name;
+        $testimonial->profission = $request->profission;
+        $testimonial->long_des = $request->long_des;
+            if ($request->hasfile('image')) {
+                $testimonial->image = $request->image->store('upload/testimonial');
+            }
+            $testimonial->save();
+            return redirect()->back()->with('message', 'Successfully Added');
+        } else {
+            return view("admin.testimonial.edit",compact('testimonial'));
+        }
     }
 }

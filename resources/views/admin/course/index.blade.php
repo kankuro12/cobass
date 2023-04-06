@@ -15,38 +15,30 @@
 @endsection
 
 @section('content')
-    <div class="bg-white">
+    <div class="bg-white p-3">
         <div class="row">
             @foreach ($courses as $course)
-            <div class="col-md-4">
-                <img src="{{ asset($course->image) }}" alt="" class="w-100">
+            <div class="col-md-4 mb-3">
+                <div class="shadow">
+                    <div class="d-flex" style="height: 150px;align-items: center;overflow: hidden;background: gray; ">
 
+                        <img src="{{ asset($course->image) }}" alt="" class="w-100">
+                    </div>
+                    <div class="p-3">
+                            {{ $course->name }}
+                            <div class="d-flex justify-content-between" >
 
+                        <a href="{{ route('admin.course.edit',['course' => $course->id])}}"
+                         class="btn btn-primary">Edit</a>
+
+                        <a href="{{ route('admin.course.del',['course'=> $course->id])}}"
+                         class="btn btn-danger">Delete</a>
+                    </div>
+                    </div>
+
+                </div>
             </div>
-            <div class="col-md-4">
-                {{ $course->name }}
 
-
-            </div>
-            <div class="col-md-4">
-                {{ $course->faculty }}
-
-
-            </div>
-            <div class="col-md-4">
-                {{ $course->long_des }}
-
-
-            </div>
-            <div class="col-md-4">
-                {{ $course->short_des }}
-
-
-           </div>
-           {{-- <a href="{{ route('admin.course.edit',['course' => $course->name])}}"
-            class="btn btn-primary">Edit</a>
-        <a href="{{ route('admin.course.del',['course'=> $course->name])}}"
-            class="btn btn-danger">Delete</a> --}}
             @endforeach
 
         </div>

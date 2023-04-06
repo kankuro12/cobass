@@ -5,7 +5,7 @@
     <link rel="stylesheet" href="{{ asset('admin/plugins/drophify/css/dropify.min.css') }}">
 @endsection
 @section('s-title')
-    /<a href="{{ route('admin.testimonial.add') }}">Testimonial</a>/Add
+    /<a href="{{ route('admin.testimonial.index') }}">Testimonial</a>/Add
 @endsection
 @section('content')
     <div class="bg-white p-5 shadow">
@@ -13,16 +13,17 @@
             @csrf
 
             <div class="row">
-                <div class="col-md-9">
-
-                    <div class="row">
-                        <div class="col-md-9">
+              <div class="col-md-3">
                             <label for="image">
                                 Image
                             </label>
                             <input type="file" name="image" id="image" class="photo">
                         </div>
-                        <div class="col-md-5">
+                <div class="col-md-9">
+
+                    <div class="row">
+
+                        <div class="col-md-6">
                             <div class="mb-2">
 
                                 <label for="name">
@@ -31,7 +32,7 @@
                                 <input type="text" name="name" id="name" class="form-control" required>
                             </div>
                         </div>
-                        <div class="col-md-5">
+                        <div class="col-md-6">
                             <label for="profission">
                                 Profission:
                             </label>
@@ -47,9 +48,10 @@
                         <label for="long_des">
                            Long Description
                         </label>
-                        <textarea name="long_des" id="long_des" class="form-control" required></textarea>
+                        <textarea name="long_des" id="long_des" class="form-control" ></textarea>
                     </div>
-                    <div class="text-right">
+                    <div class="text-right py-2">
+                        <a href="{{route('admin.testimonial.index')}}" class="btn btn-danger mx-2">Cancle</a>
                         <button class="btn btn-primary">
                             save
                         </button>
@@ -65,7 +67,7 @@
     <script>
         $(function() {
             $('.photo').dropify();
-            $('#desc').summernote();
+            $('#long_des').summernote();
         });
     </script>
 @endsection

@@ -10,39 +10,34 @@
 @endsection
 @section('page-option')
     <div class="text-right">
-       <a href="{{ route('admin.teacher.add') }}" class="btn btn-primary">Teacher Add </a>
+       <a href="{{ route('admin.teacher.add') }}" class="btn btn-primary"> Teacher Add </a>
     </div>
 @endsection
 
 @section('content')
-    <div class="bg-white">
+    <div class="bg-white p-3">
         <div class="row">
             @foreach ($teachers as $teacher)
-            <div class="col-md-4">
-                <img src="{{ asset($teacher->image) }}" alt="" class="w-100">
+            <div class="col-md-4 mb-3">
+                <div class="shadow">
+                    <div class="d-flex" style="height: 150px;align-items: center;overflow: hidden;background: gray;">
+                        <img src="{{ asset($teacher->image) }}" alt="" class="w-100">
+                    </div>
+                    <div class="p-3">
+                        {{ $teacher->name }}
+                        <div class="d-flex justify-content-between" >
 
+                        <a href="{{ route('admin.teacher.edit',['teacher' => $teacher->id])}}"
+                                    class="btn btn-primary">Edit</a>
 
+                                <a href="{{ route('admin.teacher.del',['teacher'=> $teacher->id])}}"
+                                    class="btn btn-danger">Delete</a>
+                    </div>
+                </div>
             </div>
-            <div class="col-md-4">
-                {{ $teacher->name }}
-
-
-            </div>
-            <div class="col-md-4">
-                {{ $teacher->deg }}
-
-
             </div>
 
-            <div class="col-md-4">
-                {{ $teacher->short_des }}
 
-
-           </div>
-           {{-- <a href="{{ route('admin.course.edit',['course' => $course->name])}}"
-            class="btn btn-primary">Edit</a>
-        <a href="{{ route('admin.course.del',['course'=> $course->name])}}"
-            class="btn btn-danger">Delete</a> --}}
             @endforeach
 
         </div>

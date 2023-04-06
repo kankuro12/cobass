@@ -10,6 +10,27 @@
                 </a>
 
             </li>
+            <li>
+                <a href="{{route('admin.course.index')}}">
+                    <i class="material-icons">subject</i>
+                    course
+                </a>
+
+            </li>
+            <li>
+                <a href="{{route('admin.teacher.index')}}">
+                    <i class="material-icons">wc</i>
+                    Teacher
+                </a>
+                {{-- import Diversity1Icon from '@mui/icons-material/Diversity1'; --}}
+            </li>
+            <li>
+                <a href="{{route('admin.testimonial.index')}}">
+                    <i class="material-icons">comment</i>
+                    Testimonial
+                </a>
+
+            </li>
             <li >
                 <a href="#">
                     <i class="material-icons">settings</i>
