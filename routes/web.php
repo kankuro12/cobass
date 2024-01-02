@@ -14,6 +14,7 @@ use App\Http\Controllers\SliderController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\cobassController;
+use App\Http\Controllers\NewCobassController;
 use App\Http\Controllers\testimonialController;
 use App\Http\Controllers\teacherController;
 use Illuminate\Support\Facades\Route;
@@ -31,14 +32,22 @@ use Illuminate\Support\Facades\Route;
 
 
 
-Route::get('/', [cobassController::class, 'index'])->name('index');
-Route::get('about', [cobassController::class, 'about'])->name('about');
-Route::get('course', [cobassController::class, 'course'])->name('course');
-Route::get('contact', [cobassController::class, 'contact'])->name('contact');
-Route::get('team', [cobassController::class, 'team'])->name('team');
-Route::get('testimonial', [cobassController::class, 'testimonial'])->name('testimonial');
-Route::get('error', [cobassController::class, 'error'])->name('error');
+// Route::get('/', [cobassController::class, 'index'])->name('index');
+// Route::get('about', [cobassController::class, 'about'])->name('about');
+// Route::get('course', [cobassController::class, 'course'])->name('course');
+// Route::get('contact', [cobassController::class, 'contact'])->name('contact');
+// Route::get('team', [cobassController::class, 'team'])->name('team');
+// Route::get('testimonial', [cobassController::class, 'testimonial'])->name('testimonial');
+// Route::get('error', [cobassController::class, 'error'])->name('error');
 
+Route::get('', [NewCobassController::class, 'index'])->name('index');
+Route::get('event', [NewCobassController::class, 'event'])->name('event');
+Route::get('notice', [NewCobassController::class, 'notice'])->name('notice');
+Route::get('course', [NewCobassController::class, 'course'])->name('course');
+Route::get('gallery', [NewCobassController::class, 'gallery'])->name('gallery');
+Route::get('about', [NewCobassController::class, 'about'])->name('about');
+Route::get('contact', [NewCobassController::class, 'contact'])->name('contact');
+Route::get('courseDeatil', [NewCobassController::class, 'courseDeatil'])->name('courseDeatil');
 
 
 
@@ -69,8 +78,8 @@ Route::prefix("admin")->name("admin.")->group(function () {
         Route::get('/', [courseController::class, 'index'])->name('index');
         Route::match(['get', 'post'], 'add', [courseController::class, 'add'])->name('add');
         Route::post('save', [courseController::class, 'save'])->name('save');
-        Route::match(['GET','POST'],'edit/{course}', [courseController::class, 'edit'])->name('edit');
-        Route::match(['GET','POST'],'del/{course}', [courseController::class, 'del'])->name('del');
+        Route::match(['GET', 'POST'], 'edit/{course}', [courseController::class, 'edit'])->name('edit');
+        Route::match(['GET', 'POST'], 'del/{course}', [courseController::class, 'del'])->name('del');
         // Route::get('list', [courseController::class, 'list'])->name('list');
     });
     Route::prefix('teacher')->name('teacher.')->group(function () {
@@ -78,15 +87,15 @@ Route::prefix("admin")->name("admin.")->group(function () {
         Route::match(['get', 'post'], 'add', [teacherController::class, 'add'])->name('add');
         Route::post('save', [teacherController::class, 'save'])->name('save');
         // Route::get('list', [teacherController::class, 'list'])->name('list');
-        Route::match(['GET','POST'],'edit/{teacher}', [teacherController::class, 'edit'])->name('edit');
-        Route::match(['GET','POST'],'del/{teacher}', [teacherController::class, 'del'])->name('del');
+        Route::match(['GET', 'POST'], 'edit/{teacher}', [teacherController::class, 'edit'])->name('edit');
+        Route::match(['GET', 'POST'], 'del/{teacher}', [teacherController::class, 'del'])->name('del');
     });
-    Route::prefix('testimonial')->name('testimonial.')->group(function(){
+    Route::prefix('testimonial')->name('testimonial.')->group(function () {
         Route::get('/', [testimonialController::class, 'index'])->name('index');
-        Route::match(['get', 'post'],'add',[testimonialController::class,'add'])->name('add');
+        Route::match(['get', 'post'], 'add', [testimonialController::class, 'add'])->name('add');
         Route::post('save', [testimonialController::class, 'save'])->name('save');
-        Route::match(['GET','POST'],'edit/{testimonial}', [testimonialController::class, 'edit'])->name('edit');
-        Route::match(['GET','POST'],'del/{testimonial}', [testimonialController::class, 'del'])->name('del');
+        Route::match(['GET', 'POST'], 'edit/{testimonial}', [testimonialController::class, 'edit'])->name('edit');
+        Route::match(['GET', 'POST'], 'del/{testimonial}', [testimonialController::class, 'del'])->name('del');
         // Route::get('list', [testimonialController::class, 'list'])->name('list');
     });
 
