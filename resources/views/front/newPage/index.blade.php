@@ -8,7 +8,7 @@
                     <div class="row">
                         <div class="col-lg-9 col-md-7 col-12 col-sm-12">
                             <div class="slider-content slider-animated-1 pt-230">
-                                <h1 class="animated">MakeYour Own World</h1>
+                                <h1 class="animated">Welcome To Arniko</h1>
                                 <p class="animated">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
                                     tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
                                     nostrud exercitation </p>

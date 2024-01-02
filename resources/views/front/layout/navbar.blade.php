@@ -7,7 +7,7 @@
                     <div class="header-contact">
                         <ul>
                             <li><i class="fa fa-phone"></i> +98 558 547 589</li>
-                            <li><i class="fa fa-envelope"></i><a href="#">education@email.com</a></li>
+                            <li><i class="fa fa-envelope"></i><a href="#">arniko@gmail.com</a></li>
                         </ul>
                     </div>
                 </div>
@@ -64,7 +64,7 @@
                                 </ul>
                             </nav>
                         </div>
-                     
+
                     </div>
                 </div>
             </div>
