@@ -17,7 +17,7 @@
         <div class="row">
             <div class="col-md-6"></div>
             <div class="col-md-5" style="box-shadow: 12px 12px 22px gray">
-                <form action="{{ route('admin.login') }}">
+                <form action="{{ route('admin.login') }}" method="POST">
                     @csrf
                     <div class="mr-5 mt-5">
                         <div class="text-center">

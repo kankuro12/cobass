@@ -59,13 +59,13 @@ Route::prefix("admin")->name("admin.")->group(function () {
     Route::match(["POST", "GET"], 'logout', function () {
         // Auth::logout();
     });
-    Route::prefix('page')->name('page.')->group(function () {
-        Route::get('@{type}', [PageController::class, 'index'])->name('index');
-        Route::match(['get', 'post'], 'add/@{type}', [PageController::class, 'add'])->name('add');
-        Route::match(['get', 'post'], 'edit/{page}', [PageController::class, 'edit'])->name('edit');
-        Route::match(['get', 'post'], 'del/{page}', [PageController::class, 'del'])->name('del');
-        Route::match(['get', 'post'], 'delDoc', [PageController::class, 'delDoc'])->name('delDoc');
-    });
+    // Route::prefix('page')->name('page.')->group(function () {
+    //     Route::get('@{type}', [PageController::class, 'index'])->name('index');
+    //     Route::match(['get', 'post'], 'add/@{type}', [PageController::class, 'add'])->name('add');
+    //     Route::match(['get', 'post'], 'edit/{page}', [PageController::class, 'edit'])->name('edit');
+    //     Route::match(['get', 'post'], 'del/{page}', [PageController::class, 'del'])->name('del');
+    //     Route::match(['get', 'post'], 'delDoc', [PageController::class, 'delDoc'])->name('delDoc');
+    // });
     Route::prefix('product')->name('product.')->group(function () {
         Route::get('', [ProductController::class, 'index'])->name('index');
         Route::match(["GET", "POST"], 'add', [ProductController::class, 'add'])->name('add');
@@ -99,12 +99,12 @@ Route::prefix("admin")->name("admin.")->group(function () {
         // Route::get('list', [testimonialController::class, 'list'])->name('list');
     });
 
-    Route::prefix('event')->name('event.')->group(function () {
-        Route::get('', [EventController::class, 'index'])->name('index');
-        Route::match(['get', 'post'], 'add/', [EventController::class, 'add'])->name('add');
-        Route::match(['get', 'post'], 'edit/{event}', [EventController::class, 'edit'])->name('edit');
-        Route::match(['get', 'post'], 'del/{event}', [EventController::class, 'del'])->name('del');
-    });
+    // Route::prefix('event')->name('event.')->group(function () {
+    //     Route::get('', [EventController::class, 'index'])->name('index');
+    //     Route::match(['get', 'post'], 'add/', [EventController::class, 'add'])->name('add');
+    //     Route::match(['get', 'post'], 'edit/{event}', [EventController::class, 'edit'])->name('edit');
+    //     Route::match(['get', 'post'], 'del/{event}', [EventController::class, 'del'])->name('del');
+    // });
     Route::prefix('setting')->name('setting.')->group(function () {
 
         Route::match(['GET', 'POST'], '@{type}', [SettingController::class, 'index'])->name('index');

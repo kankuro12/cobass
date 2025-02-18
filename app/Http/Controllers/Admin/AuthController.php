@@ -19,7 +19,7 @@ class AuthController extends Controller
                 'email'=>'email|required',
                 'password'=>'required'
             ]);
-            if(Auth::attempt(['email'=>$request->email,'password'=>$request->password,'role'=>1],$request->filled(('me')))){
+            if(Auth::attempt(['email'=>$request->email,'password'=>$request->password],$request->filled(('me')))){
                 return redirect()->route('admin.dashboard.index')->with('message',"Login Sucessfull");
             }else{
                 return redirect()->back()
