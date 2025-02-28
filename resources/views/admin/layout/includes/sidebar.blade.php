@@ -4,6 +4,13 @@
         <ul class="accordion-menu" id="accordion-menu">
 
             <li>
+                <a href="{{route('admin.dashboard.index')}}">
+                <i class="material-icons">dashboard</i>
+                Dashboard
+            </a>
+
+            </li>
+            <li>
                 <a href="{{route('admin.setting.gallery.type.index')}}">
                     <i class="material-icons">collections</i>
                     Gallery

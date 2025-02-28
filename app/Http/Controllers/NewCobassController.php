@@ -2,13 +2,17 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\GalleryType;
+use App\Models\Slider;
 use Illuminate\Http\Request;
 
 class NewCobassController extends Controller
 {
     public function index()
+
     {
-        return view('front.newPage.index');
+        $sliders=Slider::all();
+        return view('front.newPage.index', compact('sliders'));
     }
     public function event()
     {
@@ -24,7 +28,11 @@ class NewCobassController extends Controller
     }
     public function gallery()
     {
-        return view('front.newPage.galllery');
+        $gallery=GalleryType::all();
+
+      
+        return view('front.newPage.galllery',compact('gallery'));
+       
     }
     public function about()
     {

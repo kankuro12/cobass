@@ -14,6 +14,7 @@ use App\Http\Controllers\SliderController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\cobassController;
+use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\NewCobassController;
 use App\Http\Controllers\testimonialController;
 use App\Http\Controllers\teacherController;
@@ -41,7 +42,7 @@ use Illuminate\Support\Facades\Route;
 // Route::get('error', [cobassController::class, 'error'])->name('error');
 
 Route::get('', [NewCobassController::class, 'index'])->name('index');
-Route::get('event', [NewCobassController::class, 'event'])->name('event');
+Route::get('event', [NewCobassController::class, 'event'])->name('event'); 
 Route::get('notice', [NewCobassController::class, 'notice'])->name('notice');
 Route::get('course', [NewCobassController::class, 'course'])->name('course');
 Route::get('gallery', [NewCobassController::class, 'gallery'])->name('gallery');
@@ -56,6 +57,7 @@ Route::get('courseDeatil', [NewCobassController::class, 'courseDeatil'])->name('
 
 Route::prefix("admin")->name("admin.")->group(function () {
     Route::match(["POST", "GET"], 'login', [AuthController::class, 'login'])->name('login');
+    Route::get('dashboard',[DashboardController::class,'index'])->name('dashboard.index');
     Route::match(["POST", "GET"], 'logout', function () {
         // Auth::logout();
     });

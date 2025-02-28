@@ -8,11 +8,15 @@
                             <h4>ABOUT US</h4>
                         </div>
                         <div class="footer-about">
-                            <p>Ugiat nulla pariatur. Edeserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natu</p>
+                            <p>
+                   
+                                We are committed to providing a transformative education that fosters academic excellence and personal growth. Our inclusive community encourages creativity, critical thinking, and lifelong learning, preparing students for success in an ever-changing world.
+
+                            </p>
                             <div class="f-contact-info">
                                 <div class="single-f-contact-info">
                                     <i class="fa fa-home"></i>
-                                    <span>Uttara, Dhaka, Bangladesh</span>
+                                    <span>Biratnagar, Morang ,Nepal</span>
                                 </div>
                                 <div class="single-f-contact-info">
                                     <i class="fa fa-envelope"></i>
@@ -20,7 +24,7 @@
                                 </div>
                                 <div class="single-f-contact-info">
                                     <i class="fa fa-phone"></i>
-                                    <span> +98 558 547 589</span>
+                                    <span> 9825252525</span>
                                 </div>
                             </div>
                         </div>

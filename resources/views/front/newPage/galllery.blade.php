@@ -32,15 +32,16 @@
         <div class="breadcrumb-top default-overlay bg-img breadcrumb-overly-4 pt-100 pb-95"
             style="background-image:url(assets/img/bg/breadcrumb-bg-4.jpg);">
             <div class="container">
-                <h2>Shop Grid</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore .
+                <h2>Gallery</h2>
+                <p>
+                    Explore our curated collection of images showcasing the best of what we offer. Our gallery highlights a range of stunning visuals, from captivating moments to unique creations. Whether you're looking for inspiration or just want to admire exceptional work, this is the place to be. Dive into the beauty of our visuals and see how we bring creativity to life.
                 </p>
             </div>
         </div>
         <div class="breadcrumb-bottom">
             <div class="container">
                 <ul>
-                    <li><a href="#">Home</a> <span><i class="fa fa-angle-double-right"></i>Shop Grid</span></li>
+                    <li><a href="#">Home</a> <span><i class="fa fa-angle-double-right"></i>Gallery</span></li>
                 </ul>
             </div>
         </div>
@@ -50,40 +51,25 @@
         <div class="container">
             <div class="row">
                 <div class="col-12">
-                    <div class="shop-top-bar">
-                        <div class="shop-tab-wrap">
-                            <div class="shop-tab nav">
-                                <a class="active" href="#shop-1" data-toggle="tab">
-                                    <i class="fa fa-table"></i>
-                                </a>
-
-                            </div>
-                            <p>Showing 1–12 of 20 result</p>
-                        </div>
-
-                        <div class="filter-buttons">
-                            <button class="btn filter-button active" onclick="filterSelection('all')">All</button>
-                            <button class="btn filter-button" onclick="filterSelection('student')">Student</button>
-                            <button class="btn filter-button" onclick="filterSelection('teacher')">Teacher</button>
-                            <!-- Add more buttons for other categories as needed -->
-                        </div>
-                    </div>
+                    
                     <div class="shop-bottom-area mt-30">
                         <div class="tab-content jump">
                             <div id="shop-1" class="tab-pane active">
                                 <div class="row">
+                                   
+                                    @foreach ($gallery as $gallery1 )
+                                        
+                                    
                                     <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-12 filter student">
                                         <div class="product-wrap mb-30 ">
                                             <div class="product-img">
-                                                <a href="single-product.html"><img
-                                                        src="https://images.unsplash.com/photo-1571260899304-425eee4c7efc?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                                                        alt=""></a>
-
+                                                <a href="single-product.html">
+                                                    <img src="{{asset($gallery1->icon)}}" >
                                             </div>
                                             <div class="product-content">
                                                 <div class="pro-title-rating-wrap">
                                                     <div class="product-title">
-                                                        <h3><a href="single-product.html">Gallery</a></h3>
+                                                        <h3><a href="single-product.html"> {{$gallery1->name}} </a></h3>
                                                     </div>
 
                                                 </div>
@@ -93,226 +79,9 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-12 filter student">
-                                        <div class="product-wrap mb-30 ">
-                                            <div class="product-img">
-                                                <a href="single-product.html"><img
-                                                        src="https://images.unsplash.com/photo-1571260899304-425eee4c7efc?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                                                        alt=""></a>
-                                            </div>
-                                            <div class="product-content">
-                                                <div class="pro-title-rating-wrap">
-                                                    <div class="product-title">
-                                                        <h3><a href="single-product.html">Gallery </a></h3>
-                                                    </div>
+                                    @endforeach
 
-                                                </div>
-                                                <div class="pro-category-price">
-                                                    {{-- <span class="pro-category">1</span> --}}
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-12 filter student">
-                                        <div class="product-wrap mb-30">
-                                            <div class="product-img">
-                                                <a href="single-product.html"><img
-                                                        src="https://images.unsplash.com/photo-1571260899304-425eee4c7efc?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                                                        alt=""></a>
-                                            </div>
-                                            <div class="product-content">
-                                                <div class="pro-title-rating-wrap">
-                                                    <div class="product-title">
-                                                        <h3><a href="single-product.html">Gallery </a></h3>
-                                                    </div>
-
-                                                </div>
-                                                <div class="pro-category-price">
-                                                    {{-- <span class="pro-category">1</span> --}}
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-12 filter student">
-                                        <div class="product-wrap mb-30">
-                                            <div class="product-img">
-                                                <a href="single-product.html"><img
-                                                        src="https://images.unsplash.com/photo-1571260899304-425eee4c7efc?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                                                        alt=""></a>
-                                            </div>
-                                            <div class="product-content">
-                                                <div class="pro-title-rating-wrap">
-                                                    <div class="product-title">
-                                                        <h3><a href="single-product.html">Gallery </a></h3>
-                                                    </div>
-
-                                                </div>
-                                                <div class="pro-category-price">
-                                                    {{-- <span class="pro-category">1</span> --}}
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-12 filter teacher">
-                                        <div class="product-wrap mb-30">
-                                            <div class="product-img">
-                                                <a href="single-product.html"><img
-                                                        src="https://images.unsplash.com/photo-1571260899304-425eee4c7efc?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                                                        alt=""></a>
-                                            </div>
-                                            <div class="product-content">
-                                                <div class="pro-title-rating-wrap">
-                                                    <div class="product-title">
-                                                        <h3><a href="single-product.html">Gallery </a></h3>
-                                                    </div>
-
-                                                </div>
-                                                <div class="pro-category-price">
-                                                    {{-- <span class="pro-category">1</span> --}}
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-12 filter teacher">
-                                        <div class="product-wrap mb-30">
-                                            <div class="product-img">
-                                                <a href="single-product.html"><img
-                                                        src="https://images.unsplash.com/photo-1571260899304-425eee4c7efc?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                                                        alt=""></a>
-                                            </div>
-                                            <div class="product-content">
-                                                <div class="pro-title-rating-wrap">
-                                                    <div class="product-title">
-                                                        <h3><a href="single-product.html">Gallery </a></h3>
-                                                    </div>
-
-                                                </div>
-                                                <div class="pro-category-price">
-                                                    {{-- <span class="pro-category">1</span> --}}
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-12 filter teacher">
-                                        <div class="product-wrap mb-30">
-                                            <div class="product-img">
-                                                <a href="single-product.html"><img
-                                                        src="https://images.unsplash.com/photo-1571260899304-425eee4c7efc?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                                                        alt=""></a>
-                                            </div>
-                                            <div class="product-content">
-                                                <div class="pro-title-rating-wrap">
-                                                    <div class="product-title">
-                                                        <h3><a href="single-product.html">Gallery </a></h3>
-                                                    </div>
-
-                                                </div>
-                                                <div class="pro-category-price">
-                                                    {{-- <span class="pro-category">1</span> --}}
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-12 filter teacher">
-                                        <div class="product-wrap mb-30">
-                                            <div class="product-img">
-                                                <a href="single-product.html"><img
-                                                        src="https://images.unsplash.com/photo-1571260899304-425eee4c7efc?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                                                        alt=""></a>
-                                            </div>
-                                            <div class="product-content">
-                                                <div class="pro-title-rating-wrap">
-                                                    <div class="product-title">
-                                                        <h3><a href="single-product.html">Gallery </a></h3>
-                                                    </div>
-
-                                                </div>
-                                                <div class="pro-category-price">
-                                                    {{-- <span class="pro-category">1</span> --}}
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-12 filter teacher">
-                                        <div class="product-wrap mb-30">
-                                            <div class="product-img">
-                                                <a href="single-product.html"><img
-                                                        src="https://images.unsplash.com/photo-1571260899304-425eee4c7efc?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                                                        alt=""></a>
-                                            </div>
-                                            <div class="product-content">
-                                                <div class="pro-title-rating-wrap">
-                                                    <div class="product-title">
-                                                        <h3><a href="single-product.html">Gallery </a></h3>
-                                                    </div>
-
-                                                </div>
-                                                <div class="pro-category-price">
-                                                    {{-- <span class="pro-category">1</span> --}}
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-12 filter teacher">
-                                        <div class="product-wrap mb-30">
-                                            <div class="product-img">
-                                                <a href="single-product.html"><img
-                                                        src="https://images.unsplash.com/photo-1571260899304-425eee4c7efc?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                                                        alt=""></a>
-                                            </div>
-                                            <div class="product-content">
-                                                <div class="pro-title-rating-wrap">
-                                                    <div class="product-title">
-                                                        <h3><a href="single-product.html">Gallery </a></h3>
-                                                    </div>
-
-                                                </div>
-                                                <div class="pro-category-price">
-                                                    {{-- <span class="pro-category">1</span> --}}
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-12 filter student">
-                                        <div class="product-wrap mb-30">
-                                            <div class="product-img">
-                                                <a href="single-product.html"><img
-                                                        src="https://images.unsplash.com/photo-1571260899304-425eee4c7efc?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                                                        alt=""></a>
-                                            </div>
-                                            <div class="product-content">
-                                                <div class="pro-title-rating-wrap">
-                                                    <div class="product-title">
-                                                        <h3><a href="single-product.html">Gallery </a></h3>
-                                                    </div>
-
-                                                </div>
-                                                <div class="pro-category-price">
-                                                    {{-- <span class="pro-category">1</span> --}}
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-12 filter teacher">
-                                        <div class="product-wrap mb-30">
-                                            <div class="product-img">
-                                                <a href="single-product.html"><img
-                                                        src="https://images.unsplash.com/photo-1571260899304-425eee4c7efc?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                                                        alt=""></a>
-                                            </div>
-                                            <div class="product-content">
-                                                <div class="pro-title-rating-wrap">
-                                                    <div class="product-title">
-                                                        <h3><a href="single-product.html">Gallery </a></h3>
-                                                    </div>
-
-                                                </div>
-                                                <div class="pro-category-price">
-                                                    {{-- <span class="pro-category">1</span> --}}
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+                                   
 
                                 </div>
                             </div>
