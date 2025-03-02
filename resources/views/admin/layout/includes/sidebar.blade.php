@@ -20,10 +20,17 @@
             <li>
                 <a href="{{route('admin.course.index')}}">
                     <i class="material-icons">subject</i>
-                    course
+                    Course
                 </a>
 
-            </li>
+                {{-- <li>
+                    <a href="{{route('admin.news.index')}}">
+                        <i class="material-icons">article</i>
+                        News
+                    </a>
+
+
+            </li> --}}
             <li>
                 <a href="{{route('admin.teacher.index')}}">
                     <i class="material-icons">wc</i>

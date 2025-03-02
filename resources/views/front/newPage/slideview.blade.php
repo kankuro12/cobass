@@ -11,7 +11,7 @@
                                 <h1 class="animated fadeInUp">{{ $slider->title }}</h1>
                                 <p class="animated fadeInUp delay-1s">{{ $slider->subtitle }}</p>
                                 <div class="slider-btn">
-                                    <a href="{{ url('/about-us') }}"
+                                    <a href="{{ url('/about') }}"
                                        class="animated fadeInLeft delay-1s default-btn btn-green-color">
                                         ABOUT US
                                     </a>

@@ -13,8 +13,8 @@
                         <i class="fa fa-map-marker-alt text-white"></i>
                     </div>
                     <div class="ms-3">
-                        <h5 class="text-primary">yeryeryer</h5>
-                        <p class="mb-0">khdjhtertertesdkjsh</p>
+                        <h5 class="text-primary">911111</h5>
+                        <p class="mb-0">Office</p>
                     </div>
                 </div>
                 <div class="d-flex align-items-center mb-3">
@@ -22,8 +22,8 @@
                         <i class="fa fa-phone-alt text-white"></i>
                     </div>
                     <div class="ms-3">
-                        <h5 class="text-primary">hellprtert</h5>
-                        <p class="mb-0">hfkajhfskjrterte</p>
+                        <h5 class="text-primary">22222</h5>
+                        <p class="mb-0">Principal</p>
                     </div>
                 </div>
                 <div class="d-flex align-items-center">
@@ -31,8 +31,8 @@
                         <i class="fa fa-envelope-open text-white"></i>
                     </div>
                     <div class="ms-3">
-                        <h5 class="text-primary">kjlksdjaflkertert</h5>
-                        <p class="mb-0">lkjdvlksdjfertert</p>
+                        <h5 class="text-primary">22222</h5>
+                        <p class="mb-0">Admission</p>
                     </div>
                 </div>
             </div>

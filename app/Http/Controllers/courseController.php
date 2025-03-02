@@ -65,4 +65,10 @@ class courseController extends Controller
             return view("admin.course.edit",compact('course'));
         }
     }
+    public function showCoursesOnNewPage()
+    {
+        $courses = Course::all(); // Fetch all courses
+        return view('newPage.index', compact('courses')); // Send to newPage/index.blade.php
+    }
+
 }

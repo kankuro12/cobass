@@ -19,7 +19,6 @@ use App\Http\Controllers\NewCobassController;
 use App\Http\Controllers\testimonialController;
 use App\Http\Controllers\teacherController;
 use Illuminate\Support\Facades\Route;
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -50,10 +49,11 @@ Route::get('about', [NewCobassController::class, 'about'])->name('about');
 Route::get('contact', [NewCobassController::class, 'contact'])->name('contact');
 Route::get('courseDeatil', [NewCobassController::class, 'courseDeatil'])->name('courseDeatil');
 Route::get('/new-page', [courseController::class, 'showCoursesOnNewPage'])->name('newPage.index');
-
-
-
-
+//contact submission bug
+Route::post('/contact-submit', [NewCobassController::class, 'submitContact'])->name('contact.submit');
+//gallery view nikalna khojeko
+Route::get('/gallery', [NewCobassController::class, 'gallery'])->name('gallery');
+Route::get('/gallery/{id}', [NewCobassController::class, 'galleryImages'])->name('gallery.show');
 
 
 Route::prefix("admin")->name("admin.")->group(function () {
@@ -150,3 +150,4 @@ Route::prefix("admin")->name("admin.")->group(function () {
         Route::match(['get', 'post'], 'del/{faq}', [FaqController::class, 'del'])->name('del');
     });
 });
+   //   Route::get('/admin/news', [NewsController::class, 'index'])->name('admin.news.index');

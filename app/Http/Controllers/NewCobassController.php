@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\GalleryType;
+use App\Models\Gallery;
 use App\Models\Slider;
 use App\Models\Course;
 use App\Models\teacher;
+use App\Models\Setting;
 use Illuminate\Http\Request;
 class NewCobassController extends Controller
 {
@@ -34,14 +36,19 @@ class NewCobassController extends Controller
         return view('front.newPage.course', compact('courses'));
     }
 
-    public function gallery()
-    {
-        $gallery=GalleryType::all();
+     // Show all gallery albums
+     public function gallery()
+     {
+        $galleryTypes = GalleryType::with('galleries')->get();
+        return view('front.newPage.gallery', compact('galleryTypes'));
+     }
 
-
-        return view('front.newPage.galllery',compact('gallery'));
-
-    }
+     // Show images inside a selected album
+     public function galleryImages($id)
+     {
+         $galleryType = GalleryType::with('galleries')->findOrFail($id);
+         return view('front.newPage.gallery_images', compact('galleryType'));
+     }
 
     public function about()
     {
@@ -50,9 +57,23 @@ class NewCobassController extends Controller
 
     public function contact()
     {
-        return view('front.newPage.contact');
+        $contact = Setting::first(); // Fetch contact details from database
+        return view('front.newPage.contact', compact('contact'));
     }
+    public function submitContact(Request $request)
+{
+    $request->validate([
+        'name' => 'required',
+        'email' => 'required|email',
+        'subject' => 'required',
+        'message' => 'required',
+    ]);
 
+    // Save to database (optional)
+    Contact::create($request->all());
+
+    return back()->with('success', 'Message sent successfully!');
+}
     public function courseDetail()
     {
         return view('front.newPage.courseDetail');
