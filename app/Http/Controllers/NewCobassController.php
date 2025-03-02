@@ -8,6 +8,7 @@ use App\Models\Slider;
 use App\Models\Course;
 use App\Models\teacher;
 use App\Models\Setting;
+use App\Models\testimonial;
 use Illuminate\Http\Request;
 class NewCobassController extends Controller
 {
@@ -16,8 +17,9 @@ class NewCobassController extends Controller
         $sliders = Slider::all();
         $courses = Course::all(); // Fetch courses and pass to the view
         $teachers= teacher::all();//fetch teacher information
+        $testimonials = Testimonial::all(); // Fetch all testimonials
 
-        return view('front.newPage.index', compact('sliders', 'courses', 'teachers'));
+        return view('front.newPage.index', compact('sliders', 'courses', 'teachers','testimonials'));
     }
 
     public function event()
@@ -78,4 +80,5 @@ class NewCobassController extends Controller
     {
         return view('front.newPage.courseDetail');
     }
+
 }
