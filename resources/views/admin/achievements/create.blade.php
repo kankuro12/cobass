@@ -1,5 +1,43 @@
 @extends('admin.layout.app')
 
+@section('styles')
+<style>
+    .form-label {
+        font-weight: bold;
+    }
+    .form-control {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 15px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+    }
+    .form-control:focus {
+        border-color: #007bff;
+        box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+    }
+    .btn-success {
+        background-color: #28a745;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        color: white;
+    }
+    .btn-success:hover {
+        background-color: #218838;
+    }
+    .text-danger {
+        color: #dc3545;
+        font-size: 14px;
+    }
+    #image-preview {
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        padding: 5px;
+    }
+</style>
+@endsection
+
 @section('content')
 <div class="container">
     <h2>Add Achievement</h2>
@@ -48,42 +86,4 @@
         reader.readAsDataURL(event.target.files[0]);
     }
 </script>
-
-@section('styles')
-<style>
-    .form-label {
-        font-weight: bold;
-    }
-    .form-control {
-        width: 100%;
-        padding: 10px;
-        margin-bottom: 15px;
-        border: 1px solid #ddd;
-        border-radius: 5px;
-    }
-    .form-control:focus {
-        border-color: #007bff;
-        box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
-    }
-    .btn-success {
-        background-color: #28a745;
-        border: none;
-        padding: 10px 20px;
-        border-radius: 5px;
-        color: white;
-    }
-    .btn-success:hover {
-        background-color: #218838;
-    }
-    .text-danger {
-        color: #dc3545;
-        font-size: 14px;
-    }
-    #image-preview {
-        border: 1px solid #ddd;
-        border-radius: 5px;
-        padding: 5px;
-    }
-</style>
-@endsection
 @endsection
