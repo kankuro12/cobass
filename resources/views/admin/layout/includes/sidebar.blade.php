@@ -18,10 +18,18 @@
 
             </li>
             <li>
+                <a href="{{ route('admin.achievements.index') }}">
+                    <i class="material-icons">emoji_events</i>
+                    Achievements
+                </a>
+            </li>
+            <li>
                 <a href="{{route('admin.course.index')}}">
                     <i class="material-icons">subject</i>
                     Course
                 </a>
+            </li>
+            <li>
 
                 {{-- <li>
                     <a href="{{route('admin.news.index')}}">
