@@ -9,6 +9,7 @@ use App\Models\Course;
 use App\Models\teacher;
 use App\Models\Setting;
 use App\Models\testimonial;
+use App\Models\Popup;
 use Illuminate\Http\Request;
 class NewCobassController extends Controller
 {
@@ -18,8 +19,9 @@ class NewCobassController extends Controller
         $courses = Course::all(); // Fetch courses and pass to the view
         $teachers= teacher::all();//fetch teacher information
         $testimonials = Testimonial::all(); // Fetch all testimonials
+        $popup = Popup::where('active', 1)->first(); // Get the first active popup
 
-        return view('front.newPage.index', compact('sliders', 'courses', 'teachers','testimonials'));
+        return view('front.newPage.index', compact('sliders', 'courses', 'teachers','testimonials','popup'));
     }
 
     public function event()

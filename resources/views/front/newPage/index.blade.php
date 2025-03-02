@@ -1,54 +1,6 @@
 @extends('front.layout.app')
 @section('content')
-    {{-- <div class="slider-area">
-        <div class="slider-active owl-carousel">
-            <div class="single-slider slider-height-1 bg-img"
-                style="background-image:url('https://images.pexels.com/photos/326055/pexels-photo-326055.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1')">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-lg-9 col-md-7 col-12 col-sm-12">
-                            <div class="slider-content slider-animated-1 pt-230">
-                                <h1 class="animated">Welcome To Arniko</h1>
-                                <p class="animated">This is slider Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                                    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
-                                    nostrud exercitation </p>
-                                <div class="slider-btn">
-                                    <a class="animated default-btn btn-green-color" href="about-us.html">ABOUT US</a>
-                                    <a class="animated default-btn btn-white-color" href="contact.html">CONTACT US</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="slider-single-img slider-animated-1">
-                        <img class="animated" src="https://htmldemo.net/glaxdu/glaxdu/assets/img/slider/single-slide-1.png"
-                            alt="">
-                    </div>
-                </div>
-            </div>
-            <div class="single-slider slider-height-1 bg-img" style="background-image:url(assets/img/slider/slider-1.jpg);">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-lg-9 col-md-7 col-12 col-sm-12">
-                            <div class="slider-content slider-animated-1 pt-230">
-                                <h1 class="animated">MakeYour Own World</h1>
-                                <p class="animated">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                                    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
-                                    nostrud exercitation </p>
-                                <div class="slider-btn">
-                                    <a class="animated default-btn btn-green-color" href="about-us.html">ABOUT US</a>
-                                    <a class="animated default-btn btn-white-color" href="contact.html">CONTACT US</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="slider-single-img slider-animated-1">
-                        <img class="animated" src="https://htmldemo.net/glaxdu/glaxdu/assets/img/slider/single-slide-1.png"
-                            alt="">
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div> --}}
+@include('front.newPage.popup')
 
 @include('front.newPage.slideview')
 
