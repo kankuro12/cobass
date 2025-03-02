@@ -50,38 +50,7 @@
         </div>
     </div> --}}
 
-
-
-    <div class="slider-area">
-        <div class="slider-active owl-carousel">
-            @foreach ($sliders as $slider)
-                <div class="single-slider slider-height-1 bg-img" style="background-image:url('{{ asset($slider->image) }}');">
-                    {{-- <div class="overlay"></div> <!-- Added Overlay for Better Readability --> --}}
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-lg-9 col-md-7 col-12 col-sm-12">
-                                <div class="slider-content slider-animated-1">
-                                    <h1 class="animated fadeInUp">{{ $slider->title }}</h1>
-                                    <p class="animated fadeInUp delay-1s">{{ $slider->subtitle }}</p>
-                                    <div class="slider-btn">
-                                        <a class="animated fadeInLeft delay-1s default-btn btn-green-color" href="about-us.html">ABOUT US</a>
-                                        <a class="animated fadeInRight delay-1s default-btn btn-white-color" href="contact.html">CONTACT US</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="slider-single-img slider-animated-1">
-                            <img class="animated zoomIn delay-1s" src={{asset($slider->mobile_image)}} alt="">
-                        </div>
-                    </div>
-                </div>
-            @endforeach
-        </div>
-
-        <!-- Custom Navigation Buttons -->
-        <button class="slider-prev"><i class="fas fa-chevron-left"></i></button>
-        <button class="slider-next"><i class="fas fa-chevron-right"></i></button>
-    </div>
+@include('front.newPage.slideview')
 
     <!-- Include jQuery, FontAwesome & Owl Carousel JS -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -326,36 +295,7 @@
         </div>
     </div> --}}
 
-    <div class="course-area bg-img pt-130 pb-10">
-
-        <div style="background-image:url('https://images.pexels.com/photos/1029577/pexels-photo-1029577.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');">
-        <div class="container">
-            <div class="section-title mb-75">
-                <h2> <span>Our</span> Courses</h2>
-                <p>tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim <br>veniam, quis nostrud
-                    exercitation ullamco laboris nisi ut aliquip </p>
-            </div>
-
-            <div class="course-slider-active nav-style-1 owl-carousel">
-                @if(isset($courses) && count($courses) > 0)
-                @foreach ($courses as $course)
-                    <div class="single-course">
-                        <div class="course-img">
-                            <a href="#"><img src="{{ asset($course->image) }}" alt=""></a>
-                        </div>
-                        <div class="course-content">
-                            <h4><a href="#"> {{ $course->name }}</a></h4>
-                            <p> {{ $course->short_des }}</p>
-                        </div>
-                    </div>
-                @endforeach
-            @else
-                <p>No courses available.</p>
-            @endif
-            </div>
-        </div>
-    </div>
-    </div>
+   @include('front.newPage.courseview')
     <div class="achievement-area pt-130 pb-115">
         <div class="container">
             <div class="section-title mb-75">
@@ -616,7 +556,7 @@
         <div id="register-1" class="mouse-bg"></div>
         <div id="register-2" class="mouse-bg"></div>
     </div>
-    @include('front.newPage.teachers')
+    @include('front.newPage.teachersview')
     <div class="event-area bg-img default-overlay pt-130 pb-130"
         style="background-image:url('https://images.pexels.com/photos/1029577/pexels-photo-1029577.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');">
         <div class="container">
