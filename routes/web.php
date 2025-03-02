@@ -16,6 +16,7 @@ use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\cobassController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\NewCobassController;
+use App\Http\Controllers\Admin\AchievementController;
 use App\Http\Controllers\testimonialController;
 use App\Http\Controllers\teacherController;
 use Illuminate\Support\Facades\Route;
@@ -75,6 +76,10 @@ Route::prefix("admin")->name("admin.")->group(function () {
         Route::match(["GET", "POST"], 'edit/{product}', [ProductController::class, 'edit'])->name('edit');
         Route::match(["GET", "POST"], 'del/{product}', [ProductController::class, 'del'])->name('del');
     });
+    //Achievement section
+    Route::resource('achievements', AchievementController::class);
+
+
 
 
     Route::prefix('course')->name('course.')->group(function () {
