@@ -42,13 +42,14 @@ use Illuminate\Support\Facades\Route;
 // Route::get('error', [cobassController::class, 'error'])->name('error');
 
 Route::get('', [NewCobassController::class, 'index'])->name('index');
-Route::get('event', [NewCobassController::class, 'event'])->name('event'); 
+Route::get('event', [NewCobassController::class, 'event'])->name('event');
 Route::get('notice', [NewCobassController::class, 'notice'])->name('notice');
 Route::get('course', [NewCobassController::class, 'course'])->name('course');
 Route::get('gallery', [NewCobassController::class, 'gallery'])->name('gallery');
 Route::get('about', [NewCobassController::class, 'about'])->name('about');
 Route::get('contact', [NewCobassController::class, 'contact'])->name('contact');
 Route::get('courseDeatil', [NewCobassController::class, 'courseDeatil'])->name('courseDeatil');
+Route::get('/new-page', [courseController::class, 'showCoursesOnNewPage'])->name('newPage.index');
 
 
 

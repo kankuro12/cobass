@@ -1,6 +1,6 @@
 @extends('front.layout.app')
 @section('content')
-    <div class="slider-area">
+    {{-- <div class="slider-area">
         <div class="slider-active owl-carousel">
             <div class="single-slider slider-height-1 bg-img"
                 style="background-image:url('https://images.pexels.com/photos/326055/pexels-photo-326055.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1')">
@@ -48,10 +48,10 @@
                 </div>
             </div>
         </div>
-    </div>
-   
-        
-  
+    </div> --}}
+
+
+
     <div class="slider-area">
         <div class="slider-active owl-carousel">
             @foreach ($sliders as $slider)
@@ -238,7 +238,7 @@
             height: 15px;
         }
     </style>
-    <div class="choose-us section-padding-1">
+    {{-- <div class="choose-us section-padding-1">
         <div class="container-fluid">
             <div class="row no-gutters choose-negative-mrg">
                 <div class="col-lg-3 col-md-6">
@@ -324,145 +324,37 @@
                 </div>
             </div>
         </div>
-    </div>
-    <div class="course-area bg-img pt-130 pb-10"
-        style="background-image:url('https://images.pexels.com/photos/1029577/pexels-photo-1029577.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');">
+    </div> --}}
+
+    <div class="course-area bg-img pt-130 pb-10">
+
+        <div style="background-image:url('https://images.pexels.com/photos/1029577/pexels-photo-1029577.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');">
         <div class="container">
             <div class="section-title mb-75">
                 <h2> <span>Our</span> Courses</h2>
                 <p>tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim <br>veniam, quis nostrud
                     exercitation ullamco laboris nisi ut aliquip </p>
             </div>
+
             <div class="course-slider-active nav-style-1 owl-carousel">
-                <div class="single-course">
-                    <div class="course-img">
-                        <a href="course-details.html"><img class="animated" src="	https://htmldemo.net/glaxdu/glaxdu/assets/img/course/course-1.jpg"
-                                alt=""></a>
-                        <span>Addmission Going On</span>
-                    </div>
-                    <div class="course-content">
-                        <h4><a href="course-details.html">Apparel Manufacturing</a></h4>
-                        <p>magna aliqua. Ut enim ad minim veniam, nisi ut aliquiptempor incid.</p>
-                    </div>
-                    <div class="course-position-content">
-                        <div class="credit-duration-wrap">
-                            <div class="sin-credit-duration">
-                                <i class="fa fa-diamond"></i>
-                                <span>Credits : 125</span>
-                            </div>
-                            <div class="sin-credit-duration">
-                                <i class="fa fa-clock-o"></i>
-                                <span>Duration : 4yrs</span>
-                            </div>
+                @if(isset($courses) && count($courses) > 0)
+                @foreach ($courses as $course)
+                    <div class="single-course">
+                        <div class="course-img">
+                            <a href="#"><img src="{{ asset($course->image) }}" alt=""></a>
                         </div>
-                        <div class="course-btn">
-                            <a class="default-btn" href="#">APPLY NOW</a>
+                        <div class="course-content">
+                            <h4><a href="#"> {{ $course->name }}</a></h4>
+                            <p> {{ $course->short_des }}</p>
                         </div>
                     </div>
-                </div>
-                <div class="single-course">
-                    <div class="course-img">
-                        <a href="course-details.html"><img class="animated" src="	https://htmldemo.net/glaxdu/glaxdu/assets/img/course/course-1.jpg"
-                                alt=""></a>
-                    </div>
-                    <div class="course-content">
-                        <h4><a href="course-details.html">Grphic Design & Multimedia</a></h4>
-                        <p>magna aliqua. Ut enim ad minim veniam, nisi ut aliquiptempor incid.</p>
-                    </div>
-                    <div class="course-position-content">
-                        <div class="credit-duration-wrap">
-                            <div class="sin-credit-duration">
-                                <i class="fa fa-diamond"></i>
-                                <span>Credits : 125</span>
-                            </div>
-                            <div class="sin-credit-duration">
-                                <i class="fa fa-clock-o"></i>
-                                <span>Duration : 4yrs</span>
-                            </div>
-                        </div>
-                        <div class="course-btn">
-                            <a class="default-btn" href="#">APPLY NOW</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="single-course">
-                    <div class="course-img">
-                        <a href="course-details.html"><img class="animated" src="	https://htmldemo.net/glaxdu/glaxdu/assets/img/course/course-1.jpg"
-                                alt=""></a>
-                    </div>
-                    <div class="course-content">
-                        <h4><a href="course-details.html">Computer Engineering</a></h4>
-                        <p>magna aliqua. Ut enim ad minim veniam, nisi ut aliquiptempor incid.</p>
-                    </div>
-                    <div class="course-position-content">
-                        <div class="credit-duration-wrap">
-                            <div class="sin-credit-duration">
-                                <i class="fa fa-diamond"></i>
-                                <span>Credits : 125</span>
-                            </div>
-                            <div class="sin-credit-duration">
-                                <i class="fa fa-clock-o"></i>
-                                <span>Duration : 4yrs</span>
-                            </div>
-                        </div>
-                        <div class="course-btn">
-                            <a class="default-btn" href="#">APPLY NOW</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="single-course">
-                    <div class="course-img">
-                        <a href="course-details.html"><img class="animated" src="	https://htmldemo.net/glaxdu/glaxdu/assets/img/course/course-1.jpg"
-                                alt=""></a>
-                        <span>Post Graduation Course</span>
-                    </div>
-                    <div class="course-content">
-                        <h4><a href="course-details.html">Fashion & Technology</a></h4>
-                        <p>magna aliqua. Ut enim ad minim veniam, nisi ut aliquiptempor incid.</p>
-                    </div>
-                    <div class="course-position-content">
-                        <div class="credit-duration-wrap">
-                            <div class="sin-credit-duration">
-                                <i class="fa fa-diamond"></i>
-                                <span>Credits : 125</span>
-                            </div>
-                            <div class="sin-credit-duration">
-                                <i class="fa fa-clock-o"></i>
-                                <span>Duration : 4yrs</span>
-                            </div>
-                        </div>
-                        <div class="course-btn">
-                            <a class="default-btn" href="#">APPLY NOW</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="single-course">
-                    <div class="course-img">
-                        <a href="course-details.html"><img class="animated" src="	https://htmldemo.net/glaxdu/glaxdu/assets/img/course/course-1.jpg"
-                                alt=""></a>
-                    </div>
-                    <div class="course-content">
-                        <h4><a href="course-details.html">Apparel Manufacturing</a></h4>
-                        <p>magna aliqua. Ut enim ad minim veniam, nisi ut aliquiptempor incid.</p>
-                    </div>
-                    <div class="course-position-content">
-                        <div class="credit-duration-wrap">
-                            <div class="sin-credit-duration">
-                                <i class="fa fa-diamond"></i>
-                                <span>Credits : 125</span>
-                            </div>
-                            <div class="sin-credit-duration">
-                                <i class="fa fa-clock-o"></i>
-                                <span>Duration : 4yrs</span>
-                            </div>
-                        </div>
-                        <div class="course-btn">
-                            <a class="default-btn" href="#">APPLY NOW</a>
-                        </div>
-                    </div>
-                </div>
+                @endforeach
+            @else
+                <p>No courses available.</p>
+            @endif
             </div>
         </div>
+    </div>
     </div>
     <div class="achievement-area pt-130 pb-115">
         <div class="container">
@@ -724,162 +616,7 @@
         <div id="register-1" class="mouse-bg"></div>
         <div id="register-2" class="mouse-bg"></div>
     </div>
-    <div class="teacher-area pt-130 pb-100">
-        <div class="container">
-            <div class="section-title mb-75">
-                <h2>Best <span>Teacher</span></h2>
-                <p>tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim <br>veniam, quis nostrud
-                    exercitation ullamco laboris nisi ut aliquip </p>
-            </div>
-            <div class="custom-row">
-                <div class="custom-col-5">
-                    <div class="single-teacher mb-30">
-                        <div class="teacher-img">
-                            <img src="	https://htmldemo.net/glaxdu/glaxdu/assets/img/teacher/teacher-1.jpg"
-                                alt="">
-                        </div>
-                        <div class="teacher-content-visible">
-                            <h4>Robi Khan</h4>
-                            <h5>Lecturer</h5>
-                        </div>
-                        <div class="teacher-content-wrap">
-                            <div class="teacher-content">
-                                <h4>Fawd Khan</h4>
-                                <h5>Lecturer</h5>
-                                <p>Tempor incididunt magna aliqua.</p>
-                                <div class="teacher-social">
-                                    <ul>
-                                        <li><a class="facebook" href="#"><i class="fa-brands fa-facebook"></i></a></li>
-                                        <li><a class="youtube-play" href="#"><i class="fa-brands fa-youtube"></i></a>
-                                        </li>
-                                        <li><a class="twitter" href="#"><i class="fa-brands fa-twitter"></i></a></li>
-                                        <li><a class="google-plus" href="#"><i class="fa-brands fa-google-plus"></i></a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="custom-col-5">
-                    <div class="single-teacher mb-30">
-                        <div class="teacher-img">
-                            <img src="	https://htmldemo.net/glaxdu/glaxdu/assets/img/teacher/teacher-1.jpg"
-                                alt="">
-                        </div>
-                        <div class="teacher-content-visible">
-                            <h4>Jui Khan</h4>
-                            <h5>Lecturer</h5>
-                        </div>
-                        <div class="teacher-content-wrap">
-                            <div class="teacher-content">
-                                <h4>Fawd Khan</h4>
-                                <h5>Lecturer</h5>
-                                <p>Tempor incididunt magna aliqua.</p>
-                                <div class="teacher-social">
-                                    <ul>
-                                        <li><a class="facebook" href="#"><i class="fa-brands fa-facebook"></i></a></li>
-                                        <li><a class="youtube-play" href="#"><i class="fa-brands fa-youtube"></i></a>
-                                        </li>
-                                        <li><a class="twitter" href="#"><i class="fa-brands fa-twitter"></i></a></li>
-                                        <li><a class="google-plus" href="#"><i class="fa-brands fa-google-plus"></i></a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="custom-col-5">
-                    <div class="single-teacher mb-30">
-                        <div class="teacher-img">
-                            <img src="	https://htmldemo.net/glaxdu/glaxdu/assets/img/teacher/teacher-1.jpg"
-                                alt="">
-                        </div>
-                        <div class="teacher-content-visible">
-                            <h4>Fawd Khan</h4>
-                            <h5>Lecturer</h5>
-                        </div>
-                        <div class="teacher-content-wrap">
-                            <div class="teacher-content">
-                                <h4>Fawd Khan</h4>
-                                <h5>Lecturer</h5>
-                                <p>Tempor incididunt magna aliqua.</p>
-                                <div class="teacher-social">
-                                    <ul>
-                                        <li><a class="facebook" href="#"><i class="fa-brands fa-facebook"></i></a></li>
-                                        <li><a class="youtube-play" href="#"><i class="fa-brands fa-youtube"></i></a>
-                                        </li>
-                                        <li><a class="twitter" href="#"><i class="fa-brands fa-twitter"></i></a></li>
-                                        <li><a class="google-plus" href="#"><i class="fa-brands fa-google-plus"></i></a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="custom-col-5">
-                    <div class="single-teacher mb-30">
-                        <div class="teacher-img">
-                            <img src="	https://htmldemo.net/glaxdu/glaxdu/assets/img/teacher/teacher-1.jpg"
-                                alt="">
-                        </div>
-                        <div class="teacher-content-visible">
-                            <h4>Fawd Khan</h4>
-                            <h5>Lecturer</h5>
-                        </div>
-                        <div class="teacher-content-wrap">
-                            <div class="teacher-content">
-                                <h4>Fawd Khan</h4>
-                                <h5>Lecturer</h5>
-                                <p>Tempor incididunt magna aliqua.</p>
-                                <div class="teacher-social">
-                                    <ul>
-                                        <li><a class="facebook" href="#"><i class="fa-brands fa-facebook"></i></a></li>
-                                        <li><a class="youtube-play" href="#"><i class="fa-brands fa-youtube"></i></a>
-                                        </li>
-                                        <li><a class="twitter" href="#"><i class="fa-brands fa-twitter"></i></a></li>
-                                        <li><a class="google-plus" href="#"><i class="fa-brands fa-google-plus"></i></a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="custom-col-5">
-                    <div class="single-teacher mb-30">
-                        <div class="teacher-img">
-                            <img src="	https://htmldemo.net/glaxdu/glaxdu/assets/img/teacher/teacher-1.jpg"
-                                alt="">
-                        </div>
-                        <div class="teacher-content-visible">
-                            <h4>Jui Khan</h4>
-                            <h5>Lecturer</h5>
-                        </div>
-                        <div class="teacher-content-wrap">
-                            <div class="teacher-content">
-                                <h4>Fawd Khan</h4>
-                                <h5>Lecturer</h5>
-                                <p>Tempor incididunt magna aliqua.</p>
-                                <div class="teacher-social">
-                                    <ul>
-                                        <li><a class="facebook" href="#"><i class="fa-brands fa-facebook"></i></a></li>
-                                        <li><a class="youtube-play" href="#"><i class="fa-brands fa-youtube"></i></a>
-                                        </li>
-                                        <li><a class="twitter" href="#"><i class="fa-brands fa-twitter"></i></a></li>
-                                        <li><a class="google-plus" href="#"><i class="fa-brands fa-google-plus"></i></a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+    @include('front.newPage.teachers')
     <div class="event-area bg-img default-overlay pt-130 pb-130"
         style="background-image:url('https://images.pexels.com/photos/1029577/pexels-photo-1029577.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');">
         <div class="container">
