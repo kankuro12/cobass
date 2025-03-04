@@ -1,4 +1,5 @@
 @extends('admin.layout.app')
+
 @section('css')
     <style>
         .col-md-3 {
@@ -64,35 +65,45 @@
             width: 100%;
         }
 
-        #images .single-image{
-            border:1px solid white;
+        #images .single-image {
+            border: 1px solid white;
             position: relative;
         }
-        #images .single-image>button{
+
+        #images .single-image>button {
             position: absolute;
-            top:1px;
-            right:1px;
+            top: 1px;
+            right: 1px;
+        }
+
+        /* Modal image holder */
+        #modal-image-holder img {
+            max-width: 100%;
+            max-height: 80vh;
         }
     </style>
 @endsection
+
 @section('page-option')
 @endsection
+
 @section('s-title')
-    <li class="breadcrumb-item ">
+    <li class="breadcrumb-item">
         Galleries
     </li>
     <li class="breadcrumb-item active">
         {{ $type->name }}
     </li>
 @endsection
+
 @section('content')
     <div class="upload-container">
         <div id="single-upload-container">
-
+            <!-- Dynamically inserted images will go here -->
         </div>
         <div class="py-3">
             <button class="btn btn-primary" onclick="$('#input-fileupload')[0].click();">
-                select Files
+                Select Files
             </button>
             <button class="btn btn-secondary" onclick="save()">Upload Files</button>
         </div>
@@ -102,66 +113,52 @@
     <div class="bg-white shadow mt-3">
         <div class="card-body">
             <div id="images">
-                {{-- @php
-                    dd($type->images);
-                @endphp --}}
-                @foreach ($type->images as $image)
-                <div class="col-md-3 p-0">
-                    <div id="image-{{$image->id}}"class="single-image">
-                        <img  data-src="{{asset($image->file)}}"  src="{{asset($image->thumb??$image->file)}}" class="w-100" alt="">
-                        <button onclick="del({{$image->id}})">X</button>
+                @foreach ($type->galleries as $image)
+                    <div class="col-md-3 p-0">
+                        <div id="image-{{ $image->id }}" class="single-image">
+                            <img data-src="{{ asset($image->file) }}" src="{{ asset($image->thumb ?? $image->file) }}" class="w-100" alt="">
+                            <button onclick="del({{ $image->id }})">X</button>
+                        </div>
                     </div>
-                </div>
                 @endforeach
             </div>
         </div>
     </div>
+
+    <!-- Modal for image viewing -->
     <div class="modal fade" id="staticBackdrop" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-        <div class="modal-dialog  modal-dialog-centered ">
+        <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content p-5">
                 <div id="modal-image-holder">
-
                     <img src="/front/basicimage.jpg" class="w-100" alt="">
-
+                    <button class="next" style="position: absolute; top: 50%; right: 10px;">Next</button>
+                    <button class="prev" style="position: absolute; top: 50%; left: 10px;">Prev</button>
                 </div>
             </div>
         </div>
     </div>
-
-
 @endsection
+
 @section('script')
     <script>
-        var f,i=0,blobs=[];
+        var i = 0, blobs = [], index = 0, galleryelem = [];
 
-        // function change() {
-        //     var f=new formdata();
-        //     $('.single-upload>img').each(function (index, element) {
-        //         f.append('data[]',)
-
-        //     });
-        // }
-        function remove(sn) {
-            $('#single-upload-'+sn).remove();
-            delete( blobs['b_'+sn]);
-
-        }
+        // Image Uploading
         $('#input-fileupload').change(function(e) {
             console.log(this.files);
-            let reader = [];
-
             for (let index = 0; index < this.files.length; index++) {
                 const file = this.files[index];
                 if (file) {
                     let reader = new FileReader();
 
-                    reader.onload = function(e,f) {
-                        console.log(e,f);
-                        blobs['b_'+i]=file;
-                        const img = '<div id="single-upload-'+i+'"  class="single-upload"><img src="' + reader.result +
-                            '" /><button class="cancel" onclick="remove('+i+')">X</button></div>';
+                    reader.onload = function(e) {
+                        blobs['b_' + i] = file;
+                        const img = '<div id="single-upload-' + i + '" class="single-upload">' +
+                                    '<img src="' + e.target.result + '" />' +
+                                    '<button onclick="remove(' + i + ')">X</button>' +
+                                    '</div>';
                         $('#single-upload-container').append(img);
-                        i+=1;
+                        i++;
                     }
 
                     reader.readAsDataURL(file);
@@ -169,77 +166,95 @@
             }
         });
 
-        function save(){
-            if(blobs.length=0){
+        function remove(sn) {
+            $('#single-upload-' + sn).remove();
+            delete blobs['b_' + sn];
+        }
+
+        function save() {
+            if (blobs.length == 0) {
                 return;
             }
-            var f=new FormData();
-            f.append('type',{{$type->id}})
+
+            var f = new FormData();
+            f.append('type', {{ $type->id }});
+
             for (const key in blobs) {
                 if (Object.hasOwnProperty.call(blobs, key)) {
                     const blob = blobs[key];
-                    f.append('images[]',blob);
-                    console.log(blob);
-
+                    f.append('images[]', blob);
                 }
             }
 
-
-            axios.post('{{route('admin.setting.gallery.add')}}',f)
-            .then((res)=>{
-                console.log(res.data);
-                html='';
-                res.data.forEach(img => {
-                    html+='<div class="col-md-3 p-0">'+
-                    '<div data-src="/'+img.image+'" id="image-'+img.id+'" class="single-image">'+
-                        '<img src="/'+img.thumb+'" class="w-100" alt="">'+
-                        '<button onclick="del('+img.id+')">X</button>'+
-                    '</div>'+
-                '</div>';
+            axios.post('{{ route('admin.setting.gallery.add') }}', f)
+                .then((res) => {
+                    let html = '';
+                    res.data.forEach(img => {
+                        html += '<div class="col-md-3 p-0">' +
+                            '<div data-src="/' + img.image + '" id="image-' + img.id + '" class="single-image">' +
+                            '<img src="/' + img.thumb + '" class="w-100" alt="">' +
+                            '<button onclick="del(' + img.id + ')">X</button>' +
+                            '</div>' +
+                            '</div>';
+                    });
+                    $('#images').prepend(html);
+                    $('#single-upload-container').html('');
+                    blobs = [];
+                })
+                .catch((err) => {
+                    console.log(err);
                 });
-                $('#images').prepend(html);
-                $('#single-upload-container').html('');
-                blobs=[];
-            })
-            .catch((err)=>{
-                console.log(err);
-            });
         }
-    </script>
-    <script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
-    <script src="{{ asset('front/js/lazy.js') }}"></script>
-    <script>
-        var index=0;
+
+        function del(imageId) {
+            // Function to delete an image
+            axios.post('{{ route('admin.setting.gallery.delete') }}', { image_id: imageId })
+                .then((res) => {
+                    $('#image-' + imageId).remove();
+                })
+                .catch((err) => {
+                    console.log(err);
+                });
+        }
+
+        // Image gallery modal functionality
         $(document).ready(function() {
-            // lazy.init('#images .single-image>img');
-            $('#images').masonry({
-                itemSelector: '.col-md-3',
+            // Populate gallery elements for navigation
+            $('#images .single-image>img').each(function() {
+                galleryelem.push({
+                    src: $(this).data('src'),
+                    thumb: $(this).attr('src'),
+                });
             });
+
+            // Display the clicked image in the modal
             $('#images .single-image>img').click(function(e) {
                 e.preventDefault();
                 let src = this.dataset.src;
-                $('#modal-image-holder>img').attr('src',src);
+                $('#modal-image-holder>img').attr('src', src);
                 $('#staticBackdrop').modal('show');
             });
 
-            // $('#modal-image-holder>.next').click(function(e) {
-            //     e.preventDefault();
-            //     index += 1;
-            //     if (index >= galleryelem.length) {
-            //         index = 0;
-            //     }
-            //     $('#modal-image-holder>img').attr('src', galleryelem[index].src);
+            // Next and Previous buttons for modal navigation
+            $('#modal-image-holder>.next').click(function(e) {
+                e.preventDefault();
+                index += 1;
+                if (index >= galleryelem.length) {
+                    index = 0;  // Loop back to the first image
+                }
+                $('#modal-image-holder>img').attr('src', galleryelem[index].src);
+            });
 
-            // });
-            // $('#modal-image-holder>.prev').click(function(e) {
-            //     e.preventDefault();
-            //     index -= 1;
-            //     if (index < 0) {
-            //         index = galleryelem.length - 1;
-            //     }
-            //     $('#modal-image-holder>img').attr('src', galleryelem[index].src);
-
-            // });
+            $('#modal-image-holder>.prev').click(function(e) {
+                e.preventDefault();
+                index -= 1;
+                if (index < 0) {
+                    index = galleryelem.length - 1;  // Loop back to the last image
+                }
+                $('#modal-image-holder>img').attr('src', galleryelem[index].src);
+            });
         });
     </script>
+    <script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
+    <script src="{{ asset('front/js/lazy.js') }}"></script>
 @endsection

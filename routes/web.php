@@ -17,6 +17,7 @@ use App\Http\Controllers\cobassController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\NewCobassController;
 use App\Http\Controllers\Admin\AchievementController;
+use App\Http\Controllers\AchievementviewController;
 use App\Http\Controllers\testimonialController;
 use App\Http\Controllers\teacherController;
 use Illuminate\Support\Facades\Route;
@@ -55,9 +56,12 @@ Route::post('/contact-submit', [NewCobassController::class, 'submitContact'])->n
 //gallery view nikalna khojeko
 Route::get('/gallery', [NewCobassController::class, 'gallery'])->name('gallery');
 Route::get('/gallery/{id}', [NewCobassController::class, 'galleryImages'])->name('gallery.show');
+// Frontend Achievements Route
+Route::get('/achievements', [AchievementviewController::class, 'index'])->name('achievements');
 
 
 Route::prefix("admin")->name("admin.")->group(function () {
+    Route::post('setting/gallery/delete', [GalleryController::class, 'deleteImage'])->name('setting.gallery.delete');
     Route::match(["POST", "GET"], 'login', [AuthController::class, 'login'])->name('login');
     Route::get('dashboard',[DashboardController::class,'index'])->name('dashboard.index');
     Route::match(["POST", "GET"], 'logout', function () {
@@ -76,13 +80,16 @@ Route::prefix("admin")->name("admin.")->group(function () {
         Route::match(["GET", "POST"], 'edit/{product}', [ProductController::class, 'edit'])->name('edit');
         Route::match(["GET", "POST"], 'del/{product}', [ProductController::class, 'del'])->name('del');
     });
-    //Achievement section
+
+    // Admin Achievements Route
     Route::resource('achievements', AchievementController::class);
+    Route::prefix('admin')->name('admin.')->group(function () {
+            // Other routes
+
+ });
 
 
-
-
-    Route::prefix('course')->name('course.')->group(function () {
+        Route::prefix('course')->name('course.')->group(function () {
         Route::get('/', [courseController::class, 'index'])->name('index');
         Route::match(['get', 'post'], 'add', [courseController::class, 'add'])->name('add');
         Route::post('save', [courseController::class, 'save'])->name('save');

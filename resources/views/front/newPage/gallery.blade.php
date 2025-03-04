@@ -59,12 +59,6 @@
     <div class="breadcrumb-area">
         <div class="breadcrumb-top default-overlay bg-img breadcrumb-overly-4 pt-100 pb-95"
             style="background-image:url(assets/img/bg/breadcrumb-bg-4.jpg);">
-            <div class="container">
-                <h2>Gallery</h2>
-                <p>
-                    Explore our curated collection of images showcasing the best of what we offer. Our gallery highlights a range of stunning visuals, from captivating moments to unique creations. Whether you're looking for inspiration or just want to admire exceptional work, this is the place to be. Dive into the beauty of our visuals and see how we bring creativity to life.
-                </p>
-            </div>
         </div>
         <div class="breadcrumb-bottom">
             <div class="container">
