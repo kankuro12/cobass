@@ -41,6 +41,7 @@
 
                                     </li>
                                     <li><a href="{{ route('event') }}"> News & Events </a></li>
+                                    <li><a href="{{ route('achievements') }}"> Achievements </a></li>
                                     <li><a href="{{ route('notice') }}"> Notice </a></li>
 
                                     <li><a href="#"> COURSES </a>

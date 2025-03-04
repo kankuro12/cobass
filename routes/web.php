@@ -4,6 +4,8 @@ use App\Http\Controllers\Admin\AuthController;
 use App\Http\Controllers\Admin\FaqController;
 use App\Http\Controllers\Admin\GalleryController;
 use App\Http\Controllers\Admin\PopupController;
+use App\Http\Controllers\Admin\NewsController;
+use App\Http\Controllers\Admin\EventController;
 use App\Http\Controllers\courseController;
 use App\Http\Controllers\coursesController;
 // use App\Http\Controllers\teacherController;
@@ -113,6 +115,11 @@ Route::prefix("admin")->name("admin.")->group(function () {
         Route::match(['GET', 'POST'], 'del/{testimonial}', [testimonialController::class, 'del'])->name('del');
         // Route::get('list', [testimonialController::class, 'list'])->name('list');
     });
+     // News and Events routes
+        Route::resource('news', NewsController::class);
+        Route::resource('events', EventController::class);
+
+
 
     // Route::prefix('event')->name('event.')->group(function () {
     //     Route::get('', [EventController::class, 'index'])->name('index');
