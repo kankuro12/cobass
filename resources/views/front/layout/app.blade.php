@@ -20,6 +20,9 @@
     <link rel="stylesheet" href="{{ asset('newcss/plugins.css') }}">
     <!-- Main Style CSS -->
     <link rel="stylesheet" href="{{ asset('newcss/style.css') }}">
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     @yield('css')

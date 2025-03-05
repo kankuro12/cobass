@@ -2,8 +2,6 @@
     <div class="container">
         <div class="section-title mb-75">
             <h2>Our <span>Achievement</span></h2>
-            <p>tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim <br>veniam, quis nostrud
-                exercitation ullamco laboris nisi ut aliquip </p>
         </div>
         <div class="row">
             <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6">

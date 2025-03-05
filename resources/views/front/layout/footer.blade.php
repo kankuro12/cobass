@@ -9,7 +9,7 @@
                         </div>
                         <div class="footer-about">
                             <p>
-                   
+
                                 We are committed to providing a transformative education that fosters academic excellence and personal growth. Our inclusive community encourages creativity, critical thinking, and lifelong learning, preparing students for success in an ever-changing world.
 
                             </p>
@@ -62,41 +62,15 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-2 col-md-6 col-sm-6">
+                <div class="col-lg-3 col-md-4 col-sm-4">
                     <div class="footer-widget mb-40">
                         <div class="footer-title">
-                            <h4>GALLERY</h4>
+                            <h4>Our Location</h4>
                         </div>
-                        <div class="footer-gallery">
-                            <ul>
-                                <li><a href="#"><img src="https://images.pexels.com/photos/1043474/pexels-photo-1043474.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt=""></a></li>
-                                <li><a href="#"><img src="https://images.pexels.com/photos/1043474/pexels-photo-1043474.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt=""></a></li>
-                                <li><a href="#"><img src="https://images.pexels.com/photos/1043474/pexels-photo-1043474.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt=""></a></li>
-                                <li><a href="#"><img src="https://images.pexels.com/photos/1043474/pexels-photo-1043474.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt=""></a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 col-sm-12">
-                    <div class="footer-widget mb-40">
-                        <div class="footer-title">
-                            <h4>News Latter</h4>
-                        </div>
-                        <div class="subscribe-style">
-                            <p>Dugiat nulla pariatur. Edeserunt mollit anim id est laborum. Sed ut perspiciatis unde</p>
-                            <div id="mc_embed_signup" class="subscribe-form">
-                                <form id="mc-embedded-subscribe-form" class="validate" novalidate="" target="_blank" name="mc-embedded-subscribe-form" method="post" action="http://devitems.us11.list-manage.com/subscribe/post?u=6bbb9b6f5827bd842d9640c82&amp;id=05d85f18ef">
-                                    <div id="mc_embed_signup_scroll" class="mc-form">
-                                        <input class="email" type="email" required="" placeholder="Your E-mail Address" name="EMAIL" value="">
-                                        <div class="mc-news" aria-hidden="true">
-                                            <input type="text" value="" tabindex="-1" name="b_6bbb9b6f5827bd842d9640c82_05d85f18ef">
-                                        </div>
-                                        <div class="clear">
-                                            <input id="mc-embedded-subscribe" class="button" type="submit" name="subscribe" value="SUBMIT">
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
+                    <div class="maps">
+                        <div class="footer-map">
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d446.5171539970967!2d87.27900639009763!3d26.451305046678105!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39ef74485d770559%3A0x2efafd005e09a60!2s(COBASS%20COLLEGE%20%2B2)%2C%20Biratnagar!5e0!3m2!1sen!2suk!4v1740905572709!5m2!1sen!2suk"
+                                width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                         </div>
                     </div>
                 </div>

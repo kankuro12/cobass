@@ -55,6 +55,13 @@
                     Testimonial
                 </a>
             </li>
+            <!-- Add the Notice section here -->
+            <li>
+                <a href="{{ route('admin.notice.index') }}">
+                    <i class="material-icons">announcement</i>
+                    Notices
+                </a>
+            </li>
             <li>
                 <a href="#">
                     <i class="material-icons">settings</i>
@@ -79,6 +86,9 @@
                     </li>
                     <li class="sub-item">
                         <a href="{{ route('admin.setting.index', ['type' => 'top']) }}">Header</a>
+                    </li>
+                    <li class="sub-item">
+                        <a href="{{ route('admin.setting.index', ['type' => 'mid']) }}">Mid</a>
                     </li>
                     <li class="sub-item">
                         <a href="{{ route('admin.setting.index', ['type' => 'about']) }}">About</a>

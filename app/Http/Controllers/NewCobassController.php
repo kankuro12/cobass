@@ -11,6 +11,7 @@ use App\Models\Setting;
 use App\Models\testimonial;
 use App\Models\Popup;
 use Illuminate\Http\Request;
+use App\Models\Contact;
 class NewCobassController extends Controller
 {
     public function index()
@@ -82,5 +83,16 @@ class NewCobassController extends Controller
     {
         return view('front.newPage.courseDetail');
     }
+    public function showCourse($id)
+{
+    // Fetch the current course
+    $course = Course::findOrFail($id);
 
+    // Fetch other courses (excluding the current one)
+    $otherCourses = Course::where('id', '!=', $id)->get();
+
+    // Pass the current course and other courses to the view
+    return view('front.newPage.courseDetail', compact('course', 'otherCourses'));
 }
+}
+

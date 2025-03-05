@@ -1,11 +1,12 @@
 @extends('front.layout.app')
+
 @section('content')
 <div class="container">
     <div class="row">
         <!-- Left Section: Course Details -->
         <div class="col-md-8">
             <div class="course-detail">
-                <img src="{{ asset('uploads/' . $course->image) }}" alt="{{ $course->name }}" class="img-fluid">
+                <img src="{{ asset($course->image) }}" alt="{{ $course->name }}" class="img-fluid">
                 <h2>{{ $course->name }}</h2>
                 <p><strong>Faculty:</strong> {{ $course->faculty }}</p>
                 <p>{{ $course->long_des }}</p>
@@ -19,7 +20,7 @@
                 <ul class="list-group">
                     @foreach ($otherCourses as $other)
                         <li class="list-group-item">
-                            <a href="{{ route('course.show', ['id' => $other->id]) }}">{{ $other->name }}</a>
+                            <a href="{{ route('course', ['id' => $other->id]) }}">{{ $other->title }}</a>
                         </li>
                     @endforeach
                 </ul>

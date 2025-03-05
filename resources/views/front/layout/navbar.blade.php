@@ -1,3 +1,6 @@
+    {{-- @php
+    $logo = getSetting('top_logo' , true );
+    @endphp --}}
 <header class="header-area">
     <div class="header-top bg-img"
         style="background-image:url('https://clipart-library.com/new_gallery/504773_straight-white-line-png.png');">
@@ -22,13 +25,14 @@
             </div>
         </div>
     </div>
+
     <div class="header-bottom sticky-bar clearfix">
         <div class="container">
             <div class="row">
                 <div class="col-lg-2 col-md-6 col-4">
                     <div class="logo">
                         <a href="index.html">
-                            <img alt="" src="assets/img/logo/logo.png">
+                            {{-- <img alt="" src="{{asset($logo)}}"> --}}
                         </a>
                     </div>
                 </div>
@@ -46,12 +50,15 @@
 
                                     <li><a href="#"> COURSES </a>
                                         <ul class="submenu">
+                                            @if(isset($courses))
+                                            @foreach ($courses as $course)
+                                                <li><a href="{{ route('course.show', ['id' => $course->id]) }}">{{ $course->name }}</a></li>
+                                            @endforeach
+                                        @endif
 
-                                            <li><a href="{{ route('course') }}">B.Tech</a></li>
-                                            <li><a href="{{ route('course') }}">BSC CSIT</a></li>
-                                            <li><a href="{{ route('course') }}">BE</a></li>
                                         </ul>
                                     </li>
+
                                     <li><a href="course.html"> download</a></li>
                                     <li><a href="{{ route('gallery') }}"> Gallery</a></li>
 

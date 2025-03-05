@@ -1,11 +1,14 @@
 <?php
 
 use App\Http\Controllers\Admin\AuthController;
+use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\FaqController;
 use App\Http\Controllers\Admin\GalleryController;
 use App\Http\Controllers\Admin\PopupController;
 use App\Http\Controllers\Admin\NewsController;
 use App\Http\Controllers\Admin\EventController;
+use App\Http\Controllers\Admin\NoticeController;
+use App\Http\Controllers\Admin\AchievementController;
 use App\Http\Controllers\courseController;
 use App\Http\Controllers\coursesController;
 // use App\Http\Controllers\teacherController;
@@ -16,13 +19,14 @@ use App\Http\Controllers\SliderController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\cobassController;
-use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\NewCobassController;
-use App\Http\Controllers\Admin\AchievementController;
+use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\AchievementviewController;
 use App\Http\Controllers\testimonialController;
 use App\Http\Controllers\teacherController;
 use Illuminate\Support\Facades\Route;
+
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -47,12 +51,15 @@ use Illuminate\Support\Facades\Route;
 Route::get('', [NewCobassController::class, 'index'])->name('index');
 Route::get('event', [NewCobassController::class, 'event'])->name('event');
 Route::get('notice', [NewCobassController::class, 'notice'])->name('notice');
+// Route for courses listing
 Route::get('course', [NewCobassController::class, 'course'])->name('course');
+Route::get('/course/{id}', [NewCobassController::class, 'showCourse'])->name('course.show');
+Route::get('courseDetail', [NewCobassController::class, 'courseDetail'])->name('courseDetail');
+
 Route::get('gallery', [NewCobassController::class, 'gallery'])->name('gallery');
 Route::get('about', [NewCobassController::class, 'about'])->name('about');
 Route::get('contact', [NewCobassController::class, 'contact'])->name('contact');
-Route::get('courseDeatil', [NewCobassController::class, 'courseDeatil'])->name('courseDeatil');
-Route::get('/new-page', [courseController::class, 'showCoursesOnNewPage'])->name('newPage.index');
+//Route::get('/new-page', [courseController::class, 'showCoursesOnNewPage'])->name('newPage.index');
 //contact submission bug
 Route::post('/contact-submit', [NewCobassController::class, 'submitContact'])->name('contact.submit');
 //gallery view nikalna khojeko
@@ -60,6 +67,13 @@ Route::get('/gallery', [NewCobassController::class, 'gallery'])->name('gallery')
 Route::get('/gallery/{id}', [NewCobassController::class, 'galleryImages'])->name('gallery.show');
 // Frontend Achievements Route
 Route::get('/achievements', [AchievementviewController::class, 'index'])->name('achievements');
+// Show the registration form
+Route::get('register', [RegisterController::class, 'showForm'])->name('register.form');
+
+// Handle form submission
+Route::post('register', [RegisterController::class, 'submitForm'])->name('register.submit');
+
+//Route::get('/course/{slug}', [CourseController::class, 'show'])->name('course.show');
 
 
 Route::prefix("admin")->name("admin.")->group(function () {
@@ -82,6 +96,16 @@ Route::prefix("admin")->name("admin.")->group(function () {
         Route::match(["GET", "POST"], 'edit/{product}', [ProductController::class, 'edit'])->name('edit');
         Route::match(["GET", "POST"], 'del/{product}', [ProductController::class, 'del'])->name('del');
     });
+    Route::middleware('auth')->group(function () {
+        Route::prefix('notice')->name('notice.')->group(function () {
+            Route::get('', [NoticeController::class, 'index'])->name('index');
+            Route::get('create', [NoticeController::class, 'create'])->name('create');
+            Route::post('store', [NoticeController::class, 'store'])->name('store');
+            Route::get('edit/{id}', [NoticeController::class, 'edit'])->name('edit');
+            Route::put('update/{id}', [NoticeController::class, 'update'])->name('update');
+            Route::delete('delete/{id}', [NoticeController::class, 'destroy'])->name('destroy');
+        });
+    });
 
     // Admin Achievements Route
     Route::resource('achievements', AchievementController::class);
@@ -91,7 +115,7 @@ Route::prefix("admin")->name("admin.")->group(function () {
  });
 
 
-        Route::prefix('course')->name('course.')->group(function () {
+     Route::prefix('course')->name('course.')->group(function () {
         Route::get('/', [courseController::class, 'index'])->name('index');
         Route::match(['get', 'post'], 'add', [courseController::class, 'add'])->name('add');
         Route::post('save', [courseController::class, 'save'])->name('save');

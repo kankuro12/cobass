@@ -36,7 +36,7 @@ class GalleryController extends Controller
 
     public function delType(Request $request,GalleryType $type){
         $type->delete();
-       
+
         return redirect()->back()->with('message','Gallery Deleted Sucessfully');
     }
 
@@ -45,6 +45,7 @@ class GalleryController extends Controller
     {
         return  view('admin.gallery.index',compact('type'));
     }
+
 
     public function add(Request $request)
     {
@@ -72,7 +73,7 @@ class GalleryController extends Controller
                     $gallery->thumb=$name;
                     $gallery->save();
                 } catch (\Throwable $th) {
-                    
+
                 }
                 array_push($data,$gallery);
             }

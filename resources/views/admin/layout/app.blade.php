@@ -22,7 +22,7 @@
     <link rel="stylesheet" href="{{asset('admin/css/extra.css')}}">
     <link href="{{ asset('admin/plugins/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
     <link href="{{ asset('admin/plugins/font-awesome/css/all.min.css') }}" rel="stylesheet">
-    @yield('css-include')
+    @yield(section: 'css-include')
 
 
     <!-- Theme Styles -->

@@ -20,6 +20,13 @@ class SettingController extends Controller
                 ['fabicon', 0],
             ]
         ],
+        'mid' =>[
+            'Mid Section',[
+                ['title',1],
+                ['desc',2],
+                ['img',0],
+            ],
+        ],
         'feature' => [
             "Feature Section",
             [
