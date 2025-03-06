@@ -2,7 +2,7 @@
     <div class="container">
         <div class="section-title mb-75">
             <h2>Our <span>Teachers</span></h2>
-            <p>Tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim <br>veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip.</p>
+            <p>{{ $data->news }}</p>
         </div>
         <div class="custom-row">
             @foreach ($teachers as $teacher)

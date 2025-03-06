@@ -4,30 +4,44 @@
     <div class="container">
         <h1>Add New Notice</h1>
 
-        <form action="{{ route('admin.notice.store') }}" method="POST">
+        <form action="{{ route('admin.notice.store') }}" method="POST" enctype="multipart/form-data">
             @csrf
 
             <div class="form-group">
                 <label for="title">Title</label>
-                <input type="text" name="title" class="form-control" id="title" required>
+                <input type="text" name="title" id="title" class="form-control" required>
             </div>
 
             <div class="form-group">
                 <label for="date">Date</label>
-                <input type="date" name="date" class="form-control" id="date" required>
+                <input type="date" name="date" id="date" class="form-control" required>
             </div>
 
             <div class="form-group">
                 <label for="details">Details</label>
-                <textarea name="details" class="form-control" id="details" rows="5" required></textarea>
+                <textarea name="details" id="details" class="form-control" required></textarea>
             </div>
 
+            <!-- Dropify Image Upload -->
             <div class="form-group">
-                <label for="link">Link (Optional)</label>
-                <input type="url" name="link" class="form-control" id="link">
+                <label for="link">Upload Image</label>
+                <input type="file" name="link" id="link" class="dropify" data-height="150" required />
             </div>
 
-            <button type="submit" class="btn btn-primary">Save</button>
+            <button type="submit" class="btn btn-primary">Submit</button>
         </form>
+        <script>
+            $(document).ready(function() {
+                $('.dropify').dropify();
+            });
+        </script>
+
+
     </div>
+    <script>
+        $(document).ready(function() {
+            $('.dropify').dropify();
+        });
+    </script>
+
 @endsection

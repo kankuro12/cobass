@@ -28,7 +28,7 @@
     <li class="breadcrumb-item">
         Home Page Setting
     </li>
-    
+
 @endsection
 @section('content')
 
@@ -39,23 +39,23 @@
                 @csrf
                 <div class="row">
                     <div class="col-md-6">
-                        <label for="program">Program Summary</label>
+                        <label for="program">Our Course Summary</label>
                         <textarea name="program" id="program"  class="form-control" required>{{$data->program}}</textarea>
                     </div>
                     <div class="col-md-6">
-                        <label for="why">Why Us Summary</label>
+                        <label for="why">About Us Summary</label>
                         <textarea name="why" id="why"  class="form-control" required>{{$data->why}}</textarea>
                     </div>
                     <div class="col-md-6">
-                        <label for="event">Upcomming Events Summary</label>
+                        <label for="event">Register Now Summary</label>
                         <textarea name="event" id="event"  class="form-control" required>{{$data->event}}</textarea>
                     </div>
                     <div class="col-md-6">
-                        <label for="news">Lastest news Summary</label>
+                        <label for="news">Our Teachers Summary</label>
                         <textarea name="news" id="news"  class="form-control" required>{{$data->news}}</textarea>
                     </div>
                     @php
-                        
+
                         $about_title=[];
                         if(isset($data->about_title)){
                             $about_title=(array)($data->about_title);
@@ -64,38 +64,38 @@
                     @foreach ($abouts as $about)
                         <div class="col-md-6 py-2">
                             <input type="checkbox" name="about[]" id="about-{{$about->id}}" {{in_array($about->id,$data->about)?'checked':''}} value="{{$about->id}}">
-                            <label for="about-{{$about->id}}">{{$about->title}}</label> 
+                            <label for="about-{{$about->id}}">{{$about->title}}</label>
                             @php
                                 $value=$about->title;
                                     if(in_array($about->id,$data->about)){
                                         $abt=$about_title['about_'.$about->id];
                                         if(isset($abt)){
                                             $value=$abt->title;
-                                        } 
+                                        }
                                     }
                             @endphp
                             <input type="text" name="about_{{$about->id}}" value="{{$value}}" id="about_{{$about->id}}" class="form-control">
                         </div>
                     @endforeach
-                   
+
                 </div>
                 <div class="py-2">
                     <button class="btn btn-primary">Save Home Page Setting</button>
                 </div>
-                
+
             </form>
         </div>
     </div>
 
 @endsection
 @section('script')
-  
+
     <script src="{{ asset('admin/plugins/drophify/js/dropify.min.js') }}"></script>
     <script>
-     
+
         $(function() {
             $('.photo').dropify();
-            
+
         });
     </script>
 @endsection

@@ -7,6 +7,9 @@
 @endsection
 
 @section('s-title')
+<li class="breadcrumb-item active">
+    Teacher
+</li>
 @endsection
 @section('page-option')
     <div class="text-right">

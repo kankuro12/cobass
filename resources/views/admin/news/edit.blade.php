@@ -1,35 +1,67 @@
 @extends('admin.layout.app')
 
+@section('css')
+    <link rel="stylesheet" href="{{ asset('admin/plugins/drophify/css/dropify.min.css') }}">
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
+@endsection
+
+@section('s-title')
+    <li class="breadcrumb-item">
+        <a href="{{ route('admin.news.index') }}">News</a>
+    </li>
+    <li class="breadcrumb-item active">
+        Edit
+    </li>
+@endsection
+
 @section('content')
-    <h1>Edit News</h1>
+    <div class="p-3 shadow bg-white">
+        <form action="{{ route('admin.news.update', $news->id) }}" method="POST" enctype="multipart/form-data">
+            @csrf
+            @method('PUT')
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="mb-3">
+                        <label>Feature Image</label>
+                        <input type="file" name="feature_image" class="form-control photo" data-default-file="{{ asset($news->feature_image) }}">
 
-    <form action="{{ route('admin.news.update', $news->id) }}" method="POST" enctype="multipart/form-data">
-        @csrf
-        @method('PUT')
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="col-md-12">
+                        <div class="mb-3">
+                            <label>Title</label>
+                            <input type="text" name="title" class="form-control" value="{{ old('title', $news->title) }}" required>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="mb-3">
+                            <label>Short Content</label>
+                            <textarea name="short_content" class="form-control" required>{{ old('short_content', $news->short_content) }}</textarea>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="mb-3">
+                            <label>Extra Content</label>
+                            <textarea name="extra_content" class="form-control" id="long_desc" rows="5" required>{{ old('extra_content', $news->extra_content) }}</textarea>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <button type="submit" class="btn btn-primary">Update News</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+@endsection
 
-        <div class="form-group">
-            <label for="title">Title</label>
-            <input type="text" name="title" id="title" class="form-control" value="{{ old('title', $news->title) }}" required>
-        </div>
-
-        <div class="form-group">
-            <label for="feature_image">Feature Image</label>
-            <input type="file" name="feature_image" id="feature_image" class="form-control">
-            @if ($news->feature_image)
-                <img src="{{ asset($news->feature_image) }}" width="100" alt="Current Image">
-            @endif
-        </div>
-
-        <div class="form-group">
-            <label for="short_content">Short Content</label>
-            <textarea name="short_content" id="short_content" class="form-control" rows="4" required>{{ old('short_content', $news->short_content) }}</textarea>
-        </div>
-
-        <div class="form-group">
-            <label for="extra_content">Extra Content</label>
-            <textarea name="extra_content" id="extra_content" class="form-control" rows="4" required>{{ old('extra_content', $news->extra_content) }}</textarea>
-        </div>
-
-        <button type="submit" class="btn btn-primary">Update News</button>
-    </form>
+@section('script')
+    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
+    <script src="{{ asset('admin/plugins/drophify/js/dropify.min.js') }}"></script>
+    <script>
+        $(function() {
+            $('.photo').dropify();
+            $('#long_desc').summernote();
+        });
+    </script>
 @endsection

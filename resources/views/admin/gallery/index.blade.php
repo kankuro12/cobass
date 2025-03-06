@@ -113,14 +113,17 @@
     <div class="bg-white shadow mt-3">
         <div class="card-body">
             <div id="images">
-                @foreach ($type->galleries as $image)
-                    <div class="col-md-3 p-0">
-                        <div id="image-{{ $image->id }}" class="single-image">
-                            <img data-src="{{ asset($image->file) }}" src="{{ asset($image->thumb ?? $image->file) }}" class="w-100" alt="">
-                            <button onclick="del({{ $image->id }})">X</button>
+                <div class="row">
+                    @foreach ($type->galleries as $image)
+                        <div class="col-md-3  p-0">
+                            <div id="image-{{ $image->id }}" class="single-image">
+                                <img data-src="{{ asset($image->file) }}" src="{{ asset($image->thumb ?? $image->file) }}" class="w-100" alt="">
+                                <button onclick="del({{ $image->id }})">X</button>
+                            </div>
                         </div>
-                    </div>
-                @endforeach
+                    @endforeach
+
+                </div>
             </div>
         </div>
     </div>

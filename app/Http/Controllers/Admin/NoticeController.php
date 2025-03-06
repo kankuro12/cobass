@@ -24,19 +24,27 @@ class NoticeController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'title' => 'required',
+            'title' => 'required|string|max:255',
             'date' => 'required|date',
-            'details' => 'required',
-            'link' => 'nullable|url',
+            'details' => 'required|string',
+            'link' => 'nullable|image|mimes:jpg,png,jpeg,svg|max:2048',
         ]);
 
-        // Store the notice in the database
-        Notice::create($request->all());
+        // Handle Image Upload (store in 'link' column)
+        $imagePath = null;
+        if ($request->hasFile('link')) {
+            $imagePath = $request->file('link')->store('uploads/notices', 'public');
+        }
 
-        return redirect()->route('admin.notice.index')->with('success', 'Notice created successfully.');
+        Notice::create([
+            'title' => $request->title,
+            'date' => $request->date,
+            'details' => $request->details,
+            'link' => $imagePath, // Storing image path in 'link' column
+        ]);
+
+        return redirect()->route('admin.notice.index')->with('message', 'Notice added successfully!');
     }
-
-    // Show the form to edit an existing notice
     public function edit($id)
     {
         $notice = Notice::findOrFail($id);

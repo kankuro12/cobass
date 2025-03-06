@@ -4,7 +4,11 @@
     <link rel="stylesheet" href="{{ asset('admin/plugins/drophify/css/dropify.min.css') }}">
 @endsection
 @section('s-title')
-    /<a href="{{ route('admin.course.index') }}">courses</a>/Edit
+<li class="breadcrumb-item">
+    <a href="{{ route('admin.course.index') }}"> Course </a>
+<li class="breadcrumb-item active">
+    Edit
+</li>
 @endsection
 @section('content')
     <div class="bg-white p-5 shadow">

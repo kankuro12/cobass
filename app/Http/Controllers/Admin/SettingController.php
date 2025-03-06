@@ -27,6 +27,14 @@ class SettingController extends Controller
                 ['img',0],
             ],
         ],
+        'HomeAchievement' => [
+            "Home Achievement", [
+                ['title', 1],
+                ['data', 1],
+                ['icon', 0],
+            ],
+            'views/front/home/achievement.blade.php'
+        ],
         'feature' => [
             "Feature Section",
             [

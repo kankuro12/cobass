@@ -26,6 +26,13 @@
                 </a>
             </li>
             <li>
+                <a href="{{ route('admin.registration.index') }}">
+                    <i class="material-icons">mail</i>
+                    Messages
+                </a>
+            </li>
+
+            <li>
                 <a href="{{ route('admin.course.index') }}">
                     <i class="material-icons">subject</i>
                     Course
@@ -44,6 +51,12 @@
                 </a>
             </li>
             <li>
+                <a href="{{ route('admin.downloads.index') }}">
+                    <i class="material-icons">cloud_download</i>
+                    Downloads
+                </a>
+            </li>
+            <li>
                 <a href="{{ route('admin.teacher.index') }}">
                     <i class="material-icons">wc</i>
                     Teacher
@@ -55,6 +68,11 @@
                     Testimonial
                 </a>
             </li>
+            <!-- Add the Facility section here -->
+            {{-- <a href="{{ route('admin.facility_achievement.index') }}">
+                <i class="material-icons">business</i>
+                Facilities
+            </a> --}}
             <!-- Add the Notice section here -->
             <li>
                 <a href="{{ route('admin.notice.index') }}">
@@ -89,6 +107,9 @@
                     </li>
                     <li class="sub-item">
                         <a href="{{ route('admin.setting.index', ['type' => 'mid']) }}">Mid</a>
+                    </li>
+                    <li class="sub-item">
+                        <a href="{{ route('admin.setting.index', ['type' => 'HomeAchievement']) }}">Home Achievement</a>
                     </li>
                     <li class="sub-item">
                         <a href="{{ route('admin.setting.index', ['type' => 'about']) }}">About</a>

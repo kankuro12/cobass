@@ -4,8 +4,7 @@
     <div class="container">
         <div class="section-title mb-75">
             <h2> <span>Our</span> Courses</h2>
-            <p>tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim <br>veniam, quis nostrud
-                exercitation ullamco laboris nisi ut aliquip </p>
+            <p>{{ $data->program }}</p>
         </div>
 
         <div class="course-slider-active nav-style-1 owl-carousel">

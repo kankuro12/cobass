@@ -29,6 +29,7 @@
     <link href="{{ asset('admin/css/connect.min.css') }}" rel="stylesheet">
     <link href="{{ asset('admin/css/dark_theme.css') }}" rel="stylesheet">
     <link href="{{ asset('admin/css/custom.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('admin/plugins/drophify/css/dropify.min.css') }}">
     @yield('css')
     @yield('css1')
     @yield('css2')
@@ -43,12 +44,6 @@
         }
 
     </style>
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-        <![endif]-->
 </head>
 
 <body>
@@ -102,6 +97,7 @@
     <script src="{{ asset('admin/plugins/blockui/jquery.blockUI.js') }}"></script>
     <script src="{{ asset('admin/js/connect.min.js') }}"></script>
     <script src="{{ asset('admin/js/axios.js') }}"></script>
+    <script src="{{ asset('admin/plugins/drophify/js/dropify.min.js') }}"></script>
     {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.24.0/axios.min.js" integrity="sha512-u9akINsQsAkG9xjc1cnGF4zw5TFDwkxuc9vUp5dltDWYCSmyd0meygbvgXrlc/z7/o4a19Fb5V0OUE58J7dcyw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script> --}}
     @include('toastr.index')
     @yield('script')

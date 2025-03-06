@@ -33,7 +33,7 @@
     <div class="bg-white shadow mb-3">
         <div class="card-body">
             <div class="row">
-                <div class="col-md-4">
+                <div class="col-md-4 mb-4">
                     <form class="p-2 shadow" action="{{route('admin.setting.gallery.type.add')}}" enctype="multipart/form-data" method="post">
                         @csrf
                         <div class="form-group">
@@ -50,7 +50,7 @@
                     </form>
                 </div>
                 @foreach ($types as $type)
-                    <div class="col-md-4">
+                    <div class="col-md-4 mb-4">
                         <form class="shadow p-2" action="{{route('admin.setting.gallery.type.edit',['type'>$type->id])}}" enctype="multipart/form-data" method="post">
                             @csrf
                             <div class="form-group">

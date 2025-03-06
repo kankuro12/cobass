@@ -3,7 +3,7 @@
     <div class="container">
         <div class="section-title-2 mb-75 white-text">
             <h2>Register <span>Now</span></h2>
-            <p>Winter Admission Is Going On. We are announcing Special discount for winter batch 2019.</p>
+            <p>{{ $data->event }}</p>
         </div>
 
         <!-- Success message display -->
@@ -15,14 +15,14 @@
 
         <div class="register-wrap">
             <div id="register-3" class="mouse-bg">
-                <div class="winter-banner">
+                {{-- <div class="winter-banner">
                     <img src="https://htmldemo.net/glaxdu/glaxdu/assets/img/banner/regi-1.png" alt="">
                     <div class="winter-content">
                         <span>WINTER </span>
                         <h3>2019</h3>
                         <span>ADMISSION </span>
                     </div>
-                </div>
+                </div> --}}
             </div>
 
             <div class="row">

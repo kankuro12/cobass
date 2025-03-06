@@ -9,6 +9,10 @@ use App\Http\Controllers\Admin\NewsController;
 use App\Http\Controllers\Admin\EventController;
 use App\Http\Controllers\Admin\NoticeController;
 use App\Http\Controllers\Admin\AchievementController;
+use App\Http\Controllers\Admin\DownloadController;
+use App\Http\Controllers\Admin\FacilityController;
+use App\Http\Controllers\Admin\RegistrationController;
+use App\Http\Controllers\Admin\FormController;
 use App\Http\Controllers\courseController;
 use App\Http\Controllers\coursesController;
 // use App\Http\Controllers\teacherController;
@@ -55,7 +59,10 @@ Route::get('notice', [NewCobassController::class, 'notice'])->name('notice');
 Route::get('course', [NewCobassController::class, 'course'])->name('course');
 Route::get('/course/{id}', [NewCobassController::class, 'showCourse'])->name('course.show');
 Route::get('courseDetail', [NewCobassController::class, 'courseDetail'])->name('courseDetail');
-
+//notice route
+Route::get('/notices', [NewCobassController::class, 'showNotices'])->name('notices.show');
+//downloads route
+Route::get('/downloads', [NewCobassController::class, 'showDownloads'])->name('downloads');
 Route::get('gallery', [NewCobassController::class, 'gallery'])->name('gallery');
 Route::get('about', [NewCobassController::class, 'about'])->name('about');
 Route::get('contact', [NewCobassController::class, 'contact'])->name('contact');
@@ -69,9 +76,13 @@ Route::get('/gallery/{id}', [NewCobassController::class, 'galleryImages'])->name
 Route::get('/achievements', [AchievementviewController::class, 'index'])->name('achievements');
 // Show the registration form
 Route::get('register', [RegisterController::class, 'showForm'])->name('register.form');
+// Show the news page
+Route::get('/news', [NewCobassController::class, 'showNews'])->name('news');
 
 // Handle form submission
 Route::post('register', [RegisterController::class, 'submitForm'])->name('register.submit');
+Route::get('/events', [NewCobassController::class, 'showEvents'])->name('events');
+
 
 //Route::get('/course/{slug}', [CourseController::class, 'show'])->name('course.show');
 
@@ -79,10 +90,14 @@ Route::post('register', [RegisterController::class, 'submitForm'])->name('regist
 Route::prefix("admin")->name("admin.")->group(function () {
     Route::post('setting/gallery/delete', [GalleryController::class, 'deleteImage'])->name('setting.gallery.delete');
     Route::match(["POST", "GET"], 'login', [AuthController::class, 'login'])->name('login');
-    Route::get('dashboard',[DashboardController::class,'index'])->name('dashboard.index');
+    Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard.index');
+    //Download Route
+    Route::resource('downloads', DownloadController::class)->except(['show', 'edit', 'update']);
     Route::match(["POST", "GET"], 'logout', function () {
         // Auth::logout();
     });
+
+
     // Route::prefix('page')->name('page.')->group(function () {
     //     Route::get('@{type}', [PageController::class, 'index'])->name('index');
     //     Route::match(['get', 'post'], 'add/@{type}', [PageController::class, 'add'])->name('add');
@@ -106,16 +121,29 @@ Route::prefix("admin")->name("admin.")->group(function () {
             Route::delete('delete/{id}', [NoticeController::class, 'destroy'])->name('destroy');
         });
     });
+    Route::get('registrations', [RegistrationController::class, 'index'])->name('registration.index');
+    Route::delete('registrations/{id}', [RegistrationController::class, 'destroy'])->name('registration.destroy');
+
 
     // Admin Achievements Route
     Route::resource('achievements', AchievementController::class);
     Route::prefix('admin')->name('admin.')->group(function () {
-            // Other routes
+        // Other routes
 
- });
+    });
+    Route::prefix('facility_achievement')->name('facility_achievement.')->group(function () {
+        Route::get('/', [FacilityController::class, 'index'])->name('facilityAchievement.index');
+        Route::post('/store', [FacilityController::class, 'store'])->name('facilityAchievement.store');
+
+        // Ensure the update route is correctly defined
+        Route::put('/update/{id}', [FacilityController::class, 'update'])->name('facilityAchievement.update');
+
+        Route::delete('/delete/{id}', [FacilityController::class, 'destroy'])->name('facilityAchievement.destroy');
+    });
 
 
-     Route::prefix('course')->name('course.')->group(function () {
+
+    Route::prefix('course')->name('course.')->group(function () {
         Route::get('/', [courseController::class, 'index'])->name('index');
         Route::match(['get', 'post'], 'add', [courseController::class, 'add'])->name('add');
         Route::post('save', [courseController::class, 'save'])->name('save');
@@ -123,6 +151,7 @@ Route::prefix("admin")->name("admin.")->group(function () {
         Route::match(['GET', 'POST'], 'del/{course}', [courseController::class, 'del'])->name('del');
         // Route::get('list', [courseController::class, 'list'])->name('list');
     });
+
     Route::prefix('teacher')->name('teacher.')->group(function () {
         Route::get('/', [teacherController::class, 'index'])->name('index');
         Route::match(['get', 'post'], 'add', [teacherController::class, 'add'])->name('add');
@@ -139,9 +168,9 @@ Route::prefix("admin")->name("admin.")->group(function () {
         Route::match(['GET', 'POST'], 'del/{testimonial}', [testimonialController::class, 'del'])->name('del');
         // Route::get('list', [testimonialController::class, 'list'])->name('list');
     });
-     // News and Events routes
-        Route::resource('news', NewsController::class);
-        Route::resource('events', EventController::class);
+    // News and Events routes
+    Route::resource('news', NewsController::class);
+    Route::resource('events', EventController::class);
 
 
 
@@ -193,4 +222,4 @@ Route::prefix("admin")->name("admin.")->group(function () {
         Route::match(['get', 'post'], 'del/{faq}', [FaqController::class, 'del'])->name('del');
     });
 });
-   //   Route::get('/admin/news', [NewsController::class, 'index'])->name('admin.news.index');
+//   Route::get('/admin/news', [NewsController::class, 'index'])->name('admin.news.index');

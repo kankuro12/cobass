@@ -15,7 +15,7 @@
                     <th>Title</th>
                     <th>Date</th>
                     <th>Details</th>
-                    <th>Link</th>
+                    <th>Image</th>
                     <th>Actions</th>
                 </tr>
             </thead>
@@ -25,7 +25,13 @@
                         <td>{{ $notice->title }}</td>
                         <td>{{ $notice->date }}</td>
                         <td>{{ Str::limit($notice->details, 50) }}</td>
-                        <td><a href="{{ $notice->link }}" target="_blank">{{ $notice->link }}</a></td>
+                        <td>
+                            @if ($notice->link)
+                                <img src="{{ asset('storage/' . $notice->link) }}" alt="Notice Image" width="100">
+                            @else
+                                No Image
+                            @endif
+                        </td>
                         <td>
                             <a href="{{ route('admin.notice.edit', $notice->id) }}" class="btn btn-warning">Edit</a>
                             <form action="{{ route('admin.notice.destroy', $notice->id) }}" method="POST" style="display:inline;">
