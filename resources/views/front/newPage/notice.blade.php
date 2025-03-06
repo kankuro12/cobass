@@ -20,33 +20,30 @@
 <div class="event-area pt-130 pb-130">
     <div class="container">
         <div class="row">
-            @foreach ($notices as $notice)
-            <div class="col-lg-4 col-md-6">
-                <div class="single-event mb-55 event-gray-bg">
-                    <div class="event-img">
-                        @if($notice->link)
-                        <a href="{{ asset('storage/' . $notice->link) }}">
-                            <img src="{{ asset('storage/' . $notice->link) }}" alt="Notice Image">
-                        </a>
-                        @else
-                        <a href="#">
-                            <img src="https://via.placeholder.com/500x300" alt="No Image">
-                        </a>
-                        @endif
-                    </div>
-                    <div class="event-content">
-                        <h3><a href="#">{{ $notice->title }}</a></h3>
-                        <p>{{ Str::limit($notice->details, 50) }}</p>
-                        <div class="event-meta-wrap">
-                            <div class="event-meta">
-                                <i class="fa fa-calendar"></i>
-                                <span>{{ \Carbon\Carbon::parse($notice->date)->format('d M, Y') }}</span>
+            <div class="col-12">
+                <ul class="notice-list">
+                    @foreach ($notices as $notice)
+                    <li class="notice-item mb-4">
+                        <div class="notice-content">
+                            <h3 style="font-size: 1.5em;"><a href="#">{{ $notice->title }}</a></h3>
+                            <div class="event-meta-wrap">
+                                <div class="event-meta">
+                                    <i class="fa fa-calendar"></i>
+                                    <span>{{ \Carbon\Carbon::parse($notice->date)->format('d M, Y') }}</span>
+                                </div>
                             </div>
+                            @if($notice->link)
+                            <div class="download-link" style="float: right;">
+                                <a href="{{ asset('storage/' . $notice->link) }}" download>
+                                    <i class="fa fa-download"></i> Download Notice
+                                </a>
+                            </div>
+                            @endif
                         </div>
-                    </div>
-                </div>
+                    </li>
+                    @endforeach
+                </ul>
             </div>
-            @endforeach
         </div>
 
         <div class="pro-pagination-style text-center mt-25">

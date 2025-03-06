@@ -13,6 +13,11 @@
             border-radius: 10px;
             overflow: hidden;
             position: relative;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .singlegallery:hover {
+            transform: scale(1.05);
         }
 
         .singlegallery .overlay {
@@ -51,6 +56,11 @@
             height: 100%;
             object-fit: cover;
             display: block;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .singlegallery:hover img {
+            transform: scale(1.1);
         }
 
         .singlegallery .overlay {

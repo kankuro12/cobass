@@ -57,7 +57,7 @@
             </div>
         </div>
 
-        @include('front.newPage.testimonials')
+        @include('front.newPage.add.testimonials')
 
         <div class="testimonial-text-img">
             <img alt="" src="https://htmldemo.net/glaxdu/glaxdu/assets/img/icon-img/testi-text.png">

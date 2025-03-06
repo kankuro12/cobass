@@ -18,8 +18,8 @@
         <div class="row">
             @foreach ($achievements as $achievement)
                 <div class="col-md-4">
-                    <div class="card">
-                        <img src="{{ asset('storage/' . $achievement->image) }}" class="card-img-top" alt="Achievement">
+                    <div class="card custom-card">
+                        <img src="{{ asset('storage/' . $achievement->image) }}" class="card-img-top animated-img" alt="Achievement">
                         <div class="card-body">
                             <h5 class="card-title">{{ $achievement->title }}</h5>
                             <p class="card-text">{{ $achievement->description }}</p>
@@ -29,4 +29,29 @@
             @endforeach
         </div>
     </div>
+
+    <style>
+        .custom-card {
+            height: 400px; /* Adjust the height as needed */
+            width: 250px; /* Adjust the width as needed */
+            text-align: center;
+        }
+        .custom-card img {
+            height: 200px; /* Adjust the image height as needed */
+            object-fit: cover;
+            transition: transform 0.3s ease-in-out;
+        }
+        .custom-card img:hover {
+            transform: scale(1.1);
+        }
+        .card-title {
+            font-size: 1.25rem;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+        .card-text {
+            font-size: 1rem;
+            color: #555;
+        }
+    </style>
 @endsection

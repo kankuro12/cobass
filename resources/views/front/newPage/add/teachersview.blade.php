@@ -1,3 +1,12 @@
+<style>
+    .teacher-area .custom-col-5 {
+        padding: 15px;
+    }
+    .teacher-img img {
+        width: 100%;
+        height: auto;
+    }
+</style>
 <div class="teacher-area pt-130 pb-100">
     <div class="container">
         <div class="section-title mb-75">
