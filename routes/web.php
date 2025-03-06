@@ -29,6 +29,7 @@ use App\Http\Controllers\AchievementviewController;
 use App\Http\Controllers\testimonialController;
 use App\Http\Controllers\teacherController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Admin\AddController;
 
 
 /*
@@ -82,6 +83,7 @@ Route::get('/news', [NewCobassController::class, 'showNews'])->name('news');
 // Handle form submission
 Route::post('register', [RegisterController::class, 'submitForm'])->name('register.submit');
 Route::get('/events', [NewCobassController::class, 'showEvents'])->name('events');
+Route::get('/facilities', [NewCobassController::class, 'showFacilities']);
 
 
 //Route::get('/course/{slug}', [CourseController::class, 'show'])->name('course.show');
@@ -121,8 +123,14 @@ Route::prefix("admin")->name("admin.")->group(function () {
             Route::delete('delete/{id}', [NoticeController::class, 'destroy'])->name('destroy');
         });
     });
+    //add controller
+    Route::get('/add', [AddController::class, 'index'])->name('add.index');
+    Route::put('/add/update', [AddController::class, 'update'])->name('add.update');
     Route::get('registrations', [RegistrationController::class, 'index'])->name('registration.index');
     Route::delete('registrations/{id}', [RegistrationController::class, 'destroy'])->name('registration.destroy');
+    Route::get('/add/facility', [FacilityController::class, 'index'])->name('add.facility');
+    Route::put('add/facility/update', [FacilityController::class, 'update'])->name('add.facility.update');
+
 
 
     // Admin Achievements Route
@@ -131,15 +139,15 @@ Route::prefix("admin")->name("admin.")->group(function () {
         // Other routes
 
     });
-    Route::prefix('facility_achievement')->name('facility_achievement.')->group(function () {
-        Route::get('/', [FacilityController::class, 'index'])->name('facilityAchievement.index');
-        Route::post('/store', [FacilityController::class, 'store'])->name('facilityAchievement.store');
+    // Route::prefix('facility_achievement')->name('facility_achievement.')->group(function () {
+    //     Route::get('/', [FacilityController::class, 'index'])->name('facilityAchievement.index');
+    //     Route::post('/store', [FacilityController::class, 'store'])->name('facilityAchievement.store');
 
-        // Ensure the update route is correctly defined
-        Route::put('/update/{id}', [FacilityController::class, 'update'])->name('facilityAchievement.update');
+    //     // Ensure the update route is correctly defined
+    //     Route::put('/update/{id}', [FacilityController::class, 'update'])->name('facilityAchievement.update');
 
-        Route::delete('/delete/{id}', [FacilityController::class, 'destroy'])->name('facilityAchievement.destroy');
-    });
+    //     Route::delete('/delete/{id}', [FacilityController::class, 'destroy'])->name('facilityAchievement.destroy');
+    // });
 
 
 

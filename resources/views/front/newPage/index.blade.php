@@ -1,8 +1,8 @@
 @extends('front.layout.app')
 @section('content')
-@include('front.newPage.popup')
+    @include('front.newPage.popup')
 
-@include('front.newPage.slideview')
+    @include('front.newPage.slideview')
 
     <!-- Include jQuery, FontAwesome & Owl Carousel JS -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -10,7 +10,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/js/all.min.js"></script>
 
     <script>
-        $(document).ready(function () {
+        $(document).ready(function() {
             var owl = $('.slider-active');
 
             owl.owlCarousel({
@@ -27,11 +27,11 @@
             });
 
             // Custom Navigation
-            $('.slider-prev').click(function () {
+            $('.slider-prev').click(function() {
                 owl.trigger('prev.owl.carousel');
             });
 
-            $('.slider-next').click(function () {
+            $('.slider-next').click(function() {
                 owl.trigger('next.owl.carousel');
             });
         });
@@ -113,7 +113,8 @@
         }
 
         /* Navigation Buttons */
-        .slider-prev, .slider-next {
+        .slider-prev,
+        .slider-next {
             position: absolute;
             top: 50%;
             transform: translateY(-50%);
@@ -128,10 +129,16 @@
             z-index: 1000;
         }
 
-        .slider-prev { left: 20px; }
-        .slider-next { right: 20px; }
+        .slider-prev {
+            left: 20px;
+        }
 
-        .slider-prev:hover, .slider-next:hover {
+        .slider-next {
+            right: 20px;
+        }
+
+        .slider-prev:hover,
+        .slider-next:hover {
             background: rgba(0, 0, 0, 0.9);
         }
 
@@ -163,54 +170,46 @@
         <div class="container-fluid">
             <div class="row no-gutters choose-negative-mrg">
                 <div class="col-lg-3 col-md-6">
-                    <div class="single-choose-us choose-bg-light-blue">
+                    <div class="single-choose-us choose-bg-blue">
                         <div class="choose-img">
-                            <img class="animated" src="https://htmldemo.net/glaxdu/glaxdu/assets/img/icon-img/service-1.png"
-                                alt="">
+                            <img class="animated" src="{{ asset('storage/' . $facility1->icon) }}" alt="">
                         </div>
                         <div class="choose-content">
-                            <h3>Scholarship Facility</h3>
-                            <p>magna aliqua. Ut enim ad minim veniam conse ctetur adipisicing elit, sed do exercitation.
-                            </p>
+                            <h3>{{ $facility1->title }}</h3>
+                            <p>{{ $facility1->description }}</p>
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6">
                     <div class="single-choose-us choose-bg-yellow">
                         <div class="choose-img">
-                            <img class="animated" src="https://htmldemo.net/glaxdu/glaxdu/assets/img/icon-img/service-2.png"
-                                alt="">
+                            <img class="animated" src="{{ asset('storage/' . $facility2->icon) }}" alt="">
                         </div>
                         <div class="choose-content">
-                            <h3>Scholarship Facility</h3>
-                            <p>magna aliqua. Ut enim ad minim veniam conse ctetur adipisicing elit, sed do exercitation.
-                            </p>
+                            <h3>{{ $facility2->title }}</h3>
+                            <p>{{ $facility2->description }}</p>
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6">
                     <div class="single-choose-us choose-bg-blue">
                         <div class="choose-img">
-                            <img class="animated" src="https://htmldemo.net/glaxdu/glaxdu/assets/img/icon-img/service-1.png"
-                                alt="">
+                            <img class="animated" src="{{ asset('storage/' . $facility3->icon) }}" alt="">
                         </div>
                         <div class="choose-content">
-                            <h3>Scholarship Facility</h3>
-                            <p>magna aliqua. Ut enim ad minim veniam conse ctetur adipisicing elit, sed do exercitation.
-                            </p>
+                            <h3>{{ $facility3->title }}</h3>
+                            <p>{{ $facility3->description }}</p>
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6">
                     <div class="single-choose-us choose-bg-green">
                         <div class="choose-img">
-                            <img class="animated" src="https://htmldemo.net/glaxdu/glaxdu/assets/img/icon-img/service-1.png"
-                                alt="">
+                            <img class="animated" src="{{ asset('storage/' . $facility4->icon) }}" alt="">
                         </div>
                         <div class="choose-content">
-                            <h3>Scholarship Facility</h3>
-                            <p>magna aliqua. Ut enim ad minim veniam conse ctetur adipisicing elit, sed do exercitation.
-                            </p>
+                            <h3>{{ $facility4->title }}</h3>
+                            <p>{{ $facility4->description }}</p>
                         </div>
                     </div>
                 </div>
@@ -227,7 +226,7 @@
                             <p>{{ $data->why }}</p>
                         </div>
                         <div class="about-btn mt-45">
-                            <a class="default-btn" href="{{'about' }}">ABOUT US</a>
+                            <a class="default-btn" href="{{ 'about' }}">ABOUT US</a>
                         </div>
                     </div>
                 </div>

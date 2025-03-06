@@ -212,6 +212,7 @@ class SettingController extends Controller
         }
     }
 
+
     public function contact(Request $request)
     {
         if ($request->getMethod() == "GET") {

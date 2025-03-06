@@ -8,27 +8,31 @@ return new class extends Migration
 {
     /**
      * Run the migrations.
-     *
-     * @return void
      */
     public function up()
     {
-        Schema::create('settings', function (Blueprint $table) {
+        Schema::create('adds', function (Blueprint $table) {
             $table->id();
             $table->string('key')->unique();
             $table->string('value')->nullable();
             $table->string('icon')->nullable();
             $table->timestamps();
         });
+
+        // Insert default values
+        DB::table('adds')->insert([
+            ['key' => 'students', 'value' => '', 'icon' => null],
+            ['key' => 'graduates', 'value' => '', 'icon' => null],
+            ['key' => 'awards', 'value' => '', 'icon' => null],
+            ['key' => 'faculties', 'value' => '', 'icon' => null],
+        ]);
     }
 
     /**
      * Reverse the migrations.
-     *
-     * @return void
      */
-    public function down()
+    public function down(): void
     {
-        Schema::dropIfExists('settings');
+        Schema::dropIfExists('adds');
     }
 };

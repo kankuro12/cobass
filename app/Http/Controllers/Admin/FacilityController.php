@@ -1,85 +1,54 @@
 <?php
+
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\FacilityAchievement;
+use App\Models\Facility;
 
 class FacilityController extends Controller
 {
     public function index()
     {
-        $facilities = FacilityAchievement::where('type', 'facility')->get();
-        $achievements = FacilityAchievement::where('type', 'achievement')->get();
-        return view('admin.setting.facility_achievement', compact('facilities', 'achievements'));
-    }
-
-    public function store(Request $request)
-    {
-        $request->validate([
-            'title' => 'required|string|max:255',
-            'image' => 'required|image|mimes:png,jpg,jpeg,svg|max:2048',
-            'description' => 'required|string',
-            'type' => 'required|in:facility,achievement'
-        ]);
-
-        $imagePath = $request->file('image')->store('uploads/facility_achievement', 'public');
-
-        FacilityAchievement::create([
-            'title' => $request->title,
-            'image' => $imagePath,
-            'description' => $request->description,
-            'type' => $request->type
-        ]);
-
-        return redirect()->route('admin.facility_achievement.facility_achievement')->with('message', 'Data added successfully!');
+        $facilities = Facility::all()->keyBy('key');
+        return view('admin.add.facility', compact('facilities'));
     }
 
     public function update(Request $request)
-{
-    $request->validate([
-        'title.*' => 'required|string|max:255',
-        'image.*' => 'nullable|image|mimes:png,jpg,jpeg,svg|max:2048',
-        'description.*' => 'required|string',
-        'type' => 'required|in:facility,achievement'
-    ]);
+    {
+        $request->validate([
+            'facility1_title' => 'required|string|max:255',
+            'facility1_description' => 'required|string',
+            'facility1_icon' => 'nullable|file|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'facility2_title' => 'required|string|max:255',
+            'facility2_description' => 'required|string',
+            'facility2_icon' => 'nullable|file|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'facility3_title' => 'required|string|max:255',
+            'facility3_description' => 'required|string',
+            'facility3_icon' => 'nullable|file|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'facility4_title' => 'required|string|max:255',
+            'facility4_description' => 'required|string',
+            'facility4_icon' => 'nullable|file|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        ]);
 
-    // Loop through each title, description, and image
-    foreach ($request->title as $index => $title) {
-        // Handle image upload if it exists
-        $imagePath = null;
+        $facilities = ['facility1', 'facility2', 'facility3', 'facility4'];
 
-        // If there's an image, store it and get the path
-        if ($request->hasFile('image.' . $index)) {
-            $imagePath = $request->file('image.' . $index)->store('uploads/facility_achievement', 'public');
-        } else {
-            // If no image was uploaded, retain the existing image if it's available
-            if (isset($request->existing_image[$index])) {
-                $imagePath = $request->existing_image[$index];
+        foreach ($facilities as $facility) {
+            $facilityData = Facility::updateOrCreate(
+                ['key' => $facility],
+                [
+                    'title' => $request->input("{$facility}_title"),
+                    'description' => $request->input("{$facility}_description"),
+                ]
+            );
+
+            if ($request->hasFile("{$facility}_icon")) {
+                $file = $request->file("{$facility}_icon");
+                $path = $file->store('facilities', 'public');
+                $facilityData->update(['icon' => $path]);
             }
         }
 
-        // Update or create a new record based on the type (facility or achievement)
-        FacilityAchievement::updateOrCreate(
-            [
-                'id' => $request->input('id.' . $index),  // This should be passed from the form for each set
-                'type' => $request->type,  // Type: 'facility' or 'achievement'
-            ],
-            [
-                'title' => $title,
-                'description' => $request->description[$index],
-                'image' => $imagePath  // The image path (either new or old)
-            ]
-        );
-    }
-
-    return redirect()->route('admin.facility_achievement.facility_achievement')->with('message', ucfirst($request->type) . ' updated successfully!');
-}
-    public function destroy($id)
-    {
-        $item = FacilityAchievement::findOrFail($id);
-        $item->delete();
-
-        return redirect()->route('admin.facility_achievement.facility_achievement')->with('message', 'Data deleted successfully!');
+        return redirect()->route('admin.add.facility')->with('success', 'Facilities updated successfully.');
     }
 }

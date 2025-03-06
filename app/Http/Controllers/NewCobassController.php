@@ -16,11 +16,13 @@ use App\Models\Download;
 use App\Models\Event;
 use App\Models\News;
 use App\Models\Notice;
+use App\Models\Add;
+use App\Models\Facility;
 class NewCobassController extends Controller
 {
     private function getHomepageData()
     {
-        return getSetting('homepage') ?? (object)[
+        return getSetting('homepage') ?? (object) [
             'program' => '',
             'why' => '',
             'event' => '',
@@ -31,7 +33,7 @@ class NewCobassController extends Controller
     }
     private function getContactData()
     {
-        return getSetting('contact') ?? (object)[
+        return getSetting('contact') ?? (object) [
             'map' => '',
             'email' => '',
             'phone' => '',
@@ -42,7 +44,7 @@ class NewCobassController extends Controller
 
     private function getMetaData()
     {
-        return getSetting('meta') ?? (object)[
+        return getSetting('meta') ?? (object) [
             'desc' => '',
             'image' => '',
             'keyword' => '',
@@ -50,16 +52,27 @@ class NewCobassController extends Controller
     }
     public function index()
     {
+        // Fetch achievement data from the Add model
+        $achievements = Add::whereIn('key', ['students', 'graduates', 'awards', 'faculties'])->get();
+
+        // Map data to an array with keys like 'students', 'graduates', etc.
+        $achievementData = $achievements->keyBy('key');
         $sliders = Slider::all();
         $courses = Course::all(); // Fetch courses and pass to the view
-        $teachers= teacher::all();//fetch teacher information
+        $teachers = teacher::all();//fetch teacher information
         $events = Event::all();
         $news = News::all();
         $testimonials = Testimonial::all(); // Fetch all testimonials
         $popup = Popup::where('active', 1)->first(); // Get the first active popup
         $data = $this->getHomepageData();
+        // Fetch the facilities data, assuming these are the 4 facilities
+        $facility1 = Facility::find(1);  // Example: Fetch the first facility
+        $facility2 = Facility::find(2);  // Example: Fetch the second facility
+        $facility3 = Facility::find(3);  // Example: Fetch the third facility
+        $facility4 = Facility::find(4);  // Example: Fetch the fourth facility
 
-        return view('front.newPage.index', compact('sliders', 'courses', 'teachers','testimonials','popup','events','news','data'));
+
+        return view('front.newPage.index', compact('sliders', 'courses', 'teachers', 'testimonials', 'popup', 'events', 'news', 'data', 'facility1', 'facility2', 'facility3', 'facility4','achievementData'));
     }
 
     public function event()
@@ -81,19 +94,19 @@ class NewCobassController extends Controller
         return view('front.newPage.course', compact('courses'));
     }
 
-     // Show all gallery albums
-     public function gallery()
-     {
+    // Show all gallery albums
+    public function gallery()
+    {
         $galleryTypes = GalleryType::with('galleries')->get();
         return view('front.newPage.gallery', compact('galleryTypes'));
-     }
+    }
 
-     // Show images inside a selected album
-     public function galleryImages($id)
-     {
-         $galleryType = GalleryType::with('galleries')->findOrFail($id);
-         return view('front.newPage.gallery_images', compact('galleryType'));
-     }
+    // Show images inside a selected album
+    public function galleryImages($id)
+    {
+        $galleryType = GalleryType::with('galleries')->findOrFail($id);
+        return view('front.newPage.gallery_images', compact('galleryType'));
+    }
 
     public function about()
     {
@@ -111,47 +124,67 @@ class NewCobassController extends Controller
         return view('front.newPage.contact', compact('contact'));
     }
     public function submitContact(Request $request)
-{
-    $request->validate([
-        'name' => 'required',
-        'email' => 'required|email',
-        'subject' => 'required',
-        'message' => 'required',
-    ]);
+    {
+        $request->validate([
+            'name' => 'required',
+            'email' => 'required|email',
+            'subject' => 'required',
+            'message' => 'required',
+        ]);
 
-    // Save to database (optional)
-    Contact::create($request->all());
+        // Save to database (optional)
+        Contact::create($request->all());
 
-    return back()->with('success', 'Message sent successfully!');
-}
+        return back()->with('success', 'Message sent successfully!');
+    }
     public function courseDetail()
     {
         return view('front.newPage.courseDetail');
     }
     public function showCourse($id)
-{
-    // Fetch the current course
-    $course = Course::findOrFail($id);
+    {
+        // Fetch the current course
+        $course = Course::findOrFail($id);
 
-    // Fetch other courses (excluding the current one)
-    $otherCourses = Course::where('id', '!=', $id)->get();
+        // Fetch other courses (excluding the current one)
+        $otherCourses = Course::where('id', '!=', $id)->get();
 
-    // Pass the current course and other courses to the view
-    return view('front.newPage.courseDetail', compact('course', 'otherCourses'));
-}
-public function showDownloads(Request $request)
-{
-    $query = Download::query();
-
-    if ($request->has('search') && !empty($request->search)) {
-        $query->where('title', 'like', '%' . $request->search . '%')
-              ->orWhere('description', 'like', '%' . $request->search . '%');
+        // Pass the current course and other courses to the view
+        return view('front.newPage.courseDetail', compact('course', 'otherCourses'));
     }
+    public function showDownloads(Request $request)
+    {
+        $query = Download::query();
 
-    $downloads = $query->get();
+        if ($request->has('search') && !empty($request->search)) {
+            $query->where('title', 'like', '%' . $request->search . '%')
+                ->orWhere('description', 'like', '%' . $request->search . '%');
+        }
 
-    return view('front.newPage.downloads', compact('downloads'));
-}
+        $downloads = $query->get();
+
+        return view('front.newPage.downloads', compact('downloads'));
+    }
+    public function showFacilities()
+    {
+        // Fetch the facilities data, assuming these are the 4 facilities
+        $facility1 = Facility::find(1);  // Example: Fetch the first facility
+        $facility2 = Facility::find(2);  // Example: Fetch the second facility
+        $facility3 = Facility::find(3);  // Example: Fetch the third facility
+        $facility4 = Facility::find(4);  // Example: Fetch the fourth facility
+
+        return view('front.newPage.index', compact('facility1', 'facility2', 'facility3', 'facility4'));
+    }
+    public function showAchievements()
+    {
+        // Fetch achievement data from the Add model
+        $achievements = Add::whereIn('key', ['students', 'graduates', 'awards', 'faculties'])->get();
+
+        // Map data to an array with keys like 'students', 'graduates', etc.
+        $achievementData = $achievements->keyBy('key');
+
+        return view('front.newPage.achievements', compact('achievementData'));
+    }
 
 
 

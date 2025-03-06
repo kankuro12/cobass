@@ -8,15 +8,14 @@ return new class extends Migration
 {
     /**
      * Run the migrations.
-     *
-     * @return void
      */
     public function up()
     {
-        Schema::create('settings', function (Blueprint $table) {
+        Schema::create('facilities', function (Blueprint $table) {
             $table->id();
             $table->string('key')->unique();
-            $table->string('value')->nullable();
+            $table->string('title');
+            $table->text('description');
             $table->string('icon')->nullable();
             $table->timestamps();
         });
@@ -24,11 +23,9 @@ return new class extends Migration
 
     /**
      * Reverse the migrations.
-     *
-     * @return void
      */
-    public function down()
+    public function down(): void
     {
-        Schema::dropIfExists('settings');
+        Schema::dropIfExists('facilities');
     }
 };

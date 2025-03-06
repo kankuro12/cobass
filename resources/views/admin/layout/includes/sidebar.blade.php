@@ -62,6 +62,16 @@
                     Teacher
                 </a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ route('admin.add.index') }}">
+                    <i class="fas fa-plus-circle"></i> Add Data
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ route('admin.add.facility') }}">
+                    <i class="fas fa-building"></i> Facilities
+                </a>
+            </li>
             <li>
                 <a href="{{ route('admin.testimonial.index') }}">
                     <i class="material-icons">comment</i>
