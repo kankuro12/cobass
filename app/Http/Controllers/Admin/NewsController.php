@@ -34,7 +34,7 @@ class NewsController extends Controller
 
         News::create([
             'title' => $request->title,
-            'feature_image' => 'storage/' . $path,
+            'feature_image' => $path,
             'short_content' => $request->short_content,
             'extra_content' => $request->extra_content,
         ]);
@@ -57,9 +57,8 @@ class NewsController extends Controller
         ]);
 
         if ($request->hasFile('feature_image')) {
-            Storage::delete('public/' . str_replace('storage/', '', $news->feature_image));
             $path = $request->file('feature_image')->store('uploads/news');
-            $news->feature_image = 'storage/' . $path;
+            $news->feature_image = $path;
         }
 
         $news->update([
@@ -73,9 +72,7 @@ class NewsController extends Controller
 
     public function destroy(News $news)
     {
-        Storage::delete('public/' . str_replace('storage/', '', $news->feature_image));
         $news->delete();
-
         return redirect()->route('admin.news.index')->with('success', 'News deleted successfully!');
     }
 }
