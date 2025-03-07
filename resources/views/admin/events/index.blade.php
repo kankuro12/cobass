@@ -36,7 +36,7 @@
                             <a href="{{ route('admin.events.edit', $event->id) }}" class="btn btn-warning btn-sm">Edit</a>
 
                             <!-- Corrected form tag -->
-                            <form action="{{ route('admin.events.destroy', $event->id) }}" method="POST"
+                            <form action="{{ route('admin.events.del', $event->id) }}" method="POST"
                                 style="display:inline;">
                                 @csrf
                                 @method('DELETE')

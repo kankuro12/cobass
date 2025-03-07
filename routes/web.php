@@ -186,7 +186,7 @@ Route::prefix("admin")->name("admin.")->group(function () {
 
 
 
-    Route::prefix('event')->name('event.')->group(function () {
+    Route::prefix('events')->name('events.')->group(function () {
         Route::get('', [EventController::class, 'index'])->name('index');
         Route::match(['get', 'post'], 'add/', [EventController::class, 'add'])->name('add');
         Route::match(['get', 'post'], 'edit/{event}', [EventController::class, 'edit'])->name('edit');
