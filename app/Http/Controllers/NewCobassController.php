@@ -77,6 +77,7 @@ class NewCobassController extends Controller
 
     public function event()
     {
+        $courses = Course::all(); // Fetch courses and pass to the view
         return view('front.newPage.event');
     }
 

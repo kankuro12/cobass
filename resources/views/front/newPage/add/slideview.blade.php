@@ -1,8 +1,15 @@
-<div class="slider-area">
+<div class="slider-area" style="height: 80vh;">
     <div class="slider-active owl-carousel">
         @foreach ($sliders as $slider)
             <div class="single-slider slider-height-1 bg-img"
-                 style="background-image: url('{{ asset(!empty($slider->mobile_image) ? $slider->mobile_image : $slider->image) }}');">
+                 style="background-image: url('{{ asset($slider->image) }}'); height: 80vh;">
+                <style>
+                    @media (max-width: 768px) {
+                        .single-slider.slider-height-1.bg-img {
+                            background-image: url('{{ asset($slider->mobile_image) }}') !important;
+                        }
+                    }
+                </style>
                 <div class="container">
                     <div class="row">
                         <div class="col-lg-9 col-md-7 col-12">

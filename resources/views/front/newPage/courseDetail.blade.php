@@ -20,12 +20,15 @@
 <div class="container">
     <div class="row">
         <!-- Left Section: Course Details -->
-        <div class="col-md-8">
-            <div class="course-detail">
-                <img src="{{ asset( $course->image) }}" alt="{{ $course->name }}" class="img-fluid">
-                <h2>{{ $course->name }}</h2>
-                <p><strong>Faculty:</strong> {{ $course->faculty }}</p>
-                <div>{!! $course->long_des !!}</div>
+        <div class="col-md-8 p-3">
+            <div class="course-detail shadow">
+                <img src="{{ asset( $course->image) }}" alt="{{ $course->name }}" class="img-fluid" style="width: 40%; height: 200px;">
+                <div class="info p-3 mt-3">
+                    <h2>{{ $course->name }}</h2>
+                    <p><strong>Faculty:</strong> {{ $course->faculty }}</p>
+                    <div>{!! $course->long_des !!}</div>
+                </div>
+
             </div>
         </div>
 

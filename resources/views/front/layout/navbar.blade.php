@@ -1,6 +1,9 @@
     {{-- @php
     $logo = getSetting('top_logo' , true );
     @endphp --}}
+    @php
+        $courses = \App\Models\Course::all();
+    @endphp
     <header class="header-area">
         <div class="header-top bg-img"
             style="background-image:url('https://clipart-library.com/new_gallery/504773_straight-white-line-png.png');">
@@ -65,10 +68,6 @@
                                         <li><a href="{{ route('gallery') }}"> Gallery</a></li>
 
                                         <li><a href="{{ route('about') }}"> About us </a>
-                                            {{-- <ul class="submenu">
-                                            <li><a href="blog.html">blog</a></li>
-                                            <li><a href="blog-details.html">blog details</a></li>
-                                        </ul> --}}
                                         </li>
                                         <li><a href="{{ route('contact') }}"> CONTACT </a></li>
                                     </ul>

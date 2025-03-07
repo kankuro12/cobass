@@ -25,18 +25,11 @@
             <!-- Dropify Image Upload -->
             <div class="form-group">
                 <label for="link">Upload Image</label>
-                <input type="file" name="link" id="link" class="dropify" data-height="150" required />
+                <input type="file" name="link" id="link" class="form-control dropify" data-height="150" required />
             </div>
 
             <button type="submit" class="btn btn-primary">Submit</button>
         </form>
-        <script>
-            $(document).ready(function() {
-                $('.dropify').dropify();
-            });
-        </script>
-
-
     </div>
     <script>
         $(document).ready(function() {

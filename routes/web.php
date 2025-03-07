@@ -59,7 +59,7 @@ Route::get('notice', [NewCobassController::class, 'notice'])->name('notice');
 // Route for courses listing
 Route::get('course', [NewCobassController::class, 'course'])->name('course');
 Route::get('/course/{id}', [NewCobassController::class, 'showCourse'])->name('course.show');
-Route::get('courseDetail', [NewCobassController::class, 'courseDetail'])->name('courseDetail');
+Route::get('courseDetail/', [NewCobassController::class, 'courseDetail'])->name('courseDetail');
 //notice route
 Route::get('/notices', [NewCobassController::class, 'showNotices'])->name('notices.show');
 //downloads route

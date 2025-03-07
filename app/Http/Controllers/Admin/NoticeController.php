@@ -27,7 +27,6 @@ class NoticeController extends Controller
             'title' => 'required|string|max:255',
             'date' => 'required|date',
             'details' => 'required|string',
-            'link' => 'nullable|image|mimes:jpg,png,jpeg,svg|max:2048',
         ]);
 
         // Handle Image Upload (store in 'link' column)
