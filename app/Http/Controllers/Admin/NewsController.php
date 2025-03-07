@@ -30,7 +30,7 @@ class NewsController extends Controller
         ]);
 
         // Upload feature image
-        $path = $request->file('feature_image')->store('uploads/news', 'public');
+        $path = $request->file('feature_image')->store('uploads/news');
 
         News::create([
             'title' => $request->title,
@@ -58,7 +58,7 @@ class NewsController extends Controller
 
         if ($request->hasFile('feature_image')) {
             Storage::delete('public/' . str_replace('storage/', '', $news->feature_image));
-            $path = $request->file('feature_image')->store('uploads/news', 'public');
+            $path = $request->file('feature_image')->store('uploads/news');
             $news->feature_image = 'storage/' . $path;
         }
 

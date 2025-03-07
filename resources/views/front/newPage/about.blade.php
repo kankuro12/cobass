@@ -73,12 +73,10 @@
                     <img src="	https://htmldemo.net/glaxdu/glaxdu/assets/img/banner/about.png" alt="">
                 </div>
             </div>
-        </div>
-    </div>
-</div>
-<div class="video-area bg-img pt-270 pb-270" style="background-image:url('https://htmldemo.net/glaxdu/glaxdu/assets/img/banner/video.jpg');">
+        </div>\
+        div class="video-area bg-img pt-270 pb-270" style="background-image:url('https://htmldemo.net/glaxdu/glaxdu/assets/img/banner/video.jpg');">
     <div class="video-btn-2">
-        <a class="video-popup" href="https://www.youtube.com/watch?v=sv5hK4crIRc">
+        <a class="video-popup" href="https://www.youtube.com/watch?v=AeFjWZjz6Bg">
             <img class="animated" src="https://htmldemo.net/glaxdu/glaxdu/assets/img/icon-img/viddeo-btn.png" alt="">
         </a>
     </div>

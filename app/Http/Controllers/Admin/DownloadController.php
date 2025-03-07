@@ -28,7 +28,7 @@ class DownloadController extends Controller
 
     // Check if file is uploaded
     if ($request->hasFile('file')) {
-        $filePath = $request->file('file')->store('downloads', 'public'); // Save file in storage
+        $filePath = $request->file('file')->store('downloads'); // Save file in storage
     } else {
         return back()->with('error', 'File upload failed. Please try again.');
     }

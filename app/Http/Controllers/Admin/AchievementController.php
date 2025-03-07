@@ -51,7 +51,7 @@ class AchievementController extends Controller
         ]);
 
         if ($request->hasFile('image')) {
-            $imagePath = $request->file('image')->store('achievements', 'public');
+            $imagePath = $request->file('image')->store('achievements');
             $achievement->update(['image' => $imagePath]);
         }
 

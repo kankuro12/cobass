@@ -11,7 +11,7 @@
                 <div class="event-img">
                     <!-- Use the image path from the database -->
                     <a href="event-details.html">
-                        <img src="{{ asset("storage/{$event->feature_image}") }}" alt="{{ $event->title }}">
+                        <img src="{{ asset($event->feature_image) }}" alt="{{ $event->title }}">
                     </a>
                     <div class="event-date-wrap">
                         <span class="event-date">{{ date('j', strtotime($event->start_date)) }}</span>

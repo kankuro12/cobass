@@ -7,12 +7,12 @@
             <p>{{ $data->program }}</p>
         </div>
 
-        <div class="course-slider-active nav-style-1 owl-carousel">
+        <div class="course-slider-active nav-style-1 owl-carousel" data-margin="10">
             @if(isset($courses) && count($courses) > 0)
             @foreach ($courses as $course)
-                <div class="single-course" style="margin-bottom: 0;">
+                <div class="single-course" style="margin-bottom: 0; border: 1px solid #ddd; padding: 15px;">
                     <div class="course-img">
-                        <a href="#"><img src="{{ asset($course->image) }}" alt=""></a>
+                        <a href="#"><img src="{{ asset($course->image) }}" alt="{{ $course->name }}"></a>
                     </div>
                     <div class="course-content">
                         <h4><a href="#"> {{ $course->name }}</a></h4>

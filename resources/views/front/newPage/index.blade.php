@@ -172,6 +172,6 @@
     @include('front.newpage.add.achieveview')
     @include('front.newPage.add.register')
     @include('front.newPage.add.teachersview')
-    @include('front.newPage.eventview')
+    @include('front.newPage.add.eventview')
     @include('front.newPage.add.newsview')
 @endsection

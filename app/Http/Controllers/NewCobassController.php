@@ -72,7 +72,7 @@ class NewCobassController extends Controller
         $facility4 = Facility::find(4);  // Example: Fetch the fourth facility
 
 
-        return view('front.newPage.index', compact('sliders', 'courses', 'teachers', 'testimonials', 'popup', 'events', 'news', 'data', 'facility1', 'facility2', 'facility3', 'facility4','achievementData'));
+        return view('front.newPage.index', compact('sliders', 'courses', 'teachers', 'testimonials', 'popup', 'events', 'news', 'data', 'facility1', 'facility2', 'facility3', 'facility4', 'achievementData'));
     }
 
     public function event()
@@ -184,6 +184,30 @@ class NewCobassController extends Controller
         $achievementData = $achievements->keyBy('key');
 
         return view('front.newPage.achievements', compact('achievementData'));
+    }
+    public function showNews($id)
+    {
+        $news = News::findOrFail($id);
+        $otherNews = News::where('id', '!=', $id)->latest()->take(5)->get(); // Fetch 5 other news items
+
+        return view('front.newPage.add.newsview-details', compact('news', 'otherNews'));
+    }
+    public function listEvents(Request $request)
+    {
+        $query = Event::query();
+
+        if ($request->has('search')) {
+            $query->where('title', 'like', '%' . $request->search . '%');
+        }
+
+        $events = $query->get();
+        return view('front.newPage.add.events', compact('events'));
+    }
+
+    public function showEvent($id)
+    {
+        $event = Event::findOrFail($id);
+        return view('front.newPage.add.event-details', compact('event'));
     }
 
 

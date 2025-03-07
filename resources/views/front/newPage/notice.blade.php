@@ -5,7 +5,7 @@
     <div class="breadcrumb-top default-overlay bg-img breadcrumb-overly-3 pt-100 pb-95" style="background-image:url('https://htmldemo.net/glaxdu/glaxdu/assets/img/bg/breadcrumb-bg-3.jpg');">
         <div class="container">
             <h2>Notice Grid</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore .</p>
+            <p>Stay informed with our latest announcements regarding academic schedules, upcoming events, admission deadlines, scholarship opportunities, and policy updates.  .</p>
         </div>
     </div>
     <div class="breadcrumb-bottom">
@@ -23,7 +23,7 @@
             <div class="col-12">
                 <ul class="notice-list">
                     @foreach ($notices as $notice)
-                    <li class="notice-item mb-4">
+                    <li class="notice-item mb-4" style="border: 1px solid #ddd; padding: 15px; border-radius: 5px;">
                         <div class="notice-content">
                             <h3 style="font-size: 1.5em;"><a href="#">{{ $notice->title }}</a></h3>
                             <div class="event-meta-wrap">

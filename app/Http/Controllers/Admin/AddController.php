@@ -32,7 +32,7 @@ class AddController extends Controller
             $add = Add::updateOrCreate(['key' => $key], ['value' => $request->$key]);
 
             if ($request->hasFile("{$key}_icon")) {
-                $iconPath = $request->file("{$key}_icon")->store('icons', 'public');
+                $iconPath = $request->file("{$key}_icon")->store('icons');
                 $add->update(['icon' => $iconPath]);
             }
         }

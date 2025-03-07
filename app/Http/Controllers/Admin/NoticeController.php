@@ -33,7 +33,7 @@ class NoticeController extends Controller
         // Handle Image Upload (store in 'link' column)
         $imagePath = null;
         if ($request->hasFile('link')) {
-            $imagePath = $request->file('link')->store('uploads/notices', 'public');
+            $imagePath = $request->file('link')->store('uploads/notices');
         }
 
         Notice::create([

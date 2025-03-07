@@ -8,7 +8,7 @@
         <div class="breadcrumb-bottom">
             <div class="container">
                 <ul>
-                    <li><a href="#">Home</a> <span><i class="fa fa-angle-double-right"></i>Achievements</span></li>
+                    <li><a href="{{ route('index') }}">Home</a> <span><i class="fa fa-angle-double-right"></i>Achievements</span></li>
                 </ul>
             </div>
         </div>
@@ -17,9 +17,9 @@
         <h2 class="text-center">Achievements</h2>
         <div class="row">
             @foreach ($achievements as $achievement)
-                <div class="col-md-4">
+                <div class="col-md-3 mb-3">
                     <div class="card custom-card">
-                        <img src="{{ asset('storage/' . $achievement->image) }}" class="card-img-top animated-img" alt="Achievement">
+                        <img src="{{ asset("storage/{$achievement->image}") }}" class="card-img-top animated-img" alt="Achievement">
                         <div class="card-body">
                             <h5 class="card-title">{{ $achievement->title }}</h5>
                             <p class="card-text">{{ $achievement->description }}</p>
@@ -32,12 +32,18 @@
 
     <style>
         .custom-card {
-            height: 400px; /* Adjust the height as needed */
-            width: 250px; /* Adjust the width as needed */
+            height: 100%; /* Make the card take full height */
             text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+        }
+        .custom-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
         }
         .custom-card img {
             height: 200px; /* Adjust the image height as needed */
+            width: 100%;
             object-fit: cover;
             transition: transform 0.3s ease-in-out;
         }

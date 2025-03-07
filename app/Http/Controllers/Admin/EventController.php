@@ -34,19 +34,18 @@ class EventController extends Controller
         ]);
 
         // Upload feature image
-        $path = $request->file('feature_image')->store('uploads/events', 'public');
+        $path = $request->file('feature_image')->store(path: 'uploads/events', );
 
         // Store the event in the database
         Event::create([
             'title' => $request->title,
-            'venue' => $request->venue,
-            'start_date' => $request->start_date,
+            'venue' => $request->venue,            'start_date' => $request->start_date,
             'end_date' => $request->end_date,
             'start_time' => $request->start_time,
             'end_time' => $request->end_time,
             'short_description' => $request->short_description,
             'long_description' => $request->long_description,
-            'feature_image' => 'storage/' . $path,
+            'feature_image' => $path,
         ]);
 
         return redirect()->route('admin.events.index')->with('success', 'Event created successfully!');
@@ -78,7 +77,7 @@ class EventController extends Controller
             }
 
             // Upload the new feature image
-            $path = $request->file('feature_image')->store('uploads/events', 'public');
+            $path = $request->file('feature_image')->store('uploads/events');
             $event->feature_image = 'storage/' . $path;
         }
 

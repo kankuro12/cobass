@@ -44,7 +44,7 @@ class FacilityController extends Controller
 
             if ($request->hasFile("{$facility}_icon")) {
                 $file = $request->file("{$facility}_icon");
-                $path = $file->store('facilities', 'public');
+                $path = $file->store('facilities');
                 $facilityData->update(['icon' => $path]);
             }
         }
