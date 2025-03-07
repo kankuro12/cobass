@@ -13,7 +13,7 @@
 @endsection
 @section('content')
     <div class="p-3 shadow bg-white">
-        <form action="{{ route('admin.news.store') }}" method="POST" enctype="multipart/form-data">
+        <form action="{{ route('admin.news.add') }}" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="row">
                 <div class="col-md-6">

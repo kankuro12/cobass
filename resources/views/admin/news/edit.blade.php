@@ -16,9 +16,8 @@
 
 @section('content')
     <div class="p-3 shadow bg-white">
-        <form action="{{ route('admin.news.update', $news->id) }}" method="POST" enctype="multipart/form-data">
+        <form action="{{ route('admin.news.edit', $news->id) }}" method="POST" enctype="multipart/form-data">
             @csrf
-            @method('PUT')
             <div class="row">
                 <div class="col-md-6">
                     <div class="mb-3">

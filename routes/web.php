@@ -181,7 +181,7 @@ Route::prefix("admin")->name("admin.")->group(function () {
         // Route::get('list', [testimonialController::class, 'list'])->name('list');
     });
     // News and Events routes
-    Route::resource('news', NewsController::class);
+    // Route::resource('news', NewsController::class);
     // Route::resource('events', EventController::class);
 
 
@@ -191,6 +191,12 @@ Route::prefix("admin")->name("admin.")->group(function () {
         Route::match(['get', 'post'], 'add/', [EventController::class, 'add'])->name('add');
         Route::match(['get', 'post'], 'edit/{event}', [EventController::class, 'edit'])->name('edit');
         Route::match(['get', 'post'], 'del/{event}', [EventController::class, 'del'])->name('del');
+    });
+    Route::prefix('news')->name('news.')->group(function () {
+        Route::get('', [NewsController::class, 'index'])->name('index');
+        Route::match(['get', 'post'], 'add/', [NewsController::class, 'add'])->name('add');
+        Route::match(['get', 'post'], 'edit/{event}', [NewsController::class, 'edit'])->name('edit');
+        Route::match(['get', 'post'], 'del/{event}', [NewsController::class, 'del'])->name('del');
     });
     Route::prefix('setting')->name('setting.')->group(function () {
 

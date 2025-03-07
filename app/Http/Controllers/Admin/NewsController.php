@@ -15,62 +15,85 @@ class NewsController extends Controller
         return view('admin.news.index', compact('news'));
     }
 
-    public function create()
+    public function add(Request $request)
     {
-        return view('admin.news.create');
-    }
-
-    public function store(Request $request)
-    {
-        $request->validate([
-            'title' => 'required|string|max:255',
-            'feature_image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
-            'short_content' => 'required|string|max:500',
-            'extra_content' => 'required',
-        ]);
-
-        // Upload feature image
-        $path = $request->file('feature_image')->store('uploads/news');
-
-        News::create([
-            'title' => $request->title,
-            'feature_image' => $path,
-            'short_content' => $request->short_content,
-            'extra_content' => $request->extra_content,
-        ]);
-
-        return redirect()->route('admin.news.index')->with('success', 'News added successfully!');
-    }
-
-    public function edit(News $news)
-    {
-        return view('admin.news.edit', compact('news'));
-    }
-
-    public function update(Request $request, News $news)
-    {
-        $request->validate([
-            'title' => 'required|string|max:255',
-            'feature_image' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
-            'short_content' => 'required|string|max:500',
-            'extra_content' => 'required',
-        ]);
-
-        if ($request->hasFile('feature_image')) {
-            $path = $request->file('feature_image')->store('uploads/news');
-            $news->feature_image = $path;
+        if ($request->getMethod() == 'POST') {
+            $news = new News();
+            $news->title = $request->title;
+            $news->short_content = $request->short_content;
+            $news->extra_content = $request->extra_content;
+            if ($request->hasFile('feature_image')) {
+                $news->feature_image = $request->feature_image->store('uploads/news');
+            }
+            $news->save();
+            return redirect()->back()->with('message', 'Successfully Added');
+        } else {
+            return view('admin.news.add');
         }
+    }
+    // public function store(Request $request)
+    // {
+    //     $request->validate([
+    //         'title' => 'required|string|max:255',
+    //         'feature_image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+    //         'short_content' => 'required|string|max:500',
+    //         'extra_content' => 'required',
+    //     ]);
 
-        $news->update([
-            'title' => $request->title,
-            'short_content' => $request->short_content,
-            'extra_content' => $request->extra_content,
-        ]);
+    //     // Upload feature image
+    //     $path = $request->file('feature_image')->store('uploads/news');
 
-        return redirect()->route('admin.news.index')->with('success', 'News updated successfully!');
+    //     News::create([
+    //         'title' => $request->title,
+    //         'feature_image' => $path,
+    //         'short_content' => $request->short_content,
+    //         'extra_content' => $request->extra_content,
+    //     ]);
+
+    //     return redirect()->route('admin.news.index')->with('success', 'News added successfully!');
+    // }
+
+    public function edit(Request $request, $news)
+    {
+        $news = News::where('id', $news)->first();
+        if ($request->getMethod() == 'POST') {
+            $news->title = $request->title;
+            $news->short_content = $request->short_content;
+            $news->extra_content = $request->extra_content;
+            if ($request->hasFile('feature_image')) {
+                $news->feature_image = $request->feature_image->store('uploads/news');
+            }
+            $news->save();
+            return redirect()->back()->with('message', 'Successfully Updated');
+        } else {
+            return view('admin.news.edit', compact('news'));
+        }
     }
 
-    public function destroy(News $news)
+    // public function update(Request $request, News $news)
+    // {
+    //     $request->validate([
+    //         'title' => 'required|string|max:255',
+    //         'feature_image' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
+    //         'short_content' => 'required|string|max:500',
+    //         'extra_content' => 'required',
+    //     ]);
+
+    //     if ($request->hasFile('feature_image')) {
+    //         $path = $request->file('feature_image')->store('uploads/news');
+    //         $news->feature_image = $path;
+    //     }
+
+    //     $news->update([
+    //         'title' => $request->title,
+    //         'short_content' => $request->short_content,
+    //         'extra_content' => $request->extra_content,
+    //     ]);
+
+    //     return redirect()->route('admin.news.index')->with('success', 'News updated successfully!');
+    // }
+
+    public function del(News $news)
     {
         $news->delete();
         return redirect()->route('admin.news.index')->with('success', 'News deleted successfully!');
