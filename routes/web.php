@@ -80,6 +80,7 @@ Route::get('register', [RegisterController::class, 'showForm'])->name('register.
 // Show the news page
 Route::get('/news', [NewCobassController::class, 'showNews'])->name('news');
 Route::get('/news/{id}', [NewCobassController::class, 'showNews'])->name('news.details');
+Route::get('/news', [NewCobassController::class, 'newsList'])->name('news.list');
 
 // Handle form submission
 Route::post('register', [RegisterController::class, 'submitForm'])->name('register.submit');
@@ -88,6 +89,8 @@ Route::get('/facilities', [NewCobassController::class, 'showFacilities']);
 //Handle the event details route
 Route::get('/events', [NewCobassController::class, 'listEvents'])->name('events.index'); // List all events
 Route::get('/events/{id}', [NewCobassController::class, 'showEvent'])->name('events.details'); // View event details
+Route::get('/events', [NewCobassController::class, 'eventList'])->name('events.list');
+
 
 
 //Route::get('/course/{slug}', [CourseController::class, 'show'])->name('course.show');

@@ -59,7 +59,7 @@
                                     <label for="{{ $key }}_icon" class="form-label fw-bold">Upload Icon</label>
                                     <input type="file" name="{{ $key }}_icon" id="{{ $key }}_icon"
                                         class="dropify" accept="image/*"
-                                        @if (!empty($facilities[$key]->icon)) data-default-file="{{ asset('storage/' . $facilities[$key]->icon) }}" @endif>
+                                        @if (!empty($facilities[$key]->icon)) data-default-file="{{ asset($facilities[$key]->icon) }}" @endif>
                                 </div>
                             </div>
                         @endforeach

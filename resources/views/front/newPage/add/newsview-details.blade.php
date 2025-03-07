@@ -1,45 +1,52 @@
 @extends('front.layout.app')
 
 @section('content')
-    <div class="event-area bg-img default-overlay pt-130 pb-130"
-        style="background-image:url('https://images.pexels.com/photos/1029577/pexels-photo-1029577.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');">
+<div class="breadcrumb-area">
+    <div class="breadcrumb-top default-overlay bg-img breadcrumb-overly-2 pt-100 pb-95"
+        style="background-image:url();">
         <div class="container">
-            <div class="section-title mb-75 text-center">
-                <h2><span>News</span> Details</h2>
-            </div>
-            <div class="row">
-                <div class="col-lg-8">
-                    <div class="single-event event-white-bg">
-                        <div class="event-img">
-                            <img src="{{ asset($news->feature_image) }}" alt="{{ $news->title }}"
-                                style="width: 100%; height: auto;">
-                            <div class="event-date-wrap">
-                                <span class="event-date">{{ date('j', strtotime($news->created_at)) }}</span>
-                                <span>{{ date('M', strtotime($news->created_at)) }}</span>
-                            </div>
-                        </div>
-                        <div class="event-content" style="padding: 20px;">
-                            <h3>{{ $news->title }}</h3>
-                            <p>{!! $news->long_content !!}</p>
-                        </div>
+            <h2>News Details</h2>
+            <p>{{ $news->title }}</p>
+        </div>
+    </div>
+</div>
+
+<div class="container mt-4">
+    <div class="row">
+        <!-- Left Section: News Details -->
+        <div class="col-lg-8">
+            <div class="single-event event-white-bg shadow p-3 mb-4 bg-white rounded">
+                <div class="event-img">
+                    <img src="{{ asset($news->feature_image) }}" alt="{{ $news->title }}" class="img-fluid w-100">
+                    <div class="event-date-wrap">
+                        <span class="event-date">{{ date('j', strtotime($news->created_at)) }}</span>
+                        <span>{{ date('M', strtotime($news->created_at)) }}</span>
                     </div>
                 </div>
-                <div class="col-lg-4">
-                    <div class="sidebar">
-                        <h3>Other News</h3>
-                        @foreach ($otherNews as $item)
-                            <div class="sidebar-news-item">
-                                <a href="{{ route('news.details', $item->id) }}">
-                                    <img src="{{ asset("storage/{$item->feature_image}") }}" alt="{{ $item->title }}"
-                                        style="width: 100%; height: auto;">
-                                </a>
-                                <h4><a href="{{ route('news.details', $item->id) }}">{{ $item->title }}</a></h4>
-                                <p>{{ $item->short_content }}</p>
-                            </div>
-                        @endforeach
-                    </div>
+                <div class="event-content p-3">
+                    <h3>{{ $news->title }}</h3>
+                    <p>{!! $news->extra_content !!}</p>
                 </div>
             </div>
         </div>
+
+        <!-- Right Section: Other News -->
+        <div class="col-lg-4">
+            <div class="sidebar">
+                <h3 class="mb-3">Other News</h3>
+                @foreach ($otherNews as $item)
+                    <div class="sidebar-news-item d-flex mb-3 border p-3 rounded">
+                        <a href="{{ route('news.details', $item->id) }}" class="flex-shrink-0 me-3">
+                            <img src="{{ asset($item->feature_image) }}" alt="{{ $item->title }}" class="img-fluid" style="width: 80px; height: 80px; object-fit: cover;">
+                        </a>
+                        <div class="ms-2 p-3">
+                            <h5><a href="{{ route('news.details', $item->id) }}" class="text-dark">{{ $item->title }}</a></h5>
+                            <p class="small text-muted">{{ Str::limit($item->short_content, 50) }}</p>
+                        </div>
+                    </div>
+                @endforeach
+            </div>
+        </div>
     </div>
+</div>
 @endsection

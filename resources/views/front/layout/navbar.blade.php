@@ -1,6 +1,6 @@
-    {{-- @php
+    @php
     $logo = getSetting('top_logo' , true );
-    @endphp --}}
+    @endphp
     @php
         $courses = \App\Models\Course::all();
     @endphp
@@ -32,10 +32,10 @@
         <div class="header-bottom sticky-bar clearfix">
             <div class="container">
                 <div class="row">
-                    <div class="col-lg-2 col-md-6 col-4">
+                    <div class="col-lg-2 col-md-6 col-4 center">
                         <div class="logo">
-                            <a href="index.html">
-                                {{-- <img alt="" src="{{asset($logo)}}"> --}}
+                            <a href="{{ route('index') }}">
+                                <img alt="" src="{{asset($logo)}}" style="width: 50%">
                             </a>
                         </div>
                     </div>
@@ -47,7 +47,8 @@
                                         <li><a href="{{ route('index') }}"> HOME </a>
 
                                         </li>
-                                        <li><a href="{{ route('event') }}"> News & Events </a></li>
+                                        <li><a href="{{ route('events.list') }}">Events</a></li>
+                                        <li><a href="{{ route('news.list') }}"> News </a></li>
                                         <li><a href="{{ route('achievements') }}"> Achievements </a></li>
                                         <li><a href="{{ route('notice') }}"> Notice </a></li>
 

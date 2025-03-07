@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Facility;
+use Illuminate\Support\Facades\File;
 
 class FacilityController extends Controller
 {
@@ -32,6 +33,7 @@ class FacilityController extends Controller
         ]);
 
         $facilities = ['facility1', 'facility2', 'facility3', 'facility4'];
+        $uploadPath = 'uploads/facilities'; // Image storage folder
 
         foreach ($facilities as $facility) {
             $facilityData = Facility::updateOrCreate(
@@ -44,8 +46,24 @@ class FacilityController extends Controller
 
             if ($request->hasFile("{$facility}_icon")) {
                 $file = $request->file("{$facility}_icon");
-                $path = $file->store('facilities');
-                $facilityData->update(['icon' => $path]);
+                $filename = time() . '_' . $file->getClientOriginalName();
+
+                // Ensure directory exists
+                if (!File::exists(public_path($uploadPath))) {
+                    File::makeDirectory(public_path($uploadPath), 0755, true, true);
+                }
+
+                // Move new file
+                $file->move(public_path($uploadPath), $filename);
+                $newImagePath = $uploadPath . '/' . $filename;
+
+                // Delete old image if it exists
+                if (!empty($facilityData->icon) && File::exists(public_path($facilityData->icon))) {
+                    File::delete(public_path($facilityData->icon));
+                }
+
+                // Save new image path
+                $facilityData->update(['icon' => $newImagePath]);
             }
         }
 

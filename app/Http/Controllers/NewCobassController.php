@@ -65,14 +65,11 @@ class NewCobassController extends Controller
         $testimonials = Testimonial::all(); // Fetch all testimonials
         $popup = Popup::where('active', 1)->first(); // Get the first active popup
         $data = $this->getHomepageData();
+
         // Fetch the facilities data, assuming these are the 4 facilities
-        $facility1 = Facility::find(1);  // Example: Fetch the first facility
-        $facility2 = Facility::find(2);  // Example: Fetch the second facility
-        $facility3 = Facility::find(3);  // Example: Fetch the third facility
-        $facility4 = Facility::find(4);  // Example: Fetch the fourth facility
+        $facility = Facility::all();  // Example: Fetch the first facility
 
-
-        return view('front.newPage.index', compact('sliders', 'courses', 'teachers', 'testimonials', 'popup', 'events', 'news', 'data', 'facility1', 'facility2', 'facility3', 'facility4', 'achievementData'));
+        return view('front.newPage.index', compact('sliders', 'courses', 'teachers', 'testimonials', 'popup', 'events', 'news', 'data', 'achievementData', 'facility'));
     }
 
     public function event()
@@ -184,7 +181,7 @@ class NewCobassController extends Controller
         // Map data to an array with keys like 'students', 'graduates', etc.
         $achievementData = $achievements->keyBy('key');
 
-        return view('front.newPage.achievements', compact('achievementData'));
+        return view('front.newPage.achievement', compact('achievementData'));
     }
     public function showNews($id)
     {
@@ -202,13 +199,54 @@ class NewCobassController extends Controller
         }
 
         $events = $query->get();
-        return view('front.newPage.add.events', compact('events'));
+        return view('front.newPage.add.eventview', compact('events'));
     }
 
     public function showEvent($id)
     {
         $event = Event::findOrFail($id);
-        return view('front.newPage.add.event-details', compact('event'));
+
+        // Get other events excluding the current one
+        $showother = Event::where('id', '!=', $id)->latest()->take(4)->get();
+
+        return view('front.newPage.add.eventview-details', compact('event', 'showother'));
+    }    public function newsList(Request $request)
+    {
+        $query = News::latest(); // Latest news first
+
+        // If search is present, filter results
+        if ($request->has('search')) {
+            $query->where('title', 'like', '%' . $request->search . '%');
+        }
+
+        $news = $query->paginate(9); // Show 9 news per page
+        $events = Event::all();
+
+        return view('front.newPage.news-list', compact('news', 'events'));
+    }
+    public function eventList(Request $request)
+    {
+        // Search functionality
+        $query = Event::query();
+        if ($request->has('search')) {
+            $query->where('title', 'like', '%' . $request->search . '%');
+        }
+
+        $events = $query->latest()->paginate(9); // Show 9 events per page
+
+        // Fetch the latest 4 news for the sidebar
+        $latestNews = News::latest()->take(4)->get();
+
+        return view('front.newPage.event-list', compact('events', 'latestNews'));
+    }
+    public function eventDetails($id)
+    {
+        $event = Event::findOrFail($id);
+
+        // Fetch the latest 4 events for the sidebar
+        $latestEvents = Event::latest()->take(4)->get();
+
+        return view('front.newPage.add.eventview-details', compact('event', 'latestEvents'));
     }
 
 
