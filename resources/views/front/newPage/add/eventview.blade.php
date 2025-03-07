@@ -16,7 +16,7 @@
 
         <div class="row">
             @foreach ($events->take(4) as $event)
-                <div class="col-lg-3 col-md-6">
+                <div class="col-lg-3 col-md-6 mb-2">
                     <div class="single-event event-white-bg">
                         <div class="event-img" style="height: 200px; overflow: hidden;">
                             <!-- Use the image path from the database -->

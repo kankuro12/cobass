@@ -34,15 +34,8 @@
                         <td>{{ Str::limit($event->short_description, 50) }}</td>
                         <td>
                             <a href="{{ route('admin.events.edit', $event->id) }}" class="btn btn-warning btn-sm">Edit</a>
+                            <a href="{{ route('admin.events.del', $event->id) }}" class="btn btn-danger btn-sm">Delete</a>
 
-                            <!-- Corrected form tag -->
-                            <form action="{{ route('admin.events.del', $event->id) }}" method="POST"
-                                style="display:inline;">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit" class="btn btn-danger btn-sm"
-                                    onclick="return confirm('Are you sure you want to delete this event?')">Delete</button>
-                            </form>
                         </td>
                     </tr>
                 @endforeach

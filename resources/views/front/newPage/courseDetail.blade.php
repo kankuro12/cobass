@@ -22,7 +22,7 @@
         <!-- Left Section: Course Details -->
         <div class="col-md-8">
             <div class="course-detail">
-                <img src="{{ asset('uploads/' . $course->image) }}" alt="{{ $course->name }}" class="img-fluid">
+                <img src="{{ asset( $course->image) }}" alt="{{ $course->name }}" class="img-fluid">
                 <h2>{{ $course->name }}</h2>
                 <p><strong>Faculty:</strong> {{ $course->faculty }}</p>
                 <div>{!! $course->long_des !!}</div>
