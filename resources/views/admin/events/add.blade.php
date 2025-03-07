@@ -14,7 +14,7 @@
 
 @section('content')
 <div class="bg-white shadow p-3 mt-3">
-    <form action="{{ route('admin.events.store') }}" method="POST" enctype="multipart/form-data">
+    <form action="{{ route('admin.events.add') }}" method="POST" enctype="multipart/form-data">
         @csrf
 
         <div class="row">

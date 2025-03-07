@@ -5,7 +5,7 @@
     </li>
 @endsection
 @section('page-option')
-    <a href="{{ route('admin.events.create') }}" class="btn btn-primary">Add Event</a>
+    <a href="{{ route('admin.events.add') }}" class="btn btn-primary">Add Event</a>
 @endsection
 @section('content')
     <div class="shadow p-2 bg-white">

@@ -182,16 +182,16 @@ Route::prefix("admin")->name("admin.")->group(function () {
     });
     // News and Events routes
     Route::resource('news', NewsController::class);
-    Route::resource('events', EventController::class);
+    // Route::resource('events', EventController::class);
 
 
 
-    // Route::prefix('event')->name('event.')->group(function () {
-    //     Route::get('', [EventController::class, 'index'])->name('index');
-    //     Route::match(['get', 'post'], 'add/', [EventController::class, 'add'])->name('add');
-    //     Route::match(['get', 'post'], 'edit/{event}', [EventController::class, 'edit'])->name('edit');
-    //     Route::match(['get', 'post'], 'del/{event}', [EventController::class, 'del'])->name('del');
-    // });
+    Route::prefix('event')->name('event.')->group(function () {
+        Route::get('', [EventController::class, 'index'])->name('index');
+        Route::match(['get', 'post'], 'add/', [EventController::class, 'add'])->name('add');
+        Route::match(['get', 'post'], 'edit/{event}', [EventController::class, 'edit'])->name('edit');
+        Route::match(['get', 'post'], 'del/{event}', [EventController::class, 'del'])->name('del');
+    });
     Route::prefix('setting')->name('setting.')->group(function () {
 
         Route::match(['GET', 'POST'], '@{type}', [SettingController::class, 'index'])->name('index');
