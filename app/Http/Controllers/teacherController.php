@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\teacher;
+use App\Models\Teacher;
 use Illuminate\Support\Facades\DB;
 
 class TeacherController extends Controller
