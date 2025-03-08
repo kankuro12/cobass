@@ -169,7 +169,7 @@
 
     @include('front.newPage.add.facultyview')
     @include('front.newPage.add.courseview')
-    @include('front.newpage.add.achieveview')
+    @include('front.newpage.add.achview')
     @include('front.newPage.add.register')
     @include('front.newPage.add.teachersview')
     @include('front.newPage.add.eventview')
