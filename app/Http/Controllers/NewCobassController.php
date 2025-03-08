@@ -63,13 +63,13 @@ class NewCobassController extends Controller
         $events = Event::all();
         $news = News::all();
         $testimonials = Testimonial::all(); // Fetch all testimonials
-        $popup = Popup::where('active', 1)->first(); // Get the first active popup
+        $popups = Popup::where('active', 1)->get(); // Get the first active popup
         $data = $this->getHomepageData();
 
         // Fetch the facilities data, assuming these are the 4 facilities
         $facility = Facility::all();  // Example: Fetch the first facility
 
-        return view('front.newPage.index', compact('sliders', 'courses', 'teachers', 'testimonials', 'popup', 'events', 'news', 'data', 'achievementData', 'facility'));
+        return view('front.newPage.index', compact('sliders', 'courses', 'teachers', 'testimonials', 'popups', 'events', 'news', 'data', 'achievementData', 'facility'));
     }
 
     public function event()
