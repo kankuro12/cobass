@@ -12,7 +12,7 @@ use App\Http\Controllers\Admin\AchievementController;
 use App\Http\Controllers\Admin\DownloadController;
 use App\Http\Controllers\Admin\FacilityController;
 use App\Http\Controllers\Admin\RegistrationController;
-use App\Http\Controllers\CourseController;
+use App\Http\Controllers\Admin\CourseController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\SettingController;
 use App\Http\Controllers\SliderController;
