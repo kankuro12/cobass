@@ -1,6 +1,18 @@
     @php
-    $logo = getSetting('top_logo' , true );
+        $logo = getSetting('top_logo', true);
     @endphp
+    @php
+        $data = getSetting('contact') ??
+            (object) [
+                'map' => '',
+                'email' => '',
+                'phone' => '',
+                'addr' => '',
+                'others' => [],
+            ];
+
+    @endphp
+
     @php
         $courses = \App\Models\Course::all();
     @endphp
@@ -12,8 +24,8 @@
                     <div class="col-lg-6 col-md-7 col-12 col-sm-8">
                         <div class="header-contact">
                             <ul>
-                                <li><i class="fa fa-phone"></i> +98 558 547 589</li>
-                                <li><i class="fa fa-envelope"></i><a href="#">arniko@gmail.com</a></li>
+                                <li><i class="fa fa-phone"></i> {{ $data->phone }}</li>
+                                <li><i class="fa fa-envelope"></i>{{$data->email}}</li>
                             </ul>
                         </div>
                     </div>
@@ -35,7 +47,7 @@
                     <div class="col-lg-2 col-md-6 col-4 center">
                         <div class="logo">
                             <a href="{{ route('index') }}">
-                                <img alt="" src="{{asset($logo)}}" style="width: 50%">
+                                <img alt="" src="{{ asset($logo) }}" style="width: 50%">
                             </a>
                         </div>
                     </div>

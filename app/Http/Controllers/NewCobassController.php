@@ -31,17 +31,6 @@ class NewCobassController extends Controller
             'about_title' => [],
         ];
     }
-    private function getContactData()
-    {
-        return getSetting('contact') ?? (object) [
-            'map' => '',
-            'email' => '',
-            'phone' => '',
-            'addr' => '',
-            'others' => [],
-        ];
-    }
-
     private function getMetaData()
     {
         return getSetting('meta') ?? (object) [

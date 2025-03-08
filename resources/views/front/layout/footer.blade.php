@@ -1,3 +1,15 @@
+
+@php
+$data = getSetting('contact') ??
+    (object) [
+        'map' => '',
+        'email' => '',
+        'phone' => '',
+        'addr' => '',
+        'others' => [],
+    ];
+
+@endphp
 <footer class="footer-area">
     <div class="footer-top bg-img default-overlay pt-130 pb-80" style="background-image:url('https://htmldemo.net/glaxdu/glaxdu/assets/img/bg/bg-4.jpg');">
         <div class="container">
@@ -68,9 +80,10 @@
                             <h4>Our Location</h4>
                         </div>
                     <div class="maps">
-                        <div class="footer-map">
-                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d446.5171539970967!2d87.27900639009763!3d26.451305046678105!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39ef74485d770559%3A0x2efafd005e09a60!2s(COBASS%20COLLEGE%20%2B2)%2C%20Biratnagar!5e0!3m2!1sen!2suk!4v1740905572709!5m2!1sen!2suk"
-                                width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        <div class="position-relative rounded overflow-hidden h-100" style="height: 300px;">
+                            <iframe src="https://maps.google.com/maps?q={{ $data->map }}&t=&z=13&ie=UTF8&iwloc=&output=embed"
+                                frameborder="0" height="100%" width="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        </div>
                         </div>
                     </div>
                 </div>
