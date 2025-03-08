@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\testimonial;
 
-class testimonialController extends Controller
+class TestimonialController extends Controller
 {
     public function index()
     {

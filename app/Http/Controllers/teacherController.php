@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\teacher;
 use Illuminate\Support\Facades\DB;
 
-class teacherController extends Controller
+class TeacherController extends Controller
 {
      public function index()
     {
