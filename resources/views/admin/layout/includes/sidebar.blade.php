@@ -64,7 +64,7 @@
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="{{ route('admin.add.index') }}">
-                    <i class="fas fa-plus-circle"></i> Add Data
+                    <i class="fas fa-plus-circle"></i> Home Achievements
                 </a>
             </li>
             <li class="nav-item">
@@ -114,12 +114,6 @@
                     </li>
                     <li class="sub-item">
                         <a href="{{ route('admin.setting.index', ['type' => 'top']) }}">Header</a>
-                    </li>
-                    <li class="sub-item">
-                        <a href="{{ route('admin.setting.index', ['type' => 'mid']) }}">Mid</a>
-                    </li>
-                    <li class="sub-item">
-                        <a href="{{ route('admin.setting.index', ['type' => 'HomeAchievement']) }}">Home Achievement</a>
                     </li>
                     <li class="sub-item">
                         <a href="{{ route('admin.setting.index', ['type' => 'about']) }}">About</a>

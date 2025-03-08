@@ -3,10 +3,9 @@
     <link rel="stylesheet" href="{{ asset('admin/plugins/drophify/css/dropify.min.css') }}">
 @endsection
 @section('s-title')
-    <li class="breadcrumb-item">
-        <a href="{{ route('admin.news.index') }}">News</a>
     <li class="breadcrumb-item active">
-        Create
+        News
+    </li>
     @endsection
     @section('page-option')
         <a href="{{ route('admin.news.add') }}" class="btn btn-primary">Add News</a>

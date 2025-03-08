@@ -1,7 +1,11 @@
 @extends('admin.layout.app')
+@section('s-title')
+    <li class="breadcrumb-item active">
+        Home-Achieve
+    </li>
+@endsection
 
 @section('content')
-<div class="container mt-4">
     <div class="card shadow-lg">
         <div class="card-header bg-primary text-white">
             <h4 class="mb-0">Update Data</h4>
@@ -33,7 +37,6 @@
             </form>
         </div>
     </div>
-</div>
 @endsection
 @section('script')
     <script src="{{ asset('admin/plugins/drophify/js/dropify.min.js') }}"></script>

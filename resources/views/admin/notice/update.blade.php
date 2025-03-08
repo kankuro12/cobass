@@ -1,4 +1,9 @@
 @extends('admin.layout.app')
+@section('s-title')
+    <li class="breadcrumb-item active">
+        Notices
+    </li>
+@endsection
 
 @section('content')
     <div class="container">

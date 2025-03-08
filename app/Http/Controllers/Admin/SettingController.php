@@ -20,21 +20,7 @@ class SettingController extends Controller
                 ['fabicon', 0],
             ]
         ],
-        'mid' =>[
-            'Mid Section',[
-                ['title',1],
-                ['desc',2],
-                ['img',0],
-            ],
-        ],
-        'HomeAchievement' => [
-            "Home Achievement", [
-                ['title', 1],
-                ['data', 1],
-                ['icon', 0],
-            ],
-            'views/front/home/achievement.blade.php'
-        ],
+
         'feature' => [
             "Feature Section",
             [

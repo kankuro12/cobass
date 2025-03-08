@@ -1,9 +1,13 @@
 @extends('admin.layout.app')
+@section('s-title')
+    <li class="breadcrumb-item active">
+        Messages
+    </li>
+@endsection
 
 @section('content')
 
     <div class="p-3 shadow bg-white">
-        <h3>Registrations</h3>
 
         @if(session('message'))
             <div class="alert alert-success">{{ session('message') }}</div>

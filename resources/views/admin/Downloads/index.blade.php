@@ -1,9 +1,10 @@
 @extends('admin.layout.app')
 @section('s-title')
-    <li class="breadcrumb
-    -item active">
-        Downloads
-    </li>
+@section('s-title')
+<li class="breadcrumb-item active">
+    Downloads
+</li>
+@endsection
 @endsection
 @section('page-option')
     <a href="{{ route('admin.downloads.create') }}" class="btn btn-primary">Add New Download</a>

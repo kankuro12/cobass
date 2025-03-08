@@ -4,7 +4,6 @@
             <h2>Our <span>Achievement</span></h2>
         </div>
         <div class="row">
-            <!-- Students -->
             <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6">
                 <div class="single-count mb-30 count-one">
                     <div class="count-img">
@@ -17,7 +16,7 @@
                 </div>
             </div>
 
-            <!-- Graduates -->
+
             <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6">
                 <div class="single-count mb-30 count-two">
                     <div class="count-img">

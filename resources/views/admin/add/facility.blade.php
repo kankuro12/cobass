@@ -1,4 +1,9 @@
 @extends('admin.layout.app')
+@section('s-title')
+    <li class="breadcrumb-item active">
+      Facility
+    </li>
+@endsection
 
 @section('css')
     <link rel="stylesheet" href="{{ asset('admin/plugins/drophify/css/dropify.min.css') }}">
