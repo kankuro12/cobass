@@ -34,7 +34,7 @@ class DownloadController extends Controller
     }
 
     // Save to database
-    $download = new \App\Models\Download();
+    $download = new Download();
     $download->title = $request->title;
     $download->description = $request->description;
     $download->file_path = $filePath;
