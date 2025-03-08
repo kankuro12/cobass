@@ -20,19 +20,19 @@ class PopupController extends Controller
     {
         if($request->getMethod()=="POST"){
             $popup=new Popup();
-         
+
             $popup->image=$request->image->store('uploads/popups');
             if($request->hasFile('mobile_image')){
                 $popup->mobile_image=$request->mobile_image->store('uploads/popups');
             }else{
                 $popup->mobile_image=$popup->image;
             }
-            
+
             $popup->save();
             return redirect()->back()->with('message','Popup Added');
             // dd($request->all(),$slider);
         }else{
-           
+
             return view('admin.setting.popup.add');
 
         }
@@ -47,7 +47,7 @@ class PopupController extends Controller
     }
     public function edit(Request $request,Popup $popup)
     {
-        if($request->getMethod()=="POST"){         
+        if($request->getMethod()=="POST"){
             $popup->image=$request->image->store('uploads/popups');
             if($request->hasFile('mobile_image')){
                 $popup->mobile_image=$request->mobile_image->store('uploads/popups');
@@ -56,7 +56,7 @@ class PopupController extends Controller
             return redirect()->back()->with('message','Popup Updated');
             // dd($request->all(),$slider);
         }else{
-           
+
             return view('admin.setting.popup.edit',compact('popup'));
 
         }
