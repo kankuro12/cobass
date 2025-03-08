@@ -12,17 +12,10 @@ use App\Http\Controllers\Admin\AchievementController;
 use App\Http\Controllers\Admin\DownloadController;
 use App\Http\Controllers\Admin\FacilityController;
 use App\Http\Controllers\Admin\RegistrationController;
-use App\Http\Controllers\Admin\FormController;
 use App\Http\Controllers\CourseController;
-use App\Http\Controllers\coursesController;
-// use App\Http\Controllers\teacherController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\SettingController;
-use App\Http\Controllers\FrontController;
 use App\Http\Controllers\SliderController;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
-use App\Http\Controllers\CobassController;
 use App\Http\Controllers\NewCobassController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\AchievementviewController;
@@ -120,7 +113,7 @@ Route::prefix("admin")->name("admin.")->group(function () {
         Route::match(["GET", "POST"], 'edit/{product}', [ProductController::class, 'edit'])->name('edit');
         Route::match(["GET", "POST"], 'del/{product}', [ProductController::class, 'del'])->name('del');
     });
-    Route::middleware('auth')->group(function () {
+    Route::middleware('auth')->group(callback: function () {
         Route::prefix('notice')->name('notice.')->group(function () {
             Route::get('', [NoticeController::class, 'index'])->name('index');
             Route::get('create', [NoticeController::class, 'create'])->name('create');
