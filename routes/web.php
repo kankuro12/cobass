@@ -13,7 +13,7 @@ use App\Http\Controllers\Admin\DownloadController;
 use App\Http\Controllers\Admin\FacilityController;
 use App\Http\Controllers\Admin\RegistrationController;
 use App\Http\Controllers\Admin\FormController;
-use App\Http\Controllers\courseController;
+use App\Http\Controllers\CourseController;
 use App\Http\Controllers\coursesController;
 // use App\Http\Controllers\teacherController;
 use App\Http\Controllers\Admin\ProductController;
@@ -22,12 +22,12 @@ use App\Http\Controllers\FrontController;
 use App\Http\Controllers\SliderController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
-use App\Http\Controllers\cobassController;
+use App\Http\Controllers\CobassController;
 use App\Http\Controllers\NewCobassController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\AchievementviewController;
-use App\Http\Controllers\testimonialController;
-use App\Http\Controllers\teacherController;
+use App\Http\Controllers\TestimonialController;
+use App\Http\Controllers\TeacherController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\AddController;
 
@@ -159,28 +159,28 @@ Route::prefix("admin")->name("admin.")->group(function () {
 
 
     Route::prefix('course')->name('course.')->group(function () {
-        Route::get('/', [courseController::class, 'index'])->name('index');
-        Route::match(['get', 'post'], 'add', [courseController::class, 'add'])->name('add');
-        Route::post('save', [courseController::class, 'save'])->name('save');
-        Route::match(['GET', 'POST'], 'edit/{course}', [courseController::class, 'edit'])->name('edit');
-        Route::match(['GET', 'POST'], 'del/{course}', [courseController::class, 'del'])->name('del');
+        Route::get('/', [CourseController::class, 'index'])->name('index');
+        Route::match(['get', 'post'], 'add', [CourseController::class, 'add'])->name('add');
+        Route::post('save', [CourseController::class, 'save'])->name('save');
+        Route::match(['GET', 'POST'], 'edit/{course}', [CourseController::class, 'edit'])->name('edit');
+        Route::match(['GET', 'POST'], 'del/{course}', [CourseController::class, 'del'])->name('del');
         // Route::get('list', [courseController::class, 'list'])->name('list');
     });
 
     Route::prefix('teacher')->name('teacher.')->group(function () {
-        Route::get('/', [teacherController::class, 'index'])->name('index');
-        Route::match(['get', 'post'], 'add', [teacherController::class, 'add'])->name('add');
-        Route::post('save', [teacherController::class, 'save'])->name('save');
+        Route::get('/', [TeacherController::class, 'index'])->name('index');
+        Route::match(['get', 'post'], 'add', [TeacherController::class, 'add'])->name('add');
+        Route::post('save', [TeacherController::class, 'save'])->name('save');
         // Route::get('list', [teacherController::class, 'list'])->name('list');
-        Route::match(['GET', 'POST'], 'edit/{teacher}', [teacherController::class, 'edit'])->name('edit');
-        Route::match(['GET', 'POST'], 'del/{teacher}', [teacherController::class, 'del'])->name('del');
+        Route::match(['GET', 'POST'], 'edit/{teacher}', [TeacherController::class, 'edit'])->name('edit');
+        Route::match(['GET', 'POST'], 'del/{teacher}', [TeacherController::class, 'del'])->name('del');
     });
     Route::prefix('testimonial')->name('testimonial.')->group(function () {
-        Route::get('/', [testimonialController::class, 'index'])->name('index');
-        Route::match(['get', 'post'], 'add', [testimonialController::class, 'add'])->name('add');
-        Route::post('save', [testimonialController::class, 'save'])->name('save');
-        Route::match(['GET', 'POST'], 'edit/{testimonial}', [testimonialController::class, 'edit'])->name('edit');
-        Route::match(['GET', 'POST'], 'del/{testimonial}', [testimonialController::class, 'del'])->name('del');
+        Route::get('/', [TestimonialController::class, 'index'])->name('index');
+        Route::match(['get', 'post'], 'add', [TestimonialController::class, 'add'])->name('add');
+        Route::post('save', [TestimonialController::class, 'save'])->name('save');
+        Route::match(['GET', 'POST'], 'edit/{testimonial}', [TestimonialController::class, 'edit'])->name('edit');
+        Route::match(['GET', 'POST'], 'del/{testimonial}', [TestimonialController::class, 'del'])->name('del');
         // Route::get('list', [testimonialController::class, 'list'])->name('list');
     });
     // News and Events routes
