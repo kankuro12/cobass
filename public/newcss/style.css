@@ -2,13 +2,13 @@
 /*-----------------------------------------------------------------------------------
 
     Template Name: Glaxdu – Education Bootstrap 4 Template
-    Version: 3 
+    Version: 3
 
 -----------------------------------------------------------------------------------
-    
+
     CSS INDEX
     ===================
-	
+
     1. Template default CSS
     2. Header style
 	3. Slider style
@@ -19,7 +19,7 @@
     8. Register style
     9. Teacher style
     10. Event area
-    11. Blog style 
+    11. Blog style
     12. footer area
     13. Banner style
     14. Product style
@@ -35,7 +35,7 @@
     24. Shop page
     25. Sidebar style
     26. Video style
-    
+
 -----------------------------------------------------------------------------------*/
 /*----------------------------------------*/
 /*  1. Template default CSS
@@ -143,7 +143,7 @@ ul {
   margin: 0;
   padding: 0; }
 
-/*-- 
+/*--
     - Common Classes
 -----------------------------------------*/
 .fix {
@@ -860,7 +860,7 @@ a:hover {
   padding-left: 190px; }
 
 /***************************
-    Page section padding 
+    Page section padding
 ****************************/
 .ptb-0 {
   padding: 0; }
@@ -947,7 +947,7 @@ a:hover {
   padding: 310px 0; }
 
 /***************************
-    Page section margin 
+    Page section margin
 ****************************/
 .mtb-0 {
   margin: 0; }
@@ -1003,7 +1003,7 @@ a:hover {
 .mtb-290 {
   margin: 290px 0; }
 
-/*-- 
+/*--
     - Input Placeholder
 -----------------------------------------*/
 input:-moz-placeholder,
@@ -1167,8 +1167,8 @@ textarea:focus {
 .mobile-menu.mean-container .mean-nav ul {
   margin: 14px 0 0; }
 
-/*-- 
-    Scroll Up 
+/*--
+    Scroll Up
 -----------------------------------------*/
 #scrollUp {
   width: 50px;
@@ -1356,7 +1356,8 @@ textarea:focus {
         display: none; }
 
 .logo {
-  margin-top: 31px; }
+
+  }
   @media only screen and (min-width: 768px) and (max-width: 991px) {
     .logo {
       margin-top: 0px; } }
