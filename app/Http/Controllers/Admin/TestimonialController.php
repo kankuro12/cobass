@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Testimonial;
 
@@ -9,7 +10,7 @@ class TestimonialController extends Controller
 {
     public function index()
     {
-        $testimonials = testimonial::all();
+        $testimonials = Testimonial::all();
 
         return view('admin.testimonial.index', compact('testimonials'));
     }
@@ -19,7 +20,7 @@ class TestimonialController extends Controller
     }
     public function save(Request $request)
     {
-        $testimonial = new testimonial();
+        $testimonial = new Testimonial();
         $testimonial->image =$request->image->store('upload/product');
         $testimonial->name = $request->name;
         $testimonial->profission = $request->profission;
@@ -34,12 +35,12 @@ class TestimonialController extends Controller
         // dd($testimonials);
         return view("admin.testimonial.index" ,compact('testimonials'));
     }
-    public function del(Request $request, testimonial $testimonial)
+    public function del(Request $request, Testimonial $testimonial)
     {
         $testimonial->delete();
         return redirect()->back()->with('message', 'Sucessfully Deleted');
     }
-    public function edit(Request $request, testimonial $testimonial)
+    public function edit(Request $request, Testimonial $testimonial)
     {
         if ($request->getMethod() == "POST") {
             $testimonial->name = $request->name;

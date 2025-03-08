@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
-use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 use App\Models\Teacher;
-use Illuminate\Support\Facades\DB;
+use Illuminate\Http\Request;
 
 class TeacherController extends Controller
 {
@@ -20,7 +20,7 @@ class TeacherController extends Controller
     }
     public function save(Request $request)
     {
-        $teacher  = new teacher();
+        $teacher  = new Teacher();
         $teacher->image = $request->image->store('upload/product');
         $teacher->name = $request->name;
         $teacher->deg = $request->deg;
@@ -36,12 +36,12 @@ class TeacherController extends Controller
         // dd($teachers);
         return view("admin.teacher.index" ,compact('teachers'));
     }
-    public function del(Request $request, teacher $teacher)
+    public function del(Request $request, Teacher $teacher)
     {
         $teacher->delete();
         return redirect()->back()->with('message', 'Sucessfully Deleted');
     }
-    public function edit(Request $request, teacher $teacher)
+    public function edit(Request $request, Teacher $teacher)
     {
         if ($request->getMethod() == "POST") {
             $teacher->name = $request->name;
@@ -57,3 +57,4 @@ class TeacherController extends Controller
         }
     }
 }
+

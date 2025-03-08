@@ -15,12 +15,12 @@ use App\Http\Controllers\Admin\RegistrationController;
 use App\Http\Controllers\Admin\CourseController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\SettingController;
-use App\Http\Controllers\SliderController;
+use App\Http\Controllers\Admin\SliderController;
 use App\Http\Controllers\NewCobassController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\AchievementviewController;
-use App\Http\Controllers\TestimonialController;
-use App\Http\Controllers\TeacherController;
+use App\Http\Controllers\Admin\TestimonialController;
+use App\Http\Controllers\Admin\TeacherController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\AddController;
 
