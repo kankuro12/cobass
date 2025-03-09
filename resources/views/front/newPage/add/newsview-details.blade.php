@@ -1,4 +1,10 @@
 @extends('front.layout.app')
+@section('title')
+    News
+@endsection
+@section('b-title')
+    News
+@endsection
 
 @section('content')
 <div class="breadcrumb-area">

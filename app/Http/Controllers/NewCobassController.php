@@ -55,6 +55,7 @@ class NewCobassController extends Controller
         $popups = Popup::where('active', 1)->get(); // Get the first active popup
         $data = $this->getHomepageData();
 
+
         // Fetch the facilities data, assuming these are the 4 facilities
         $facility = Facility::all();  // Example: Fetch the first facility
 
@@ -106,9 +107,7 @@ class NewCobassController extends Controller
     }
     public function contact()
     {
-        $data = $this->getContactData();
-        $contact = Setting::first(); // Fetch contact details from database
-        return view('front.newPage.contact', compact('contact'));
+        return view('front.newPage.contact');
     }
     public function submitContact(Request $request)
     {

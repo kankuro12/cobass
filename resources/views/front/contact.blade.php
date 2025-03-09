@@ -1,4 +1,15 @@
 @extends('layout.app')
+@php
+$data = getSetting('contact') ??
+    (object) [
+        'map' => '',
+        'email' => '',
+        'phone' => '',
+        'addr' => '',
+        'others' => [],
+    ];
+
+@endphp
 @section('header')
 <div class="container-fluid bg-primary py-5 mb-5 page-header">
     <div class="container py-5">

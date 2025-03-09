@@ -30,7 +30,7 @@ class CourseController extends Controller
         $course->faculty = $request->faculty;
         $course->long_des = $request->long_des;
         $course->short_des = $request->short_des;
-        $course->image = $request->image->store('upload/product');
+        $course->image = $request->image->store('uploads/product');
         $course->save();
         // return redirect('')->with('message', 'Successfully Added');
         // return redirect()->route("admin.course.index");

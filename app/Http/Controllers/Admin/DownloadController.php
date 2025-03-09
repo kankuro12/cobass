@@ -19,30 +19,29 @@ class DownloadController extends Controller
     }
 
     public function store(Request $request)
-{
-    $request->validate([
-        'title' => 'required|string|max:255',
-        'description' => 'nullable|string',
-        'file' => 'required|mimes:pdf,doc,docx,zip|max:2048',
-    ]);
+    {
+        $request->validate([
+            'title' => 'required|string|max:255',
+            'description' => 'nullable|string',
+            'file' => 'required|file|max:2048',
+        ]);
 
-    // Check if file is uploaded
-    if ($request->hasFile('file')) {
-        $filePath = $request->file('file')->store('downloads'); // Save file in storage
-    } else {
-        return back()->with('error', 'File upload failed. Please try again.');
+        // Check if file is uploaded
+        if ($request->hasFile('file')) {
+            $filePath = $request->file('file')->store('downloads', 'public'); // Save file in public storage
+        } else {
+            return back()->with('error', 'File upload failed. Please try again.');
+        }
+
+        // Save to database
+        $download = new Download();
+        $download->title = $request->title;
+        $download->description = $request->description;
+        $download->file_path = $filePath;
+        $download->save();
+
+        return redirect()->route('admin.downloads.index')->with('success', 'Download added successfully!');
     }
-
-    // Save to database
-    $download = new Download();
-    $download->title = $request->title;
-    $download->description = $request->description;
-    $download->file_path = $filePath;
-    $download->save();
-
-    return redirect()->route('admin.downloads.index')->with('success', 'Download added successfully!');
-}
-
 
     public function destroy($id)
     {

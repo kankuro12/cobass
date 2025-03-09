@@ -2,27 +2,23 @@
 
 @section('content')
 <div class="breadcrumb-area">
-    <div class="breadcrumb-top default-overlay bg-img breadcrumb-overly-4 pt-100 pb-95"
-        style="background-image:url(assets/img/bg/breadcrumb-bg-4.jpg);">
-        <div class="container">
-            <h2>Albums</h2>
-        </div>
-    </div>
+    <div class="container">
+        <div class="breadcrumb
 <div class="breadcrumb-bottom">
     <div class="container">
         <ul>
-            <li><a href="#">Gallery</a> <span><i class="fa fa-angle-double-right"></i>Albums</span></li>
+            <li><a href="{{ url()->previous() }}">Gallery</a> <span><i class="fa fa-angle-double-right"></i>Albums</span></li>
         </ul>
     </div>
 </div>
 </div>
 <div class="container py-5">
     <h2 class="text-center mb-4">{{ $galleryType->name }}</h2>
-
+{{--
     <!-- Fancy Back Arrow -->
-    <a href="{{ url()->previous() }}" class="btn btn-link mb-4">
+    <a href="" class="btn btn-link mb-4">
         <i class="fas fa-arrow-left"></i>
-    </a>
+    </a> --}}
 
     <div class="row">
         @foreach ($galleryType->galleries as $gallery)

@@ -22,7 +22,7 @@ class TestimonialController extends Controller
     public function save(Request $request)
     {
         $testimonial = new Testimonial();
-        $testimonial->image =$request->image->store('upload/product');
+        $testimonial->image =$request->image->store('uploads/product');
         $testimonial->name = $request->name;
         $testimonial->profission = $request->profission;
         $testimonial->long_des = $request->long_des;

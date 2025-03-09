@@ -1,9 +1,19 @@
 @extends('front.layout.app')
+@php
+$data = getSetting('contact') ??
+    (object) [
+        'map' => '',
+        'email' => '',
+        'phone' => '',
+        'addr' => '',
+        'others' => [],
+    ];
+
+@endphp
 
 @section('content')
     <div class="breadcrumb-area">
-        <div class="breadcrumb-top default-overlay bg-img breadcrumb-overly-5 pt-100 pb-95"
-            style="background-image:url('https://htmldemo.net/glaxdu/glaxdu/assets/img/bg/breadcrumb-bg-6.jpg');">
+        <div class="breadcrumb-top default-overlay bg-img breadcrumb-overly-5 pt-100 pb-95">
             <div class="container">
                 <h2>Contact Us</h2>
                 <p>{{ $contact->description ?? 'Get in touch with us for more information.' }}</p>

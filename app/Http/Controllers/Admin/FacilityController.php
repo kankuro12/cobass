@@ -55,7 +55,7 @@ class FacilityController extends Controller
 
                 // Move new file
                 $file->move(public_path($uploadPath), $filename);
-                $newImagePath = $uploadPath . '/' . $filename;
+                $newImagePath = asset($uploadPath . '/' . $filename);
 
                 // Delete old image if it exists
                 if (!empty($facilityData->icon) && File::exists(public_path($facilityData->icon))) {

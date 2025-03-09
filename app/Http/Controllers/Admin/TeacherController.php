@@ -21,7 +21,7 @@ class TeacherController extends Controller
     public function save(Request $request)
     {
         $teacher  = new Teacher();
-        $teacher->image = $request->image->store('upload/product');
+        $teacher->image = $request->image->store('uploads/product');
         $teacher->name = $request->name;
         $teacher->deg = $request->deg;
         $teacher->short_des = $request->short_des;
