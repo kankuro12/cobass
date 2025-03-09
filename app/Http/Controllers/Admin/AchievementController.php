@@ -47,18 +47,16 @@ class AchievementController extends Controller
         $request->validate([
             'title' => 'required',
             'description' => 'required',
-            'image' => 'image|mimes:jpeg,png,jpg,gif|max:2048'
+            // 'image' => 'image|mimes:jpeg,png,jpg,gif|max:2048'
         ]);
 
         if ($request->hasFile('image')) {
-            $imagePath = $request->file('image')->store('uploads/achievements');
-            $achievement->update(['image' => $imagePath]);
+            $achievement->image = $request->file('image')->store('uploads/achievements');
         }
 
-        $achievement->update([
-            'title' => $request->title,
-            'description' => $request->description
-        ]);
+        $achievement->title= $request->title;
+        $achievement->description = $request->description;
+        $achievement->save();
 
         return redirect()->route('admin.achievements.edit',['achievement'=>$achievement->id])->with('success', 'Achievement updated successfully');
     }

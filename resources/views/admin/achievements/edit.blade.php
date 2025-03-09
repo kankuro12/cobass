@@ -13,8 +13,6 @@
 <div class="bg-white shadow p-3 mt-3">
     <form action="{{ route('admin.achievements.update', $achievement->id) }}" method="POST" enctype="multipart/form-data">
         @csrf
-        @method('PUT')
-
         <div class="row">
             <div class="col-md-6">
                 <div class="col-md-12">

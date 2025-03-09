@@ -134,7 +134,15 @@ Route::prefix("admin")->name("admin.")->group(function () {
 
 
     // Admin Achievements Route
-    Route::resource('achievements', AchievementController::class);
+    Route::prefix('achievements')->name('achievements.')->group(function () {
+        Route::get('', [AchievementController::class, 'index'])->name('index');
+        Route::get('/create', [AchievementController::class, 'create'])->name('create');
+        Route::post('/', [AchievementController::class, 'store'])->name('store');
+        Route::get('/{achievement}', [AchievementController::class, 'show'])->name('show');
+        Route::get('edit/{achievement}', [AchievementController::class, 'edit'])->name('edit');
+        Route::post('update/{achievement}', [AchievementController::class, 'update'])->name('update');
+        Route::delete('destroy/{achievement}', [AchievementController::class, 'destroy'])->name('destroy');
+    });
 
     Route::prefix('admin')->name('admin.')->group(function () {
         // Other routes
