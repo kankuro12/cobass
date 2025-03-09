@@ -42,7 +42,7 @@
                         </div>
                         <div class="form-group">
                             <label for="icon">icon</label>
-                            <input type="file" name="icon" id="icon" class="form-control photo" required>
+                            <input type="file" name="icon" id="icon" class="form-control photo" accept=".jpg,.jpeg,.png,.webp" required>
                         </div>
                         <div class="py-2">
                             <button class="btn btn-primary">Add Gallery</button>
@@ -59,7 +59,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="icon">icon</label>
-                                <input type="file" name="icon" id="icon" class="form-control photo" data-default-file="{{asset($type->icon)}}">
+                                <input type="file" name="icon" id="icon" class="form-control photo"  accept=".jpg,.jpeg,.png,.webp"  data-default-file="{{asset($type->icon)}}">
                             </div>
                             <div class="div py-2 d-flex justify-content-between">
                                 <button class="btn btn-secondary">Update</button>

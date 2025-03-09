@@ -112,8 +112,8 @@
 
     <div class="bg-white shadow mt-3">
         <div class="card-body">
-            <div id="images">
-                <div class="row">
+            <div >
+                <div class="row" id="images">
                     @foreach ($type->galleries as $image)
                         <div class="col-md-3  p-0">
                             <div id="image-{{ $image->id }}" class="single-image">
@@ -175,7 +175,10 @@
         }
 
         function save() {
-            if (blobs.length == 0) {
+            console.log('uploading');
+
+            if (Object.keys(blobs).length === 0) {
+                alert('Please select files to upload');
                 return;
             }
 
@@ -189,13 +192,16 @@
                 }
             }
 
+            console.log('uploading');
+
+
             axios.post('{{ route('admin.setting.gallery.add') }}', f)
                 .then((res) => {
                     let html = '';
                     res.data.forEach(img => {
                         html += '<div class="col-md-3 p-0">' +
-                            '<div data-src="/' + img.image + '" id="image-' + img.id + '" class="single-image">' +
-                            '<img src="/' + img.thumb + '" class="w-100" alt="">' +
+                            '<div data-src="/' + img.file + '" id="image-' + img.id + '" class="single-image">' +
+                            '<img src="/' + img.file + '" class="w-100" alt="">' +
                             '<button onclick="del(' + img.id + ')">X</button>' +
                             '</div>' +
                             '</div>';

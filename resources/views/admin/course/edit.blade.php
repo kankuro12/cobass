@@ -20,7 +20,7 @@
                         Image
                     </label>
                     <input type="file" name="image" id="image" accept="image/*" class="photo"
-                        data-defult-file="{{ asset($course->image) }}">
+                        data-default-file="{{ asset($course->image) }}">
                 </div>
                 <div class="col-md-9">
                     <div class="row">
@@ -46,14 +46,14 @@
                         <label for="short_des">
                            Short Description
                         </label>
-                        <textarea name="short_des" id="short_des" class="form-control" required  required>{{ $course->description }}</textarea>
+                        <textarea name="short_des" id="short_des" class="form-control" required  required>{{ $course->short_des }}</textarea>
                     </div>
                     <div class="mb-9">
 
                         <label for="long_des">
                            Long Description
                         </label>
-                        <textarea name="long_des" id="long_des" class="form-control" required>{{ $course->description }}</textarea>
+                        <textarea name="long_des" id="long_des" class="form-control" required>{{ $course->long_des }}</textarea>
                     </div>
                     <div class="text-right py-2">
                         <a href="{{route('admin.course.index')}}" class="btn btn-danger my-2">Cancel</a>
