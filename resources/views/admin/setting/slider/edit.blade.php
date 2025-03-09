@@ -148,7 +148,7 @@
         $(function() {
             $('.photo').dropify();
             typeChanged($('#type')[0]);
-            $('#type').change(function (e) { 
+            $('#type').change(function (e) {
                 e.preventDefault();
                 typeChanged(this);
             });
@@ -161,7 +161,7 @@
             $('#extra-links').removeAttr('required');
             // e.preventDefault();
             switch ($(ele).val()) {
-               
+
                 case "2":
                     $('#links').attr('required', 'required');
                     $('#link-wrapper').removeClass('d-none');

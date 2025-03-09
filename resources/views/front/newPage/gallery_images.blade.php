@@ -1,8 +1,13 @@
 @extends('front.layout.app')
 @section('content')
     <div class="breadcrumb-area">
-        <div class="breadcrumb-top default-overlay bg-img breadcrumb-overly-4 pt-100 pb-95"
-            style="background-image:url(assets/img/bg/breadcrumb-bg-4.jpg);">
+        <div class="breadcrumb-area">
+            <div class="breadcrumb-top default-overlay bg-img breadcrumb-overly-2 pt-100 pb-95"
+                style="background-image:url('');">
+                <div class="container">
+                    <h2><a href="{{ route('gallery') }}">Gallery</a> / {{ $galleryType->name }} </h2>
+                </div>
+            </div>
         </div>
         <div class="breadcrumb-bottom">
             <div class="container">
@@ -20,10 +25,11 @@
     <div class="container py-5">
         <div class="row" id="gallery">
 
-            @foreach ($galleryType->galleries as $i=>$gallery)
-            <div class="item col-md-3 col-6 mb-2"  data-index="{{$i++}}">
-                <img class="w-100" data-fancybox="gallery" data-src="{{asset($gallery->file)}}"  src="{{asset($gallery->file)}}" alt="">
-              </div>
+            @foreach ($galleryType->galleries as $i => $gallery)
+                <div class="item col-md-3 col-6 mb-2" data-index="{{ $i++ }}">
+                    <img class="w-100" data-fancybox="gallery" data-src="{{ asset($gallery->file) }}"
+                        src="{{ asset($gallery->file) }}" alt="">
+                </div>
             @endforeach
         </div>
     </div>

@@ -77,12 +77,13 @@ Route::get('/news', [NewCobassController::class, 'newsList'])->name('news.list')
 
 // Handle form submission
 Route::post('register', [RegisterController::class, 'submitForm'])->name('register.submit');
-Route::get('/events', [NewCobassController::class, 'showEvents'])->name('events');
 Route::get('/facilities', [NewCobassController::class, 'showFacilities']);
 //Handle the event details route
 Route::get('/events', [NewCobassController::class, 'listEvents'])->name('events.index'); // List all events
 Route::get('/events/{id}', [NewCobassController::class, 'showEvent'])->name('events.details'); // View event details
 Route::get('/events', [NewCobassController::class, 'eventList'])->name('events.list');
+Route::get('/page/{type}', [NewCobassControllerController::class, 'show'])->name('page.type');
+
 
 
 

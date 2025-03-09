@@ -20,14 +20,15 @@
     </div>
 </div>
     <div class="container">
-        <h2 class="my-4 text-center">Download Area</h2>
 
         <!-- Search form -->
-        <div class="mb-4 d-flex justify-content-end">
+        <div class="mb-4 d-flex justify-content-end" style="margin-top: 20px;">
             <form method="GET" action="{{ route('downloads') }}" class="d-flex">
-                <input type="text" name="search" placeholder="Search Downloads" class="form-control me-2"
-                    style="max-width: 300px;" />
-                <button type="submit" class="btn btn-primary">Search</button>
+            <input type="text" name="search" placeholder="Search Downloads" class="form-control me-2"
+            style="max-width: 300px;" />
+            <button type="submit" class="btn btn-primary" style="background-color: #007bff; border-color: #007bff; padding: 0.5rem 1rem; font-size: 1rem;">
+            <i class="fa fa-search"></i> Search
+            </button>
             </form>
         </div>
 

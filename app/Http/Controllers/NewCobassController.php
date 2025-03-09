@@ -18,6 +18,7 @@ use App\Models\News;
 use App\Models\Notice;
 use App\Models\Add;
 use App\Models\Facility;
+use App\Models\Achievement;
 class NewCobassController extends Controller
 {
     private function getHomepageData()

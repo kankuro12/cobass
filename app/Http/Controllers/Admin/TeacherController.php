@@ -51,7 +51,7 @@ class TeacherController extends Controller
                 $teacher->image = $request->image->store('upload/teacher');
             }
             $teacher->save();
-            return redirect()->back()->with('message', 'Successfully Added');
+            return redirect()->back()->with('message', 'Successfully Updated');
         } else {
             return view("admin.teacher.edit",compact('teacher'));
         }

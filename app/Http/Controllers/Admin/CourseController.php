@@ -62,7 +62,7 @@ class CourseController extends Controller
                 $course->image = $request->image->store('upload/course');
             }
             $course->save();
-            return redirect()->back()->with('message', 'Successfully Added');
+            return redirect()->back()->with('message', 'Successfully Updated');
         } else {
             return view("admin.course.edit",compact('course'));
         }

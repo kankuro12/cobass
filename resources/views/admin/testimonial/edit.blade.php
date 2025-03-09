@@ -15,8 +15,8 @@
                     <label for="image">
                         Image
                     </label>
-                    <input type="file" name="image" id="image" accept="image/*" class="photo"
-                        data-defult-file="{{ asset($testimonial->image) }}">
+                    <input type="file" name="image" id="image" accept="image/*" class="photo form-control"
+                        data-default-file="{{ asset($testimonial->image) }}">
                 </div>
                 <div class="col-md-9">
                     <div class="row">

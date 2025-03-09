@@ -26,7 +26,7 @@
             @foreach ($achievements as $achievement)
                 <div class="col-md-3 mb-3">
                     <div class="card custom-card">
-                        <img src="{{ asset("storage/{$achievement->image}") }}" class="card-img-top animated-img" alt="Achievement">
+                        <img src="{{ asset($achievement->image) }}" class="card-img-top animated-img" alt="Achievement">
                         <div class="card-body">
                             <h5 class="card-title">{{ $achievement->title }}</h5>
                             <p class="card-text">{{ $achievement->description }}</p>
