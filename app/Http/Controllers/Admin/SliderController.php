@@ -67,20 +67,9 @@ class SliderController extends Controller
                 $slider->image=$request->image->store('uploads/sliders');
 
             }
-            if($request->has('change_link')){
+            $slider->link_title=$request->link_title??'';
+            $slider->link=$request->link??'';
 
-                $slider->link_title=$request->link_title;
-                $slider->fg=$request->fg;
-                $slider->bg=$request->bg;
-                switch ($request->type) {
-                    case 3:
-                        $slider->link = $request->extra_links;
-                        break;
-                    default:
-                        $slider->link = $request->links;
-                        break;
-                }
-            }
             $slider->save();
             $this->render();
             return redirect()->back()->with('message','Slider Updated');
