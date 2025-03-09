@@ -135,6 +135,7 @@ Route::prefix("admin")->name("admin.")->group(function () {
 
     // Admin Achievements Route
     Route::resource('achievements', AchievementController::class);
+
     Route::prefix('admin')->name('admin.')->group(function () {
         // Other routes
 

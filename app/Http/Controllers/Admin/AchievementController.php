@@ -15,7 +15,7 @@ class AchievementController extends Controller
 
     public function create()
     {
-        return view('admin.achievements.create');
+        return view('admin.achievements.add');
     }
 
     public function store(Request $request)
@@ -26,7 +26,7 @@ class AchievementController extends Controller
             'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048'
         ]);
 
-        $imagePath = $request->file('image')->store('achievements', 'public');
+        $imagePath = $request->file('image')->store('uploads/achievements');
 
         Achievement::create([
             'title' => $request->title,
@@ -34,7 +34,7 @@ class AchievementController extends Controller
             'image' => $imagePath
         ]);
 
-        return redirect()->route('admin.achievements.index')->with('success', 'Achievement added successfully');
+        return redirect()->route('admin.achievements.create')->with('success', 'Achievement added successfully');
     }
 
     public function edit(Achievement $achievement)
@@ -51,7 +51,7 @@ class AchievementController extends Controller
         ]);
 
         if ($request->hasFile('image')) {
-            $imagePath = $request->file('image')->store('achievements');
+            $imagePath = $request->file('image')->store('uploads/achievements');
             $achievement->update(['image' => $imagePath]);
         }
 
@@ -60,7 +60,7 @@ class AchievementController extends Controller
             'description' => $request->description
         ]);
 
-        return redirect()->route('admin.achievements.index')->with('success', 'Achievement updated successfully');
+        return redirect()->route('admin.achievements.edit',['achievement'=>$achievement->id])->with('success', 'Achievement updated successfully');
     }
 
     public function destroy(Achievement $achievement)

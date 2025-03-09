@@ -21,20 +21,20 @@
                     <div class="mb-3">
                         <label class="form-label">Image</label>
                         <input type="file" name="image" class="form-control photo" accept="image/*"
-                            data-default-file="{{ asset('storage/' . $achievement->image) }}">
+                            data-default-file="{{ asset($achievement->image) }}">
                     </div>
                 </div>
             </div>
             <div class="col-md-6">
-                <div class="col-md-12 mb-2">
+                <div class="mb-2">
                     <label for="title">Title</label>
                     <input type="text" name="title" class="form-control" value="{{ $achievement->title }}" required>
                 </div>
-                <div class="col-md-12 mb-2">
+                <div class="mb-2">
                     <label class="form-label">Description</label>
                     <textarea name="description" class="form-control" required>{{ $achievement->description }}</textarea>
                 </div>
-                <div class="col-md-12">
+                <div class="">
                     <button type="submit" class="btn btn-success">Update</button>
                 </div>
             </div>
