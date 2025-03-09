@@ -28,7 +28,7 @@
                     <td>{{ Str::limit($notice->details, 50) }}</td>
                     <td>
                         @if ($notice->link)
-                            <img src="{{ asset('storage/' . $notice->link) }}" alt="Notice Image" width="100">
+                            <img src="{{ asset($notice->link) }}" alt="Notice Image" width="100">
                         @else
                             No Image
                         @endif
@@ -46,4 +46,12 @@
             @endforeach
         </tbody>
     </table>
+@endsection
+@section('script')
+    <script>
+         $(function() {
+            $('.photo').dropify();
+            $('#long_des').summernote();
+        });
+    </script>
 @endsection

@@ -5,7 +5,12 @@
     <link rel="stylesheet" href="{{ asset('admin/plugins/drophify/css/dropify.min.css') }}">
 @endsection
 @section('s-title')
-    /<a href="{{ route('admin.testimonial.index') }}">Testimonial</a>/Add
+<li class="breadcrumb-item">
+    <a href="{{ route('admin.testimonial.index') }}"> Testimonial </a>
+</li>
+<li class="breadcrumb-item active">
+    Add
+</li>
 @endsection
 @section('content')
     <div class="bg-white p-5 shadow">

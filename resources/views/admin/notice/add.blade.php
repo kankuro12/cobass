@@ -36,10 +36,14 @@
             <button type="submit" class="btn btn-primary">Submit</button>
         </form>
     </div>
+@endsection
+@section('script')
+    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
+    <script src="{{ asset('admin/plugins/drophify/js/dropify.min.js') }}"></script>
     <script>
-        $(document).ready(function() {
-            $('.dropify').dropify();
+        $(function() {
+            $('.photo').dropify();
+            $('#long_des').summernote();
         });
     </script>
-
 @endsection

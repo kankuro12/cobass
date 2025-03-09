@@ -51,7 +51,7 @@ class TestimonialController extends Controller
                 $testimonial->image = $request->image->store('upload/testimonial');
             }
             $testimonial->save();
-            return redirect()->back()->with('message', 'Successfully Added');
+            return redirect()->back()->with('message', 'Successfully Updated');
         } else {
             return view("admin.testimonial.edit",compact('testimonial'));
         }

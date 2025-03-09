@@ -4,7 +4,12 @@
     <link rel="stylesheet" href="{{ asset('admin/plugins/drophify/css/dropify.min.css') }}">
 @endsection
 @section('s-title')
-    /<a href="{{ route('admin.testimonial.index') }}">testimonials</a>/Edit
+<li class="breadcrumb-item">
+    <a href="{{ route('admin.testimonial.index') }}"> Testimonial </a>
+</li>
+<li class="breadcrumb-item active">
+    Edit
+</li>
 @endsection
 @section('content')
     <div class="bg-white p-5 shadow">
@@ -23,7 +28,7 @@
                         <div class="col-md-9">
                             <div class="mb-2">
                                 <label for="name">
-                                    name
+                                    Name
                                 </label>
                                 <input type="text" name="name" id="name" class="form-control" required
                                     value="{{ $testimonial->name }}">
@@ -31,7 +36,7 @@
                         </div>
                         <div class="col-md-3 mb-2">
                             <label for="rate">
-                                Profission
+                                Profession
                             </label>
                             <input type="text" name="profission" id="profission" class="form-control" required value="{{$testimonial->profission}}">
 
@@ -41,10 +46,11 @@
                     </div>
                     <div class="mb-2">
 
-                        <label for="short_des">
-                           Long Description
+                        <label for="long_des">
+                           Message
                         </label>
-                        <textarea name="long_des" id="long_des" class="form-control" required  required>{{ $testimonial->description }}</textarea>
+                        <textarea name="long_des" id="long_des" class="form-control" required  required>{{ $testimonial->long_des }}
+                        </textarea>
                     </div>
 
                     <div class="text-right py-2">
