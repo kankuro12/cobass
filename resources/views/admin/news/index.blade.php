@@ -29,7 +29,7 @@
                             <td>{{ $item->short_content }}</td>
                             <td>
                                 <a href="{{ route('admin.news.edit', $item->id) }}" class="btn btn-warning">Edit</a>
-                                <a href="{{ route('admin.news.del', $item->id) }}" class="btn btn-danger">Delete</a>
+                                <a href="{{ route('admin.news.del', $item->id) }}" class="btn btn-danger" onclick="return confirm('Delete Data')">Delete</a>
                             </td>
                         </tr>
                     @endforeach

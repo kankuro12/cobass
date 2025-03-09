@@ -19,35 +19,30 @@
         <form action="{{ route('admin.news.edit', $news->id) }}" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="row">
-                <div class="col-md-6">
+                <div class="col-md-3">
                     <div class="mb-3">
                         <label>Feature Image</label>
                         <input type="file" name="feature_image" class="form-control photo" data-default-file="{{ asset($news->feature_image) }}">
 
                     </div>
                 </div>
-                <div class="col-md-6">
-                    <div class="col-md-12">
-                        <div class="mb-3">
-                            <label>Title</label>
-                            <input type="text" name="title" class="form-control" value="{{ old('title', $news->title) }}" required>
-                        </div>
+                <div class="col-md-9">
+                    <div class="mb-3">
+                        <label>Title</label>
+                        <input type="text" name="title" class="form-control" value="{{ old('title', $news->title) }}" required>
                     </div>
-                    <div class="col-md-12">
-                        <div class="mb-3">
-                            <label>Short Content</label>
-                            <textarea name="short_content" class="form-control" required>{{ old('short_content', $news->short_content) }}</textarea>
-                        </div>
+                    <div class="mb-3">
+                        <label>Short Content</label>
+                        <textarea name="short_content" class="form-control" required>{{ old('short_content', $news->short_content) }}</textarea>
                     </div>
-                    <div class="col-md-12">
-                        <div class="mb-3">
-                            <label>Extra Content</label>
-                            <textarea name="extra_content" class="form-control" id="long_desc" rows="5" required>{{ old('extra_content', $news->extra_content) }}</textarea>
-                        </div>
+                    <div class="mb-3">
+                        <label>Extra Content</label>
+                        <textarea name="extra_content" class="form-control" id="long_desc" rows="5" required>{{ old('extra_content', $news->extra_content) }}</textarea>
                     </div>
-                    <div class="col-md-12">
+                    <div class="text-right">
                         <button type="submit" class="btn btn-primary">Update News</button>
                     </div>
+
                 </div>
             </div>
         </form>

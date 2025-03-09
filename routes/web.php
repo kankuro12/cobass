@@ -200,8 +200,8 @@ Route::prefix("admin")->name("admin.")->group(function () {
     Route::prefix('news')->name('news.')->group(function () {
         Route::get('', [NewsController::class, 'index'])->name('index');
         Route::match(['get', 'post'], 'add/', [NewsController::class, 'add'])->name('add');
-        Route::match(['get', 'post'], 'edit/{event}', [NewsController::class, 'edit'])->name('edit');
-        Route::match(['get', 'post'], 'del/{event}', [NewsController::class, 'del'])->name('del');
+        Route::match(['get', 'post'], 'edit/{news}', [NewsController::class, 'edit'])->name('edit');
+        Route::match(['get', 'post'], 'del/{news}', [NewsController::class, 'del'])->name('del');
     });
     Route::prefix('setting')->name('setting.')->group(function () {
 

@@ -53,9 +53,8 @@ class NewsController extends Controller
     //     return redirect()->route('admin.news.index')->with('success', 'News added successfully!');
     // }
 
-    public function edit(Request $request, $news)
+    public function edit(Request $request, News $news)
     {
-        $news = News::where('id', $news)->first();
         if ($request->getMethod() == 'POST') {
             $news->title = $request->title;
             $news->short_content = $request->short_content;

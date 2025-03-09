@@ -16,33 +16,26 @@
         <form action="{{ route('admin.news.add') }}" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="row">
-                <div class="col-md-6">
+                <div class="col-md-3">
                     <div class="mb-3">
                         <label>Feature Image</label>
-                        <input type="file" name="feature_image" class="form-control photo" required>
+                        <input type="file" name="feature_image" class="form-control photo" accept="image/*" required>
                     </div>
                 </div>
-                <div class="col-md-6">
-                    <div class="col-md-12">
-                        <div class="mb-3">
-                            <label>Title</label>
-                            <input type="text" name="title" class="form-control" required>
-                        </div>
+                <div class="col-md-9">
+                    <div class="mb-3">
+                        <label>Title</label>
+                        <input type="text" name="title" class="form-control" required>
                     </div>
-                    <div class="col-md-12">
-                        <div class="mb-3">
-                            <label>Short Content</label>
-                            <textarea name="short_content" class="form-control" required></textarea>
-                        </div>
+                    <div class="mb-3">
+                        <label>Short Content</label>
+                        <textarea name="short_content" class="form-control" required></textarea>
                     </div>
-                    <div class="col-md-12">
-                        <div class="mb-3">
-                            <label>Extra Content</label>
-                            <textarea name="extra_content" class="form-control " id="long_desc" rows="5" required></textarea>
-                        </div>
+                    <div class="mb-3">
+                        <label>Extra Content</label>
+                        <textarea name="extra_content" class="form-control " id="long_desc" rows="5" required></textarea>
                     </div>
-                    <div class="col-md-12">
-
+                    <div class="text-right">
                         <button type="submit" class="btn btn-success">Save</button>
                     </div>
                 </div>
