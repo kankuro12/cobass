@@ -1,16 +1,20 @@
 @extends('front.layout.app')
 @section('content')
 <div class="breadcrumb-area">
-    <div class="breadcrumb-top default-overlay bg-img pt-100 pb-95" style="background-image:url('https://htmldemo.net/glaxdu/glaxdu/assets/img/bg/breadcrumb-bg.jpg');">
+    <div class="breadcrumb-top default-overlay bg-img breadcrumb-overly-2 pt-100 pb-95"
+        style="background-image:url('');">
         <div class="container">
-            <h2>About Us</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore .</p>
+            <h2>Home / About Us </h2>
         </div>
     </div>
     <div class="breadcrumb-bottom">
         <div class="container">
             <ul>
-                <li><a href="#">Home</a> <span><i class="fa fa-angle-double-right"></i> About Page</span></li>
+                <li><a href="#">Home</a>
+                    <span>
+                        <i class="fa fa-angle-double-right"></i> About Us
+                    </span>
+                </li>
             </ul>
         </div>
     </div>

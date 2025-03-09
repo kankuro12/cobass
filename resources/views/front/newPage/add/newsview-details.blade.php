@@ -1,18 +1,23 @@
 @extends('front.layout.app')
-@section('title')
-    News
-@endsection
-@section('b-title')
-    News
-@endsection
 
 @section('content')
 <div class="breadcrumb-area">
     <div class="breadcrumb-top default-overlay bg-img breadcrumb-overly-2 pt-100 pb-95"
-        style="background-image:url();">
+        style="background-image:url('');">
         <div class="container">
-            <h2>News Details</h2>
-            <p>{{ $news->title }}</p>
+            <h2>News / {{$news->title}} </h2>
+        </div>
+    </div>
+    <div class="breadcrumb-bottom">
+        <div class="container">
+            <ul>
+                <li><a href="#">Home</a>
+                    <span>
+                        <i class="fa fa-angle-double-right"></i> News
+                        <i class="fa fa-angle-double-right"></i> {{ $news->title }}
+                    </span>
+                </li>
+            </ul>
         </div>
     </div>
 </div>

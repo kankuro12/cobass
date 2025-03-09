@@ -11,19 +11,22 @@ $data = getSetting('contact') ??
 
 @endphp
 @section('header')
-<div class="container-fluid bg-primary py-5 mb-5 page-header">
-    <div class="container py-5">
-        <div class="row justify-content-center">
-            <div class="col-lg-10 text-center">
-                <h1 class="display-3 text-white animated slideInDown">Contact</h1>
-                <nav aria-label="breadcrumb">
-                    <ol class="breadcrumb justify-content-center">
-                        <li class="breadcrumb-item"><a class="text-white" href="#">Home</a></li>
-                        <li class="breadcrumb-item"><a class="text-white" href="#">Pages</a></li>
-                        <li class="breadcrumb-item text-white active" aria-current="page">Contact</li>
-                    </ol>
-                </nav>
-            </div>
+<div class="breadcrumb-area">
+    <div class="breadcrumb-top default-overlay bg-img breadcrumb-overly-2 pt-100 pb-95"
+        style="background-image:url('');">
+        <div class="container">
+            <h2>Home / Contact Us </h2>
+        </div>
+    </div>
+    <div class="breadcrumb-bottom">
+        <div class="container">
+            <ul>
+                <li><a href="#">Home</a>
+                    <span>
+                        <i class="fa fa-angle-double-right"></i> Contact Us
+                    </span>
+                </li>
+            </ul>
         </div>
     </div>
 </div>

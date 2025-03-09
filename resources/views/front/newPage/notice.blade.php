@@ -2,16 +2,20 @@
 
 @section('content')
 <div class="breadcrumb-area">
-    <div class="breadcrumb-top default-overlay bg-img breadcrumb-overly-3 pt-100 pb-95" style="background-image:url('https://htmldemo.net/glaxdu/glaxdu/assets/img/bg/breadcrumb-bg-3.jpg');">
+    <div class="breadcrumb-top default-overlay bg-img breadcrumb-overly-2 pt-100 pb-95"
+        style="background-image:url('');">
         <div class="container">
-            <h2>Notice Grid</h2>
-            <p>Stay informed with our latest announcements regarding academic schedules, upcoming events, admission deadlines, scholarship opportunities, and policy updates.  .</p>
+            <h2>Home / Notice </h2>
         </div>
     </div>
     <div class="breadcrumb-bottom">
         <div class="container">
             <ul>
-                <li><a href="#">Home</a> <span><i class="fa fa-angle-double-right"></i>Notice Grid</span></li>
+                <li><a href="#">Home</a>
+                    <span>
+                        <i class="fa fa-angle-double-right"></i> Notice
+                    </span>
+                </li>
             </ul>
         </div>
     </div>

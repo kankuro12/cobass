@@ -1,6 +1,24 @@
 @extends('front.layout.app')
-
 @section('content')
+<div class="breadcrumb-area">
+    <div class="breadcrumb-top default-overlay bg-img breadcrumb-overly-2 pt-100 pb-95"
+        style="background-image:url('');">
+        <div class="container">
+            <h2>Home / Downloads </h2>
+        </div>
+    </div>
+    <div class="breadcrumb-bottom">
+        <div class="container">
+            <ul>
+                <li><a href="#">Home</a>
+                    <span>
+                        <i class="fa fa-angle-double-right"></i> Downloads
+                    </span>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
     <div class="container">
         <h2 class="my-4 text-center">Download Area</h2>
 

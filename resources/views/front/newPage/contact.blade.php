@@ -12,14 +12,25 @@ $data = getSetting('contact') ??
 @endphp
 
 @section('content')
-    <div class="breadcrumb-area">
-        <div class="breadcrumb-top default-overlay bg-img breadcrumb-overly-5 pt-100 pb-95">
-            <div class="container">
-                <h2>Contact Us</h2>
-                <p>{{ $contact->description ?? 'Get in touch with us for more information.' }}</p>
-            </div>
+<div class="breadcrumb-area">
+    <div class="breadcrumb-top default-overlay bg-img breadcrumb-overly-2 pt-100 pb-95"
+        style="background-image:url('');">
+        <div class="container">
+            <h2>Home / Contact Us </h2>
         </div>
     </div>
+    <div class="breadcrumb-bottom">
+        <div class="container">
+            <ul>
+                <li><a href="#">Home</a>
+                    <span>
+                        <i class="fa fa-angle-double-right"></i> Contact Us
+                    </span>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
 
     <div class="contact-area pt-130 pb-130">
         <div class="container">

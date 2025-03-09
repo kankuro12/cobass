@@ -2,7 +2,7 @@
 @section('content')
 <div class="breadcrumb-area">
     <div class="breadcrumb-top default-overlay bg-img breadcrumb-overly-2 pt-100 pb-95"
-        style="background-image:url('	https://htmldemo.net/glaxdu/glaxdu/assets/img/bg/breadcrumb-bg-2.jpg');">
+        style="background-image:url('');">
         <div class="container">
             <h2>Courses / {{$course->name}} </h2>
         </div>

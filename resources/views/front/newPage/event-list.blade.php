@@ -30,13 +30,29 @@
         margin-left: 5px;
     }
 </style>
+<div class="breadcrumb-area">
+    <div class="breadcrumb-top default-overlay bg-img breadcrumb-overly-2 pt-100 pb-95"
+        style="background-image:url('');">
+        <div class="container">
+            <h2>Home / Events</h2>
+        </div>
+    </div>
+    <div class="breadcrumb-bottom">
+        <div class="container">
+            <ul>
+                <li><a href="#">Home</a>
+                    <span>
+                        <i class="fa fa-angle-double-right"></i> Events
+                    </span>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
 
 <div class="event-area bg-img default-overlay pt-130 pb-130"
     style="background-image:url('https://images.pexels.com/photos/1029577/pexels-photo-1029577.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');">
     <div class="container">
-        <div class="section-title mb-75 text-center">
-            <h2><span>Latest</span> Events</h2>
-        </div>
 
         <!-- Search Box -->
         <div class="search-box">

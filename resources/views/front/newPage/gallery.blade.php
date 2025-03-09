@@ -14,41 +14,16 @@
             overflow: hidden;
             position: relative;
             transition: transform 0.3s ease-in-out;
-        }
-
-        .singlegallery:hover {
-            transform: scale(1.05);
-        }
-
-        .singlegallery .overlay {
-            position: absolute;
-            top: 0px;
-            bottom: 0px;
-            left: 0px;
-            right: 0px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: rgba(0, 0, 0, 0.2);
-            color: white;
-            font-weight: 600;
-            font-size: 20px;
-            display: none;
-        }
-
-        .singlegallery:hover .overlay {
-            display: flex;
-        }
-
-        .singlegallery {
-            position: relative;
             width: 100%;
             height: 200px;
             display: flex;
             justify-content: center;
             align-items: center;
             background-color: #f0f0f0;
-            overflow: hidden;
+        }
+
+        .singlegallery:hover {
+            transform: scale(1.05);
         }
 
         .singlegallery img {
@@ -65,6 +40,26 @@
 
         .singlegallery .overlay {
             position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(0, 0, 0, 0.2);
+            color: white;
+            font-weight: 600;
+            font-size: 20px;
+            display: none;
+        }
+
+        .singlegallery:hover .overlay {
+            display: flex;
+        }
+
+        .singlegallery .overlay {
+            position: absolute;
             bottom: 0;
             width: 100%;
             background: rgba(0, 0, 0, 0.5);
@@ -74,26 +69,41 @@
         }
     </style>
 @endsection
-@section('title')
-    - Gallery
-@endsection
-@section('b-title')
-    Gallery
-@endsection
-@section('pagecontent')
-    <div class="row">
-        @foreach ($galleryTypes as $galleryType)
-            <a class="col-md-3 col-6" href="{{ route('gallery.show', $galleryType->id) }}">
-                <div class="singlegallery">
-                    <img src="{{ asset($galleryType->icon ?? 'default.jpg') }}" alt="">
-                    <div class="overlay">
-                        {{ $galleryType->name }}
-                    </div>
-                </div>
-                <h5>
-                    <p class="mt-2 mb-0">{{ $galleryType->name }}</p>
-                </h5>
-            </a>
-        @endforeach
+@section('content')
+<div class="breadcrumb-area">
+    <div class="breadcrumb-top default-overlay bg-img breadcrumb-overly-2 pt-100 pb-95"
+        style="background-image:url('');">
+        <div class="container">
+            <h2>Home / Gallery </h2>
+        </div>
     </div>
-@endsection
+    <div class="breadcrumb-bottom">
+        <div class="container">
+            <ul>
+                <li><a href="#">Home</a>
+                    <span>
+                        <i class="fa fa-angle-double-right"></i> Gallery
+                    </span>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+    <div class="container mt-5">
+        <div class="row">
+            @foreach ($galleryTypes as $galleryType)
+                <div class="col-md-3 col-6 mb-4">
+                    <a href="{{ route('gallery.show', $galleryType->id) }}" class="text-decoration-none">
+                        <div class="singlegallery">
+                            <img src="{{ asset($galleryType->icon ?? 'default.jpg') }}" alt="{{ $galleryType->name }}">
+                            <div class="overlay">
+                                {{ $galleryType->name }}
+                            </div>
+                        </div>
+                        <h5 class="text-center mt-2 mb-0 text-dark">{{ $galleryType->name }}</h5>
+                    </a>
+                </div>
+            @endforeach
+        </div>
+    </div>
+    @endsection
