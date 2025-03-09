@@ -4,15 +4,18 @@
     <div class="breadcrumb-top default-overlay bg-img breadcrumb-overly-2 pt-100 pb-95"
         style="background-image:url('	https://htmldemo.net/glaxdu/glaxdu/assets/img/bg/breadcrumb-bg-2.jpg');">
         <div class="container">
-            <h2>Course Grid</h2>
-            <p>Each course is designed with industry-relevant curriculum, experienced faculty, and hands-on learning opportunities to ensure student success.
-            </p>
+            <h2>Courses / {{$course->name}} </h2>
         </div>
     </div>
     <div class="breadcrumb-bottom">
         <div class="container">
             <ul>
-                <li><a href="#">Courses</a> <span><i class="fa fa-angle-double-right"></i>{{ $course->name }}</span></li>
+                <li><a href="#">Home</a>
+                    <span>
+                        <i class="fa fa-angle-double-right"></i> Courses
+                        <i class="fa fa-angle-double-right"></i> {{ $course->name }}
+                    </span>
+                </li>
             </ul>
         </div>
     </div>
@@ -22,7 +25,7 @@
         <!-- Left Section: Course Details -->
         <div class="col-md-8 p-3">
             <div class="course-detail shadow">
-                <img src="{{ asset( $course->image) }}" alt="{{ $course->name }}" class="img-fluid" style="width: 40%; height: 200px;">
+                <img src="{{ asset( $course->image) }}" alt="{{ $course->name }}" class="img-fluid" style="width: 100%;">
                 <div class="info p-3 mt-3">
                     <h2>{{ $course->name }}</h2>
                     <p><strong>Faculty:</strong> {{ $course->faculty }}</p>
