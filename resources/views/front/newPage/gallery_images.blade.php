@@ -1,39 +1,49 @@
 @extends('front.layout.app')
-
 @section('content')
-<div class="breadcrumb-area">
-    <div class="container">
-        <div class="breadcrumb
-<div class="breadcrumb-bottom">
-    <div class="container">
-        <ul>
-            <li><a href="{{ url()->previous() }}">Gallery</a> <span><i class="fa fa-angle-double-right"></i>Albums</span></li>
-        </ul>
-    </div>
-</div>
-</div>
-<div class="container py-5">
-    <h2 class="text-center mb-4">{{ $galleryType->name }}</h2>
-{{--
-    <!-- Fancy Back Arrow -->
-    <a href="" class="btn btn-link mb-4">
-        <i class="fas fa-arrow-left"></i>
-    </a> --}}
-
-    <div class="row">
-        @foreach ($galleryType->galleries as $gallery)
-            <div class="col-md-3 mb-4">
-                <div class="card border-0 shadow-sm">
-                    <a href="{{ asset($gallery->file) }}" data-lightbox="gallery">
-                        {{-- <data-title="{{ $gallery->name ?? 'No Title' }}"> --}}
-                        <img src="{{ asset($gallery->file) }}" class="card-img-top rounded" alt="Gallery Image">
-                    </a>
-                    <div class="card-body text-center">
-                        <h5 class="card-title text-truncate" style="max-width: 100%">{{ $gallery->name ?? 'No Title' }}</h5>
-                    </div>
-                </div>
+    <div class="breadcrumb-area">
+        <div class="breadcrumb-top default-overlay bg-img breadcrumb-overly-4 pt-100 pb-95"
+            style="background-image:url(assets/img/bg/breadcrumb-bg-4.jpg);">
+        </div>
+        <div class="breadcrumb-bottom">
+            <div class="container">
+                <ul>
+                    <li><a href="{{ route('index') }}">Home</a>
+                        <span>
+                            <i class="fa fa-angle-double-right"></i> Gallery
+                            <i class="fa fa-angle-double-right"></i> {{ $galleryType->name }}
+                        </span>
+                    </li>
+                </ul>
             </div>
-        @endforeach
+        </div>
     </div>
-</div>
+    <div class="container py-5">
+        <div class="row" id="gallery">
+
+            @foreach ($galleryType->galleries as $i=>$gallery)
+            <div class="item col-md-3 col-6 mb-2"  data-index="{{$i++}}">
+                <img class="w-100" data-fancybox="gallery" data-src="{{asset($gallery->file)}}"  src="{{asset($gallery->file)}}" alt="">
+              </div>
+            @endforeach
+        </div>
+    </div>
+@endsection
+@section('js')
+    <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@4.0/dist/fancybox.umd.js"></script>
+    <script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@4.0/dist/fancybox.css" />
+
+    <script>
+        const galleryelem = document.querySelectorAll('.gallery .item img');
+        var index = 0;
+
+        $(document).ready(function() {
+            window.onload = () => {
+                console.log('ma');
+                $('#gallery').masonry({
+                    itemSelector: '.item',
+                });
+            };
+        });
+    </script>
 @endsection
