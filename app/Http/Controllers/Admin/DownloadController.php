@@ -40,7 +40,7 @@ class DownloadController extends Controller
         $download->file_path = $filePath;
         $download->save();
 
-        return redirect()->route('admin.downloads.index')->with('success', 'Download added successfully!');
+        return redirect()->route('admin.downloads.create')->with('success', 'Download added successfully!');
     }
 
     public function destroy($id)
