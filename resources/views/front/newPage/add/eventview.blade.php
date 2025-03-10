@@ -6,7 +6,7 @@
     }
 </style>
 
-<div class="event-area bg-img default-overlay pt-130 pb-130"
+<div class="event-area bg-img default-overlay pt-60 pb-70"
     style="background-image:url('https://images.pexels.com/photos/1029577/pexels-photo-1029577.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');">
     <div class="container">
         <div class="section-title mb-75">

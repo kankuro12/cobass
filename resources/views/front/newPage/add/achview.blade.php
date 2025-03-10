@@ -1,13 +1,13 @@
 <div class="achievement-area pt-130 pb-115">
     <div class="container">
-        <div class="section-title mb-75">
+        <div class="section-title mb-50">
             <h2>Our <span>Achievement</span></h2>
         </div>
         <div class="row">
             <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6">
                 <div class="single-count mb-30 count-one">
                     <div class="count-img">
-                        <img src="{{ asset('storage/' . ($achievementData['students']->icon ?? 'default-icon.png')) }}" alt="">
+                        <img src="{{ asset( ($achievementData['students']->icon ?? 'default-icon.png')) }}" alt="">
                     </div>
                     <div class="count-content">
                         <h2 class="count">{{ $achievementData['students']->value ?? '0' }}</h2>
@@ -20,7 +20,7 @@
             <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6">
                 <div class="single-count mb-30 count-two">
                     <div class="count-img">
-                        <img src="{{ asset('storage/' . ($achievementData['graduates']->icon ?? 'default-icon.png')) }}" alt="">
+                        <img src="{{ asset(($achievementData['graduates']->icon ?? 'default-icon.png')) }}" alt="">
                     </div>
                     <div class="count-content">
                         <h2 class="count">{{ $achievementData['graduates']->value ?? '0' }}</h2>

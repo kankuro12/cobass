@@ -10,8 +10,7 @@
         ];
 @endphp
 <footer class="footer-area">
-    <div class="footer-top bg-img default-overlay pt-130 pb-80"
-        style="background-image:url('https://htmldemo.net/glaxdu/glaxdu/assets/img/bg/bg-4.jpg');">
+    <div class="footer-top bg-img default-overlay pt-100 pb-80">
         <div class="container">
             <div class="row">
                 <div class="col-lg-3 col-md-6 col-sm-6">
@@ -31,15 +30,15 @@
                             <div class="f-contact-info">
                                 <div class="single-f-contact-info">
                                     <i class="fa fa-home"></i>
-                                    <span>Biratnagar, Morang ,Nepal</span>
+                                    <span>{{ $data->addr }}</span>
                                 </div>
                                 <div class="single-f-contact-info">
                                     <i class="fa fa-envelope"></i>
-                                    <span><a href="#">education@email.com</a></span>
+                                    <span><a href="#">{{ $data->email }}</a></span>
                                 </div>
                                 <div class="single-f-contact-info">
                                     <i class="fa fa-phone"></i>
-                                    <span> 9825252525</span>
+                                    <span> {{ $data->phone }}</span>
                                 </div>
                             </div>
                         </div>
@@ -52,11 +51,10 @@
                         </div>
                         <div class="footer-list">
                             <ul>
-                                <li><a href="index.html">Home</a></li>
-                                <li><a href="about-us.html">About Us</a></li>
-                                <li><a href="course.html">Contact Us</a></li>
-                                <li><a href="#">Latest News</a></li>
-                                <
+                                <li><a href="{{ route('index') }}">Home</a></li>
+                                <li><a href="{{ route('about') }}">About Us</a></li>
+                                <li><a href="{{ route('contact') }}">Contact Us</a></li>
+                                <li><a href="{{ route('news.list') }}">Latest News</a></li>
                             </ul>
                         </div>
                     </div>

@@ -1,4 +1,4 @@
-<div class="testimonial-slider-wrap mt-45">
+<div class="testimonial-slider-wrap mt-50">
     <div class="testimonial-text-slider">
         @foreach ($testimonials as $testimonial)
             <div class="testi-content-wrap">

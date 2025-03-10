@@ -7,7 +7,7 @@
         height: auto;
     }
 </style>
-<div class="teacher-area pt-130 pb-100">
+<div class="teacher-area pt-80 pb-70">
     <div class="container">
         <div class="section-title mb-75">
             <h2>Our <span>Teachers</span></h2>
