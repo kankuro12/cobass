@@ -30,7 +30,7 @@
             <!-- Dropify Image Upload -->
             <div class="form-group">
                 <label for="link">Upload Image</label>
-                <input type="file" name="link" id="link" class="form-control dropify" data-height="150" required />
+                <input type="file" name="file" id="file" class="form-control dropify" data-height="150" required />
             </div>
 
             <button type="submit" class="btn btn-primary">Submit</button>
@@ -42,8 +42,11 @@
     <script src="{{ asset('admin/plugins/drophify/js/dropify.min.js') }}"></script>
     <script>
         $(function() {
-            $('.photo').dropify();
+            $('.file').dropify();
             $('#long_des').summernote();
         });
     </script>
 @endsection
+@push('styles')
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/dropify/0.2.2/css/dropify.min.css">
+@endpush

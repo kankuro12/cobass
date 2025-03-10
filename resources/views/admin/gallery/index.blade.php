@@ -112,13 +112,14 @@
 
     <div class="bg-white shadow mt-3">
         <div class="card-body">
-            <div >
+            <div>
                 <div class="row" id="images">
                     @foreach ($type->galleries as $image)
                         <div class="col-md-3  p-0">
                             <div id="image-{{ $image->id }}" class="single-image">
-                                <img data-src="{{ asset($image->file) }}" src="{{ asset($image->thumb ?? $image->file) }}" class="w-100" alt="">
-                                <button onclick="del({{ $image->id }})">X</button>
+                                <img data-src="{{ asset($image->file) }}" src="{{ asset($image->thumb ?? $image->file) }}"
+                                    class="w-100" alt="">
+                                    <button onclick="del({{ $image->id }})" class="btn btn-danger">X</button>
                             </div>
                         </div>
                     @endforeach
@@ -144,7 +145,10 @@
 
 @section('script')
     <script>
-        var i = 0, blobs = [], index = 0, galleryelem = [];
+        var i = 0,
+            blobs = [],
+            index = 0,
+            galleryelem = [];
 
         // Image Uploading
         $('#input-fileupload').change(function(e) {
@@ -157,9 +161,9 @@
                     reader.onload = function(e) {
                         blobs['b_' + i] = file;
                         const img = '<div id="single-upload-' + i + '" class="single-upload">' +
-                                    '<img src="' + e.target.result + '" />' +
-                                    '<button onclick="remove(' + i + ')">X</button>' +
-                                    '</div>';
+                            '<img src="' + e.target.result + '" />' +
+                            '<button onclick="remove(' + i + ')">X</button>' +
+                            '</div>';
                         $('#single-upload-container').append(img);
                         i++;
                     }
@@ -200,7 +204,8 @@
                     let html = '';
                     res.data.forEach(img => {
                         html += '<div class="col-md-3 p-0">' +
-                            '<div data-src="/' + img.file + '" id="image-' + img.id + '" class="single-image">' +
+                            '<div data-src="/' + img.file + '" id="image-' + img.id +
+                            '" class="single-image">' +
                             '<img src="/' + img.file + '" class="w-100" alt="">' +
                             '<button onclick="del(' + img.id + ')">X</button>' +
                             '</div>' +
@@ -216,53 +221,39 @@
         }
 
         function del(imageId) {
-            // Function to delete an image
-            axios.post('{{ route('admin.setting.gallery.delete') }}', { image_id: imageId })
-                .then((res) => {
-                    $('#image-' + imageId).remove();
+            if (!confirm("Are you sure you want to delete this image?")) return;
+
+            const imageElement = document.getElementById('image-' + imageId);
+            if (!imageElement) return;
+
+            // Dim the image to indicate processing
+            imageElement.style.opacity = "0.5";
+
+            axios.post('{{ route('admin.setting.gallery.delete') }}', {
+                    image_id: imageId,
+                    _token: '{{ csrf_token() }}' // Include CSRF token for security
                 })
-                .catch((err) => {
-                    console.log(err);
+                .then(response => {
+                    console.log("Response from server:", response.data);
+
+                    if (response.data.success) {
+                        // Smoothly remove the element from the UI
+                        imageElement.closest('.col-md-3').style.transition = "opacity 0.3s";
+                        imageElement.closest('.col-md-3').style.opacity = "0";
+                        setTimeout(() => {
+                            imageElement.closest('.col-md-3').remove();
+                        }, 300); // Delay removal for smooth transition
+                    } else {
+                        alert(response.data.message || 'Failed to delete the image');
+                        imageElement.style.opacity = "1"; // Restore opacity on failure
+                    }
+                })
+                .catch(error => {
+                    console.error("Error deleting image:", error);
+                    alert("An error occurred while deleting the image.");
+                    imageElement.style.opacity = "1"; // Restore opacity on failure
                 });
         }
-
-        // Image gallery modal functionality
-        $(document).ready(function() {
-            // Populate gallery elements for navigation
-            $('#images .single-image>img').each(function() {
-                galleryelem.push({
-                    src: $(this).data('src'),
-                    thumb: $(this).attr('src'),
-                });
-            });
-
-            // Display the clicked image in the modal
-            $('#images .single-image>img').click(function(e) {
-                e.preventDefault();
-                let src = this.dataset.src;
-                $('#modal-image-holder>img').attr('src', src);
-                $('#staticBackdrop').modal('show');
-            });
-
-            // Next and Previous buttons for modal navigation
-            $('#modal-image-holder>.next').click(function(e) {
-                e.preventDefault();
-                index += 1;
-                if (index >= galleryelem.length) {
-                    index = 0;  // Loop back to the first image
-                }
-                $('#modal-image-holder>img').attr('src', galleryelem[index].src);
-            });
-
-            $('#modal-image-holder>.prev').click(function(e) {
-                e.preventDefault();
-                index -= 1;
-                if (index < 0) {
-                    index = galleryelem.length - 1;  // Loop back to the last image
-                }
-                $('#modal-image-holder>img').attr('src', galleryelem[index].src);
-            });
-        });
     </script>
     <script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
     <script src="{{ asset('front/js/lazy.js') }}"></script>
