@@ -82,7 +82,7 @@ Route::get('/facilities', [NewCobassController::class, 'showFacilities']);
 Route::get('/events', [NewCobassController::class, 'listEvents'])->name('events.index'); // List all events
 Route::get('/events/{id}', [NewCobassController::class, 'showEvent'])->name('events.details'); // View event details
 Route::get('/events', [NewCobassController::class, 'eventList'])->name('events.list');
-Route::get('/page/{type}', [NewCobassControllerController::class, 'show'])->name('page.type');
+Route::get('/page/{type}', [NewCobassController::class, 'show'])->name('page.type');
 
 
 
@@ -91,16 +91,19 @@ Route::get('/page/{type}', [NewCobassControllerController::class, 'show'])->name
 
 
 Route::prefix("admin")->name("admin.")->group(function () {
-    Route::post('setting/gallery/delete', [GalleryController::class, 'deleteImage'])->name('setting.gallery.delete');
+    Route::post('setting/gallery/delete/{gallery_id}', [GalleryController::class, 'del'])->name('admin.setting.gallery.delete');
     Route::match(["POST", "GET"], 'login', [AuthController::class, 'login'])->name('login');
     Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard.index');
-    //Download Route
-    Route::resource('downloads', DownloadController::class)->except(['show', 'edit', 'update']);
     Route::match(["POST", "GET"], 'logout', function () {
         // Auth::logout();
     });
-
-
+    Route::prefix('downloads')->name('downloads.')->group(function () {
+        Route::get('', [DownloadController::class, 'index'])->name('index');
+        Route::match(["GET", "POST"], 'add', [DownloadController::class, 'add'])->name('add');
+        Route::match(["GET", "POST"], 'edit/{product}', [DownloadController::class, 'edit'])->name('edit');
+        Route::match(["GET", "POST"], 'del/{product}', [DownloadController::class, 'del'])->name('del');
+    });
+    Route::delete('admin/setting/gallery/type/del/{type}', [GalleryController::class, 'delType'])->name('admin.setting.gallery.type.del');
     // Route::prefix('page')->name('page.')->group(function () {
     //     Route::get('@{type}', [PageController::class, 'index'])->name('index');
     //     Route::match(['get', 'post'], 'add/@{type}', [PageController::class, 'add'])->name('add');
@@ -114,7 +117,6 @@ Route::prefix("admin")->name("admin.")->group(function () {
         Route::match(["GET", "POST"], 'edit/{product}', [ProductController::class, 'edit'])->name('edit');
         Route::match(["GET", "POST"], 'del/{product}', [ProductController::class, 'del'])->name('del');
     });
-    Route::middleware('auth')->group(callback: function () {
         Route::prefix('notice')->name('notice.')->group(function () {
             Route::get('', [NoticeController::class, 'index'])->name('index');
             Route::get('create', [NoticeController::class, 'create'])->name('create');
@@ -123,7 +125,6 @@ Route::prefix("admin")->name("admin.")->group(function () {
             Route::put('update/{id}', [NoticeController::class, 'update'])->name('update');
             Route::delete('delete/{id}', [NoticeController::class, 'destroy'])->name('destroy');
         });
-    });
     //add controller
     Route::get('/add', [AddController::class, 'index'])->name('add.index');
     Route::put('/add/update', [AddController::class, 'update'])->name('add.update');
@@ -226,12 +227,10 @@ Route::prefix("admin")->name("admin.")->group(function () {
         });
 
         Route::prefix('gallery')->name('gallery.')->group(function () {
-            Route::prefix('type')->name('type.')->group(function () {
-                Route::get('', [GalleryController::class, 'indexType'])->name('index');
-                Route::match(['get', 'post'], 'add', [GalleryController::class, 'addType'])->name('add');
-                Route::match(['get', 'post'], 'edit/{type}', [GalleryController::class, 'editType'])->name('edit');
-                Route::match(['get', 'post'], 'del/{type}', [GalleryController::class, 'delType'])->name('del');
-            });
+            Route::get('type', [GalleryController::class, 'indexType'])->name('type.index');
+            Route::match(['get', 'post'], 'type/add', [GalleryController::class, 'addType'])->name('type.add');
+            Route::match(['get', 'post'], 'type/edit/{type}', [GalleryController::class, 'editType'])->name('type.edit');
+            Route::match(['get', 'post'], 'type/del/{type}', [GalleryController::class, 'delType'])->name('type.del');
 
             Route::get('manage/{type}', [GalleryController::class, 'index'])->name('index');
             Route::match(['get', 'post'], 'add', [GalleryController::class, 'add'])->name('add');

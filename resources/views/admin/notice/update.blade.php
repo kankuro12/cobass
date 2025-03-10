@@ -30,10 +30,22 @@
 
             <div class="form-group">
                 <label for="link">Link (Optional)</label>
-                <input type="url" name="link" class="form-control" id="link" value="{{ $notice->link }}">
+                <input type="file" name="link" class="form-control" id="link" value="{{ $notice->link }}">
             </div>
 
             <button type="submit" class="btn btn-primary">Update</button>
         </form>
     </div>
 @endsection
+@push('scripts')
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dropify/0.2.2/js/dropify.min.js"></script>
+    <script>
+          $(function() {
+            $('.link').dropify();
+            $('#long_des').summernote();
+        });
+@endpush
+
+@push('styles')
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/dropify/0.2.2/css/dropify.min.css">
+@endpush

@@ -38,7 +38,7 @@
                             </div>
                             @if($notice->link)
                             <div class="download-link" style="float: right;">
-                                <a href="{{ asset('storage/' . $notice->link) }}" download>
+                                <a href="{{ asset( $notice->link) }}" download>
                                     <i class="fa fa-download"></i> Download Notice
                                 </a>
                             </div>

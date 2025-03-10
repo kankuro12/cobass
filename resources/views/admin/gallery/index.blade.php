@@ -119,7 +119,7 @@
                             <div id="image-{{ $image->id }}" class="single-image">
                                 <img data-src="{{ asset($image->file) }}" src="{{ asset($image->thumb ?? $image->file) }}"
                                     class="w-100" alt="">
-                                    <button onclick="del({{ $image->id }})" class="btn btn-danger">X</button>
+                                <button onclick="del({{ $image->id }})" class="btn btn-danger">X</button>
                             </div>
                         </div>
                     @endforeach
@@ -220,38 +220,14 @@
                 });
         }
 
-        function del(imageId) {
-            if (!confirm("Are you sure you want to delete this image?")) return;
-
-            const imageElement = document.getElementById('image-' + imageId);
-            if (!imageElement) return;
-
-            // Dim the image to indicate processing
-            imageElement.style.opacity = "0.5";
-
-            axios.post('{{ route('admin.setting.gallery.delete') }}', {
-                    image_id: imageId,
-                    _token: '{{ csrf_token() }}' // Include CSRF token for security
+        function del(gallery) {
+            axios.post('{{ route('admin.setting.gallery.del', ':gallery') }}'.replace(':gallery', gallery), {
                 })
-                .then(response => {
-                    console.log("Response from server:", response.data);
-
-                    if (response.data.success) {
-                        // Smoothly remove the element from the UI
-                        imageElement.closest('.col-md-3').style.transition = "opacity 0.3s";
-                        imageElement.closest('.col-md-3').style.opacity = "0";
-                        setTimeout(() => {
-                            imageElement.closest('.col-md-3').remove();
-                        }, 300); // Delay removal for smooth transition
-                    } else {
-                        alert(response.data.message || 'Failed to delete the image');
-                        imageElement.style.opacity = "1"; // Restore opacity on failure
-                    }
+                .then((res) => {
+                    $('#image-' + gallery).remove();
                 })
-                .catch(error => {
-                    console.error("Error deleting image:", error);
-                    alert("An error occurred while deleting the image.");
-                    imageElement.style.opacity = "1"; // Restore opacity on failure
+                .catch((err) => {
+                    console.log(err);
                 });
         }
     </script>

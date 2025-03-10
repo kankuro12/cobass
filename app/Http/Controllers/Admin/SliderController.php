@@ -12,78 +12,78 @@ class SliderController extends Controller
     public function index()
     {
 
-        $sliders=DB::table('sliders')->get();
-        return view('admin.setting.slider.index',compact('sliders'));
+        $sliders = DB::table('sliders')->get();
+        return view('admin.setting.slider.index', compact('sliders'));
     }
 
     public function add(Request $request)
     {
-        if($request->getMethod()=="POST"){
-            $slider=new Slider();
-            $slider->title=$request->title??'';
-            $slider->subtitle=$request->subtitle??'';
-            $slider->link_title=$request->link_title??'';
+        if ($request->getMethod() == "POST") {
+            $slider = new Slider();
+            $slider->title = $request->title ?? '';
+            $slider->subtitle = $request->subtitle ?? '';
+            $slider->link_title = $request->link_title ?? '';
 
-            $slider->image=$request->image->store('uploads/sliders');
-            if($request->hasFile('mobile_image')){
-                $slider->mobile_image=$request->mobile_image->store('uploads/sliders');
+            $slider->image = $request->image->store('uploads/sliders');
+            if ($request->hasFile('mobile_image')) {
+                $slider->mobile_image = $request->mobile_image->store('uploads/sliders');
 
-            }else{
-                $slider->mobile_image=$slider->image;
+            } else {
+                $slider->mobile_image = $slider->image;
 
             }
             $slider->link = $request->link;
 
             $slider->save();
             $this->render();
-            return redirect()->back()->with('message','Slider Added');
+            return redirect()->back()->with('message', 'Slider Added');
             // dd($request->all(),$slider);
-        }else{
+        } else {
             $pages = DB::table('pages')->select('id', 'type', 'title')->get();
 
-            return view('admin.setting.slider.add',compact('pages'));
+            return view('admin.setting.slider.add', compact('pages'));
 
         }
     }
 
-    public function del(Request $request,Slider $slider)
+    public function del(Request $request, Slider $slider)
     {
         $slider->delete();
         $this->render();
 
-        return redirect()->back()->with('message','Slider Deleted');
+        return redirect()->back()->with('message', 'Slider Deleted');
 
     }
-    public function edit(Request $request,Slider $slider)
+    public function edit(Request $request, Slider $slider)
     {
-        if($request->getMethod()=="POST"){
-            $slider->title=$request->title;
-            $slider->subtitle=$request->subtitle;
-            if($request->hasFile('mobile_image')){
-                $slider->mobile_image=$request->mobile_image->store('uploads/sliders');
+        if ($request->getMethod() == "POST") {
+            $slider->title = $request->title;
+            $slider->subtitle = $request->subtitle;
+            if ($request->hasFile('mobile_image')) {
+                $slider->mobile_image = $request->mobile_image->store('uploads/sliders');
 
             }
-            if($request->hasFile('image')){
-                $slider->image=$request->image->store('uploads/sliders');
+            if ($request->hasFile('image')) {
+                $slider->image = $request->image->store('uploads/sliders');
 
             }
-            $slider->link_title=$request->link_title??'';
-            $slider->link=$request->link??'';
+            $slider->link_title = $request->link_title ?? '';
+            $slider->link = $request->link ?? '';
 
             $slider->save();
             $this->render();
-            return redirect()->back()->with('message','Slider Updated');
+            return redirect()->back()->with('message', 'Slider Updated');
             // dd($request->all(),$slider);
-        }else{
+        } else {
             $pages = DB::table('pages')->select('id', 'type', 'title')->get();
-            return view('admin.setting.slider.edit',compact('pages','slider'));
+            return view('admin.setting.slider.edit', compact('pages', 'slider'));
 
         }
     }
 
     private function render()
     {
-        $sliders=DB::table('sliders')->get();
-        file_put_contents(resource_path('views/front/home/slider.blade.php'),view('admin.setting.slider.template',compact('sliders'))->render());
+        $sliders = DB::table('sliders')->get();
+        file_put_contents(resource_path('views/front/home/slider.blade.php'), view('admin.setting.slider.template', compact('sliders'))->render());
     }
 }

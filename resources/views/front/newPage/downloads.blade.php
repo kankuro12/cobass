@@ -42,8 +42,7 @@
                     <h5 class="mb-1 font-weight-bold">{{ $download->title }}</h5>
                     {{-- <p class="mb-1">{{ $download->description }}</p> --}}
                 </div>
-                <a href="{{ asset('storage/' . $download->file_path) }}" class="btn btn-primary"
-                    download>Download</a>
+                <a href="{{ asset($download->file_path) }}" class="btn btn-primary" download >Download</a>
                 </li>
             @endforeach
             </ul>

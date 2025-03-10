@@ -39,7 +39,6 @@ class GalleryController extends Controller
     public function delType(Request $request, GalleryType $type)
     {
         $type->delete();
-
         return redirect()->back()->with('message', 'Gallery Deleted Sucessfully');
     }
 
@@ -49,17 +48,9 @@ class GalleryController extends Controller
         return view('admin.gallery.index', compact('type'));
     }
 
-    public function del(Request $request)
+    public function del($gallery_id)
     {
-        $image = Gallery::find($request->image_id);
-
-        if (!$image) {
-            return response()->json(['success' => false, 'message' => 'Image not found']);
-        }
-
-        $image->delete();
-
-        return response()->json(['success' => true, 'message' => 'Image deleted successfully']);
+        Gallery::where('id', $gallery_id)->delete();
     }
     public function destroy($id)
     {

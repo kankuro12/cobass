@@ -27,8 +27,7 @@
             <div class="course-slider-active-3">
                 <div class="single-course">
                     <div class="course-img">
-                        <a href="{{ route('courseDeatil') }}"><img class="animated"
-                                src="https://htmldemo.net/glaxdu/glaxdu/assets/img/course/course-1.jpg" alt=""></a>
+                        <a href="{{ route('courseDeatil') }}"><img class="animated" alt=""></a>
                         <span>Addmission Going On</span>
                     </div>
                     <div class="course-content">

@@ -9,13 +9,13 @@
 @endsection
 @section('content')
     <div class="bg-white shadow p-3 mt-3">
-        <form action="{{ route('admin.downloads.store') }}" method="POST" enctype="multipart/form-data" >
+        <form action="{{ route('admin.downloads.add') }}" method="POST" enctype="multipart/form-data" >
             @csrf
             <div class="row">
                 <div class="col-md-3">
                     <div class="mb-3">
                         <label>Upload File</label>
-                        <input type="file" name="file" class="form-control photo" accept=".pdf,.doc,.docx,.jpg,.jpeg,.png,.webp" required>
+                        <input type="file" name="file" class="form-control photo" accept=".pdf,.docx,.doc" required>
                     </div>
                 </div>
                 <div class="col-md-9">

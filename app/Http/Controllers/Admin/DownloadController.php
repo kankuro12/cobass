@@ -13,42 +13,35 @@ class DownloadController extends Controller
         return view('admin.downloads.index', compact('downloads'));
     }
 
-    public function create()
+    public function add(Request $request)
     {
-        return view('admin.downloads.create');
-    }
-
-    public function store(Request $request)
-    {
-        $request->validate([
-            'title' => 'required|string|max:255',
-            'description' => 'nullable|string',
-            'file' => 'required|file|max:2048',
-        ]);
-
-        // Check if file is uploaded
-        if ($request->hasFile('file')) {
-            $filePath = $request->file('file')->store('downloads', 'public'); // Save file in public storage
+        if ($request->isMethod('get')) {
+            return view('admin.downloads.create');
         } else {
-            return back()->with('error', 'File upload failed. Please try again.');
+            $request->validate([
+                'title' => 'required|string|max:255',
+                'description' => 'nullable|string',
+                'file' => 'required|file|max:2048',
+            ]);
+
+            // Check if file is uploaded
+            if ($request->hasFile('file')) {
+                $filePath = $request->file('file')->store('uploads/downloads');
+            }
+            $download = new Download();
+            $download->title = $request->title;
+            $download->description = $request->description;
+            $download->file_path = $filePath;
+            $download->save();
+
+            return redirect()->route('admin.downloads.add')->with('success', 'Download added successfully!');
         }
 
-        // Save to database
-        $download = new Download();
-        $download->title = $request->title;
-        $download->description = $request->description;
-        $download->file_path = $filePath;
-        $download->save();
-
-        return redirect()->route('admin.downloads.create')->with('success', 'Download added successfully!');
     }
 
-    public function destroy($id)
+    public function del($id)
     {
-        $download = Download::findOrFail($id);
-        \Storage::disk('public')->delete($download->file_path);
-        $download->delete();
-
+        Download::where('id', $id)->delete();
         return redirect()->route('admin.downloads.index')->with('success', 'Download deleted successfully!');
     }
 }
