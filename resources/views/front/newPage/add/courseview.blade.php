@@ -1,5 +1,4 @@
-<div class="course-area bg-img pt-130 pb-10"
-    style="background-image:url('https://images.pexels.com/photos/1029577/pexels-photo-1029577.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'); background-size: cover; background-position: center;">
+<div class="course-area bg-img pt-130 pb-10" style="background-image: url('{{ asset('/img/bg.jpeg') }}'); background-size: cover; background-position: center;">
 
     <div class="container" style="padding: 0;">
         <div class="container">

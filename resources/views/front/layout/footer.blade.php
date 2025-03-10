@@ -54,9 +54,9 @@
                             <ul>
                                 <li><a href="index.html">Home</a></li>
                                 <li><a href="about-us.html">About Us</a></li>
-                                <li><a href="course.html">Courses</a></li>
-                                <li><a href="#">Admission</a></li>
-                                <li><a href="#">Terms & Conditions</a></li>
+                                <li><a href="course.html">Contact Us</a></li>
+                                <li><a href="#">Latest News</a></li>
+                                <
                             </ul>
                         </div>
                     </div>
