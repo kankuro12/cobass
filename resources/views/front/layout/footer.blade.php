@@ -1,17 +1,17 @@
-
 @php
-$data = getSetting('contact') ??
-    (object) [
-        'map' => '',
-        'email' => '',
-        'phone' => '',
-        'addr' => '',
-        'others' => [],
-    ];
-
+    $data =
+        getSetting('contact') ??
+        (object) [
+            'map' => '',
+            'email' => '',
+            'phone' => '',
+            'addr' => '',
+            'others' => [],
+        ];
 @endphp
 <footer class="footer-area">
-    <div class="footer-top bg-img default-overlay pt-130 pb-80" style="background-image:url('https://htmldemo.net/glaxdu/glaxdu/assets/img/bg/bg-4.jpg');">
+    <div class="footer-top bg-img default-overlay pt-130 pb-80"
+        style="background-image:url('https://htmldemo.net/glaxdu/glaxdu/assets/img/bg/bg-4.jpg');">
         <div class="container">
             <div class="row">
                 <div class="col-lg-3 col-md-6 col-sm-6">
@@ -22,7 +22,10 @@ $data = getSetting('contact') ??
                         <div class="footer-about">
                             <p>
 
-                                We are committed to providing a transformative education that fosters academic excellence and personal growth. Our inclusive community encourages creativity, critical thinking, and lifelong learning, preparing students for success in an ever-changing world.
+                                We are committed to providing a transformative education that fosters academic
+                                excellence and personal growth. Our inclusive community encourages creativity, critical
+                                thinking, and lifelong learning, preparing students for success in an ever-changing
+                                world.
 
                             </p>
                             <div class="f-contact-info">
@@ -74,16 +77,18 @@ $data = getSetting('contact') ??
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-3 col-md-4 col-sm-4">
+                <div class="col-lg-4 col-md-4 col-sm-4">
                     <div class="footer-widget mb-40">
                         <div class="footer-title">
                             <h4>Our Location</h4>
                         </div>
-                    <div class="maps">
-                        <div class="position-relative rounded overflow-hidden h-100" style="height: 300px;">
-                            <iframe src="https://maps.google.com/maps?q={{ $data->map }}&t=&z=13&ie=UTF8&iwloc=&output=embed"
-                                frameborder="0" height="100%" width="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-                        </div>
+                        <div class="maps">
+                            <div class="position-relative rounded overflow-hidden h-100">
+                                <iframe
+                                    src="https://maps.google.com/maps?q={{ $data->map }}&t=&z=13&ie=UTF8&iwloc=&output=embed"
+                                    frameborder="0" height="300px" width="100%" style="border:0;" allowfullscreen=""
+                                    loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -115,7 +120,8 @@ $data = getSetting('contact') ??
                                 <li><a class="facebook" href="#"><i class="fa-brands fa-facebook"></i></a></li>
                                 <li><a class="youtube" href="#"><i class="fa-brands fa-youtube"></i></a></li>
                                 <li><a class="twitter" href="#"><i class="fa-brands fa-x-twitter"></i></a></li>
-                                <li><a class="google-plus" href="#"><i class="fa-brands fa-instagram"></i></a></li>
+                                <li><a class="google-plus" href="#"><i class="fa-brands fa-instagram"></i></a>
+                                </li>
                             </ul>
                         </div>
                     </div>
