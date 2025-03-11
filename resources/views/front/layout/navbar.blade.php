@@ -16,21 +16,48 @@
 @php
     $courses = \App\Models\Course::all();
 @endphp
+<style>
+    .header-social ul li a{
+        display: inline-block;
+          width: 28px;
+          height: 28px;
+          background-color: #fff;
+          border-radius: 100%;
+          text-align: center;
+          line-height: 28px;
+          font-size: 12px;
+    }
+</style>
 <header class="header-area">
     <div class="header-top bg-img">
         <div class="container">
-            <div class="row">
-                <div class="col-lg-12 col-md-7 col-12 col-sm-8 d-flex justify-content-end">
+            <div class="row" style="display: flex; justify-content: center;align-items: center">
+                <div class="col-md-6">
+                    <div class="header-social col-lg-6 col-md-7 col-12 col-sm-8">
+                        <ul class="d-flex pb-2" style="column-gap: 10px ">
+                            <li><a class="facebook" href="#"><i class="fa-brands fa-facebook"
+                                        style="color: #3b5998;"></i></a></li>
+                            <li><a class="youtube" href="#"><i class="fa-brands fa-youtube"
+                                        style="color: #FF0000;"></i></a></li>
+                            <li><a class="twitter" href="#"><i class="fa-brands fa-x-twitter"
+                                        style="color: #1DA1F2;"></i></a></li>
+                            <li><a class="google-plus" href="#"><i class="fa-brands fa-instagram"
+                                        style="color: #C13584;"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-7 col-12 col-sm-8 d-flex justify-content-end">
                     <div class="header-contact">
                         <ul>
                             <li><i class="fa fa-phone"></i>
                                 <span style="margin-left: 5px">
-                                    {{ $data->phone }}
+                                    <a href="tel:{{ $data->phone }}">{{ $data->phone }}</a>
                                 </span>
                             </li>
                             <li><i class="fa fa-envelope"></i>
                                 <span style="margin-left: 5px">
-                                    {{ $data->email }}</span>
+                                    <a href="mailto:{{ $data->email }}">{{ $data->email }}</a>
+                                </span>
                             </li>
                         </ul>
                     </div>

@@ -50,7 +50,7 @@
     </div>
 </div>
 
-<div class="event-area bg-img default-overlay pt-130 pb-130"
+<div class="event-area bg-img default-overlay pt-40 pb-40"
     style="background-image:url('https://images.pexels.com/photos/1029577/pexels-photo-1029577.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');">
     <div class="container">
 

@@ -1,4 +1,4 @@
-<div class="course-area bg-img pt-40 pb-10" style="background-image: url('{{ asset('/img/bg.jpeg') }}'); background-size: cover; background-position: center;">
+<div class="course-area bg-img pt-40 pb-40" style="background-image: url('{{ asset('/img/bg.jpeg') }}'); background-size: cover; background-position: center;">
 
     <div class="container" style="padding: 0;">
         <div class="container">
@@ -10,8 +10,8 @@
             <div class="row" data-margin="10">
                 @if (isset($courses) && count($courses) > 0)
                     @foreach ($courses as $course)
-                        <div class="col-lg-3">
-                            <div class="single-course" style="margin-bottom: 0;">
+                        <div class="col-lg-3 col-md-6 ">
+                            <div class="single-course" style="margin-bottom: 10;">
                                 <div class="course-img">
                                     <a href="{{ route('course.show', $course->id) }}"><img src="{{ asset($course->image) }}"
                                             alt="{{ $course->name }}"></a>

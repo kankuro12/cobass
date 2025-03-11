@@ -99,15 +99,7 @@
                                 <li><a href="#">Terms & Conditions of Use</a></li>
                             </ul>
                         </div>
-                        <div class="footer-social">
-                            <ul>
-                                <li><a class="facebook" href="#"><i class="fa-brands fa-facebook"></i></a></li>
-                                <li><a class="youtube" href="#"><i class="fa-brands fa-youtube"></i></a></li>
-                                <li><a class="twitter" href="#"><i class="fa-brands fa-x-twitter"></i></a></li>
-                                <li><a class="google-plus" href="#"><i class="fa-brands fa-instagram"></i></a>
-                                </li>
-                            </ul>
-                        </div>
+
                     </div>
                 </div>
             </div>
