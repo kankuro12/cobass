@@ -20,9 +20,9 @@
     <div class="header-top bg-img">
         <div class="container">
             <div class="row">
-                <div class="col-lg-6 col-md-7 col-12 col-sm-8">
+                <div class="col-lg-12 col-md-7 col-12 col-sm-8 d-flex justify-content-end">
                     <div class="header-contact">
-                        <ul style="display: flex; gap: 15px;">
+                        <ul>
                             <li><i class="fa fa-phone"></i>
                                 <span style="margin-left: 5px">
                                     {{ $data->phone }}
@@ -35,14 +35,6 @@
                         </ul>
                     </div>
                 </div>
-                <div class="col-lg-6 col-md-5 col-12 col-sm-4">
-                    <div class="login-register">
-                        <ul>
-                            <li><a href="login-register.html">Login</a></li>
-                            <li><a href="login-register.html">Register</a></li>
-                        </ul>
-                    </div>
-                </div>
             </div>
         </div>
     </div>
@@ -51,7 +43,7 @@
             <div class="col-md-2 d-none d-md-block"></div>
             <div class="col-lg-4 col-md-6 col-8">
                 <a href="{{ route('index') }}">
-                    <div class="logo" style="height: 100px">
+                    <div class="logo p-2" style="max-height: 100px">
                         <img alt="" src="{{ asset($logo) }}" style="height:100%; width: 100%">
                     </div>
                 </a>
