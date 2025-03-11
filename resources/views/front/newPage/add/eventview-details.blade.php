@@ -28,7 +28,7 @@
                 <div class="single-event event-white-bg shadow p-3 mb-4 bg-white rounded">
                     <div class="event-img">
                         <img src="{{ asset($event->feature_image ?? 'default-image.jpg') }}" alt="{{ $event->title }}"
-                            class="img-fluid w-100">
+                            class="img-fluid w-100" loading="lazy">
                         <div class="event-date-wrap">
                             <span class="event-date">{{ date('j', strtotime($event->start_date ?? 'now')) }}</span>
                             <span>{{ date('M', strtotime($event->start_date ?? 'now')) }}</span>
@@ -65,7 +65,7 @@
                                     <div class="event-img" style="height: 200px; overflow: hidden;">
                                         <a href="{{ route('events.details', $other->id) }}">
                                             <img src="{{ asset($other->feature_image) }}" alt="{{ $other->title }}"
-                                                style="height: 100%; object-fit: cover;">
+                                                style="height: 100%; object-fit: cover;" loading="lazy">
                                         </a>
                                         <div class="event-date-wrap">
                                             <span class="event-date">{{ date('j', strtotime($other->start_date)) }}</span>

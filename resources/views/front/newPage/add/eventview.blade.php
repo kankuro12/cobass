@@ -22,7 +22,7 @@
                             <div class="event-img" style="height: 200px; overflow: hidden;">
                                 <!-- Use the image path from the database -->
                                 <img src="{{ asset($event->feature_image) }}" alt="{{ $event->title }}"
-                                    style="height: 100%; object-fit: cover;">
+                                    style="height: 100%; object-fit: cover;" loading="lazy">
 
                                 <div class="event-date-wrap">
                                     <span class="event-date">{{ date('j', strtotime($event->start_date)) }}</span>

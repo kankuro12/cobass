@@ -56,3 +56,5 @@
     @include('front.newPage.add.teachersview')
     @include('front.newPage.add.achview')
 @endsection
+
+

@@ -5,7 +5,7 @@
                 <div class="col-lg-3 col-md-6 mb-4">
                 <div class="single-choose-us choose-bg-green h-100" style="margin: 10px;">
                         <div class="choose-img">
-                            <img class="animated" src="{{ asset($facilities->icon) }}" alt="">
+                            <img class="animated" src="{{ asset($facilities->icon) }}" alt="" loading="lazy">
                         </div>
                         <div class="choose-content">
                             <h3>{{ $facilities->title }}</h3>

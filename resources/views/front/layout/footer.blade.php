@@ -36,11 +36,13 @@
                                 </div>
                                 <div class="single-f-contact-info">
                                     <i class="fa fa-envelope" style="color: white; margin-right: 5px"></i>
-                                    <span><a href="#">{{ $data->email }}</a></span>
+                                    <span><a href="mailto:{{ $data->email }}">{{ $data->email }}</a></span>
                                 </div>
                                 <div class="single-f-contact-info">
                                     <i class="fa fa-phone" style="color: white; margin-right: 5px"></i>
-                                    <span>{{ $data->phone }}</span>
+                                    <a href="tel:{{ $data->phone }}">
+                                        <span>{{ $data->phone }}</span>
+                                    </a>
                                 </div>
                             </div>
                         </div>

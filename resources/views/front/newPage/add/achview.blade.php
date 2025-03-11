@@ -8,7 +8,7 @@
                 <div class="single-count mb-30 count-one">
                     <div class="count-img">
                         <img src="{{ asset($achievementData['students']->icon ?? 'default-icon.png') }}"
-                            alt="">
+                            alt="" loading="lazy">
                     </div>
                     <div class="count-content">
                         <h2 class="count">{{ $achievementData['students']->value ?? '0' }}</h2>
@@ -22,7 +22,7 @@
                 <div class="single-count mb-30 count-two">
                     <div class="count-img">
                         <img src="{{ asset($achievementData['graduates']->icon ?? 'default-icon.png') }}"
-                            alt="">
+                            alt="" loading="lazy">
                     </div>
                     <div class="count-content">
                         <h2 class="count">{{ $achievementData['graduates']->value ?? '0' }}</h2>
@@ -36,7 +36,7 @@
                 <div class="single-count mb-30 count-three">
                     <div class="count-img">
                         <img src="{{ asset('storage/' . ($achievementData['awards']->icon ?? 'default-icon.png')) }}"
-                            alt="">
+                            alt="" loading="lazy">
                     </div>
                     <div class="count-content">
                         <h2 class="count">{{ $achievementData['awards']->value ?? '0' }}</h2>

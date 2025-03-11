@@ -19,7 +19,7 @@
             </div>
         </div>
     </div>
-    <div class="event-area bg-img default-overlay pt-130 pb-130">
+    <div class="event-area bg-img default-overlay pt-40 pb-40">
         <div class="container">
 
             <!-- Search haleko -->

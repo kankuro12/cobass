@@ -35,22 +35,8 @@
 <header class="header-area">
     <div class="header-top bg-img">
         <div class="container">
-            <div class="row" style="display: flex; justify-content: center;align-items: center">
-                <div class="col-md-6">
-                    <div class="header-social col-lg-6 col-md-7 col-12 col-sm-8">
-                        <ul class="d-flex pb-2" style="column-gap: 10px ">
-                            <li><a class="facebook" href="{{ $facebook }}"><i class="fa-brands fa-facebook"
-                                        style="color: #3b5998;"></i></a></li>
-                            <li><a class="youtube" href="{{ $youtube }}"><i class="fa-brands fa-youtube"
-                                        style="color: #FF0000;"></i></a></li>
-                            <li><a class="twitter" href="{{ $twitter }}"><i class="fa-brands fa-x-twitter"
-                                        style="color: #1DA1F2;"></i></a></li>
-                            <li><a class="instagram" href="{{ $instagram }}"><i class="fa-brands fa-instagram"
-                                        style="color: #C13584;"></i></a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-lg-6 col-md-7 col-12 col-sm-8 d-flex justify-content-end">
+            <div class="row" style="justify-content: space-between;align-items: center">
+                <div class="col-lg-6 col-md-7 col-12 col-sm-8 ">
                     <div class="header-contact">
                         <ul>
                             <li><i class="fa fa-phone"></i>
@@ -63,6 +49,20 @@
                                     <a href="mailto:{{ $data->email }}">{{ $data->email }}</a>
                                 </span>
                             </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-7 col-12 col-sm-8 d-flex justify-content-end">
+                    <div class="header-social ">
+                        <ul class="d-flex" style="column-gap: 10px ">
+                            <li><a class="facebook" href="{{ $facebook }}"><i class="fa-brands fa-facebook"
+                                        style="color: #3b5998;"></i></a></li>
+                            <li><a class="youtube" href="{{ $youtube }}"><i class="fa-brands fa-youtube"
+                                        style="color: #FF0000;"></i></a></li>
+                            <li><a class="twitter" href="{{ $twitter }}"><i class="fa-brands fa-x-twitter"
+                                        style="color: #1DA1F2;"></i></a></li>
+                            <li><a class="instagram" href="{{ $instagram }}"><i class="fa-brands fa-instagram"
+                                        style="color: #C13584;"></i></a></li>
                         </ul>
                     </div>
                 </div>

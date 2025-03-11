@@ -19,7 +19,7 @@
                 <div class="custom-col-5">
                     <div class="single-teacher mb-10">
                         <div class="teacher-img">
-                            <img src="{{ asset($teacher->image) }}" alt="{{ $teacher->name }}">
+                            <img src="{{ asset($teacher->image) }}" alt="{{ $teacher->name }}" loading="lazy">
                         </div>
                         <div class="teacher-content-visible">
                             <h4>{{ $teacher->name }}</h4>

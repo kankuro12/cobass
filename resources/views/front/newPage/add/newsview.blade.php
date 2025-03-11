@@ -12,7 +12,7 @@
                         <div class="blog-img" style="flex: 1;">
                             <a href="{{ route('news.details', $item->id) }}">
                                 <img src="{{ asset($item->feature_image) }}" alt="{{ $item->title }}"
-                                    style="width: 100%; height: 100%; object-fit: cover;">
+                                    style="width: 100%; height: 100%; object-fit: cover;" loading="lazy">
                             </a>
                         </div>
                         <div class="blog-content-wrap"

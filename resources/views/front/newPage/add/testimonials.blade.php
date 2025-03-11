@@ -7,7 +7,7 @@
         @foreach ($testimonials as $testimonial)
             <div class="testi-content-wrap">
                 <div class="testi-big-img">
-                    <img alt="{{ $testimonial->name }}" src="{{ asset($testimonial->image) }}">
+                    <img alt="{{ $testimonial->name }}" src="{{ asset($testimonial->image) }}" loading="lazy">
                 </div>
                 <div class="row no-gutters">
                     <div class="ml-auto col-lg-6 col-md-12">
@@ -36,7 +36,7 @@
     <div class="testimonial-image-slider">
         @foreach ($testimonials as $testimonial)
             <div class="sin-testi-image">
-                <img src="{{ asset($testimonial->image) }}" alt="{{ $testimonial->name }}">
+                <img src="{{ asset($testimonial->image) }}" alt="{{ $testimonial->name }}" loading="lazy">
             </div>
         @endforeach
     </div>

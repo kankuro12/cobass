@@ -14,7 +14,7 @@
             </div>
             <div class="col-lg-4 col-md-4">
                 <div class="about-img default-overlay">
-                    <img src="{{ asset($about_img) }}" alt="About Us">
+                    <img src="{{ asset($about_img) }}" alt="About Us" loading="lazy">
                 </div>
 
             </div>

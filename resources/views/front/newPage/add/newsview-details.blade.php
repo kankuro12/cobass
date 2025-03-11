@@ -27,7 +27,7 @@
             <div class="col-lg-8">
                 <div class="single-event event-white-bg shadow p-3 mb-4 bg-white rounded">
                     <div class="event-img">
-                        <img src="{{ asset($news->feature_image) }}" alt="{{ $news->title }}" class="img-fluid w-100">
+                        <img src="{{ asset($news->feature_image) }}" alt="{{ $news->title }}" class="img-fluid w-100" loading="lazy">
                         <div class="event-date-wrap">
                             <span class="event-date">{{ date('j', strtotime($news->created_at)) }}</span>
                             <span>{{ date('M', strtotime($news->created_at)) }}</span>
@@ -50,7 +50,7 @@
                         <div class="sidebar-news-item d-flex mb-3 border p-3 rounded">
                             <a href="{{ route('news.details', $item->id) }}" class="flex-shrink-0 me-3">
                                 <img src="{{ asset($item->feature_image) }}" alt="{{ $item->title }}" class="img-fluid"
-                                    style="width: 80px; height: 80px; object-fit: cover;">
+                                    style="width: 80px; height: 80px; object-fit: cover;" loading="lazy">
                             </a>
                             <div class="ms-2 p-3">
                                 <h5><a href="{{ route('news.details', $item->id) }}"
