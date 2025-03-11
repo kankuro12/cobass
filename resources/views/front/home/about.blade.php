@@ -3,14 +3,14 @@
         <div class="row g-5">
             <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s" style="min-height: 400px;">
                 <div class="position-relative h-100">
-                    <img class="img-fluid position-absolute w-100 h-100" src="http://localhost:8000/uploads/settings/wcBbpPpQD9DFARC5ebFgCdTKoOOZd0aZNAfWDDmH.jpg" alt="" style="object-fit: cover;">
+                    <img class="img-fluid position-absolute w-100 h-100" src="http://localhost:8000/uploads/settings/11BoKYxmES8w0lLMtQ4OaoJMmae176TJVh5geWWK.png" alt="" style="object-fit: cover;">
                 </div>
             </div>
             <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.3s">
                 <h6 class="section-title bg-white text-start text-primary pe-3">About Us</h6>
-                <h1 class="mb-4"></h1>
-                <p class="mb-4">Hello this is testing of a page</p>
-                <p class="mb-4"></p>
+                <h1 class="mb-4">dsaddsadas</h1>
+                <p class="mb-4">dsaddsad</p>
+                <p class="mb-4">sadsaddasdsad</p>
                 <div class="row gy-2 gx-4 mb-4">
                     <div class="col-sm-6">
                         <p class="mb-0"><i class="fa fa-arrow-right text-primary me-2"></i>Skilled Instructors</p>
