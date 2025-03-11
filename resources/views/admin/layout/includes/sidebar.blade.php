@@ -110,8 +110,6 @@
                         <a href="{{ route('admin.setting.homepage') }}">HomePage</a>
                     </li>
                     <li class="sub-item">
-                        <a href="{{ route('admin.product.index') }}">Products</a>
-                    </li>
                     <li class="sub-item">
                         <a href="{{ route('admin.setting.contact') }}">Contact</a>
                     </li>
@@ -124,8 +122,11 @@
                     <li class="sub-item">
                         <a href="{{ route('admin.setting.index', ['type' => 'about']) }}">About</a>
                     </li>
-                    <li class="sub-item">
+                    {{-- <li class="sub-item">
                         <a href="{{ route('admin.setting.index', ['type' => 'contact']) }}">Contact</a>
+                    </li> --}}
+                    <li class="sub-item">
+                        <a href="{{ route('admin.setting.index', ['type' => 'social']) }}">Social</a>
                     </li>
                     <li class="sub-item">
                         <a href="{{ route('admin.setting.slider.index') }}">Sliders</a>
