@@ -9,6 +9,8 @@
             'others' => [],
         ];
 @endphp
+<style>
+</style>
 <footer class="footer-area">
     <div class="footer-top bg-img default-overlay pt-60 pb-60">
         <div class="container">
@@ -29,16 +31,16 @@
                             </p>
                             <div class="f-contact-info">
                                 <div class="single-f-contact-info">
-                                    <i class="fa fa-home"></i>
+                                    <i class="fa fa-home" style="color: white; margin-right: 5px"></i>
                                     <span>{{ $data->addr }}</span>
                                 </div>
                                 <div class="single-f-contact-info">
-                                    <i class="fa fa-envelope"></i>
+                                    <i class="fa fa-envelope" style="color: white; margin-right: 5px"></i>
                                     <span><a href="#">{{ $data->email }}</a></span>
                                 </div>
                                 <div class="single-f-contact-info">
-                                    <i class="fa fa-phone"></i>
-                                    <span> {{ $data->phone }}</span>
+                                    <i class="fa fa-phone" style="color: white; margin-right: 5px"></i>
+                                    <span>{{ $data->phone }}</span>
                                 </div>
                             </div>
                         </div>
@@ -59,23 +61,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-2 col-md-3 col-sm-6">
-                    <div class="footer-widget negative-mrg-30 mb-40">
-                        <div class="footer-title">
-                            <h4>COURSES</h4>
-                        </div>
-                        <div class="footer-list">
-                            <ul>
-                                <li><a href="#">Under Graduate Programmes </a></li>
-                                <li><a href="#">Graduate Programmes </a></li>
-                                <li><a href="#">Diploma Courses</a></li>
-                                <li><a href="#">Others Programmes</a></li>
-                                <li><a href="#">Short Courses</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-4 col-sm-4">
+                <div class="col-lg-6 col-md-6 col-sm-6">
                     <div class="footer-widget mb-40">
                         <div class="footer-title">
                             <h4>Our Location</h4>

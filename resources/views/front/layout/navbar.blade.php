@@ -2,7 +2,8 @@
         $logo = getSetting('top_logo', true);
     @endphp
     @php
-        $data = getSetting('contact') ??
+        $data =
+            getSetting('contact') ??
             (object) [
                 'map' => '',
                 'email' => '',
@@ -10,7 +11,6 @@
                 'addr' => '',
                 'others' => [],
             ];
-
     @endphp
 
     @php
@@ -23,9 +23,16 @@
                 <div class="row">
                     <div class="col-lg-6 col-md-7 col-12 col-sm-8">
                         <div class="header-contact">
-                            <ul>
-                                <li><i class="fa fa-phone"></i> {{ $data->phone }}</li>
-                                <li><i class="fa fa-envelope"></i>{{$data->email}}</li>
+                            <ul style="display: flex; gap: 15px;">
+                                <li><i class="fa fa-phone"></i>
+                                    <span style="margin-left: 5px">
+                                        {{ $data->phone }}
+                                    </span>
+                                </li>
+                                <li><i class="fa fa-envelope"></i>
+                                    <span style="margin-left: 5px">
+                                        {{ $data->email }}</span>
+                                </li>
                             </ul>
                         </div>
                     </div>
