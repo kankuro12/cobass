@@ -1,7 +1,7 @@
-<div class="about-us pt-130 pb-130">
+<div class="about-us pt-60 pb-60">
     <div class="container">
         <div class="row">
-            <div class="col-lg-6 col-md-6">
+            <div class="col-lg-8 col-md-8">
                 <div class="about-content">
                     <div class="section-title section-title-green mb-30">
                         <h2>About <span>Us</span></h2>
@@ -12,7 +12,7 @@
                     </div> --}}
                 </div>
             </div>
-            <div class="col-lg-6 col-md-6">
+            <div class="col-lg-4 col-md-4">
                 <div class="about-img default-overlay">
                     <img src="{{ asset($about['img']) }}" alt="About Us">
                 </div>

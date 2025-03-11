@@ -16,7 +16,7 @@
         <div class="custom-row">
             @foreach ($teachers as $teacher)
                 <div class="custom-col-5">
-                    <div class="single-teacher mb-30">
+                    <div class="single-teacher mb-20">
                         <div class="teacher-img">
                             <img src="{{ asset($teacher->image) }}" alt="{{ $teacher->name }}">
                         </div>

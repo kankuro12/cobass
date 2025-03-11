@@ -19,7 +19,7 @@
         </div>
     </div>
 </div>
-<div class="choose-area bg-img pt-90" style="background-image:url('	https://htmldemo.net/glaxdu/glaxdu/assets/img/bg/bg-8.jpg');">
+<div class="choose-area bg-img pt-40" style="background-image:url('	https://htmldemo.net/glaxdu/glaxdu/assets/img/bg/bg-8.jpg');">
     <div class="container">
         <div class="row">
             <div class="col-lg-8 col-md-12">
@@ -54,6 +54,7 @@
             <img class="animated" src="https://htmldemo.net/glaxdu/glaxdu/assets/img/icon-img/viddeo-btn.png" alt="">
         </a>
     </div> --}}
+</div>
 </div>
 @include('front.newPage.add.teachersview')
 @include('front.newPage.add.achview')

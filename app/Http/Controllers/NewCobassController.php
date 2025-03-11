@@ -247,6 +247,10 @@ class NewCobassController extends Controller
         'des1' => Setting::find(4)->value,
         'des2' => Setting::find(5)->value,
     ];
+    $achievements = Add::whereIn('key', ['students', 'graduates', 'awards', 'faculties'])->get();
+
+    // Map data to an array with keys like 'students', 'graduates', etc.
+    $achievementData = $achievements->keyBy('key');
 
     // Fetch homepage data if necessary (like index method)
     $data = $this->getHomepageData();
@@ -255,7 +259,7 @@ class NewCobassController extends Controller
     $testimonials = Testimonial::all();
 
     // Return the frontend view with both the $about data and the $data from homepage
-    return view('front.newPage.about', compact('about', 'data','facility','teachers','testimonials'));
+    return view('front.newPage.about', compact('about', 'data','facility','teachers','testimonials','achievementData'));
     }
 }
 

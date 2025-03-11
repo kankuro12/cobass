@@ -20,10 +20,10 @@ class AddController extends Controller
             'graduates' => 'required|string|max:255',
             'awards' => 'required|string|max:255',
             'faculties' => 'required|string|max:255',
-            'students_icon' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
-            'graduates_icon' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
-            'awards_icon' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
-            'faculties_icon' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
+            'students_icon' => 'image|mimes:jpeg,png,jpg,gif,webp|max:2048',
+            'graduates_icon' => 'image|mimes:jpeg,png,jpg,gif,webp|max:2048',
+            'awards_icon' => 'image|mimes:jpeg,png,jpg,gif,webp|max:2048',
+            'faculties_icon' => 'image|mimes:jpeg,png,jpg,gif,webp|max:2048',
         ]);
 
         $keys = ['students', 'graduates', 'awards', 'faculties'];
@@ -32,8 +32,20 @@ class AddController extends Controller
             $add = Add::updateOrCreate(['key' => $key], ['value' => $request->$key]);
 
             if ($request->hasFile("{$key}_icon")) {
-                $iconPath = $request->file("{$key}_icon")->store('icons');
-                $add->update(['icon' => $iconPath]);
+                $file = $request->file("{$key}_icon");
+                $fileName = time() . '_' . $file->getClientOriginalName();
+                $destinationPath = public_path('uploads');
+
+                // Ensure the directory exists
+                if (!file_exists($destinationPath)) {
+                    mkdir($destinationPath, 0775, true);
+                }
+
+                // Move file to public/uploads/
+                $file->move($destinationPath, $fileName);
+
+                // Store path in database
+                $add->update(['icon' => 'uploads/' . $fileName]);
             }
         }
 
