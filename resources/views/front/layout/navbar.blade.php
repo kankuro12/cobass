@@ -1,5 +1,9 @@
 @php
     $logo = getSetting('top_logo', true);
+    $facebook = getSetting('social_Facebok', true);
+    $twitter = getSetting('social_Twitter', true);
+    $youtube = getSetting('social_Youtube', true);
+    $instagram = getSetting('social_Instagram', true);
 @endphp
 @php
     $data =
@@ -17,15 +21,15 @@
     $courses = \App\Models\Course::all();
 @endphp
 <style>
-    .header-social ul li a{
+    .header-social ul li a {
         display: inline-block;
-          width: 28px;
-          height: 28px;
-          background-color: #fff;
-          border-radius: 100%;
-          text-align: center;
-          line-height: 28px;
-          font-size: 12px;
+        width: 28px;
+        height: 28px;
+        background-color: #fff;
+        border-radius: 100%;
+        text-align: center;
+        line-height: 28px;
+        font-size: 12px;
     }
 </style>
 <header class="header-area">
@@ -35,13 +39,13 @@
                 <div class="col-md-6">
                     <div class="header-social col-lg-6 col-md-7 col-12 col-sm-8">
                         <ul class="d-flex pb-2" style="column-gap: 10px ">
-                            <li><a class="facebook" href="#"><i class="fa-brands fa-facebook"
+                            <li><a class="facebook" href="{{ $facebook }}"><i class="fa-brands fa-facebook"
                                         style="color: #3b5998;"></i></a></li>
-                            <li><a class="youtube" href="#"><i class="fa-brands fa-youtube"
+                            <li><a class="youtube" href="{{ $youtube }}"><i class="fa-brands fa-youtube"
                                         style="color: #FF0000;"></i></a></li>
-                            <li><a class="twitter" href="#"><i class="fa-brands fa-x-twitter"
+                            <li><a class="twitter" href="{{ $twitter }}"><i class="fa-brands fa-x-twitter"
                                         style="color: #1DA1F2;"></i></a></li>
-                            <li><a class="google-plus" href="#"><i class="fa-brands fa-instagram"
+                            <li><a class="instagram" href="{{ $instagram }}"><i class="fa-brands fa-instagram"
                                         style="color: #C13584;"></i></a></li>
                         </ul>
                     </div>
