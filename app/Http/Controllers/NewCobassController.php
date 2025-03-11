@@ -55,12 +55,17 @@ class NewCobassController extends Controller
         $testimonials = Testimonial::all(); // Fetch all testimonials
         $popups = Popup::where('active', 1)->get(); // Get the first active popup
         $data = $this->getHomepageData();
-
+        $about = [
+            'img' => Setting::find(2)->value,
+            'txt1' => Setting::find(3)->value,
+            'des1' => Setting::find(4)->value,
+            'des2' => Setting::find(5)->value,
+        ];
 
         // Fetch the facilities data, assuming these are the 4 facilities
         $facility = Facility::all();  // Example: Fetch the first facility
 
-        return view('front.newPage.index', compact('sliders', 'courses', 'teachers', 'testimonials', 'popups', 'events', 'news', 'data', 'achievementData', 'facility'));
+        return view('front.newPage.index', compact('sliders', 'courses', 'teachers', 'testimonials', 'popups', 'events', 'news', 'data', 'achievementData', 'facility', 'about'));
     }
 
     public function event()
@@ -97,10 +102,6 @@ class NewCobassController extends Controller
         return view('front.newPage.gallery_images', compact('galleryType'));
     }
 
-    public function about()
-    {
-        return view('front.newPage.about');
-    }
     public function showNotices()
     {
         $notices = Notice::all(); // Get all notices
@@ -199,7 +200,8 @@ class NewCobassController extends Controller
         $showother = Event::where('id', '!=', $id)->latest()->take(4)->get();
 
         return view('front.newPage.add.eventview-details', compact('event', 'showother'));
-    }    public function newsList(Request $request)
+    }
+    public function newsList(Request $request)
     {
         $query = News::latest(); // Latest news first
 
@@ -237,9 +239,27 @@ class NewCobassController extends Controller
 
         return view('front.newPage.add.eventview-details', compact('event', 'latestEvents'));
     }
+    public function about()
+    {
+        $about = [
+        'img' => Setting::find(2)->value,
+        'txt1' => Setting::find(3)->value,
+        'des1' => Setting::find(4)->value,
+        'des2' => Setting::find(5)->value,
+    ];
 
+    // Fetch homepage data if necessary (like index method)
+    $data = $this->getHomepageData();
+    $facility = Facility::all();
+    $teachers = teacher::all();
+    $testimonials = Testimonial::all();
 
-
-
+    // Return the frontend view with both the $about data and the $data from homepage
+    return view('front.newPage.about', compact('about', 'data','facility','teachers','testimonials'));
+    }
 }
+
+
+
+
 

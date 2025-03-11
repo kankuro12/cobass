@@ -7,7 +7,8 @@
             <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6">
                 <div class="single-count mb-30 count-one">
                     <div class="count-img">
-                        <img src="{{ asset( ($achievementData['students']->icon ?? 'default-icon.png')) }}" alt="">
+                        <img src="{{ asset($achievementData['students']->icon ?? 'default-icon.png') }}"
+                            alt="">
                     </div>
                     <div class="count-content">
                         <h2 class="count">{{ $achievementData['students']->value ?? '0' }}</h2>
@@ -20,7 +21,8 @@
             <div class="col-xl-3 col-lg-3 col-md-6 col-sm-6">
                 <div class="single-count mb-30 count-two">
                     <div class="count-img">
-                        <img src="{{ asset(($achievementData['graduates']->icon ?? 'default-icon.png')) }}" alt="">
+                        <img src="{{ asset($achievementData['graduates']->icon ?? 'default-icon.png') }}"
+                            alt="">
                     </div>
                     <div class="count-content">
                         <h2 class="count">{{ $achievementData['graduates']->value ?? '0' }}</h2>
@@ -33,7 +35,8 @@
             <div class="col-xl-4 col-lg-3 col-md-6 col-sm-6">
                 <div class="single-count mb-30 count-three">
                     <div class="count-img">
-                        <img src="{{ asset('storage/' . ($achievementData['awards']->icon ?? 'default-icon.png')) }}" alt="">
+                        <img src="{{ asset('storage/' . ($achievementData['awards']->icon ?? 'default-icon.png')) }}"
+                            alt="">
                     </div>
                     <div class="count-content">
                         <h2 class="count">{{ $achievementData['awards']->value ?? '0' }}</h2>
@@ -46,7 +49,8 @@
             <div class="col-xl-2 col-lg-3 col-md-6 col-sm-6">
                 <div class="single-count mb-30 count-four">
                     <div class="count-img">
-                        <img src="{{ asset('storage/' . ($achievementData['faculties']->icon ?? 'default-icon.png')) }}" alt="">
+                        <img src="{{ asset($achievementData['faculties']->icon ?? 'default-icon.png') }}"
+                            alt="">
                     </div>
                     <div class="count-content">
                         <h2 class="count">{{ $achievementData['faculties']->value ?? '0' }}</h2>
@@ -55,11 +59,7 @@
                 </div>
             </div>
         </div>
-
-        @include('front.newPage.add.testimonials')
-
-        <div class="testimonial-text-img">
-            <img alt="" src="https://htmldemo.net/glaxdu/glaxdu/assets/img/icon-img/testi-text.png">
-        </div>
     </div>
+    @include('front.newPage.add.testimonials')
 </div>
+

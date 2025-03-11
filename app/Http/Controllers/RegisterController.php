@@ -10,7 +10,7 @@ class RegisterController extends Controller
     // Display the registration form
     public function showForm()
     {
-        return view('front.newPage.register'); //
+        return view('front.newPage.add.register'); //
     }
 
     // Handle form submission
@@ -34,6 +34,6 @@ class RegisterController extends Controller
         ]);
 
         // Redirect to the homepage with success message
-        return redirect('/')->with('success', 'Registration submitted successfully!');
+        return redirect('contact')->with('success', 'Registration submitted successfully!');
     }
 }

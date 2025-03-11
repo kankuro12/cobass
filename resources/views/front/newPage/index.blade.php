@@ -168,8 +168,8 @@
     </style>
 
     @include('front.newPage.add.facultyview')
+    @include('front.newPage.add.aboutview')
     @include('front.newPage.add.courseview')
-
     @include('front.newPage.add.teachersview')
     @include('front.newPage.add.eventview')
     @include('front.newPage.add.newsview')

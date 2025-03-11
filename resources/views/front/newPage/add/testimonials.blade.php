@@ -1,3 +1,6 @@
+   <div class="testimonial-text-img">
+            <img alt="" src="https://htmldemo.net/glaxdu/glaxdu/assets/img/icon-img/testi-text.png">
+        </div>
 <div class="testimonial-slider-wrap mt-50">
     <div class="testimonial-text-slider">
         @foreach ($testimonials as $testimonial)
@@ -12,7 +15,7 @@
                             <div class="quote-style quote-left">
                                 <i class="fa fa-quote-left"></i>
                             </div>
-                            <!-- Output the raw HTML content for long_des -->
+
                             <div>{!! $testimonial->long_des !!}</div>
                             <div class="testi-info">
                                 <h5>{{ $testimonial->name }}</h5>

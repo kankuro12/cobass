@@ -20,16 +20,16 @@ class FacilityController extends Controller
         $request->validate([
             'facility1_title' => 'required|string|max:255',
             'facility1_description' => 'required|string',
-            'facility1_icon' => 'nullable|file|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'facility1_icon' => 'nullable|file|mimes:jpeg,png,jpg,gif,svg,webp|max:2048',
             'facility2_title' => 'required|string|max:255',
             'facility2_description' => 'required|string',
-            'facility2_icon' => 'nullable|file|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'facility2_icon' => 'nullable|file|mimes:jpeg,png,jpg,gif,svg,webp|max:2048',
             'facility3_title' => 'required|string|max:255',
             'facility3_description' => 'required|string',
-            'facility3_icon' => 'nullable|file|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'facility3_icon' => 'nullable|file|mimes:jpeg,png,jpg,gif,svg,webp|max:2048',
             'facility4_title' => 'required|string|max:255',
             'facility4_description' => 'required|string',
-            'facility4_icon' => 'nullable|file|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'facility4_icon' => 'nullable|file|mimes:jpeg,png,jpg,gif,svg,webp|max:2048',
         ]);
 
         $facilities = ['facility1', 'facility2', 'facility3', 'facility4'];

@@ -50,6 +50,12 @@
                     Events
                 </a>
             </li>
+            {{-- <li class="menu-item">
+                <a href="{{ route('admin.aboutusindex') }}">
+                    <i class="icon fa fa-info-circle"></i>
+                    <span>About Us</span>
+                </a>
+            </li> --}}
             <li>
                 <a href="{{ route('admin.downloads.index') }}">
                     <i class="material-icons">cloud_download</i>

@@ -23,6 +23,7 @@ use App\Http\Controllers\Admin\TestimonialController;
 use App\Http\Controllers\Admin\TeacherController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\AddController;
+use App\Http\Controllers\Admin\AboutUsController;
 
 
 /*
@@ -49,6 +50,8 @@ use App\Http\Controllers\Admin\AddController;
 Route::get('', [NewCobassController::class, 'index'])->name('index');
 Route::get('event', [NewCobassController::class, 'event'])->name('event');
 Route::get('notice', [NewCobassController::class, 'notice'])->name('notice');
+Route::get('/about', [NewCobassController::class, 'about'])->name('about');
+
 // Route for courses listing
 Route::get('course', [NewCobassController::class, 'course'])->name('course');
 Route::get('/course/{id}', [NewCobassController::class, 'showCourse'])->name('course.show');
@@ -116,6 +119,11 @@ Route::prefix("admin")->name("admin.")->group(function () {
         Route::match(["GET", "POST"], 'add', [ProductController::class, 'add'])->name('add');
         Route::match(["GET", "POST"], 'edit/{product}', [ProductController::class, 'edit'])->name('edit');
         Route::match(["GET", "POST"], 'del/{product}', [ProductController::class, 'del'])->name('del');
+    });
+
+    Route::prefix('aboutus')->name('aboutus')->group(function () {
+        Route::get('about-us/index', [AboutUsController::class, 'index'])->name('index');
+        Route::post('about-us/store', [AboutUsController::class, 'store'])->name('store');
     });
         Route::prefix('notice')->name('notice.')->group(function () {
             Route::get('', [NoticeController::class, 'index'])->name('index');

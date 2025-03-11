@@ -38,7 +38,7 @@
         <!-- Right Section: Other Courses -->
         <div class="col-md-4">
             <div class="sidebar">
-                <h3>Other Courses</h3>
+                <h3 align="center">Other Courses</h3>
                 <ul class="list-group">
                     @foreach ($otherCourses as $other)
                         <li class="list-group-item">

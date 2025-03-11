@@ -3,13 +3,13 @@
         <div class="row g-5">
             <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s" style="min-height: 400px;">
                 <div class="position-relative h-100">
-                    <img class="img-fluid position-absolute w-100 h-100" src="http://localhost:8000/uploads/settings/jz63cpAr5hn47iYMIoSXLbTGidqhgX7vKKx4IznO.webp" alt="" style="object-fit: cover;">
+                    <img class="img-fluid position-absolute w-100 h-100" src="http://localhost:8000/uploads/settings/ZD83dUEZfxUta3LYVONdkszmadvlEIGKquX4HTEX.jpg" alt="" style="object-fit: cover;">
                 </div>
             </div>
             <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.3s">
                 <h6 class="section-title bg-white text-start text-primary pe-3">About Us</h6>
-                <h1 class="mb-4">Hello this</h1>
-                <p class="mb-4">Hello this is</p>
+                <h1 class="mb-4">Hello about testingHello this is test section for our link Hello this is test section for our link</h1>
+                <p class="mb-4">Hello this is test section for our lin our link Hello this is test section for our link</p>
                 <p class="mb-4">this is</p>
                 <div class="row gy-2 gx-4 mb-4">
                     <div class="col-sm-6">

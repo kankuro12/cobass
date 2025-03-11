@@ -13,7 +13,7 @@
                         <div class="col-lg-3">
                             <div class="single-course" style="margin-bottom: 0; padding: 15px;">
                                 <div class="course-img">
-                                    <a href="#"><img src="{{ asset($course->image) }}"
+                                    <a href="{{ route('course.show', $course->id) }}"><img src="{{ asset($course->image) }}"
                                             alt="{{ $course->name }}"></a>
                                 </div>
                                 <div class="course-content">
