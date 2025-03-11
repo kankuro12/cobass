@@ -1,3 +1,8 @@
+@php
+    $about = getSetting('about') ?? (object)[
+        'img' => '',
+    ]
+@endphp
 <div class="about-us pt-40 pb-40">
     <div class="container">
         <div class="row">
@@ -14,7 +19,7 @@
             </div>
             <div class="col-lg-4 col-md-4">
                 <div class="about-img default-overlay">
-                    <img src="{{ asset($about['img']) }}" alt="About Us">
+                    <img src="{{ asset($about->img) }}" alt="About Us">
                 </div>
 
             </div>

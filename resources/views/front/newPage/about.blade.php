@@ -1,5 +1,10 @@
 @extends('front.layout.app')
 @section('content')
+@php
+    $about = getSetting('about') ?? (object)[
+        'img' => '',
+    ]
+@endphp
 <div class="breadcrumb-area">
     <div class="breadcrumb-top default-overlay bg-img breadcrumb-overly-2 pt-100 pb-95"
         style="background-image:url('');">
@@ -44,7 +49,7 @@
             </div>
             <div class="col-lg-4 col-md-12 pt-40">
                 <div class="about-img">
-                    <img src="{{ asset($about['img']) }}" alt="About Us">
+                    <img src="{{ asset($about->img) }}" alt="About Us">
                 </div>
             </div>
         {{-- </div>\

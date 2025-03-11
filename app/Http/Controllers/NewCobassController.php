@@ -55,17 +55,11 @@ class NewCobassController extends Controller
         $testimonials = Testimonial::all(); // Fetch all testimonials
         $popups = Popup::where('active', 1)->get(); // Get the first active popup
         $data = $this->getHomepageData();
-        $about = [
-            'img' => Setting::find(2)->value,
-            'txt1' => Setting::find(3)->value,
-            'des1' => Setting::find(4)->value,
-            'des2' => Setting::find(5)->value,
-        ];
 
         // Fetch the facilities data, assuming these are the 4 facilities
         $facility = Facility::all();  // Example: Fetch the first facility
 
-        return view('front.newPage.index', compact('sliders', 'courses', 'teachers', 'testimonials', 'popups', 'events', 'news', 'data', 'achievementData', 'facility', 'about'));
+        return view('front.newPage.index', compact('sliders', 'courses', 'teachers', 'testimonials', 'popups', 'events', 'news', 'data', 'achievementData', 'facility'));
     }
 
     public function event()
@@ -241,25 +235,18 @@ class NewCobassController extends Controller
     }
     public function about()
     {
-        $about = [
-        'img' => Setting::find(2)->value,
-        'txt1' => Setting::find(3)->value,
-        'des1' => Setting::find(4)->value,
-        'des2' => Setting::find(5)->value,
-    ];
-    $achievements = Add::whereIn('key', ['students', 'graduates', 'awards', 'faculties'])->get();
+        $achievements = Add::whereIn('key', ['students', 'graduates', 'awards', 'faculties'])->get();
 
-    // Map data to an array with keys like 'students', 'graduates', etc.
-    $achievementData = $achievements->keyBy('key');
+        // Map data to an array with keys like 'students', 'graduates', etc.
+        $achievementData = $achievements->keyBy('key');
 
-    // Fetch homepage data if necessary (like index method)
-    $data = $this->getHomepageData();
-    $facility = Facility::all();
-    $teachers = teacher::all();
-    $testimonials = Testimonial::all();
+        // Fetch homepage data if necessary (like index method)
+        $data = $this->getHomepageData();
+        $facility = Facility::all();
+        $teachers = teacher::all();
+        $testimonials = Testimonial::all();
 
-    // Return the frontend view with both the $about data and the $data from homepage
-    return view('front.newPage.about', compact('about', 'data','facility','teachers','testimonials','achievementData'));
+        return view('front.newPage.about', compact( 'data', 'facility', 'teachers', 'testimonials', 'achievementData'));
     }
 }
 
