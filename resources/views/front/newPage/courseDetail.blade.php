@@ -25,7 +25,7 @@
         <!-- Left Section: Course Details -->
         <div class="col-md-8 p-3">
             <div class="course-detail shadow">
-                <img src="{{ asset( $course->image) }}" alt="{{ $course->name }}" class="img-fluid" style="width: 100%;">
+                <img src="{{ asset( $course->image) }}" alt="{{ $course->name }}" class="img-fluid" style="width: 100%;" loading="lazy">
                 <div class="info p-3 mt-3">
                     <h2>{{ $course->name }}</h2>
                     <p><strong>Faculty:</strong> {{ $course->faculty }}</p>

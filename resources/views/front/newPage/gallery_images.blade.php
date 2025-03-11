@@ -24,11 +24,10 @@
     </div>
     <div class="container py-5">
         <div class="row" id="gallery">
-
             @foreach ($galleryType->galleries as $i => $gallery)
                 <div class="item col-md-3 col-6 mb-2" data-index="{{ $i++ }}">
                     <img class="w-100" data-fancybox="gallery" data-src="{{ asset($gallery->file) }}"
-                        src="{{ asset($gallery->file) }}" alt="">
+                        src="{{ asset($gallery->file) }}" alt="" loading="lazy">
                 </div>
             @endforeach
         </div>

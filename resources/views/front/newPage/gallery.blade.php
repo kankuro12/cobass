@@ -95,7 +95,7 @@
                 <div class="col-md-3 col-6 mb-4">
                     <a href="{{ route('gallery.show', $galleryType->id) }}" class="text-decoration-none">
                         <div class="singlegallery">
-                            <img src="{{ asset($galleryType->icon ?? 'default.jpg') }}" alt="{{ $galleryType->name }}">
+                            <img src="{{ asset($galleryType->icon ?? 'default.jpg') }}" alt="{{ $galleryType->name }}" loading="lazy">
                             <div class="overlay">
                                 {{ $galleryType->name }}
                             </div>
