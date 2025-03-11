@@ -1,8 +1,8 @@
 <div class="col-lg-3 col-md-6">
     <h5 class="text-white mb-4">Our Office</h5>
-    <p class="mb-2"><i class="fa fa-map-marker-alt me-3"></i>Biratnagar</p>
-    <p class="mb-2"><i class="fa fa-phone-alt me-3"></i>9809012345</p>
-    <p class="mb-2"><i class="fa fa-envelope me-3"></i>cobass@gmail.com</p>
+    <p class="mb-2"><i class="fa fa-map-marker-alt me-3"></i>Biratnagar ,Nepal</p>
+    <p class="mb-2"><i class="fa fa-phone-alt me-3"></i>98000000</p>
+    <p class="mb-2"><i class="fa fa-envelope me-3"></i>arniko@arniko.com</p>
         <div class="d-flex pt-3">
         <a class="btn btn-square btn-secondary rounded-circle me-2" href="#"><i class="fab fa-facebook-f"></i></a>
         <a class="btn btn-square btn-secondary rounded-circle me-2"  href="#"><i class="fab fa-twitter"></i></a>

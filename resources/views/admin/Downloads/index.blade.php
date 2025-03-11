@@ -30,6 +30,7 @@
                     <td>{{ $download->description }}</td>
                     <td><a href="{{ asset($download->file_path) }}" target="_blank">View</a></td>
                     <td>
+                    <a href="{{ route('admin.downloads.edit', $download->id) }}" class="btn btn-warning">Edit</a>
                         <a href="{{ route('admin.downloads.del', $download->id) }}" class="btn btn-danger">Delete</a>
                     </td>
                 </tr>

@@ -3,15 +3,15 @@
     <div id="header-carousel" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-inner">
                         <div class="carousel-item active">
-                <img class="w-100 d-block d-md-none" src="http://localhost:8000/uploads/sliders/F43bjj25LmfLmUVpF0T1qr8bjKmHecpER2I9UFsc.jpg">
-                <img class="w-100 d-none d-md-block" src="http://localhost:8000/uploads/sliders/nNkswJJ2pg5GGAHv1sae4eqRPA7W3sxwcjhaokff.jpg">
+                <img class="w-100 d-block d-md-none" src="http://localhost:8000/uploads/sliders/cuqziZu3c7tD29Ze0RbpZtvjYAeOse7EYHYbPKHR.jpg">
+                <img class="w-100 d-none d-md-block" src="http://localhost:8000/uploads/sliders/siuwzA8Vw9FO2hCIL1VHlqZSTkqeDk5KOy3oUZZu.jpg">
                 <div class="carousel-caption">
                     <div class="container">
                         <div class="row justify-content-start">
                             <div class="col-lg-8 text-start">
-                                <p class="fs-4 text-white">edited</p>
-                                <h1 class="display-1 text-white mb-5 animated slideInRight">edited</h1>
-                                <a href="edited" class="btn btn-secondary rounded-pill py-3 px-5 animated slideInRight">EDITED</a>
+                                <p class="fs-4 text-white">Welcome to Arniko College</p>
+                                <h1 class="display-1 text-white mb-5 animated slideInRight">Your gateway to quality education</h1>
+                                <a href="" class="btn btn-secondary rounded-pill py-3 px-5 animated slideInRight">View More</a>
                             </div>
                         </div>
                     </div>

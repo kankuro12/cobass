@@ -38,10 +38,37 @@ class DownloadController extends Controller
         }
 
     }
+    public function edit($id)
+    {
+        $download = Download::findOrFail($id);
+        return view('admin.downloads.edit', compact('download'));
+    }
+    public function update(Request $request, $id)
+    {
+        $download = Download::findOrFail($id);
+
+        $request->validate([
+            'title' => 'required|string|max:255',
+            'description' => 'nullable|string',
+            'file' => 'nullable|file|max:2048',
+        ]);
+
+        if ($request->hasFile('file')) {
+            $filePath = $request->file('file')->store('uploads/downloads');
+            $download->file_path = $filePath;
+        }
+
+        $download->title = $request->title;
+        $download->description = $request->description;
+        $download->save();
+
+        return redirect()->route('admin.downloads.edit', $id)->with('success', 'Download updated successfully!');
+    }
 
     public function del($id)
     {
         Download::where('id', $id)->delete();
         return redirect()->route('admin.downloads.index')->with('success', 'Download deleted successfully!');
     }
+
 }

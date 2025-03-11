@@ -103,8 +103,12 @@ Route::prefix("admin")->name("admin.")->group(function () {
     Route::prefix('downloads')->name('downloads.')->group(function () {
         Route::get('', [DownloadController::class, 'index'])->name('index');
         Route::match(["GET", "POST"], 'add', [DownloadController::class, 'add'])->name('add');
-        Route::match(["GET", "POST"], 'edit/{product}', [DownloadController::class, 'edit'])->name('edit');
+        // Route::match(["GET", "POST"], 'edit/{product}', [DownloadController::class, 'edit'])->name('edit');
         Route::match(["GET", "POST"], 'del/{product}', [DownloadController::class, 'del'])->name('del');
+        Route::get('downloads/edit/{id}', [DownloadController::class, 'edit'])->name('edit');
+        Route::put('update/{id}', [DownloadController::class, 'update'])->name('update');
+
+
     });
     Route::delete('admin/setting/gallery/type/del/{type}', [GalleryController::class, 'delType'])->name('admin.setting.gallery.type.del');
     // Route::prefix('page')->name('page.')->group(function () {
@@ -121,18 +125,18 @@ Route::prefix("admin")->name("admin.")->group(function () {
         Route::match(["GET", "POST"], 'del/{product}', [ProductController::class, 'del'])->name('del');
     });
 
-    Route::prefix('aboutus')->name('aboutus')->group(function () {
-        Route::get('about-us/index', [AboutUsController::class, 'index'])->name('index');
-        Route::post('about-us/store', [AboutUsController::class, 'store'])->name('store');
+    // Route::prefix('aboutus')->name('aboutus')->group(function () {
+    //     Route::get('about-us/index', [AboutUsController::class, 'index'])->name('index');
+    //     Route::post('about-us/store', [AboutUsController::class, 'store'])->name('store');
+    // });
+    Route::prefix('notice')->name('notice.')->group(function () {
+        Route::get('', [NoticeController::class, 'index'])->name('index');
+        Route::get('create', [NoticeController::class, 'create'])->name('create');
+        Route::post('store', [NoticeController::class, 'store'])->name('store');
+        Route::get('edit/{id}', [NoticeController::class, 'edit'])->name('edit');
+        Route::put('update/{id}', [NoticeController::class, 'update'])->name('update');
+        Route::delete('delete/{id}', [NoticeController::class, 'destroy'])->name('destroy');
     });
-        Route::prefix('notice')->name('notice.')->group(function () {
-            Route::get('', [NoticeController::class, 'index'])->name('index');
-            Route::get('create', [NoticeController::class, 'create'])->name('create');
-            Route::post('store', [NoticeController::class, 'store'])->name('store');
-            Route::get('edit/{id}', [NoticeController::class, 'edit'])->name('edit');
-            Route::put('update/{id}', [NoticeController::class, 'update'])->name('update');
-            Route::delete('delete/{id}', [NoticeController::class, 'destroy'])->name('destroy');
-        });
     //add controller
     Route::get('/add', [AddController::class, 'index'])->name('add.index');
     Route::put('/add/update', [AddController::class, 'update'])->name('add.update');

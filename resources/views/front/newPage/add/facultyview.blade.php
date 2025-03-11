@@ -3,7 +3,7 @@
         <div class="row no-gutters choose-negative-mrg">
             @foreach ($facility as $facilities)
                 <div class="col-lg-3 col-md-6 mb-4">
-                <div class="single-choose-us {{ $loop->iteration == 1 || $loop->iteration == 3 ? 'choose-bg-blue' : 'choose-bg-green' }} h-100" style="margin: 10px;">
+                <div class="single-choose-us choose-bg-green h-100" style="margin: 10px;">
                         <div class="choose-img">
                             <img class="animated" src="{{ asset($facilities->icon) }}" alt="">
                         </div>
