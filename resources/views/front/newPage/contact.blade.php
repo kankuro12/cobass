@@ -12,6 +12,33 @@
 @endphp
 @section('css')
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" rel="stylesheet">
+    <style>
+        .contact-item {
+            margin-bottom: 30px;
+        }
+
+        .contact-icon.circle {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            font-size: 2rem;
+        }
+
+        .contact-info {
+            margin-top: 10px;
+        }
+
+        .contact-label {
+            font-weight: bold;
+            margin-bottom: 5px;
+            color: white
+        }
+
+        .contact-value {
+            margin: 0;
+            color: white
+        }
+    </style>
 @endsection
 
 @section('content')
@@ -88,43 +115,50 @@
         </div>
     </div>
 
-    <div class="contact-info-area bg-img pt-180 pb-140 default-overlay"
+    <div class="contact-info-area bg-img pt-60 pb-60 default-overlay"
         style="background-image:url('https://htmldemo.net/glaxdu/glaxdu/assets/img/bg/contact-info.jpg');">
         <div class="container">
             <div class="row">
-                <div class="col-lg-4 col-md-4 col-12">
-                    <div class="single-contact-info mb-30 text-center">
-                        <div class="contact-info-icon">
-                            <span><i class="fa-solid fa-location-dot"></i></i></span>
+                <!-- Address -->
+                <div class="col-lg-4 col-md-4 col-12 text-center">
+                    <div class="contact-item">
+                        <div
+                            class="contact-icon circle bg-primary mx-auto d-flex align-items-center justify-content-center">
+                            <i class="fa-solid fa-location-dot text-white"></i>
                         </div>
-                        <p>{{ $data->addr ?? 'No address available' }}</p>
+                        <h6 class="contact-label mt-2">Address</h6>
+                        <p class="contact-value">{{ $data->addr ?? 'No address available' }}</p>
                     </div>
                 </div>
-                <div class="col-lg-4 col-md-4 col-12">
-                    <div class="single-contact-info mb-30 text-center">
-                        <div class="contact-info-icon">
-                            <span><i class="fa-solid fa-mobile"></i></span>
+                <!-- Phone -->
+                <div class="col-lg-4 col-md-4 col-12 text-center">
+                    <div class="contact-item">
+                        <div
+                            class="contact-icon circle bg-success mx-auto d-flex align-items-center justify-content-center">
+                            <i class="fa fa-phone text-white"></i>
                         </div>
-                        <div class="contact-info-phn">
-                            <div class="info-phn-title">
-                                <span>Phone : </span>
-                            </div>
-                            <div class="info-phn-number">
-                                <p>{{ $data->phone ?? 'No phone number available' }}</p>
-                            </div>
-                        </div>
+                        <h6 class="contact-label mt-2">Phone</h6>
+                        <p class="contact-value">{{ $data->phone ?? 'No phone number available' }}</p>
                     </div>
                 </div>
-                <div class="col-lg-4 col-md-4 col-12">
-                    <div class="single-contact-info mb-30 text-center">
-                        <div class="contact-info-icon">
-                            <span><i class="fa-solid fa-envelope"></i></span>
+                <!-- Email -->
+                <div class="col-lg-4 col-md-4 col-12 text-center">
+                    <div class="contact-item">
+                        <div class="contact-icon circle bg-danger mx-auto d-flex align-items-center justify-content-center">
+                            <i class="fa-solid fa-envelope text-white"></i>
                         </div>
-                        <a
-                            href="mailto:{{ $data->email ?? 'No email available' }}">{{ $data->email ?? 'No email available' }}</a>
+                        <h6 class="contact-label mt-2">Email</h6>
+                        <p class="contact-value">
+                            <a href="mailto:{{ $data->email ?? 'No email available' }}"
+                                class="text-decoration-none text-white">
+                                {{ $data->email ?? 'No email available' }}
+                            </a>
+                        </p>
                     </div>
                 </div>
             </div>
         </div>
+
+
     </div>
 @endsection
