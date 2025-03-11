@@ -1253,16 +1253,33 @@ textarea:focus {
     left: 0;
     top: 0;
     width: 100%;
-    height: 44px;
+    height: 60px;
     content: "";
     background-color: #00a651;
-    opacity: .8; }
-    @media only screen and (min-width: 576px) and (max-width: 767px) {
-      .header-top:before {
-        height: 46px;
-        padding: 10px;
-     }
-    }
+}
+    @media only screen and (max-width: 575px) {
+        .header-top:before {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 44px;
+            content: "";
+            background-color: #00a651;
+        }
+        .header-top .container .row {
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+        }
+        .header-social ul {
+          justify-content: center;
+        }
+        .header-contact ul {
+          justify-content: center;
+        }
+      }
+
 
 .header-contact ul {
   display: -webkit-box;
@@ -1373,7 +1390,6 @@ textarea:focus {
   -webkit-box-pack: end;
   -ms-flex-pack: end;
   justify-content: flex-start;
-  padding-left: 65px;
 }
   @media only screen and (min-width: 768px) and (max-width: 991px) {
     .menu-cart-wrap {

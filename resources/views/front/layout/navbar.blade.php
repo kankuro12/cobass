@@ -18,7 +18,7 @@
 @endphp
 
 @php
-    $courses = \App\Models\Course::all();
+    $courses = \App\Models\Course::all() ?? [];
 @endphp
 <style>
     .header-social ul li a {
@@ -34,7 +34,7 @@
 </style>
 <header class="header-area">
     <div class="header-top bg-img">
-        <div class="container">
+        <div class="container" style="padding: 0px 40px">
             <div class="row" style="justify-content: space-between;align-items: center">
                 <div class="col-lg-6 col-md-7 col-12 col-sm-8 ">
                     <div class="header-contact">
@@ -52,8 +52,9 @@
                         </ul>
                     </div>
                 </div>
-                <div class="col-lg-6 col-md-7 col-12 col-sm-8 d-flex justify-content-end justify-content-md-end justify-content-sm-start">
-                    <div class="header-social ">
+                <div
+                    class="col-lg-6 col-md-7 col-12 col-sm-8 d-flex justify-content-end justify-content-md-end justify-content-sm-center justify-content-center">
+                    <div class="header-social " style="padding: 20px;">
                         <ul class="d-flex" style="column-gap: 10px ">
                             <li><a class="facebook" href="{{ $facebook }}"><i class="fa-brands fa-facebook"
                                         style="color: #3b5998;"></i></a></li>
@@ -70,16 +71,17 @@
         </div>
     </div>
     <div class="header-mid">
-        <div class="row">
-            <div class="col-md-2 d-none d-md-block"></div>
-            <div class="col-lg-4 col-md-6 col-8">
-                <a href="{{ route('index') }}">
-                    <div class="logo p-2">
-                        <img alt="" src="{{ asset($logo) }}" style="max-height: 100px">
-                    </div>
-                </a>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 col-md-6 col-8">
+                    <a href="{{ route('index') }}">
+                        <div class="logo p-2">
+                            <img alt="" src="{{ asset($logo) }}" style="max-height: 100px">
+                        </div>
+                    </a>
+                </div>
+                <div class="col-2 d-md-none"></div>
             </div>
-            <div class="col-2 d-md-none"></div>
         </div>
     </div>
     <div class="header-bottom sticky-bar clearfix">
@@ -124,30 +126,27 @@
                     </div>
                 </div>
             </div>
-            <div class="mobile-menu-area mt-3">
+            <div class="mobile-menu-area mt-3 d-lg-none">
                 <div class="mobile-menu">
                     <nav id="mobile-menu-active" style="background-color: #29AE6A">
-                        <ul class="menu-overflow">
-                            <li><a href="{{ route('index') }}"> HOME </a>
-
-                            </li>
-                            <li><a href="{{ route('event') }}"> News & Events </a></li>
+                        <ul>
+                            <li><a href="{{ route('index') }}"> HOME </a></li>
+                            <li><a href="{{ route('events.list') }}">Events</a></li>
+                            <li><a href="{{ route('news.list') }}"> News </a></li>
+                            <li><a href="{{ route('achievements') }}"> Achievements </a></li>
                             <li><a href="{{ route('notice') }}"> Notice </a></li>
-
                             <li><a href="#"> COURSES </a>
                                 <ul class="submenu">
-
-                                    <li><a href="{{ route('course') }}">B.Tech</a></li>
-                                    <li><a href="{{ route('course') }}">BSC CSIT</a></li>
-                                    <li><a href="{{ route('course') }}">BE</a></li>
+                                    @if (isset($courses))
+                                        @foreach ($courses as $course)
+                                            <li><a href="{{ route('course.show', ['id' => $course->id]) }}">{{ $course->name }}</a></li>
+                                        @endforeach
+                                    @endif
                                 </ul>
                             </li>
-                            <li><a href="course.html"> download</a></li>
+                            <li><a href="{{ route('downloads') }}"> download</a></li>
                             <li><a href="{{ route('gallery') }}"> Gallery</a></li>
-
-                            <li><a href="{{ route('about') }}"> About us </a>
-
-                            </li>
+                            <li><a href="{{ route('about') }}"> About us </a></li>
                             <li><a href="{{ route('contact') }}"> CONTACT </a></li>
                         </ul>
                     </nav>
