@@ -6,7 +6,7 @@
     }
 </style>
 
-<div class="event-area bg-img default-overlay pt-60 pb-70"
+<div class="event-area bg-img default-overlay pt-40 pb-40"
     style="background-image:url('{{ asset('img/bg.jpeg') }}');">
     <div class="container">
         <div class="section-title mb-75">

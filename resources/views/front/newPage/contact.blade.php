@@ -10,6 +10,9 @@
             'others' => [],
         ];
 @endphp
+@section('css')
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" rel="stylesheet">
+@endsection
 
 @section('content')
     <div class="breadcrumb-area">
@@ -21,7 +24,7 @@
         <div class="breadcrumb-bottom">
             <div class="container">
                 <ul>
-                    <li><a href="#">Home</a>
+                    <li><a href="">Home</a>
                         <span>
                             <i class="fa fa-angle-double-right"></i> Contact Us
                         </span>
@@ -45,7 +48,7 @@
                     <div class="contact-form">
                         <div class="contact-title mb-45">
                             <h2>Stay <span>Connected</span></h2>
-                            <p>{{ $contact->description ?? 'Feel free to reach out to us!' }}</p>
+                            <p>{{ $data->description ?? 'Feel free to reach out to us!' }}</p>
                         </div>
                         <form action="{{ route('register.submit') }}" method="POST">
                             @csrf
@@ -92,9 +95,9 @@
                 <div class="col-lg-4 col-md-4 col-12">
                     <div class="single-contact-info mb-30 text-center">
                         <div class="contact-info-icon">
-                            <span><i class="fa-solid fa-location-dot"></i></span>
+                            <span><i class="fa-solid fa-location-dot"></i></i></span>
                         </div>
-                        <p>{{ $contact->addr ?? 'No address available' }}</p>
+                        <p>{{ $data->addr ?? 'No address available' }}</p>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-4 col-12">
@@ -107,7 +110,7 @@
                                 <span>Phone : </span>
                             </div>
                             <div class="info-phn-number">
-                                <p>{{ $contact->phone ?? 'No phone number available' }}</p>
+                                <p>{{ $data->phone ?? 'No phone number available' }}</p>
                             </div>
                         </div>
                     </div>
@@ -118,7 +121,7 @@
                             <span><i class="fa-solid fa-envelope"></i></span>
                         </div>
                         <a
-                            href="mailto:{{ $contact->email ?? 'No email available' }}">{{ $contact->email ?? 'No email available' }}</a>
+                            href="mailto:{{ $data->email ?? 'No email available' }}">{{ $data->email ?? 'No email available' }}</a>
                     </div>
                 </div>
             </div>

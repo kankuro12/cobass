@@ -10,7 +10,7 @@
         ];
 @endphp
 <footer class="footer-area">
-    <div class="footer-top bg-img default-overlay pt-100 pb-80">
+    <div class="footer-top bg-img default-overlay pt-60 pb-60">
         <div class="container">
             <div class="row">
                 <div class="col-lg-3 col-md-6 col-sm-6">

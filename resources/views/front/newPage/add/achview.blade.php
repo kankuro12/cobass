@@ -1,4 +1,4 @@
-<div class="achievement-area pt-130 pb-115">
+<div class="achievement-area pt-40 pb-40">
     <div class="container">
         <div class="section-title mb-50">
             <h2>Our <span>Achievement</span></h2>

@@ -19,11 +19,11 @@
         </div>
     </div>
 </div>
-<div class="choose-area bg-img pt-40" style="background-image:url('	https://htmldemo.net/glaxdu/glaxdu/assets/img/bg/bg-8.jpg');">
+<div class="choose-area bg-img pt-40" style="background-image:url('');">
     <div class="container">
         <div class="row">
             <div class="col-lg-8 col-md-12">
-                <div class="about-chose-us pt-120">
+                <div class="about-chose-us pt-40">
                     <div class="row">
                         @foreach ($facility as $facilities)
                         <div class="col-lg-6 col-md-6">
@@ -42,7 +42,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-lg-4 col-md-12">
+            <div class="col-lg-4 col-md-12 pt-40">
                 <div class="about-img">
                     <img src="{{ asset($about['img']) }}" alt="About Us">
                 </div>

@@ -1,7 +1,8 @@
+   <div class="container">
    <div class="testimonial-text-img">
             <img alt="" src="https://htmldemo.net/glaxdu/glaxdu/assets/img/icon-img/testi-text.png">
         </div>
-<div class="testimonial-slider-wrap mt-50 pt-40 pb-40">
+<div class="testimonial-slider-wrap mt-40 pt-40 pb-40">
     <div class="testimonial-text-slider">
         @foreach ($testimonials as $testimonial)
             <div class="testi-content-wrap">
@@ -39,4 +40,5 @@
             </div>
         @endforeach
     </div>
+</div>
 </div>

@@ -1,4 +1,4 @@
-<div class="event-area bg-img default-overlay pt-130 pb-130 news-background">
+<div class="event-area bg-img default-overlay pt-40 pb-40 news-background">
     <div class="container">
         <div class="section-title mb-75 text-center">
             <h2><span>Latest</span> News</h2>
