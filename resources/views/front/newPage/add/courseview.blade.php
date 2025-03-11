@@ -11,7 +11,7 @@
                 @if (isset($courses) && count($courses) > 0)
                     @foreach ($courses as $course)
                         <div class="col-lg-3">
-                            <div class="single-course" style="margin-bottom: 0; padding: 15px;">
+                            <div class="single-course" style="margin-bottom: 0;">
                                 <div class="course-img">
                                     <a href="{{ route('course.show', $course->id) }}"><img src="{{ asset($course->image) }}"
                                             alt="{{ $course->name }}"></a>
