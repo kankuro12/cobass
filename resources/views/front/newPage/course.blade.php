@@ -392,7 +392,7 @@
                         <span>Post Graduation Course</span>
                     </div>
                     <div class="course-content">
-                        <h4><a href="{{ route('courseDeatil') }}">Fashion & Technology</a></h4>
+                        <h4><a href="{{ route('courseDetail') }}">Fashion & Technology</a></h4>
                         <p>magna aliqua. Ut enim ad minim veniam, nisi ut aliquiptempor incid.</p>
                     </div>
                     <div class="course-position-content">
@@ -413,7 +413,7 @@
                 </div>
                 <div class="single-course">
                     <div class="course-img">
-                        <a href="{{ route('courseDeatil') }}"><img class="animated"
+                        <a href="{{ route('courseDetail') }}"><img class="animated"
                                 src="	https://htmldemo.net/glaxdu/glaxdu/assets/img/course/course-1.jpg"
                                 alt=""></a>
                     </div>

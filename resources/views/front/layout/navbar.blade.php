@@ -52,7 +52,7 @@
                         </ul>
                     </div>
                 </div>
-                <div class="col-lg-6 col-md-7 col-12 col-sm-8 d-flex justify-content-end">
+                <div class="col-lg-6 col-md-7 col-12 col-sm-8 d-flex justify-content-end justify-content-md-end justify-content-sm-start">
                     <div class="header-social ">
                         <ul class="d-flex" style="column-gap: 10px ">
                             <li><a class="facebook" href="{{ $facebook }}"><i class="fa-brands fa-facebook"
@@ -70,7 +70,7 @@
         </div>
     </div>
     <div class="header-mid">
-        <div class="row" style="border-bottom: 1px solid #29AE6A">
+        <div class="row">
             <div class="col-md-2 d-none d-md-block"></div>
             <div class="col-lg-4 col-md-6 col-8">
                 <a href="{{ route('index') }}">

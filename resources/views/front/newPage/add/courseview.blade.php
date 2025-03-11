@@ -10,7 +10,7 @@
             <div class="row" data-margin="10">
                 @if (isset($courses) && count($courses) > 0)
                     @foreach ($courses as $course)
-                        <div class="col-lg-3 col-md-6 ">
+                        <div class="col-lg-3 col-md-6 mb-2 ">
                             <div class="single-course" style="margin-bottom: 10;">
                                 <div class="course-img">
                                     <a href="{{ route('course.show', $course->id) }}"><img src="{{ asset($course->image) }}"

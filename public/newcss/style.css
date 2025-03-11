@@ -1257,12 +1257,12 @@ textarea:focus {
     content: "";
     background-color: #00a651;
     opacity: .8; }
-    @media only screen and (max-width: 767px) {
-      .header-top:before {
-        height: 60px; } }
     @media only screen and (min-width: 576px) and (max-width: 767px) {
       .header-top:before {
-        height: 46px; } }
+        height: 46px;
+        padding: 10px;
+     }
+    }
 
 .header-contact ul {
   display: -webkit-box;
