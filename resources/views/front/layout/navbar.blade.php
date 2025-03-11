@@ -54,7 +54,7 @@
                 </div>
                 <div
                     class="col-lg-6 col-md-7 col-12 col-sm-8 d-flex justify-content-end justify-content-md-end justify-content-sm-center justify-content-center">
-                    <div class="header-social " style="padding: 20px;">
+                    <div class="header-social">
                         <ul class="d-flex" style="column-gap: 10px ">
                             <li><a class="facebook" href="{{ $facebook }}"><i class="fa-brands fa-facebook"
                                         style="color: #3b5998;"></i></a></li>
