@@ -44,7 +44,7 @@
             <div class="col-lg-4 col-md-6 col-8">
                 <a href="{{ route('index') }}">
                     <div class="logo p-2" style="max-height: 100px">
-                        <img alt="" src="{{ asset($logo) }}" style="height:100%; width: 100%">
+                        <img alt="" src="{{ asset($logo) }}" style="width: 100%">
                     </div>
                 </a>
             </div>
