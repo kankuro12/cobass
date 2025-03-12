@@ -13,10 +13,8 @@
 
 <body class="bg-light">
     <div class="container min-vh-100 d-flex align-items-center justify-content-center">
-        <div class="row w-100">
-            <div class="col-lg-6 d-none d-lg-block">
-                <img src="/api/placeholder/600/600" alt="Login illustration" class="img-fluid rounded">
-            </div>
+        <div class="row w-100 justify-content-center">
+
             <div class="col-lg-6 col-md-8 col-sm-12 mx-auto">
                 <div class="card border-0 shadow-lg rounded-3">
                     <div class="card-body p-5">
@@ -52,9 +50,9 @@
                                 </button>
                             </div>
 
-                            <div class="text-center mt-4">
+                            {{-- <div class="text-center mt-4">
                                 <a href="#" class="text-muted text-decoration-none">Forgot password?</a>
-                            </div>
+                            </div> --}}
                         </form>
                     </div>
                 </div>
