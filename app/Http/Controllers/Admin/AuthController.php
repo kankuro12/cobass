@@ -9,10 +9,7 @@ use Illuminate\Support\Facades\DB;
 
 class AuthController extends Controller
 {
-    public function logout()
-    {
-        return view('admin.login');
-    }
+
     public function login(Request $request){
         if($request->getMethod()=="POST"){
             $data=$request->validate([
@@ -29,6 +26,12 @@ class AuthController extends Controller
         }else{
             return view('admin.login');
         }
+    }
+
+    public function logout(Request $request)
+    {
+        Auth::logout();
+        return redirect()->route('login');
     }
 
 

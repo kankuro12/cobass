@@ -92,14 +92,13 @@ Route::get('/page/{type}', [NewCobassController::class, 'show'])->name('page.typ
 
 //Route::get('/course/{slug}', [CourseController::class, 'show'])->name('course.show');
 
+Route::match(["POST", "GET"], 'admin/login', [AuthController::class, 'login'])->name('login');
+Route::match(["POST", "GET"], 'admin/logout', [AuthController::class, 'logout'])->name('logout');
 
-Route::prefix("admin")->name("admin.")->group(function () {
+Route::prefix("admin")->name("admin.")->middleware('auth')->group(function () {
     Route::post('setting/gallery/delete/{gallery_id}', [GalleryController::class, 'del'])->name('admin.setting.gallery.delete');
-    Route::match(["POST", "GET"], 'login', [AuthController::class, 'login'])->name('login');
     Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard.index');
-    Route::match(["POST", "GET"], 'logout', function () {
-        // Auth::logout();
-    });
+
     Route::prefix('downloads')->name('downloads.')->group(function () {
         Route::get('', [DownloadController::class, 'index'])->name('index');
         Route::match(["GET", "POST"], 'add', [DownloadController::class, 'add'])->name('add');

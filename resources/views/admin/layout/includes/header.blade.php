@@ -15,10 +15,10 @@
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                 <a class="dropdown-item" href="#">Profile</a>
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#">Log out</a>
+                <a class="dropdown-item" href="{{route('logout')}}" onClick="return confirm('Do you want to log out?')">Log out</a>
             </div>
         </li>
-        <li class="nav-item">
+        {{-- <li class="nav-item">
             <a href="#" class="nav-link"><i class="material-icons-outlined">mail</i></a>
         </li>
         <li class="nav-item">
@@ -26,10 +26,10 @@
         </li>
         <li class="nav-item">
             <a href="#" class="nav-link" id="dark-theme-toggle"><i class="material-icons-outlined">brightness_2</i><i class="material-icons">brightness_2</i></a>
-        </li>
+        </li> --}}
     </ul>
     <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav">
+        {{-- <ul class="navbar-nav">
             <li class="nav-item">
                 <a href="" class="nav-link">Services</a>
             </li>
@@ -39,13 +39,13 @@
             <li class="nav-item">
                 <a href="#" class="nav-link">Reports</a>
             </li>
-        </ul>
+        </ul> --}}
     </div>
     <div class="navbar-search">
-        <form>
+        {{-- <form>
             <div class="form-group">
                 <input type="text" name="search" id="nav-search" placeholder="Search...">
             </div>
-        </form>
+        </form> --}}
     </div>
 </nav>
