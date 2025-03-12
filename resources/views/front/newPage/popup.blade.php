@@ -7,6 +7,13 @@
                      class="popup-image {{ $loop->first ? 'active' : 'hidden' }}"
                      data-index="{{ $loop->index }}"
                      data-mobile-image="{{ asset($popup->mobile_image) }}">
+                     @if (!empty($popup->btn_title) && !empty($popup->btn_link))
+                     <div class="popup-button-container" align="center" style="padding-top: 20px;">
+                         <a href="{{ $popup->btn_link }}" class="btn btn-primary" target="_blank">
+                             {{ $popup->btn_title }}
+                         </a>
+                     </div>
+             @endif
             @endforeach
         </div>
     </div>
