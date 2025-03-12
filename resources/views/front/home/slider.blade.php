@@ -3,15 +3,15 @@
     <div id="header-carousel" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-inner">
                         <div class="carousel-item active">
-                <img class="w-100 d-block d-md-none" src="http://127.0.0.1:8000/uploads/sliders/59ElanfzQzpfD6CkbuEgDV8LwhqHBIKKmFOmDSYf.jpg">
-                <img class="w-100 d-none d-md-block" src="http://127.0.0.1:8000/uploads/sliders/75pKUhTOOSZaRgrcxb1UQlVO4lqZavCkIXs4B7Eo.jpg">
+                <img class="w-100 d-block d-md-none" src="http://localhost:8000/uploads/sliders/BiurKwLGw1f7OaADto927mWLaygcoe0ehMFjhDKN.jpg">
+                <img class="w-100 d-none d-md-block" src="http://localhost:8000/uploads/sliders/BiurKwLGw1f7OaADto927mWLaygcoe0ehMFjhDKN.jpg">
                 <div class="carousel-caption">
                     <div class="container">
                         <div class="row justify-content-start">
                             <div class="col-lg-8 text-start">
-                                <p class="fs-4 text-white">dsdsa</p>
-                                <h1 class="display-1 text-white mb-5 animated slideInRight">dsadsadsadsa</h1>
-                                <a href="sadsadsad" class="btn btn-secondary rounded-pill py-3 px-5 animated slideInRight">View Moredsad</a>
+                                <p class="fs-4 text-white">Welcome</p>
+                                <h1 class="display-1 text-white mb-5 animated slideInRight"></h1>
+                                <a href="" class="btn btn-secondary rounded-pill py-3 px-5 animated slideInRight">View More</a>
                             </div>
                         </div>
                     </div>

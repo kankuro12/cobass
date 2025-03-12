@@ -1,3 +1,56 @@
+<style>
+     .animated-link {
+    display: inline-block;
+    padding: 10px 24px;
+    color: #333;
+    font-weight: 500;
+    text-decoration: none;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    border: 2px solid #18ff03;
+    border-radius: 4px;
+}
+
+.animated-link::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background-color: #00b846;
+    transition: all 0.4s ease;
+    z-index: -1;
+}
+
+.animated-link:hover {
+        color: white;
+        background-color: green;
+    }
+
+.animated-link:hover::before {
+    left: 0;
+}
+
+.link-text {
+    position: relative;
+    z-index: 1;
+}
+
+.link-icon {
+    position: relative;
+    z-index: 1;
+    margin-left: 8px;
+    display: inline-block;
+    transform: translateX(0);
+    transition: transform 0.3s ease;
+}
+
+.animated-link:hover .link-icon {
+    transform: translateX(5px);
+}
+</style>
 <div class="event-area bg-img default-overlay pt-40 pb-40 news-background">
     <div class="container">
         <div class="section-title mb-75 text-center">
@@ -30,6 +83,12 @@
                     </div>
                 </div>
             @endforeach
+        </div>
+        <div style="text-align: center; margin-top: 30px;">
+            <a href="{{ route('news.list') }}" class="animated-link pb-20">
+                <span class="link-text">View more</span>
+                <span class="link-icon">→</span>
+            </a>
         </div>
     </div>
 </div>

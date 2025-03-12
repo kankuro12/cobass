@@ -1,19 +1,124 @@
+<style>
+    .popup-modal {
+        display: none;
+        position: fixed;
+        z-index: 1000;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        background-color: rgba(0, 0, 0, 0.5);
+    }
+
+    .popup-content {
+        position: absolute;
+        background-color: #fefefe;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        padding: 0px;
+        border-radius: 5px;
+        max-width: 800px;
+        width: 90%;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    .popup-close {
+        color: #000000;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+        cursor: pointer;
+        position: absolute;
+        right: 15px;
+        top: 5px;
+        z-index: 1001;
+    }
+
+    .popup-close:hover {
+        color: black;
+    }
+
+    .popup-image-container {
+        position: relative;
+        margin: 0 auto;
+        max-height: 80vh;
+    }
+
+    .popup-image {
+        display: block;
+        max-width: 100%;
+        height: auto;
+    }
+
+    .popup-button-overlay {
+        position: absolute;
+        bottom: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 10;
+    }
+
+    .hidden {
+        display: none;
+    }
+
+    .active {
+        display: block;
+    }
+
+    a,
+    button,
+    img,
+    input,
+    span {
+        -webkit-transition: all 0.3s ease 0s;
+        -o-transition: all 0.3s ease 0s;
+        transition: all 0.3s ease 0s;
+    }
+
+    .btn-primary {
+        color: #fff;
+        background-color: #2ba306;
+        border-color: #00ff2a;
+    }
+
+    .btn {
+        display: inline-block;
+        font-weight: 400;
+        text-align: center;
+        white-space: nowrap;
+        vertical-align: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        border: 1px solid transparent;
+        padding: .375rem .75rem;
+        font-size: 1rem;
+        line-height: 1.5;
+        border-radius: .25rem;
+        transition: background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+    }
+</style>
 @if ($popups->count() > 0)
     <div id="popupModal" class="popup-modal">
         <div class="popup-content">
             <span class="popup-close">&times;</span>
             @foreach ($popups as $popup)
-                <img src="{{ asset($popup->image) }}" alt="Popup Image" style="max-width: 100%; height: auto;"
-                     class="popup-image {{ $loop->first ? 'active' : 'hidden' }}"
-                     data-index="{{ $loop->index }}"
-                     data-mobile-image="{{ asset($popup->mobile_image) }}">
-                     @if (!empty($popup->btn_title) && !empty($popup->btn_link))
-                     <div class="popup-button-container" align="center" style="padding-top: 20px;">
-                         <a href="{{ $popup->btn_link }}" class="btn btn-primary" target="_blank">
-                             {{ $popup->btn_title }}
-                         </a>
-                     </div>
-             @endif
+                <div class="popup-image-container {{ $loop->first ? 'active' : 'hidden' }}"
+                    data-index="{{ $loop->index }}">
+                    <img src="{{ asset($popup->image) }}" alt="Popup Image" class="popup-image"
+                        data-mobile-image="{{ asset($popup->mobile_image) }}">
+                    @if (!empty($popup->btn_title) && !empty($popup->btn_link))
+                        <div class="popup-button-overlay">
+                            <a href="{{ $popup->btn_link }}" class="btn btn-primary" target="_blank">
+                                {{ $popup->btn_title }}
+                            </a>
+                        </div>
+                    @endif
+                </div>
             @endforeach
         </div>
     </div>
@@ -21,7 +126,7 @@
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const popupModal = document.getElementById('popupModal');
-            const popupImages = document.querySelectorAll('.popup-image');
+            const popupImageContainers = document.querySelectorAll('.popup-image-container');
             const closeButton = document.querySelector('.popup-close');
             let currentIndex = 0;
 
@@ -30,7 +135,8 @@
 
             // Update image sources for mobile view
             if (isMobile) {
-                popupImages.forEach(function(image) {
+                popupImageContainers.forEach(function(container) {
+                    const image = container.querySelector('.popup-image');
                     const mobileImage = image.getAttribute('data-mobile-image');
                     if (mobileImage) {
                         image.src = mobileImage;
@@ -47,15 +153,15 @@
             // Handle closing the current popup
             closeButton.addEventListener('click', function() {
                 // Hide current popup
-                popupImages[currentIndex].classList.add('hidden');
-                popupImages[currentIndex].classList.remove('active');
+                popupImageContainers[currentIndex].classList.add('hidden');
+                popupImageContainers[currentIndex].classList.remove('active');
 
                 // Move to next popup or close modal if no more popups
                 currentIndex++;
-                if (currentIndex < popupImages.length) {
+                if (currentIndex < popupImageContainers.length) {
                     // Show next popup
-                    popupImages[currentIndex].classList.remove('hidden');
-                    popupImages[currentIndex].classList.add('active');
+                    popupImageContainers[currentIndex].classList.remove('hidden');
+                    popupImageContainers[currentIndex].classList.add('active');
                 } else {
                     // No more popups, close the modal
                     popupModal.style.display = 'none';
@@ -72,60 +178,4 @@
             });
         });
     </script>
-
-    <style>
-        .popup-modal {
-            display: none;
-            position: fixed;
-            z-index: 1000;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            overflow: hidden;
-            background-color: rgba(0, 0, 0, 0.5);
-        }
-
-        .popup-content {
-            position: fixed;
-            background-color: #fefefe;
-            left: 50%;
-            top: 50%;
-            transform: translate(-50%, -50%);
-            padding: 20px;
-            border-radius: 5px;
-            max-width: 800px;
-            width: 90%;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-        }
-
-        .popup-close {
-            color: #aaa;
-            float: right;
-            font-size: 28px;
-            font-weight: bold;
-            cursor: pointer;
-            position: absolute;
-            right: 15px;
-            top: 5px;
-        }
-
-        .popup-close:hover {
-            color: black;
-        }
-
-        .popup-image {
-            display: block;
-            margin: 0 auto;
-            max-height: 80vh;
-        }
-
-        .hidden {
-            display: none;
-        }
-
-        .active {
-            display: block;
-        }
-    </style>
 @endif
