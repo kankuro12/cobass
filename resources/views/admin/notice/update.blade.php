@@ -4,7 +4,11 @@
 @endsection
 @section('s-title')
     <li class="breadcrumb-item active">
-        Notices
+     <a href=" {{ route('admin.notice.index') }}">Notice</a>
+    </li>
+    </li>
+    <li class="breadcrumb-item active">
+    Update
     </li>
 @endsection
 

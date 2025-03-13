@@ -27,12 +27,13 @@ class NoticeController extends Controller
             'title' => 'required|string|max:255',
             'date' => 'required|date',
             'details' => 'required|string',
+            'link' => 'nullable|mimes:pdf,docx|max:2048', // Max file size 2MB
         ]);
 
         // Handle Image Upload (store in 'link' column)
         $imagePath = null;
-        if ($request->hasFile('link')) {
-            $imagePath = $request->file('link')->store('uploads/notices');
+        if ($request->hasFile('file')) {
+            $imagePath = $request->file('file')->store('uploads/notices');
         }
 
         Notice::create([
@@ -52,24 +53,46 @@ class NoticeController extends Controller
 
     // Update the notice in the database
     public function update(Request $request, $id)
-    {
-        $request->validate([
-            'title' => 'required',
-            'date' => 'required|date',
-            'details' => 'required',
-            'link' => 'nullable|url',
-        ]);
+{
+    $request->validate([
+        'title' => 'required|string|max:255',
+        'date' => 'required|date',
+        'details' => 'required|string',
+        'file' => 'nullable|mimes:pdf,docx|max:2048',
+    ]);
 
-        $notice = Notice::findOrFail($id);
-        $notice->update($request->all());
+    $notice = Notice::findOrFail($id);
 
-        return redirect()->route('admin.notice.index')->with('success', 'Notice updated successfully.');
+    if ($request->hasFile('file')) {
+        // Delete old file if exists
+        if ($notice->link && file_exists(storage_path("app/{$notice->link}"))) {
+            unlink(storage_path("app/{$notice->link}"));
+        }
+
+        // Upload new file
+        $notice->link = $request->file('file')->store('uploads/notices');
     }
 
+    // Update other fields
+    $notice->update([
+        'title' => $request->title,
+        'date' => $request->date,
+        'details' => $request->details,
+        'file' => $notice->link, // Keep the new/old file link
+    ]);
+
+    return redirect()->route('admin.notice.index')->with('success', 'Notice updated successfully.');
+}
     // Delete a notice from the database
     public function destroy($id)
     {
         $notice = Notice::findOrFail($id);
+
+        // Delete file if exists
+        if ($notice->link && file_exists(storage_path("app/{$notice->link}"))) {
+            unlink(storage_path("app/{$notice->link}"));
+        }
+
         $notice->delete();
 
         return redirect()->route('admin.notice.index')->with('success', 'Notice deleted successfully.');

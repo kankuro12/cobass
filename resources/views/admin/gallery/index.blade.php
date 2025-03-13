@@ -89,7 +89,7 @@
 
 @section('s-title')
     <li class="breadcrumb-item">
-        Galleries
+       <a href=" {{route('admin.setting.gallery.type.index')}}">Gallery</a>
     </li>
     <li class="breadcrumb-item active">
         {{ $type->name }}
