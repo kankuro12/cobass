@@ -14,14 +14,14 @@
                             <div class="single-course" style="margin-bottom: 10;">
                                 <div class="course-img">
                                     <a href="{{ route('course.show', $course->id) }}"><img src="{{ asset($course->image) }}"
-                                            alt="{{ $course->name }}" loading="lazy"></a>
+                                            alt="{{ $course->name }}" loading="lazy">
                                 </div>
                                 <div class="course-content">
-                                    <h4><a href="#"> {{ $course->name }}</a></h4>
+                                    <h4> {{ $course->name }}</a></h4>
                                     <p> {{ $course->short_des }}</p>
                                 </div>
                             </div>
-
+                        </a>
                         </div>
                     @endforeach
                 @else

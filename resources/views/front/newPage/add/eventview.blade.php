@@ -121,9 +121,9 @@
 
         <div class="row">
             @foreach ($events->take(4) as $event)
+            <a href="{{ route('events.details', $event->id) }}">
                 <div class="col-lg-3 col-md-6">
                     <div class="single-event event-white-bg">
-                        <a href="{{ route('events.details', $event->id) }}">
                             <div class="event-img" style="height: 200px; overflow: hidden; position: relative;">
                                 <!-- Use the image path from the database -->
                                 <img src="{{ asset($event->feature_image) }}" alt="{{ $event->title }}"
