@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Achievement;
 use Illuminate\Http\Request;
+use Cache;
 
 class AchievementController extends Controller
 {
@@ -33,6 +34,7 @@ class AchievementController extends Controller
             'description' => $request->description,
             'image' => $imagePath
         ]);
+        Cache::forget('home_achieve');
 
         return redirect()->route('admin.achievements.create')->with('success', 'Achievement added successfully');
     }
@@ -57,6 +59,7 @@ class AchievementController extends Controller
         $achievement->title= $request->title;
         $achievement->description = $request->description;
         $achievement->save();
+        Cache::forget('home_achieve');
 
         return redirect()->route('admin.achievements.edit',['achievement'=>$achievement->id])->with('success', 'Achievement updated successfully');
     }
@@ -64,6 +67,7 @@ class AchievementController extends Controller
     public function destroy(Achievement $achievement)
     {
         $achievement->delete();
+        Cache::forget('home_achieve');
         return redirect()->route('admin.achievements.index')->with('success', 'Achievement deleted successfully');
     }
 }

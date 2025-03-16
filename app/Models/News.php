@@ -15,4 +15,5 @@ class News extends Model
         'short_content',
         'extra_content',
     ];
+    const tableName = 'news';
 }

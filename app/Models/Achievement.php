@@ -9,4 +9,5 @@ class Achievement extends Model
 {
     use HasFactory;
     protected $fillable = ['title', 'description', 'image'];
+    const tableName = 'achieve';
 }

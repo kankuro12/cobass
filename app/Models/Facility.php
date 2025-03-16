@@ -9,4 +9,5 @@ class Facility extends Model
 {
     use HasFactory;
     protected $fillable = ['key', 'title', 'description', 'icon'];
+    const tableName = 'facility';
 }

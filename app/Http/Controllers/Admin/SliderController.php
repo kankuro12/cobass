@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Slider;
+use Cache;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -83,7 +84,8 @@ class SliderController extends Controller
 
     private function render()
     {
-        $sliders = DB::table('sliders')->get();
-        file_put_contents(resource_path('views/front/home/slider.blade.php'), view('admin.setting.slider.template', compact('sliders'))->render());
+        Cache::forget('home_slider');
+    //     $sliders = DB::table('sliders')->get();
+    //     file_put_contents(resource_path('views/front/home/slider.blade.php'), view('admin.setting.slider.template', compact('sliders'))->render());
     }
 }

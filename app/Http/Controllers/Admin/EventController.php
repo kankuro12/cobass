@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Event;
 use Illuminate\Http\Request;
+use Cache;
 
 class EventController extends Controller
 {
@@ -30,6 +31,7 @@ class EventController extends Controller
                 $event->feature_image = $request->feature_image->store('uploads/events');
             }
             $event->save();
+            Cache::forget('home_events');
             return redirect()->back()->with('message', 'Successfully Added');
         } else {
             return view('admin.events.add');
@@ -52,6 +54,7 @@ class EventController extends Controller
                 $event->feature_image = $request->feature_image->store('uploads/events');
             }
             $event->save();
+            Cache::forget('home_events');
             return redirect()->back()->with('message', 'Successfully Updated');
         } else {
             return view('admin.events.edit', compact('event'));
@@ -61,6 +64,7 @@ class EventController extends Controller
     public function del(Event $event)
     {
         $event->delete();
+        Cache::forget('home_events');
         return redirect()->route('admin.events.index')->with('success', 'Event deleted successfully!');
     }
 }

@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Course;
 use Illuminate\Support\Facades\DB;
+use Cache;
 
 class CourseController extends Controller
 {
@@ -24,7 +25,7 @@ class CourseController extends Controller
     }
     public function save(Request $request)
     {
-            //  dd($request->all());
+        //  dd($request->all());
         $course = new course();
         $course->name = $request->name;
         $course->faculty = $request->faculty;
@@ -32,6 +33,7 @@ class CourseController extends Controller
         $course->short_des = $request->short_des;
         $course->image = $request->image->store('uploads/product');
         $course->save();
+        Cache::forget('home_course');
         // return redirect('')->with('message', 'Successfully Added');
         // return redirect()->route("admin.course.index");
         return redirect()->back()->with('message', 'Successfully Added');
@@ -44,7 +46,7 @@ class CourseController extends Controller
 
         $courses = Course::all();
 
-        return view("admin.course.index" ,compact('courses'));
+        return view("admin.course.index", compact('courses'));
     }
     public function del(Request $request, course $course)
     {
@@ -62,9 +64,10 @@ class CourseController extends Controller
                 $course->image = $request->image->store('upload/course');
             }
             $course->save();
+            Cache::forget('home_course');
             return redirect()->back()->with('message', 'Successfully Updated');
         } else {
-            return view("admin.course.edit",compact('course'));
+            return view("admin.course.edit", compact('course'));
         }
     }
     public function showCoursesOnNewPage()

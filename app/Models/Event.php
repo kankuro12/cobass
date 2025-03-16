@@ -21,4 +21,5 @@ class Event extends Model
         'long_description',
         'feature_image',
     ];
+    const tableName = 'events';
 }

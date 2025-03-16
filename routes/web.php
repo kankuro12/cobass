@@ -86,6 +86,7 @@ Route::get('/events', [NewCobassController::class, 'listEvents'])->name('events.
 Route::get('/events/{id}', [NewCobassController::class, 'showEvent'])->name('events.details'); // View event details
 Route::get('/events', [NewCobassController::class, 'eventList'])->name('events.list');
 Route::get('/page/{type}', [NewCobassController::class, 'show'])->name('page.type');
+Route::get('/teachers', [NewCobassController::class, 'teacherList'])->name('teachers.list');
 
 
 

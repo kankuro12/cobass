@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\News;
 use Illuminate\Support\Facades\Storage;
+use Cache;
 
 class NewsController extends Controller
 {
@@ -26,6 +27,7 @@ class NewsController extends Controller
                 $news->feature_image = $request->feature_image->store('uploads/news');
             }
             $news->save();
+            Cache::forget('home_news');
             return redirect()->back()->with('message', 'Successfully Added');
         } else {
             return view('admin.news.add');
@@ -63,6 +65,7 @@ class NewsController extends Controller
                 $news->feature_image = $request->feature_image->store('uploads/news');
             }
             $news->save();
+            Cache::forget('home_news');
             return redirect()->back()->with('message', 'Successfully Updated');
         } else {
             return view('admin.news.edit', compact('news'));
@@ -95,6 +98,7 @@ class NewsController extends Controller
     public function del(News $news)
     {
         $news->delete();
+        Cache::forget('home_news');
         return redirect()->route('admin.news.index')->with('success', 'News deleted successfully!');
     }
 }

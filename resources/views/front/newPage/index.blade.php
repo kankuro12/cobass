@@ -171,6 +171,7 @@
     @include('front.newPage.add.aboutview')
     @include('front.newPage.add.courseview')
     @include('front.newPage.add.teachersview')
+    @include('front.newPage.add.homeachieve')
     @include('front.newPage.add.eventview')
     @include('front.newPage.add.newsview')
 @endsection

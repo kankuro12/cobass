@@ -118,6 +118,7 @@
 
                                     <li><a href="{{ route('about') }}"> About us </a>
                                     </li>
+                                    <li><a href="{{route('teachers.list')}}"> Teachers </a>
                                     <li><a href="{{ route('contact') }}"> CONTACT </a></li>
                                 </ul>
                             </nav>
