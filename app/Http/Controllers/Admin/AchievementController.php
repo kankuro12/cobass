@@ -35,6 +35,7 @@ class AchievementController extends Controller
             'image' => $imagePath
         ]);
         Cache::forget('home_achieve');
+        Cache::forget('achieve_lists');
 
         return redirect()->route('admin.achievements.create')->with('success', 'Achievement added successfully');
     }
@@ -60,6 +61,7 @@ class AchievementController extends Controller
         $achievement->description = $request->description;
         $achievement->save();
         Cache::forget('home_achieve');
+        Cache::forget('achieve_lists');
 
         return redirect()->route('admin.achievements.edit',['achievement'=>$achievement->id])->with('success', 'Achievement updated successfully');
     }
@@ -68,6 +70,7 @@ class AchievementController extends Controller
     {
         $achievement->delete();
         Cache::forget('home_achieve');
+        Cache::forget('achieve_lists');
         return redirect()->route('admin.achievements.index')->with('success', 'Achievement deleted successfully');
     }
 }

@@ -264,7 +264,7 @@ class NewCobassController extends Controller
             $query->where('title', 'like', '%' . $request->search . '%');
         }
         $events = Cache::rememberForever('event_lists_', function () {
-            return DB::table('events')->orderBy('id', 'desc')->get();
+            return DB::table('events')->get();
         });
 
         return view('front.newPage.event-list', compact('events'));
