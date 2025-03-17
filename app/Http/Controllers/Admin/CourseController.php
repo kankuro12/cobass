@@ -43,14 +43,15 @@ class CourseController extends Controller
     $course->image = $request->image->store('uploads/product');
     $course->save();
 
-    $id = $course->id; // Get the ID of the newly created course
+    $id = $course->id; //  ID of the newly created course
 
     // Clear related caches
     Cache::forget('home_course');
     Cache::forget("course_{$id}");
     Cache::forget("other_courses_except_{$id}");
-    Cache::forget("otcourse");
-    Cache::forget("alcourse");
+    Cache::put('courses_last_updated', time());
+    //Cache::forget("otcourse");
+   // Cache::forget("alcourse");
 
     return redirect()->back()->with('message', 'Successfully Added');
 }
@@ -72,6 +73,7 @@ class CourseController extends Controller
     Cache::forget('home_course');
     Cache::forget("course_{$id}");
     Cache::forget("other_courses_except_{$id}");
+    Cache::put('courses_last_updated', time());
 
 
 
@@ -95,6 +97,7 @@ public function edit(Request $request, course $course)
         Cache::forget('home_course');
         Cache::forget("course_{$course->id}");
         Cache::forget("other_courses_except_{$course->id}");
+        Cache::put('courses_last_updated', time());
 
         return redirect()->back()->with('message', 'Successfully Updated');
     } else {

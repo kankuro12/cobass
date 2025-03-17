@@ -166,7 +166,7 @@ class NewCobassController extends Controller
             return DB::table('courses')->where('id', $id)->first();
         });
 
-        $otherCourses = Cache::rememberForever("other_courses_except_{$id}", function () use ($id) {
+        $otherCourses = Cache::rememberForever("other_courses_except_{$id}_" . Cache::get('courses_last_updated', time()), function () use ($id) {
             return DB::table('courses')->where('id', '!=', $id)->orderBy('created_at', 'desc')->get();
         });
 
@@ -263,27 +263,13 @@ class NewCobassController extends Controller
         if ($request->has('search')) {
             $query->where('title', 'like', '%' . $request->search . '%');
         }
-
-        $events = $query->latest()->paginate(9); // Show 9 events per page
+        $events = Cache::rememberForever('event_lists_', function () {
+            return DB::table('events')->orderBy('id', 'desc')->get();
+        });
 
         return view('front.newPage.event-list', compact('events'));
     }
 
-    // public function eventList(Request $request)
-    // {
-    //     $query = Event::query();
-
-    //     if ($request->has('search')) {
-    //         $query->where('title', 'like', '%' . $request->search . '%');
-    //     }
-
-    //     // Cache the event list with the search query and pagination
-    //     $events = Cache::rememberForever('event_lists_' . md5($request->fullUrl()), function () use ($query) {
-    //         return $query->latest()->paginate(9); // Ensure it's paginated
-    //     });
-
-    //     return view('front.newPage.event-list', compact('events'));
-    // }
 
     public function eventDetails($id)
     {
@@ -320,7 +306,7 @@ class NewCobassController extends Controller
         $search = $request->search;
 
         // Use Cache to store teacher list
-        $teachers = Cache::rememberForever("f", function () use ($search) {
+        $teachers = Cache::rememberForever("teacher_lists", function () use ($search) {
             $query = Teacher::query();
 
             if (!empty($search)) {

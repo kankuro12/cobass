@@ -95,11 +95,11 @@
                 </div>
             @endforeach
         </div>
-
+{{--
         <!-- Pagination -->
         <div class="pagination-wrapper">
             {{ $events->links() }}
-        </div>
+        </div> --}}
     </div>
 </div>
 

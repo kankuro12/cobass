@@ -32,7 +32,7 @@ class EventController extends Controller
             }
             $event->save();
             Cache::forget('home_events');
-            Cache::forget('event_lists_' . md5($request->fullUrl()));
+            Cache::forget('event_lists_');
             Cache::forget('latest_events_sidebar');
 
             return redirect()->back()->with('message', 'Successfully Added');
@@ -58,7 +58,7 @@ class EventController extends Controller
             }
             $event->save();
             Cache::forget('home_events');
-            Cache::forget('event_lists_' . md5($request->fullUrl()));
+            Cache::forget('event_lists_');
             Cache::forget('latest_events_sidebar');
             return redirect()->back()->with('message', 'Successfully Updated');
         } else {
@@ -73,7 +73,7 @@ class EventController extends Controller
 
     // Clear event cache after deletion
     Cache::forget('home_events');
-    Cache::forget('event_lists_' . md5(request()->fullUrl()));  // Use dynamic key for better cache management
+    Cache::forget('event_lists_');  // Use dynamic key for better cache management
     Cache::forget('latest_events_sidebar');
 
     return redirect()->route('admin.events.index')->with('success', 'Event deleted successfully!');
