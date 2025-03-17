@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Facility;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Cache;
 
 class FacilityController extends Controller
 {
@@ -64,10 +65,11 @@ class FacilityController extends Controller
 
                 // Save new image path
                 $facilityData->update(['icon' => $newImagePath]);
-                Cache::forget('four_facilities');
-                Cache::forget('home_facilities');
             }
         }
+        Cache::forget('four_facilities');
+        Cache::forget('home_facilities');
+        Cache::forget('about_facilities');
 
         return redirect()->route('admin.add.facility')->with('success', 'Facilities updated successfully.');
     }

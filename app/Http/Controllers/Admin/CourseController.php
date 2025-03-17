@@ -7,7 +7,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Course;
 use Illuminate\Support\Facades\DB;
-use Cache;
+use Illuminate\Support\Facades\Cache;
 
 class CourseController extends Controller
 {

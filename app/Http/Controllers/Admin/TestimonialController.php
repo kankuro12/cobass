@@ -29,6 +29,7 @@ class TestimonialController extends Controller
         $testimonial->long_des = $request->long_des;
         $testimonial->save();
         Cache::forget('home_testimonial');
+        Cache::forget('about_testimonials');
         return redirect()->back()->with('message', 'Successfully Added');
     }
     public function list(Request $request)
@@ -42,6 +43,7 @@ class TestimonialController extends Controller
     {
         $testimonial->delete();
         Cache::forget('home_testimonial');
+        Cache::forget('about_testimonials');
         return redirect()->back()->with('message', 'Sucessfully Deleted');
     }
     public function edit(Request $request, Testimonial $testimonial)
@@ -55,6 +57,7 @@ class TestimonialController extends Controller
             }
             $testimonial->save();
             Cache::forget('home_testimonial');
+            Cache::forget('about_testimonials');
             return redirect()->back()->with('message', 'Successfully Updated');
         } else {
             return view("admin.testimonial.edit",compact('testimonial'));

@@ -51,7 +51,7 @@
     transform: translateX(5px);
 }
 </style>
-<div class="event-area bg-img default-overlay pt-40 pb-40 news-background">
+<div class="event-area bg-img default-overlay pt-40 pb-40 news-background"  style="background-image: url('{{ asset('/img/bg.jpeg') }}'); background-size: cover; background-position: center;">
     <div class="container">
         <div class="section-title mb-75 text-center">
             <h2><span>Latest</span> News</h2>

@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Teacher;
 use Illuminate\Http\Request;
-use Cache;
+use Illuminate\Support\Facades\Cache;
 
 class TeacherController extends Controller
 {
@@ -29,6 +29,7 @@ class TeacherController extends Controller
         $teacher->save();
         Cache::forget('home_teacher');
         Cache::forget('teacher_lists');
+        Cache::forget('about_teacher');
         return redirect()->back()->with('message', 'Successfully Added');
         // return redirect()->route("admin.teacher.index");
     }
@@ -44,6 +45,7 @@ class TeacherController extends Controller
         $teacher->delete();
         Cache::forget('home_teacher');
         Cache::forget('teacher_lists');
+        Cache::forget('about_teacher');
         return redirect()->back()->with('message', 'Sucessfully Deleted');
     }
     public function edit(Request $request, Teacher $teacher)
@@ -58,6 +60,7 @@ class TeacherController extends Controller
             $teacher->save();
             Cache::forget('home_teacher');
             Cache::forget('teacher_lists');
+            Cache::forget('about_teacher');
             return redirect()->back()->with('message', 'Successfully Updated');
         } else {
             return view("admin.teacher.edit",compact('teacher'));

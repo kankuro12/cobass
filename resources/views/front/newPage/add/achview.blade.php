@@ -35,8 +35,8 @@
             <div class="col-xl-4 col-lg-3 col-md-6 col-sm-6">
                 <div class="single-count mb-30 count-three">
                     <div class="count-img">
-                        <img src="{{ asset('storage/' . ($achievementData['awards']->icon ?? 'default-icon.png')) }}"
-                            alt="" loading="lazy">
+                        <img src="{{ asset('achievements/' . ($achievementData['awards']->icon ?? 'default-icon.png')) }}"
+                        alt="" loading="lazy">
                     </div>
                     <div class="count-content">
                         <h2 class="count">{{ $achievementData['awards']->value ?? '0' }}</h2>

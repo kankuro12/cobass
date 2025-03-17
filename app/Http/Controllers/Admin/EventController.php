@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Event;
 use Illuminate\Http\Request;
-use Cache;
+use Illuminate\Support\Facades\Cache;
 
 class EventController extends Controller
 {
@@ -32,7 +32,7 @@ class EventController extends Controller
             }
             $event->save();
             Cache::forget('home_events');
-            Cache::forget('event_lists');
+            Cache::forget('event_lists_' . md5($request->fullUrl()));
             Cache::forget('latest_events_sidebar');
 
             return redirect()->back()->with('message', 'Successfully Added');
@@ -58,7 +58,7 @@ class EventController extends Controller
             }
             $event->save();
             Cache::forget('home_events');
-            Cache::forget('event_lists');
+            Cache::forget('event_lists_' . md5($request->fullUrl()));
             Cache::forget('latest_events_sidebar');
             return redirect()->back()->with('message', 'Successfully Updated');
         } else {
@@ -66,12 +66,17 @@ class EventController extends Controller
         }
     }
 
-    public function del(Event $event)
-    {
-        $event->delete();
-        Cache::forget('home_events');
-        Cache::forget('event_lists');
-        Cache::forget('latest_events_sidebar');
-        return redirect()->route('admin.events.index')->with('success', 'Event deleted successfully!');
-    }
+    public function del($eventId)
+{
+    $event = Event::findOrFail($eventId);
+    $event->delete();
+
+    // Clear event cache after deletion
+    Cache::forget('home_events');
+    Cache::forget('event_lists_' . md5(request()->fullUrl()));  // Use dynamic key for better cache management
+    Cache::forget('latest_events_sidebar');
+
+    return redirect()->route('admin.events.index')->with('success', 'Event deleted successfully!');
+}
+
 }

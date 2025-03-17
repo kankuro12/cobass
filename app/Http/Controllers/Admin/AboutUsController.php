@@ -2,6 +2,7 @@
 use App\Http\Controllers\Controller;
 use App\Models\AboutUs;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cache;
 
 class AboutUsController extends Controller
 {

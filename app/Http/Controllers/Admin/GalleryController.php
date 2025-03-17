@@ -9,7 +9,7 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 use Intervention\Image\Facades\Image;
-use Cache;
+use Illuminate\Support\Facades\Cache;
 class GalleryController extends Controller
 {
     //types

@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Admin;
 use App\Models\Notice;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use Cache;
+use Illuminate\Support\Facades\Cache;
 
 class NoticeController extends Controller
 {

@@ -33,7 +33,7 @@
         color: #555;
     }
 </style>
-<div class="achievement-area bg-img pt-40 pb-40" style="background-image: url('{{ asset('/img/bg.jpeg') }}'); background-size: cover; background-position: center;">
+<div class="achievement-area bg-img pt-40 pb-40">
 
     <div class="container" style="padding: 0;">
         <div class="container">
