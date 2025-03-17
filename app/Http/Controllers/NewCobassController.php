@@ -56,32 +56,32 @@ class NewCobassController extends Controller
 
         $sliders = Cache::rememberForever('home_slider', function () {
 
-            return DB::table(Slider::tableName)->get();
+            return DB::table(Slider::tableName)->get(['id','title','subtitle','image']);
         });
         // Fetch courses and pass to the view
         $courses = Cache::rememberForever('home_course', function () {
-            return DB::table(Course::tableName)->orderBy('id', 'desc')->take(4)->get();
+            return DB::table(Course::tableName)->orderBy('id', 'desc')->take(4)->get(['id','name','image','short_des']);
         });
         //fetch teacher information
         $teachers = Cache::rememberForever('home_teacher', function () {
-            return DB::table(Teacher::tableName)->orderBy('id', 'desc')->take(4)->get();  // Use the constant without parentheses
+            return DB::table(Teacher::tableName)->orderBy('id', 'desc')->take(4)->get(['id','name','deg','short_des']);
         });
 
         $events = Cache::rememberForever('home_events', function () {
-            return DB::table(Event::tableName)->orderBy('id', 'desc')->take(4)->get();
+            return DB::table(Event::tableName)->orderBy('id', 'desc')->take(4)->get(['id','feature_image','title','short_description','venue','end_time','start_date',]);
         });
         $news = Cache::rememberForever('home_news', function () {
-            return DB::table(News::tableName)->orderBy('id', 'desc')->take(4)->get();
+            return DB::table(News::tableName)->orderBy('id', 'desc')->take(4)->get(['id','feature_image','title','short_content','created_at']);
         });
         $testimonials = Cache::rememberForever('home_testimonial', function () {
-            return DB::table(Testimonial::tableName)->get();
+            return DB::table(Testimonial::tableName)->get(['id','name','long_des','name','profission','image']);
         });
         $popups = Popup::where('active', 1)->get(); // Get the first active popup
         $data = $this->getHomepageData();
 
         // Fetch the facilities data, assuming these are the 4 facilities
         $facility = Cache::rememberForever('home_facilities', function () {
-            return DB::table('facilities')->get();
+            return DB::table('facilities')->get(['id','icon','title','description']);
         });
 
         $achieve = Cache::rememberForever('home_achieve', function () {
