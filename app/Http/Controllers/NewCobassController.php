@@ -10,7 +10,6 @@ use App\Models\Teacher;
 use App\Models\Setting;
 use App\Models\Testimonial;
 use App\Models\Popup;
-use DB;
 use Illuminate\Http\Request;
 use App\Models\Contact;
 use App\Models\Download;
@@ -21,6 +20,8 @@ use App\Models\Add;
 use App\Models\Facility;
 use App\Models\Achievement;
 use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\DB;
+
 use function PHPUnit\Framework\callback;
 class NewCobassController extends Controller
 {
@@ -53,8 +54,12 @@ class NewCobassController extends Controller
             return $achievements->keyBy('key'); // Transform and cache
         });
 
+<<<<<<< HEAD
         $sliders = Cache::rememberForever('home_slider', function () {
 
+=======
+        $sliders = Cache::rememberForever('home_slider',function(){
+>>>>>>> 55e9b69b780d3aa5a80cabf7f83ff5e42937204d
             return DB::table(Slider::tableName)->get();
         });
         // Fetch courses and pass to the view
