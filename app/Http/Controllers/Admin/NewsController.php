@@ -5,8 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\News;
-use Illuminate\Support\Facades\Storage;
-use Cache;
+use Illuminate\Support\Facades\Cache;
 
 class NewsController extends Controller
 {
