@@ -53,7 +53,7 @@ class NewCobassController extends Controller
             return $achievements->keyBy('key'); // Transform and cache
         });
 
-        $sliders = Cache::rememberForever('home_slider',function(){
+        $sliders = Cache::rememberForever('home_slider', function () {
 
             return DB::table(Slider::tableName)->get();
         });
@@ -79,30 +79,33 @@ class NewCobassController extends Controller
         $data = $this->getHomepageData();
 
         // Fetch the facilities data, assuming these are the 4 facilities
-        $facility = Facility::all();
+        $facility = Cache::rememberForever('home_facilities', function () {
+            return DB::table('facilities')->get();
+        });
 
-        $achieve= Cache::rememberForever('home_achieve', function () {
+        $achieve = Cache::rememberForever('home_achieve', function () {
             return DB::table('achievements')->orderBy('id', 'desc')->take(4)->get();
         });
-        return view('front.newPage.index', compact('sliders', 'courses', 'teachers', 'testimonials', 'popups', 'events', 'news', 'data', 'achievementData', 'facility','achieve'));
+        return view('front.newPage.index', compact('sliders', 'courses', 'teachers', 'testimonials', 'popups', 'events', 'news', 'data', 'achievementData', 'facility', 'achieve'));
     }
 
     public function event()
     {
-        $events = Cache::rememberForever('home_course', function () {
+        $events = Cache::rememberForever('event', function () {
             return DB::table(Course::tableName)->get();
         });
         return view('front.newPage.event');
     }
 
     public function notice()
-    {
-        $notices = Notice::all();  // You can apply filters or pagination if needed
+{
+    $notices = Cache::rememberForever('noticepage', function () {
+        return Notice::orderBy('id', 'desc')->get();  // Orders by 'created_at' in descending order
+    });
 
-        // Pass notices
-        return view('front.newPage.notice', compact('notices'));
-    }
 
+    return view('front.newPage.notice', compact('notices'));
+}
     public function course()
     {
         $courses = Course::all(); // Fetch courses for the course page
@@ -112,7 +115,10 @@ class NewCobassController extends Controller
     // Show all gallery albums
     public function gallery()
     {
-        $galleryTypes = GalleryType::with('galleries')->get();
+        $galleryTypes = Cache::rememberForever('gallery_types', function () {
+            return GalleryType::with('galleries')->get();
+        });
+
         return view('front.newPage.gallery', compact('galleryTypes'));
     }
 
@@ -125,8 +131,11 @@ class NewCobassController extends Controller
 
     public function showNotices()
     {
-        $notices = Notice::all(); // Get all notices
-        return view('front.newPage.notice', compact('notices')); // Pass the notices variable to the view
+        $notices = Cache::rememberForever('all_notices', function () {
+            return DB::table('notices')->orderBy('id', 'desc')->get();
+        });
+
+        return view('front.newPage.notice', compact('notices'));
     }
     public function contact()
     {
@@ -152,15 +161,20 @@ class NewCobassController extends Controller
     }
     public function showCourse($id)
     {
-        // Fetch the current course
-        $course = Course::findOrFail($id);
+        // Cache the current course with ID in the cache key
+        $course = Cache::rememberForever("course_{$id}", function () use ($id) {
+            return DB::table('courses')->where('id', $id)->first();
+        });
 
-        // Fetch other courses (excluding the current one)
-        $otherCourses = Course::where('id', '!=', $id)->get();
+        // Cache other courses with ID in the cache key
+        $otherCourses = Cache::rememberForever("other_courses_except_{$id}", function () use ($id) {
+            return DB::table('courses')->where('id', '!=', $id)->orderBy('created_at', 'desc')->get();
+        });
 
-        // Pass the current course and other courses to the view
+        // Return the view with cached data
         return view('front.newPage.courseDetail', compact('course', 'otherCourses'));
     }
+
     public function showDownloads(Request $request)
     {
         $query = Download::query();
@@ -176,11 +190,18 @@ class NewCobassController extends Controller
     }
     public function showFacilities()
     {
-        // Fetch the facilities data, assuming these are the 4 facilities
-        $facility1 = Facility::find(1);  // Example: Fetch the first facility
-        $facility2 = Facility::find(2);  // Example: Fetch the second facility
-        $facility3 = Facility::find(3);  // Example: Fetch the third facility
-        $facility4 = Facility::find(4);  // Example: Fetch the fourth facility
+        // Cache the facilities data
+        $facilities = Cache::rememberForever('four_facilities', function () {
+            return DB::table('facilities')
+                ->whereIn('id', [1, 2, 3, 4])  // Get facilities with IDs 1, 2, 3, and 4
+                ->get();
+        });
+
+        // Assign each facility to its respective variable
+        $facility1 = $facilities->firstWhere('id', 1);
+        $facility2 = $facilities->firstWhere('id', 2);
+        $facility3 = $facilities->firstWhere('id', 3);
+        $facility4 = $facilities->firstWhere('id', 4);
 
         return view('front.newPage.index', compact('facility1', 'facility2', 'facility3', 'facility4'));
     }
@@ -224,6 +245,7 @@ class NewCobassController extends Controller
     }
     public function newsList(Request $request)
     {
+        // Build the query
         $query = News::latest(); // Latest news first
 
         // If search is present, filter results
@@ -231,25 +253,40 @@ class NewCobassController extends Controller
             $query->where('title', 'like', '%' . $request->search . '%');
         }
 
+        // Get paginated results without caching
         $news = $query->paginate(9); // Show 9 news per page
 
         return view('front.newPage.news-list', compact('news'));
     }
+
     public function eventList(Request $request)
-    {
-        // Search functionality
-        $query = Event::query();
-        if ($request->has('search')) {
-            $query->where('title', 'like', '%' . $request->search . '%');
-        }
+{
+    $query = Event::query();
 
-        $events = $query->latest()->paginate(9); // Show 9 events per page
-
-        // Fetch the latest 4 news for the sidebar
-        $latestNews = News::latest()->take(4)->get();
-
-        return view('front.newPage.event-list', compact('events', 'latestNews'));
+    if ($request->has('search')) {
+        $query->where('title', 'like', '%' . $request->search . '%');
     }
+
+    $events = $query->latest()->paginate(9); // Show 9 events per page
+
+    return view('front.newPage.event-list', compact('events'));
+}
+    // public function eventList(Request $request)
+    // {
+
+    //     $query = Event::query();
+
+    //     if ($request->has('search')) {
+    //         $query->where('title', 'like', '%' . $request->search . '%');
+    //     }
+
+    //     // Cache the event list with the search query and pagination
+    //     $events = Cache::rememberForever('event_lists' . md5($request->fullUrl()), function () use ($query) {
+    //         return $query->latest()->paginate(9); // Show 9 events per page
+    //     });
+
+    //     return view('front.newPage.event-list', compact('events'));
+    // }
     public function eventDetails($id)
     {
         $event = Event::findOrFail($id);
@@ -272,27 +309,27 @@ class NewCobassController extends Controller
         $teachers = teacher::all();
         $testimonials = Testimonial::all();
 
-        return view('front.newPage.about', compact( 'data', 'facility', 'teachers', 'testimonials', 'achievementData'));
+        return view('front.newPage.about', compact('data', 'facility', 'teachers', 'testimonials', 'achievementData'));
     }
     public function teacherList(Request $request)
-{
-    $search = $request->search;
+    {
+        $search = $request->search;
 
-    // Use Cache to store teacher list
-    $teachers = Cache::rememberForever("teacher_list_{$search}", function () use ($search) {
-        $query = Teacher::query();
+        // Use Cache to store teacher list
+        $teachers = Cache::rememberForever("f", function () use ($search) {
+            $query = Teacher::query();
 
-        if (!empty($search)) {
-            $query->where('name', 'LIKE', "%{$search}%")
-                  ->orWhere('deg', 'LIKE', "%{$search}%")
-                  ->orWhere('short_des', 'LIKE', "%{$search}%");
-        }
+            if (!empty($search)) {
+                $query->where('name', 'LIKE', "%{$search}%")
+                    ->orWhere('deg', 'LIKE', "%{$search}%")
+                    ->orWhere('short_des', 'LIKE', "%{$search}%");
+            }
 
-        return $query->orderBy('name')->paginate(10);
-    });
+            return $query->orderBy('name')->paginate(10);
+        });
 
-    return view('front.newPage.teacherlist', compact('teachers'));
-}
+        return view('front.newPage.teacherlist', compact('teachers'));
+    }
 
 }
 

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 use App\Models\Notice;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Cache;
 
 class NoticeController extends Controller
 {
@@ -42,6 +43,8 @@ class NoticeController extends Controller
             'details' => $request->details,
             'link' => $imagePath, // Storing image path in 'link' column
         ]);
+        Cache::forget('all_notices');
+        Cache::forget('noticepage');
 
         return redirect()->route('admin.notice.index')->with('message', 'Notice added successfully!');
     }
@@ -80,6 +83,8 @@ class NoticeController extends Controller
         'details' => $request->details,
         'file' => $notice->link, // Keep the new/old file link
     ]);
+    Cache::forget('all_notices');
+    Cache::forget('noticepage');
 
     return redirect()->route('admin.notice.index')->with('success', 'Notice updated successfully.');
 }
@@ -94,6 +99,8 @@ class NoticeController extends Controller
         }
 
         $notice->delete();
+        Cache::forget('all_notices');
+        Cache::forget('noticepage');
 
         return redirect()->route('admin.notice.index')->with('success', 'Notice deleted successfully.');
     }

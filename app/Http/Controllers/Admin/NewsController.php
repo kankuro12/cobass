@@ -28,6 +28,9 @@ class NewsController extends Controller
             }
             $news->save();
             Cache::forget('home_news');
+            Cache::forget('news_lists' . md5($request->fullUrl()));
+            Cache::forget('latest_news_sidebar');
+
             return redirect()->back()->with('message', 'Successfully Added');
         } else {
             return view('admin.news.add');
@@ -66,6 +69,8 @@ class NewsController extends Controller
             }
             $news->save();
             Cache::forget('home_news');
+            Cache::forget('news_lists' . md5($request->fullUrl()));
+            Cache::forget('latest_news_sidebar');
             return redirect()->back()->with('message', 'Successfully Updated');
         } else {
             return view('admin.news.edit', compact('news'));
@@ -99,6 +104,8 @@ class NewsController extends Controller
     {
         $news->delete();
         Cache::forget('home_news');
-        return redirect()->route('admin.news.index')->with('success', 'News deleted successfully!');
+        Cache::forget('news_lists');
+        Cache::forget('latest_news_sidebar');
+                        return redirect()->route('admin.news.index')->with('success', 'News deleted successfully!');
     }
 }

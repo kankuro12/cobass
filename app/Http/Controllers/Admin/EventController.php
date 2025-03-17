@@ -32,6 +32,9 @@ class EventController extends Controller
             }
             $event->save();
             Cache::forget('home_events');
+            Cache::forget('event_lists');
+            Cache::forget('latest_events_sidebar');
+
             return redirect()->back()->with('message', 'Successfully Added');
         } else {
             return view('admin.events.add');
@@ -55,6 +58,8 @@ class EventController extends Controller
             }
             $event->save();
             Cache::forget('home_events');
+            Cache::forget('event_lists');
+            Cache::forget('latest_events_sidebar');
             return redirect()->back()->with('message', 'Successfully Updated');
         } else {
             return view('admin.events.edit', compact('event'));
@@ -65,6 +70,8 @@ class EventController extends Controller
     {
         $event->delete();
         Cache::forget('home_events');
+        Cache::forget('event_lists');
+        Cache::forget('latest_events_sidebar');
         return redirect()->route('admin.events.index')->with('success', 'Event deleted successfully!');
     }
 }

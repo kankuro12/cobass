@@ -28,6 +28,7 @@ class TeacherController extends Controller
         $teacher->short_des = $request->short_des;
         $teacher->save();
         Cache::forget('home_teacher');
+        Cache::forget('teacher_lists');
         return redirect()->back()->with('message', 'Successfully Added');
         // return redirect()->route("admin.teacher.index");
     }
@@ -42,6 +43,7 @@ class TeacherController extends Controller
     {
         $teacher->delete();
         Cache::forget('home_teacher');
+        Cache::forget('teacher_lists');
         return redirect()->back()->with('message', 'Sucessfully Deleted');
     }
     public function edit(Request $request, Teacher $teacher)
@@ -55,6 +57,7 @@ class TeacherController extends Controller
             }
             $teacher->save();
             Cache::forget('home_teacher');
+            Cache::forget('teacher_lists');
             return redirect()->back()->with('message', 'Successfully Updated');
         } else {
             return view("admin.teacher.edit",compact('teacher'));

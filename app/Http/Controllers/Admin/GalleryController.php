@@ -9,6 +9,7 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 use Intervention\Image\Facades\Image;
+use Cache;
 class GalleryController extends Controller
 {
     //types
@@ -24,6 +25,7 @@ class GalleryController extends Controller
         $type->name = $request->name;
         $type->icon = $request->icon->store('uploads/gallery/' . Carbon::now()->format('Y/m/d'));
         $type->save();
+        Cache::forget('gallery_types');
         return redirect()->back()->with('message', 'Gallery Added Sucessfully');
     }
     public function editType(Request $request, GalleryType $type)
@@ -33,12 +35,14 @@ class GalleryController extends Controller
             $type->icon = $request->icon->store('uploads/gallery/' . Carbon::now()->format('Y/m/d'));
         }
         $type->save();
+        Cache::forget('gallery_types');
         return redirect()->back()->with('message', 'Gallery Updated Sucessfully');
     }
 
     public function delType(Request $request, GalleryType $type)
     {
         $type->delete();
+        Cache::forget('gallery_types');
         return redirect()->back()->with('message', 'Gallery Deleted Sucessfully');
     }
 

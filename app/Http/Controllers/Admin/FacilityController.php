@@ -64,6 +64,8 @@ class FacilityController extends Controller
 
                 // Save new image path
                 $facilityData->update(['icon' => $newImagePath]);
+                Cache::forget('four_facilities');
+                Cache::forget('home_facilities');
             }
         }
 

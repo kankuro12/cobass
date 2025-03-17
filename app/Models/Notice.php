@@ -16,4 +16,5 @@ class Notice extends Model
         'details',
         'link',
     ];
+    const tableName = 'notice';
 }
