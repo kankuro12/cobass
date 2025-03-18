@@ -56,7 +56,7 @@ class NewCobassController extends Controller
 
         $sliders = Cache::rememberForever('home_slider', function () {
 
-            return DB::table(Slider::tableName)->get(['id','title','subtitle','image']);
+            return DB::table(Slider::tableName)->get(['id','title','subtitle','image','mobile_image']);
         });
         // Fetch courses and pass to the view
         $courses = Cache::rememberForever('home_course', function () {
@@ -64,11 +64,11 @@ class NewCobassController extends Controller
         });
         //fetch teacher information
         $teachers = Cache::rememberForever('home_teacher', function () {
-            return DB::table(Teacher::tableName)->orderBy('id', 'desc')->take(4)->get(['id','name','deg','short_des']);
+            return DB::table(Teacher::tableName)->orderBy('id', 'desc')->take(4)->get(['id','name','deg','short_des','image']);
         });
 
         $events = Cache::rememberForever('home_events', function () {
-            return DB::table(Event::tableName)->orderBy('id', 'desc')->take(4)->get(['id','feature_image','title','short_description','venue','end_time','start_date',]);
+            return DB::table(Event::tableName)->orderBy('id', 'desc')->take(4)->get(['id','feature_image','title','short_description','venue','end_time','start_date','start_time']);
         });
         $news = Cache::rememberForever('home_news', function () {
             return DB::table(News::tableName)->orderBy('id', 'desc')->take(4)->get(['id','feature_image','title','short_content','created_at']);
