@@ -3,9 +3,12 @@
         height: 400px;
         /* Adjust the height as needed */
         overflow: hidden;
-        background-color: #fff; /* Added to ensure the background is white */
-        transition: all 0.3s ease; /* Added for smooth hover effects */
-        margin-bottom: 20px; /* Added to ensure proper spacing */
+        background-color: #fff;
+        /* Added to ensure the background is white */
+        transition: all 0.3s ease;
+        /* Added for smooth hover effects */
+        margin-bottom: 10px;
+        /* Added to ensure proper spacing */
     }
 
     .animated-link {
@@ -61,15 +64,17 @@
     }
 
     .event-content {
-        padding: 15px;
-        height: 120px;
+        margin-top: 0;
+        padding: 5px;
+        height: 130px;
         overflow: hidden;
     }
 
     .event-content h3 {
         font-size: 18px;
-        margin-bottom: 10px;
-        line-height: 1.4;
+        margin-bottom: 0;
+        /* Changed from 10px to 0 */
+        line-height: 1.3;
     }
 
     .event-meta-wrap {
@@ -110,6 +115,12 @@
     .section-title h2 span {
         color: #00b846;
     }
+
+    .event-content p {
+        margin-top: 2px;
+        /* Add a very small top margin */
+        margin-bottom: 0;
+    }
 </style>
 
 <div class="event-area bg-img default-overlay pt-40 pb-40" style="background-image:url('{{ asset('img/bg.jpeg') }}');">
@@ -121,9 +132,9 @@
 
         <div class="row">
             @foreach ($events->take(4) as $event)
-            <a href="{{ route('events.details', $event->id) }}">
-                <div class="col-lg-3 col-md-6">
-                    <div class="single-event event-white-bg">
+                <a href="{{ route('events.details', $event->id) }}">
+                    <div class="col-lg-3 col-md-6">
+                        <div class="single-event event-white-bg">
                             <div class="event-img" style="height: 200px; overflow: hidden; position: relative;">
                                 <!-- Use the image path from the database -->
                                 <img src="{{ asset($event->feature_image) }}" alt="{{ $event->title }}"
@@ -149,17 +160,17 @@
                                         {{ date('h:i A', strtotime($event->end_time)) }}</span>
                                 </div>
                             </div>
-                        </a>
-                    </div>
-                </div>
-            @endforeach
-        </div>
-
-        <div style="text-align: center; margin-top: 20px;">
-            <a href="{{ route('event') }}" class="animated-link">
-                <span class="link-text">View more</span>
-                <span class="link-icon">→</span>
-            </a>
+                </a>
         </div>
     </div>
+    @endforeach
+</div>
+
+<div style="text-align: center; margin-top: 20px;">
+    <a href="{{ route('events.list') }}" class="animated-link">
+        <span class="link-text">View more</span>
+        <span class="link-icon">→</span>
+    </a>
+</div>
+</div>
 </div>

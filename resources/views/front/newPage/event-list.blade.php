@@ -1,7 +1,7 @@
 @extends('front.layout.app')
 
 @section('content')
-<style>
+ <style>
     .single-event {
         height: 400px;
         overflow: hidden;
@@ -54,13 +54,14 @@
     style="background-image:url('https://images.pexels.com/photos/1029577/pexels-photo-1029577.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');">
     <div class="container">
 
-        <!-- Search Box -->
-        <div class="search-box">
-            <form method="GET" action="{{ route('events.list') }}">
-                <input type="text" name="search" placeholder="Search events..." value="{{ request('search') }}">
-                <button type="submit">Search</button>
-            </form>
-        </div>
+       <!-- Search Box -->
+       <div class="search-box">
+        <form method="GET" action="{{ route('events.list') }}">
+            <input type="text" name="search" placeholder="Search events..."
+                   value="{{ request()->query('search') }}">
+            <button type="submit">Search</button>
+        </form>
+    </div>
 
         <div class="row">
             @foreach ($events as $event)
