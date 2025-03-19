@@ -74,7 +74,7 @@
         <div class="container">
             <a href="{{ route('index') }}">
                 <div class="logo py-2">
-                    <img alt="Logo" src="{{ asset($logo) }}" class="img-fluid" style="max-height: 70px">
+                    <img alt="Logo" src="{{ asset($logo) }}" class="img-fluid">
                 </div>
             </a>
         </div>
