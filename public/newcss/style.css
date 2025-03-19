@@ -1650,7 +1650,7 @@ textarea:focus {
     .header-social {
         padding: 5px;
     }
-    .header-contact{
+    .header-contact {
         padding: 5px;
     }
     .header-social ul {
@@ -2280,7 +2280,6 @@ textarea:focus {
 .sticky-bar.stick {
     -webkit-animation: 700ms ease-in-out 0s normal none 1 running fadeInDown;
     animation: 700ms ease-in-out 0s normal none 1 running fadeInDown;
-    background-color: #fff;
     border-bottom: 0 solid #4a90e2;
     -webkit-box-shadow: 0 0 25px 0 rgba(0, 0, 0, 0.04);
     box-shadow: 0 0 25px 0 rgba(0, 0, 0, 0.04);
