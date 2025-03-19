@@ -64,7 +64,7 @@ class NewCobassController extends Controller
         });
         //fetch teacher information
         $teachers = Cache::rememberForever('home_teacher', function () {
-            return DB::table(Teacher::tableName)->orderBy('id', 'desc')->take(4)->get(['id','name','deg','short_des','image']);
+            return DB::table(Teacher::tableName)->orderBy('id', 'asc')->take(4)->get(['id','name','deg','short_des','image']);
         });
 
         $events = Cache::rememberForever('home_events', function () {

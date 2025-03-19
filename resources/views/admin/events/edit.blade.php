@@ -18,8 +18,6 @@
     <div class="bg-white shadow p-3 mt-3">
         <form action="{{ route('admin.events.edit', $event->id) }}" method="POST" enctype="multipart/form-data">
             @csrf
-            @method('PUT')
-
             <div class="row">
                 <div class="col-md-3 mb-3">
                     <label for="feature_image">Featured Image</label>

@@ -72,15 +72,22 @@
     </div>
     <div class="header-mid">
         <div class="container">
-            <div class="row">
-                <div class="col-lg-4 col-md-6 col-8">
+            <div class="row align-items-center">
+                <!-- Logo - takes 4 columns on large screens, 6 on medium, 8 on small -->
+                <div class="col-lg-4 col-md-6 col-sm-8 col-8">
                     <a href="{{ route('index') }}">
-                        <div class="logo p-2">
-                            <img alt="" src="{{ asset($logo) }}" style="max-height: 100px">
+                        <div class="logo py-2">
+                            <img alt="Logo" src="{{ asset($logo) }}" class="img-fluid" style="max-height: 70px">
                         </div>
                     </a>
                 </div>
-                <div class="col-2 d-md-none"></div>
+
+                <!-- Mobile menu toggle button -->
+                <div class="col-4 col-sm-4 col-md-6 col-lg-8 d-flex justify-content-end">
+                    <button class="navbar-toggler d-lg-none" type="button" data-bs-toggle="collapse" data-bs-target="#mobileNavigation" aria-controls="mobileNavigation" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                </div>
             </div>
         </div>
     </div>
