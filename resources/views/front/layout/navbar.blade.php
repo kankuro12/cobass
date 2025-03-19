@@ -78,11 +78,6 @@
                 </div>
             </a>
             <div class="row align-items-center">
-                <!-- Logo - takes 4 columns on large screens, 6 on medium, 8 on small -->
-                <div class="col-lg-4 col-md-6 col-sm-8 col-8">
-                </div>
-
-                <!-- Mobile menu toggle button -->
                 <div class="col-4 col-sm-4 col-md-6 col-lg-8 d-flex justify-content-end">
                     <button class="navbar-toggler d-lg-none" type="button" data-bs-toggle="collapse" data-bs-target="#mobileNavigation" aria-controls="mobileNavigation" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
