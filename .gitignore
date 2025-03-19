@@ -18,3 +18,4 @@ yarn-error.log
 /.vscode
 public/uploads
 public/upload
+resources/front/layout/top.blade.php
