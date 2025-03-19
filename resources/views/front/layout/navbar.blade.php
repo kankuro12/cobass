@@ -77,13 +77,6 @@
                     <img alt="Logo" src="{{ asset($logo) }}" class="img-fluid" style="max-height: 70px">
                 </div>
             </a>
-            <div class="row align-items-center">
-                <div class="col-4 col-sm-4 col-md-6 col-lg-8 d-flex justify-content-end">
-                    <button class="navbar-toggler d-lg-none" type="button" data-bs-toggle="collapse" data-bs-target="#mobileNavigation" aria-controls="mobileNavigation" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                </div>
-            </div>
         </div>
     </div>
     <div class="header-bottom sticky-bar clearfix">
