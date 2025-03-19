@@ -106,12 +106,18 @@ class SettingController extends Controller
     {
         $data = self::Setting[$type];
         $curdata = [];
+        foreach ($data[1] as $key => $attr) {
+            $k = $type . '_' . $attr[0];
+            $curdata[$attr[0]] = getSetting($k,true);
+        }
         if ($request->getMethod() == "POST") {
             foreach ($data[1] as $key => $attr) {
                 $k = $type . '_' . $attr[0];
                 try {
                     if ($attr[1] == 0) {
-                        $s = setSetting($k, $request->file($k)->store('uploads/settings'), true);
+                        if($request->hasFile($k)){
+                            $s = setSetting($k, $request->file($k)->store('uploads/settings'), true);
+                        }
                     } else {
                         $s = setSetting($k, $request->input($k), true);
                     }
@@ -119,7 +125,7 @@ class SettingController extends Controller
                 } catch (\Throwable $th) {
                 }
             }
-            // dd($curdata);
+
             if (isset($data[2])) {
                 file_put_contents(resource_path($data[2]), view('admin.setting.template.' . $type, compact('curdata'))->render());
             } else {
