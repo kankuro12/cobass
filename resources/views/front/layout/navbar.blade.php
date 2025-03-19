@@ -34,7 +34,7 @@
 </style>
 <header class="header-area">
     <div class="header-top bg-img">
-        <div class="container" style="padding: 0px 40px">
+        <div class="container">
             <div class="row" style="justify-content: space-between;align-items: center">
                 <div class="col-lg-6 col-md-7 col-12 col-sm-8 ">
                     <div class="header-contact">
@@ -72,14 +72,14 @@
     </div>
     <div class="header-mid">
         <div class="container">
+            <a href="{{ route('index') }}">
+                <div class="logo py-2">
+                    <img alt="Logo" src="{{ asset($logo) }}" class="img-fluid" style="max-height: 70px">
+                </div>
+            </a>
             <div class="row align-items-center">
                 <!-- Logo - takes 4 columns on large screens, 6 on medium, 8 on small -->
                 <div class="col-lg-4 col-md-6 col-sm-8 col-8">
-                    <a href="{{ route('index') }}">
-                        <div class="logo py-2">
-                            <img alt="Logo" src="{{ asset($logo) }}" class="img-fluid" style="max-height: 70px">
-                        </div>
-                    </a>
                 </div>
 
                 <!-- Mobile menu toggle button -->
