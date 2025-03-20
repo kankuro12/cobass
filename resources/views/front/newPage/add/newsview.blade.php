@@ -24,6 +24,10 @@
     z-index: -1;
 }
 
+.blog-content-wrap{
+    background-color: white;
+}
+
 .animated-link:hover {
         color: white;
         background-color: green;
