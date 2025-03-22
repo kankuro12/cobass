@@ -21,7 +21,9 @@
         border-radius: 5px;
         max-width: 800px;
         width: 90%;
+        max-height: 90vh; /* Limit height to 90% of viewport height */
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        overflow: hidden; /* Hide overflow for the container */
     }
 
     .popup-close {
@@ -43,7 +45,9 @@
     .popup-image-container {
         position: relative;
         margin: 0 auto;
-        max-height: 80vh;
+        height: 100%;
+        max-height: 90vh;
+        overflow-y: auto; /* Add scrollbar when content exceeds container */
     }
 
     .popup-image {
@@ -53,11 +57,14 @@
     }
 
     .popup-button-overlay {
-        position: absolute;
         bottom: 20px;
-        left: 50%;
-        transform: translateX(-50%);
+        left: 0;
+        width: 100%;
+        text-align: center;
+        padding: 10px 0;
+        background: rgba(255, 255, 255, 0.7);
         z-index: 10;
+        margin-top: -60px; /* Pull button up to overlap with bottom of image */
     }
 
     .hidden {
