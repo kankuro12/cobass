@@ -23,7 +23,7 @@
         width: 90%;
         max-height: 90vh; /* Limit height to 90% of viewport height */
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-        overflow: hidden; /* Hide overflow for the container */
+        overflow: auto;
     }
 
     .popup-close {
