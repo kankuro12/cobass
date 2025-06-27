@@ -1,6 +1,6 @@
 @php
     $logo = getSetting('top_logo', true);
-    $facebook = getSetting('social_Facebok', true);
+    $facebook = getSetting('social_Facebook', true);
     $twitter = getSetting('social_Twitter', true);
     $youtube = getSetting('social_Youtube', true);
     $instagram = getSetting('social_Instagram', true);
@@ -56,13 +56,21 @@
                     class="col-lg-6 col-md-7 col-12 col-sm-8 d-flex justify-content-end justify-content-md-end justify-content-sm-center justify-content-center">
                     <div class="header-social">
                         <ul class="d-flex" style="column-gap: 10px ">
-                            <li><a class="facebook" href="{{ $facebook }}"><i class="fa-brands fa-facebook"
+                            <li><a class="facebook"
+                                    href="{{ str_starts_with($facebook, 'http') ? $facebook : 'https://' . $facebook }}"
+                                    target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-facebook"
                                         style="color: #3b5998;"></i></a></li>
-                            <li><a class="youtube" href="{{ $youtube }}"><i class="fa-brands fa-youtube"
+                            <li><a class="youtube"
+                                    href="{{ str_starts_with($youtube, 'http') ? $youtube : 'https://' . $youtube }}"
+                                    target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-youtube"
                                         style="color: #FF0000;"></i></a></li>
-                            <li><a class="twitter" href="{{ $twitter }}"><i class="fa-brands fa-x-twitter"
+                            <li><a class="twitter"
+                                    href="{{ str_starts_with($twitter, 'http') ? $twitter : 'https://' . $twitter }}"
+                                    target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-x-twitter"
                                         style="color: #1DA1F2;"></i></a></li>
-                            <li><a class="instagram" href="{{ $instagram }}"><i class="fa-brands fa-instagram"
+                            <li><a class="instagram"
+                                    href="{{ str_starts_with($instagram, 'http') ? $instagram : 'https://' . $instagram }}"
+                                    target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-instagram"
                                         style="color: #C13584;"></i></a></li>
                         </ul>
                     </div>
