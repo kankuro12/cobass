@@ -76,7 +76,7 @@ class NewCobassController extends Controller
         $testimonials = Cache::rememberForever('home_testimonial', function () {
             return DB::table(Testimonial::tableName)->get(['id','name','long_des','name','profission','image']);
         });
-        $popups = Popup::where('active', 1)->get(); // Get the first active popup
+        $popups = Popup::where('active', 1)->latest()->get();
         $data = $this->getHomepageData();
 
         // Fetch the facilities data, assuming these are the 4 facilities
