@@ -56,7 +56,7 @@ class NewCobassController extends Controller
 
         $sliders = Cache::rememberForever('home_slider', function () {
 
-            return DB::table(Slider::tableName)->get(['id','title','subtitle','image','mobile_image']);
+            return DB::table(Slider::tableName)->get(['id','title','subtitle','is_video','video_url','image','mobile_image']);
         });
         // Fetch courses and pass to the view
         $courses = Cache::rememberForever('home_course', function () {
