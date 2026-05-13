@@ -45,20 +45,20 @@
                     @method('PUT')
 
                     <div class="row">
-                        @foreach (['facility1' => 'Facility 1', 'facility2' => 'Facility 2', 'facility3' => 'Facility 3', 'facility4' => 'Facility 4'] as $key => $label)
+                        @foreach (['facility1' => 'Facility 1', 'facility2' => 'Facility 2', 'facility3' => 'Facility 3', 'facility4' => 'Facility 4', 'facility5' => 'Facility 5'] as $key => $label)
                             <div class="col-md-6">
                                 <div class="mb-3">
                                     <label for="{{ $key }}_title" class="form-label fw-bold">{{ $label }}
                                         Title</label>
                                     <input type="text" name="{{ $key }}_title" id="{{ $key }}_title"
-                                        class="form-control" value="{{ $facilities[$key]->title ?? '' }}" required
+                                        class="form-control" value="{{ $facilities[$key]->title ?? '' }}"
                                         placeholder="Enter {{ $label }} Title">
                                 </div>
                                 <div class="mb-3">
                                     <label for="{{ $key }}_description"
                                         class="form-label fw-bold">{{ $label }} Description</label>
                                     <textarea name="{{ $key }}_description" id="{{ $key }}_description" class="form-control"
-                                        rows="3" required>{{ $facilities[$key]->description ?? '' }}</textarea>
+                                        rows="3">{{ $facilities[$key]->description ?? '' }}</textarea>
                                 </div>
                                 <div class="mb-3">
                                     <label for="{{ $key }}_icon" class="form-label fw-bold">Upload Icon</label>

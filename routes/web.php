@@ -50,6 +50,7 @@ use App\Http\Controllers\Admin\AboutUsController;
 Route::get('', [NewCobassController::class, 'index'])->name('index');
 Route::get('event', [NewCobassController::class, 'event'])->name('event');
 Route::get('notice', [NewCobassController::class, 'notice'])->name('notice');
+Route::get('/notice/{id}', [NewCobassController::class, 'showNotice'])->name('notice.show');
 Route::get('/about', [NewCobassController::class, 'about'])->name('about');
 
 // Route for courses listing

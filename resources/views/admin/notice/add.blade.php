@@ -19,7 +19,8 @@
             <div class="row">
                 <div class="col-md-6">
                     <label for="file">Attachment</label>
-                    <input type="file" name="file" id="file" class="form-control file">
+                    <input type="file" name="file" id="file" class="form-control file"
+                        accept=".jpg,.jpeg,.png,.gif,.webp,.pdf,.doc,.docx,.xls,.xlsx">
                 </div>
                 <div class="col-md-6">
                     <div class="row">

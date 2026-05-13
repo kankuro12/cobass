@@ -20,8 +20,9 @@
             <div class="row">
                 <div class="col-md-6">
                     <label for="link">Upload File</label>
-                    <input type="file" name="link" id="link" class="form-control dropify"
-                        data-default-file="{{ asset($notice->link) }}" accept=".pdf,.docx">
+                    <input type="file" name="file" id="link" class="form-control dropify"
+                        data-default-file="{{ asset($notice->link) }}"
+                        accept=".jpg,.jpeg,.png,.gif,.webp,.pdf,.doc,.docx,.xls,.xlsx">
                 </div>
                 <div class="col-md-6">
                     <div class="row">

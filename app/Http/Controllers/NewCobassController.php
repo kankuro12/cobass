@@ -79,6 +79,13 @@ class NewCobassController extends Controller
         $popups = Popup::where('active', 1)->latest()->get();
         $data = $this->getHomepageData();
 
+        $latestNotices = Cache::rememberForever('home_notices', function () {
+            return DB::table('notices')
+                ->orderBy('id', 'desc')
+                ->take(3)
+                ->get(['id', 'title', 'date', 'link']);
+        });
+
         // Fetch the facilities data, assuming these are the 4 facilities
         $facility = Cache::rememberForever('home_facilities', function () {
             return DB::table('facilities')->get(['id','icon','title','description']);
@@ -87,7 +94,7 @@ class NewCobassController extends Controller
         $achieve = Cache::rememberForever('home_achieve', function () {
             return DB::table('achievements')->orderBy('id', 'desc')->take(4)->get();
         });
-        return view('front.newPage.index', compact('sliders', 'courses', 'teachers', 'testimonials', 'popups', 'events', 'news', 'data', 'achievementData', 'facility', 'achieve'));
+        return view('front.newPage.index', compact('sliders', 'courses', 'teachers', 'testimonials', 'popups', 'events', 'news', 'data', 'achievementData', 'latestNotices', 'facility', 'achieve'));
     }
 
     // public function event()
@@ -106,6 +113,13 @@ class NewCobassController extends Controller
 
 
         return view('front.newPage.notice', compact('notices'));
+    }
+
+    public function showNotice($id)
+    {
+        $notice = Notice::findOrFail($id);
+
+        return view('front.newPage.notice-single', compact('notice'));
     }
     public function course()
     {

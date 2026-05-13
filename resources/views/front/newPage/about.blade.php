@@ -28,12 +28,20 @@
                 <div class="col-lg-8 col-md-12">
                     <div class="about-chose-us pt-40">
                         <div class="row">
-                            @foreach ($facility as $facilities)
+                            @php
+                                $visibleFacilities = collect($facility)
+                                    ->filter(fn ($facilityItem) => filled(trim($facilityItem->title ?? '')))
+                                    ->values();
+                            @endphp
+
+                            @foreach ($visibleFacilities as $facilities)
                                 <div class="col-lg-6 col-md-6">
                                     <div class="single-about-chose-us mb-95">
                                         <div class="about-choose-img">
-                                            <img src="{{ asset($facilities->icon) }}" alt=""
-                                                style="width: 50px; height: 50px;">
+                                            @if (!empty($facilities->icon))
+                                                <img src="{{ asset($facilities->icon) }}" alt="{{ $facilities->title }}"
+                                                    style="width: 50px; height: 50px;">
+                                            @endif
                                         </div>
                                         <div class="about-choose-content text-light-blue">
                                             <h3>{{ $facilities->title }}</h3>

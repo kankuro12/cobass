@@ -37,7 +37,7 @@
                             <li class="notice-item mb-4" style="border: 1px solid #ddd; padding: 15px; border-radius: 5px;">
                                 <div class="notice-content d-flex">
                                     <div class="content">
-                                        <h3 style="font-size: 1.5em;"><a href="#">{{ $notice->title }}</a></h3>
+                                        <h3 style="font-size: 1.5em;"><a href="{{ route('notice.show', $notice->id) }}">{{ $notice->title }}</a></h3>
                                         <div class="event-meta-wrap">
                                             <div class="event-meta">
                                                 <i class="fa fa-calendar"></i>
