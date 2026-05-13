@@ -62,6 +62,8 @@ class NoticeController extends Controller
             'date' => 'required|date',
             'details' => 'required|string',
             'file' => 'nullable|file|mimes:jpg,jpeg,png,gif,webp,pdf,doc,docx,xls,xlsx|max:5120',
+            'external_link_text' => 'nullable|string|max:255',
+            'external_link' => 'nullable|url|max:2048',
         ]);
 
         $attachmentPath = $this->storeAttachment($request);
@@ -71,6 +73,8 @@ class NoticeController extends Controller
             'date' => $request->date,
             'details' => $request->details,
             'link' => $attachmentPath,
+            'external_link_text' => filled(trim((string) $request->external_link_text)) ? $request->external_link_text : null,
+            'external_link' => filled(trim((string) $request->external_link)) ? $request->external_link : null,
         ]);
         Cache::forget('all_notices');
         Cache::forget('noticepage');
@@ -92,6 +96,8 @@ class NoticeController extends Controller
             'date' => 'required|date',
             'details' => 'required|string',
             'file' => 'nullable|file|mimes:jpg,jpeg,png,gif,webp,pdf,doc,docx,xls,xlsx|max:5120',
+            'external_link_text' => 'nullable|string|max:255',
+            'external_link' => 'nullable|url|max:2048',
         ]);
 
         $notice = Notice::findOrFail($id);
@@ -106,6 +112,8 @@ class NoticeController extends Controller
             'date' => $request->date,
             'details' => $request->details,
             'link' => $notice->link,
+            'external_link_text' => filled(trim((string) $request->external_link_text)) ? $request->external_link_text : null,
+            'external_link' => filled(trim((string) $request->external_link)) ? $request->external_link : null,
         ]);
         Cache::forget('all_notices');
         Cache::forget('noticepage');

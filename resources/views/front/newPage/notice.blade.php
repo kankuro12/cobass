@@ -53,6 +53,14 @@
                                         </div>
                                     @endif
                                 </div>
+
+                                @if (!empty($notice->external_link))
+                                    <div class="mt-3">
+                                        <a href="{{ $notice->external_link }}" target="_blank" rel="noopener noreferrer">
+                                            {{ $notice->external_link_text ?: 'External Link' }}
+                                        </a>
+                                    </div>
+                                @endif
                             </li>
                         @endforeach
                     </ul>

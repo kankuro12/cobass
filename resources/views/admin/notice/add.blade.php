@@ -37,6 +37,18 @@
                             <input type="text" name="details" id="details" class="form-control"></input>
                         </div>
 
+                        <div class="col-md-6 mt-2">
+                            <label for="external_link_text">External Link Text</label>
+                            <input type="text" name="external_link_text" id="external_link_text" class="form-control"
+                                placeholder="e.g. View Online">
+                        </div>
+
+                        <div class="col-md-6 mt-2">
+                            <label for="external_link">External Link</label>
+                            <input type="url" name="external_link" id="external_link" class="form-control"
+                                placeholder="https://example.com">
+                        </div>
+
                         <div class="col-md-12 mt-2">
                             <button type="submit" class="btn btn-primary">Submit</button>
                         </div>

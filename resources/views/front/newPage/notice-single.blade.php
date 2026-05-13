@@ -126,6 +126,15 @@
                             </div>
                         @endif
 
+                        @if (!empty($notice->external_link))
+                            <div class="notice-single-attachment">
+                                <a class="notice-single-button primary" href="{{ $notice->external_link }}" target="_blank" rel="noopener noreferrer">
+                                    <i class="fa fa-link"></i>
+                                    <span>{{ $notice->external_link_text ?: 'External Link' }}</span>
+                                </a>
+                            </div>
+                        @endif
+
                         <div class="notice-single-actions">
                             <a class="notice-single-button secondary" href="{{ route('notice') }}">
                                 <i class="fa fa-arrow-left"></i>

@@ -83,7 +83,7 @@ class NewCobassController extends Controller
             return DB::table('notices')
                 ->orderBy('id', 'desc')
                 ->take(3)
-                ->get(['id', 'title', 'date', 'link']);
+                ->get(['id', 'title', 'date', 'link','external_link_text','external_link']);
         });
 
         // Fetch the facilities data, assuming these are the 4 facilities

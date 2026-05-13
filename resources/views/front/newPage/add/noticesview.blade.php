@@ -30,8 +30,13 @@
 
     .home-notice-title {
         margin-bottom: 12px;
-        font-size: 20px;
-        line-height: 1.35;
+        font-size: 18px;
+        line-height: 1.4;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        min-height: 2.8em;
     }
 
     .home-notice-title a {
@@ -55,19 +60,24 @@
     .home-notice-actions {
         display: flex;
         flex-wrap: wrap;
-        gap: 12px;
-        margin-top: 18px;
+        gap: 8px;
+        margin-top: 14px;
     }
 
     .home-notice-action {
         display: inline-flex;
         align-items: center;
         gap: 8px;
-        padding: 10px 16px;
-        border-radius: 8px;
+        padding: 6px 10px;
+        border-radius: 6px;
+        font-size: 12px;
         font-weight: 600;
         text-decoration: none;
         transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+    }
+
+    .home-notice-action i {
+        font-size: 11px;
     }
 
     .home-notice-action.view {
@@ -123,6 +133,13 @@
                                     <a class="home-notice-action download" href="{{ asset($notice->link) }}" download>
                                         <i class="fa fa-download"></i>
                                         <span>Download Notice</span>
+                                    </a>
+                                @endif
+
+                                @if (!empty($notice->external_link))
+                                    <a class="home-notice-action download" href="{{ $notice->external_link }}" target="_blank" rel="noopener noreferrer">
+                                        <i class="fa fa-link"></i>
+                                        <span>{{ $notice->external_link_text ?: 'External Link' }}</span>
                                     </a>
                                 @endif
                             </div>

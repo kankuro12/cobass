@@ -15,6 +15,8 @@ class Notice extends Model
         'date',
         'details',
         'link',
+        'external_link_text',
+        'external_link',
     ];
     const tableName = 'notice';
 }
